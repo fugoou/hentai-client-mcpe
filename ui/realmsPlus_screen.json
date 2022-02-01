@@ -1,0 +1,90 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "realmsPlus",
+
+  "selector_area": {
+    "type": "panel",
+    "size": [ "30% - 3px", "100%" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 2,
+    "focus_container": true,
+    "use_last_focus": true,
+    "$focus_nagivation_mode_override_down|default": "contained",
+    "$focus_nagivation_mode_override_up|default": "contained",
+    "$focus_nagivation_mode_override_left|default": "",
+    "$focus_nagivation_mode_override_right|default": "",
+    "focus_nagivation_mode_down": "$focus_nagivation_mode_override_down",
+    "focus_nagivation_mode_up": "$focus_nagivation_mode_override_up",
+    "focus_nagivation_mode_left": "$focus_nagivation_mode_override_left",
+    "focus_nagivation_mode_right": "$focus_nagivation_mode_override_right",
+    "controls": [
+      {
+        "scrolling_panel@common.scrolling_panel": {
+          "$scrolling_content": "realmsPlus.scrollable_selector_area_content",
+          "$show_background": false,
+          "$scroll_size": [ "5px", "100% - 4px" ],
+          "$scroll_bar_left_padding_size": [ 1, 0 ]
+        }
+      }
+    ]
+  },
+
+  "left_right_pane_divider": {
+    "type": "image",
+    "offset": [ "-30%", -1 ],
+    "size": [ "4px", "100% + 2px" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 3,
+    "texture": "textures/ui/Banners"
+  },
+
+  "content_area": {
+    "type": "panel",
+    "offset": [ 2, 0 ],
+    "size": [ "70% - 4px", "100%" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 1,
+
+    "focus_container": true,
+    "use_last_focus": false,
+    "$focus_nagivation_mode_override_down|default": "contained",
+    "$focus_nagivation_mode_override_up|default": "contained",
+    "$focus_nagivation_mode_override_left|default": "",
+    "$focus_nagivation_mode_override_right|default": "",
+    "focus_nagivation_mode_down": "$focus_nagivation_mode_override_down",
+    "focus_nagivation_mode_up": "$focus_nagivation_mode_override_up",
+    "focus_nagivation_mode_left": "$focus_nagivation_mode_override_left",
+    "focus_nagivation_mode_right": "$focus_nagivation_mode_override_right",
+
+    "controls": [
+      {
+        "control": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "controls": [
+            {
+              "scrolling_panel@common.scrolling_panel": {
+                "size": [ "100%", "fill" ],
+                "$scrolling_content": "realmsPlus.section_content_panels",
+                "$show_background": false,
+                "$scroll_size": [ "5px", "100% - 8px" ],
+                "$scroll_bar_left_padding_size": [ 4, 0 ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+
+}

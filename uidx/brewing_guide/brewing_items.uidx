@@ -1,0 +1,595 @@
+/*File made by @CrisXolt.
+//(c) Don't use any code design without permission!*/
+{
+  "namespace": "CrisXolt_brewing_items",
+
+  ////*/ Brewing Items with aux values /*////
+
+  /* Base Potion Bottles */
+  
+  "water_bottle@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 426, /* Water Bottle */
+    "$hover_panel_text": "potion.emptyPotion.name"
+  },
+  
+  "awkward_potion@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.bottle_base_hover_text",
+    "$icon_item_data": 4, /* Awkward Potion Data */
+    "$hover_panel_text": "potion.awkward.name"
+  },
+  
+  "mundane_potion@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.bottle_base_hover_text",
+    "$icon_item_data": 1, /* Mundane Potion Data */
+    "$hover_panel_text": "potion.mundane.name"
+  },
+  
+  "thick_potion@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.bottle_base_hover_text",
+    "$icon_item_data": 3, /* Thick Potion Data */
+    "$hover_panel_text": "potion.thick.name"
+  },
+
+  /* Ingredient Items */
+  
+  "gunpowder@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 328, /* Gunpowder */
+    "$hover_panel_text": "item.gunpowder.name"
+  },
+  
+  "glowstone_dust@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 394, /* Glowstone Dust */
+    "$hover_panel_text": "item.glowstone_dust.name"
+  },
+  
+  "redstone_dust@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 373, /* Redstone Dust */
+    "$hover_panel_text": "item.redstone.name"
+  },
+  
+  "nether_wart@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 294, /* Nether Wart */
+    "$hover_panel_text": "item.nether_wart.name"
+  },
+  
+  "dragons_breath@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 560, /* Dragon's Breath */
+    "$hover_panel_text": "item.dragon_breath.name"
+  },
+  
+  "fermented_spider_eye@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 428, /* Fermented Spider Eye */
+    "$hover_panel_text": "item.fermented_spider_eye.name"
+  },
+  
+  "glistering_melon_slice@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 434, /* Glistering Melon Slice */
+    "$hover_panel_text": "item.speckled_melon.name"
+  },
+  
+  "magma_cream@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 430, /* Magma Cream */
+    "$hover_panel_text": "item.magma_cream.name"
+  },
+  
+  "ghast_tear@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 424, /* Ghast Tear */
+    "$hover_panel_text": "item.ghast_tear.name"
+  },
+  
+  "blaze_powder@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 429, /* Blaze Powder */
+    "$hover_panel_text": "item.blaze_powder.name"
+  },
+  
+  "sugar@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 416, /* Sugar */
+    "$hover_panel_text": "item.sugar.name"
+  },
+  
+  "golden_carrot@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 283, /* Golden Carrot */
+    "$hover_panel_text": "item.golden_carrot.name"
+  },
+  
+  "pufferfish@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 267, /* Pufferfish */
+    "$hover_panel_text": "item.pufferfish.name"
+  },
+  
+  "rabbits_foot@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 528, /* Rabbit's Foot */
+    "$hover_panel_text": "item.rabbit_foot.name"
+  },
+  
+  "phantom_membrane@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 574, /* Phantom Membrane */
+    "$hover_panel_text": "item.phantom_membrane.name"
+  },
+  
+  "spider_eye@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 278, /* Spider Eye */
+    "$hover_panel_text": "item.spider_eye.name"
+  },
+  
+  "turtle_shell@CrisXolt_Brewing_Guide_common.item_panel": {
+    "$icon_item_id": 573, /* Turtle Shell */
+    "$hover_panel_text": "item.turtle_helmet.name"
+  },
+
+  /* Positive Potions Bottles */
+
+  "healing_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "healing_icon_0@CrisXolt_brewing_items.healing_icon": { } },
+      { "healing_icon_1@CrisXolt_brewing_items.healing_icon": { } }
+    ]
+  },
+
+  "healing_enhanced_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "healing_icon_0@CrisXolt_brewing_items.healing_icon": { } },
+      { "healing_icon_1@CrisXolt_brewing_items.healing_icon": { } },
+      { "healing_icon_2@CrisXolt_brewing_items.healing_icon": { } },
+      { "healing_icon_3@CrisXolt_brewing_items.healing_icon": { } }
+    ]
+  },
+
+  "healing_icon": {
+    "type": "panel",
+    "size": [ 8, 10 ],
+    "controls": [
+      { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { "offset": [ 0, 0 ] } },
+      { "heart@CrisXolt_Brewing_Guide.heart": { "offset": [ 0, 0 ] } }
+    ]
+  },
+  
+  "potion_of_healing@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 21, /* Potion of Healing */
+    "$hover_panel_text": "potion.heal.name",
+    "$second_hover_panel_text": "potion.heal",
+    "$has_time_effects": false,
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.healing_extra_text"
+  },
+  
+  "potion_of_healing_enhanced@CrisXolt_brewing_items.potion_of_healing": {
+    "$icon_item_data": 22, /* Potion of Healing II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$has_time_effects": false,
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.healing_enhanced_extra_text"
+  },
+  
+  "potion_of_fire_resistence@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 12, /* Potion of Fire Resistance */
+    "$hover_panel_text": "potion.fireResistance.name",
+    "$second_hover_panel_text": "potion.fireResistance",
+    "$second_hover_panel_text_value": "3:00"
+  },
+  
+  "potion_of_fire_resistence_extended@CrisXolt_brewing_items.potion_of_fire_resistence": {
+    "$icon_item_data": 13, /* Potion of Fire Resistance + */
+    "$second_hover_panel_text_value": "8:00"
+  },
+
+  "regeneration_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "value_text@CrisXolt_Brewing_Guide_common.hover_text_label": { "text": "+", "offset": [ 0, 0 ], "color": [ 0.66, 0.66, 0.66 ] } },
+      {
+        "regeneration_icon": {
+          "type": "panel",
+          "size": [ 8, 10 ],
+          "controls": [
+            { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { "offset": [ 0, 0 ] } },
+            { "heart@CrisXolt_Brewing_Guide.heart": { "offset": [ 0, 0 ], "texture": "textures/ui/heart_half" } }
+          ]
+        }
+      },
+      { "blocks_text@CrisXolt_Brewing_Guide_common.hover_text_label": { "text": "$regeneration_value_text", "offset": [ 0, 0 ], "color": [ 0.66, 0.66, 0.66 ] } }
+    ]
+  },
+  
+  "potion_of_regeneration@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 28, /* Potion of Regeneration */
+    "$hover_panel_text": "potion.regeneration.name",
+    "$second_hover_panel_text": "potion.regeneration",
+    "$second_hover_panel_text_value": "0:45",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.regeneration_extra_text",
+    "$regeneration_value_text": "/2.5s"
+  },
+  
+  "potion_of_regeneration_extended@CrisXolt_brewing_items.potion_of_regeneration": {
+    "$icon_item_data": 29, /* Potion of Regeneration + */
+    "$second_hover_panel_text_value": "2:00",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.regeneration_extra_text",
+    "$regeneration_value_text": "/2.5s"
+  },
+  
+  "potion_of_regeneration_enhanced@CrisXolt_brewing_items.potion_of_regeneration": {
+    "$icon_item_data": 30, /* Potion of Regeneration II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$second_hover_panel_text_value": "0:22",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.regeneration_extra_text",
+    "$regeneration_value_text": "/1.2s"
+  },
+  
+  "potion_of_strenght@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 31, /* Potion of Strenght */
+    "$hover_panel_text": "potion.damageBoost.name",
+    "$second_hover_panel_text": "potion.damageBoost",
+    "$second_hover_panel_text_value": "3:00",
+    "$has_applied_text": true,
+    "$fourth_hover_panel_text": "+1 ",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:attack_damage"
+  },
+  
+  "potion_of_strenght_extended@CrisXolt_brewing_items.potion_of_strenght": {
+    "$icon_item_data": 32, /* Potion of Strenght + */
+    "$second_hover_panel_text_value": "8:00",
+    "$has_applied_text": true,
+    "$fourth_hover_panel_text": "+1 ",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:attack_damage"
+  },
+  
+  "potion_of_strenght_enhanced@CrisXolt_brewing_items.potion_of_strenght": {
+    "$icon_item_data": 33, /* Potion of Strenght II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$second_hover_panel_text_value": "1:30",
+    "$has_applied_text": true,
+    "$fourth_hover_panel_text": "+2 ",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:attack_damage"
+  },
+  
+  "potion_of_swiftness@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 14, /* Potion of Swiftness */
+    "$hover_panel_text": "potion.moveSpeed.name",
+    "$second_hover_panel_text": "potion.moveSpeed",
+    "$second_hover_panel_text_value": "3:00",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_text": "+20",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+  
+  "potion_of_swiftness_extended@CrisXolt_brewing_items.potion_of_swiftness": {
+    "$icon_item_data": 15, /* Potion of Swiftness + */
+    "$second_hover_panel_text_value": "8:00",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_text": "+20",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+  
+  "potion_of_swiftness_enhanced@CrisXolt_brewing_items.potion_of_swiftness": {
+    "$icon_item_data": 16, /* Potion of Swiftness II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$second_hover_panel_text_value": "1:30",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_text": "+40",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+  
+  "potion_of_night_vision@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 5, /* Potion of Night Vision */
+    "$hover_panel_text": "potion.nightVision.name",
+    "$second_hover_panel_text": "potion.nightVision",
+    "$second_hover_panel_text_value": "3:00"
+  },
+  
+  "potion_of_night_vision_extended@CrisXolt_brewing_items.potion_of_night_vision": {
+    "$icon_item_data": 6, /* Potion of Night Vision + */
+    "$second_hover_panel_text_value": "8:00"
+  },
+  
+  "potion_of_invisibility@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 7, /* Potion of Invisibility */
+    "$hover_panel_text": "potion.invisibility.name",
+    "$second_hover_panel_text": "potion.invisibility",
+    "$second_hover_panel_text_value": "3:00"
+  },
+  
+  "potion_of_invisibility_extended@CrisXolt_brewing_items.potion_of_invisibility": {
+    "$icon_item_data": 8, /* Potion of Invisibility + */
+    "$second_hover_panel_text_value": "8:00"
+  },
+  
+  "potion_of_water_breathing@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 19, /* Potion of Water Breathing */
+    "$hover_panel_text": "potion.waterBreathing.name",
+    "$second_hover_panel_text": "potion.waterBreathing",
+    "$second_hover_panel_text_value": "3:00"
+  },
+  
+  "potion_of_water_breathing_extended@CrisXolt_brewing_items.potion_of_water_breathing": {
+    "$icon_item_data": 20, /* Potion of Water Breathing + */
+    "$second_hover_panel_text_value": "8:00"
+  },
+
+  "leaping_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "value_text@CrisXolt_Brewing_Guide_common.hover_text_label": { "text": "$leaping_value_text", "offset": [ 0, 0 ], "color": [ 0.66, 0.66, 0.66 ] } },
+      { "blocks_text@CrisXolt_Brewing_Guide_common.hover_text_label": { "text": "createWorld.customize.flat.height", "offset": [ 0, 0 ], "color": [ 0.66, 0.66, 0.66 ] } }
+    ]
+  },
+  
+  "potion_of_leaping@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 9, /* Potion of Leaping */
+    "$hover_panel_text": "potion.jump.name",
+    "$second_hover_panel_text": "potion.jump",
+    "$second_hover_panel_text_value": "3:00",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.leaping_extra_text",
+    "$leaping_value_text": "+0.5 "
+  },
+  
+  "potion_of_leaping_extended@CrisXolt_brewing_items.potion_of_leaping": {
+    "$icon_item_data": 10, /* Potion of Leaping + */
+    "$second_hover_panel_text_value": "8:00",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.leaping_extra_text",
+    "$leaping_value_text": "+0.5 "
+  },
+  
+  "potion_of_leaping_enhanced@CrisXolt_brewing_items.potion_of_leaping": {
+    "$icon_item_data": 11, /* Potion of Leaping II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$second_hover_panel_text_value": "1:30",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.leaping_extra_text",
+    "$leaping_value_text": "+1.25 "
+  },
+  
+  "potion_of_slow_falling@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 40, /* Potion of Slow Falling */
+    "$hover_panel_text": "potion.slowFalling.name",
+    "$second_hover_panel_text": "potion.slowFalling",
+    "$second_hover_panel_text_value": "1:30"
+  },
+  
+  "potion_of_slow_falling_extended@CrisXolt_brewing_items.potion_of_slow_falling": {
+    "$icon_item_data": 41, /* Potion of Slow Falling + */
+    "$second_hover_panel_text_value": "4:00"
+  },
+
+  /* Negative Potions Bottles */
+
+  "poison_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "value_text@CrisXolt_Brewing_Guide_common.hover_text_label": { "text": "-", "offset": [ 0, 0 ], "color": [ 0.66, 0.66, 0.66 ] } },
+      {
+        "poison_icon": {
+          "type": "panel",
+          "size": [ 8, 10 ],
+          "controls": [
+            { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { "offset": [ 0, 0 ] } },
+            { "heart@CrisXolt_Brewing_Guide.heart": { "offset": [ 0, 0 ], "texture": "textures/ui/poison_heart_half" } }
+          ]
+        }
+      },
+      { "blocks_text@CrisXolt_Brewing_Guide_common.hover_text_label": { "text": "$poison_value_text", "offset": [ 0, 0 ], "color": [ 0.66, 0.66, 0.66 ] } }
+    ]
+  },
+  
+  "potion_of_poison@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 25, /* Potion of Poison */
+    "$hover_panel_text": "potion.poison.name",
+    "$second_hover_panel_color": "$c_color_format",
+    "$second_hover_panel_text": "potion.poison",
+    "$second_hover_panel_text_value": "0:45",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.poison_extra_text",
+    "$poison_value_text": "/2.5s"
+  },
+  
+  "potion_of_poison_extended@CrisXolt_brewing_items.potion_of_poison": {
+    "$icon_item_data": 26, /* Potion of Poison + */
+    "$second_hover_panel_text_value": "2:00",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.poison_extra_text",
+    "$poison_value_text": "/2.5s"
+  },
+  
+  "potion_of_poison_enhanced@CrisXolt_brewing_items.potion_of_poison": {
+    "$icon_item_data": 27, /* Potion of Poison II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$second_hover_panel_text_value": "0:22",
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.poison_extra_text",
+    "$poison_value_text": "/1.2s"
+  },
+  
+  "potion_of_weakness@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 34, /* Potion of Weakness   */
+    "$hover_panel_text": "potion.weakness.name",
+    "$second_hover_panel_color": "$c_color_format",
+    "$second_hover_panel_text": "potion.weakness",
+    "$second_hover_panel_text_value": "1:30",
+    "$has_applied_text": true,
+    "$fourth_hover_panel_color": "$c_color_format",
+    "$fourth_hover_panel_text": "-1 ",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:attack_damage"
+  },
+  
+  "potion_of_weakness_extended@CrisXolt_brewing_items.potion_of_weakness": {
+    "$icon_item_data": 35, /* Potion of Weakness + */
+    "$second_hover_panel_text_value": "4:00",
+    "$has_applied_text": true,
+    "$fourth_hover_panel_color": "$c_color_format",
+    "$fourth_hover_panel_text": "-1 ",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:attack_damage"
+  },
+
+  "harming_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "harming_icon_0@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_1@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_2@CrisXolt_brewing_items.harming_icon": { } }
+    ]
+  },
+
+  "harming_enhanced_extra_text": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%cm", 10 ],
+    "controls": [
+      { "harming_icon_0@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_1@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_2@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_3@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_4@CrisXolt_brewing_items.harming_icon": { } },
+      { "harming_icon_5@CrisXolt_brewing_items.harming_icon": { } }
+    ]
+  },
+
+  "half_harming_icon": {
+    "type": "panel",
+    "size": [ 8, 10 ],
+    "controls": [
+      { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { "offset": [ 0, 0 ] } },
+      { "half_harm_heart@CrisXolt_Brewing_Guide.half_harm_heart": { "offset": [ 0, 0 ] } }
+    ]
+  },
+
+  "harming_icon": {
+    "type": "panel",
+    "size": [ 8, 10 ],
+    "controls": [
+      { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { "offset": [ 0, 0 ] } },
+      { "harm_heart@CrisXolt_Brewing_Guide.harm_heart": { "offset": [ 0, 0 ] } }
+    ]
+  },
+  
+  "potion_of_harming@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 23, /* Potion of Harming */
+    "$hover_panel_text": "potion.harm.name",
+    "$second_hover_panel_color": "$c_color_format",
+    "$second_hover_panel_text": "potion.harm",
+    "$has_time_effects": false,
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.harming_extra_text"
+  },
+  
+  "potion_of_harming_enhanced@CrisXolt_brewing_items.potion_of_harming": {
+    "$icon_item_data": 24, /* Potion of Harming II */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.1",
+    "$has_time_effects": false,
+    "$has_extra_detail_panel": true,
+    "$extra_detail_panel_control": "CrisXolt_brewing_items.harming_enhanced_extra_text"
+  },
+  
+  "potion_of_slowness@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 17, /* Potion of Slowness    */
+    "$hover_panel_text": "potion.moveSlowdown.name",
+    "$second_hover_panel_color": "$c_color_format",
+    "$second_hover_panel_text": "potion.moveSlowdown",
+    "$second_hover_panel_text_value": "1:30",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_color": "$c_color_format",
+    "$fourth_hover_panel_text": "-15",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+  
+  "potion_of_slowness_extended@CrisXolt_brewing_items.potion_of_slowness": {
+    "$icon_item_data": 18, /* Potion of Slowness + */
+    "$second_hover_panel_text_value": "4:00",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_color": "$c_color_format",
+    "$fourth_hover_panel_text": "-15",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+  
+  "potion_of_slowness_enhanced@CrisXolt_brewing_items.potion_of_slowness": {
+    "$icon_item_data": 42, /* Potion of Slowness IV */
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.3",
+    "$second_hover_panel_text_value": "0:20",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_color": "$c_color_format",
+    "$fourth_hover_panel_text": "-60",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+
+  /* Mixed Potions Bottles */
+  
+  "potion_of_the_turtle_master@CrisXolt_brewing_items.water_bottle": {
+    "$hover_text_label_control": "CrisXolt_Brewing_Guide_common.potion_hover_text",
+    "$icon_item_data": 37, /* Potion of the Turtle Master S-IV R-III */
+    "$hover_panel_text": "potion.turtleMaster.name",
+    "$second_hover_panel_color": "$c_color_format",
+    "$second_hover_panel_text": "potion.turtleMaster",
+    "$has_enhanced_effects": true,
+    "$potency_text_value": "potion.potency.3",
+    "$second_hover_panel_text_value": "0:20",
+    "$has_mixed_effects": true,
+    "$second_potency_text_value": "potion.potency.2",
+    "$third_hover_panel_text": "potion.turtleMaster2",
+    "$third_hover_panel_text_value": "0:20",
+    "$has_applied_text": true,
+    "$has_applied_precentage_text": true,
+    "$fourth_hover_panel_color": "$c_color_format",
+    "$fourth_hover_panel_text": "-60",
+    "$fourth_hover_panel_text_value": "attribute.name.minecraft:movement"
+  },
+  
+  "potion_of_the_turtle_master_extended@CrisXolt_brewing_items.potion_of_the_turtle_master": {
+    "$icon_item_data": 38, /* Potion of the Turtle Master S-IV R-III + */
+    "$second_hover_panel_text_value": "0:40",
+    "$third_hover_panel_text_value": "0:40"
+  },
+  
+  "potion_of_the_turtle_master_enhanced@CrisXolt_brewing_items.potion_of_the_turtle_master": {
+    "$icon_item_data": 39,  /* Potion of the Turtle Master S-VI R-IV */
+    "$potency_text_value": "potion.potency.5",
+    "$second_hover_panel_text_value": "0:20",
+    "$second_potency_text_value": "potion.potency.3",
+    "$third_hover_panel_text_value": "0:20",
+    "$fourth_hover_panel_text": "-90"
+  }
+}

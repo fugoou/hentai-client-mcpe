@@ -1,0 +1,38 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.player.cape": {
+			"loop": true,
+			"bones": {
+				"part1": {
+					"rotation": ["query.cape_flap_amount * (math.cos(query.modified_distance_moved * 20) * 25)", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 14"]
+				},
+				"part2": {
+					"rotation": ["query.cape_flap_amount * math.cos(45 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 14"]
+				},
+				"part3": {
+					"rotation": ["query.cape_flap_amount * math.cos(85.5 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 12"]
+				},
+				"part4": {
+					"rotation": ["query.cape_flap_amount * math.cos(121.5 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 10"]
+				},
+				"part5": {
+					"rotation": ["query.cape_flap_amount * math.cos(153 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 8"]
+				},
+				"part6": {
+					"rotation": ["query.cape_flap_amount * math.cos(180 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 7"]
+				},
+				"part7": {
+					"rotation": ["query.cape_flap_amount * math.cos(202.5 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 6"]
+				},
+				"part8": {
+					"rotation": ["query.cape_flap_amount * math.cos(220.5 - query.modified_distance_moved * 20) * 25", 0, "query.modified_move_speed * math.sin(query.body_y_rotation - query.head_y_rotation(0)) * 5"]
+				},
+				"cape": {
+					"rotation": ["math.lerp(0, -126, query.cape_flap_amount) - 2", 0, 0],
+					"position": [0, 0, "query.get_root_locator_offset('armor_offset.default_neck', 1)"]
+				}
+			}
+		}
+	}
+}

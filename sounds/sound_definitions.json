@@ -1,0 +1,3896 @@
+//This JSON was modified by AgentMindStorm (@agentms_). Please do not use this document without permission.
+{
+  "format_version" : "1.14.0",
+  "sound_definitions" : {
+    "song.custom1.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom2.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom3.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom4.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom5.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom6.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom6",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom7.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom7",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom8.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom8",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom9.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom9",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom10.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom10",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom11.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom11",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom12.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom12",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom13.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom13",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom14.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom14",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom15.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom15",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom16.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom16",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom17.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom17",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom18.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom18",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom19.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom19",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom20.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom20",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom21.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom21",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom22.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom22",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom23.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom23",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom24.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom24",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom25.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom25",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom26.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom26",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom27.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom27",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom28.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom28",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom29.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom29",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom30.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom30",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom31.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom31",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom32.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom32",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom33.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom33",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom34.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom34",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom35.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom35",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom36.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom36",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom37.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom37",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom38.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom38",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom39.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom39",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom40.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom40",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom41.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom41",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom42.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom42",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom43.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom43",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom44.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom44",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom45.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom45",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom46.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom46",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom47.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom47",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom48.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom48",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom49.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom49",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom50.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom50",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom51.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom51",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom52.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom52",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom53.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom53",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom54.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom54",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom55.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom55",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom56.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom56",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom57.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom57",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom58.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom58",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom59.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom59",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom60.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom60",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom61.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom61",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom62.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom62",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom63.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom63",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom64.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom64",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom65.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom65",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom66.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom66",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom67.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom67",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom68.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom68",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom69.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom69",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom70.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom70",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom71.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom71",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom72.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom72",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom73.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom73",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom74.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom74",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom75.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom75",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom76.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom76",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom77.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom77",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom78.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom78",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom79.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom79",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom80.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom80",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom81.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom81",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom82.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom82",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom83.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom83",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom84.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom84",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom85.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom85",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom86.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom86",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom87.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom87",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom88.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom88",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom89.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom89",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom90.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom90",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom91.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom91",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom92.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom92",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom93.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom93",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom94.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom94",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom95.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom95",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom96.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom96",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom97.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom97",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom98.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom98",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom99.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom99",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.custom100.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom100",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.key.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nuance1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.door.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/hal5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.subwoofer_lullaby.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/hal1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.death.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/death",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.living_mice.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/hal2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.moog_city.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative7",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.haggstrom.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/hal3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.minecraft.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/calm1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.oxygene.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nuance2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.equinoxe.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nuance3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.mice_on_venus.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/piano3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.dry_hands.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/piano1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.wet_hands.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/piano2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.clark.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/calm2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.chris.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/piano4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.thirteen.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/13",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.excuse.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nuance4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.sweden.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/calm3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.cat.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/cat",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.dog.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/dog",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.danny.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/hal4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.beginning.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/piano5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.droopy_likes_ricochet.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/droopy1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.droopy_likes_your_face.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/droopy2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.ki.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/nether5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.alpha.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/end/credits",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.dead_voxel.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/nether2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.blind_spots.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.flake.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/snow1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.moog_city_2.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/menu/menu2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.concrete_halls.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/nether1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.biome_fest.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.mutation.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/menu/menu1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.haunt_muskie.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.warmth.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/nether3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.floating_trees.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/menu/menu4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.aria_math.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.kyoto.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/snow2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.ballad_of_the_cats.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/nether4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.taswell.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative6",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.beginning_2.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/menu/menu3",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.dreiton.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/creative/creative5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.the_end.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/end/end",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.chirp.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/chirp",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.wait.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/wait",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.mellohi.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/mellohi",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.stal.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/stal",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.strad.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/strad",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.eleven.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/11",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.ward.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/ward",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.mall.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/mall",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.blocks.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/blocks",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.far.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/far",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.intro.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/menu/menu5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.axolotl.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/water/axolotl",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.dragon_fish.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/water/dragon_fish",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.shuniji.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/water/shuniji",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.chrysopoeia.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/chrysopoeia",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.rubedo.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/rubedo",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.so_below.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/so_below",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.pigstep.ui": {
+      "category": "music",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/pigstep_master",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.stand_tall.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/stand_tall",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.left_to_bloom.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/left_to_bloom",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.ancestry.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/ancestry",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.wending.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/wending",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.infinite_amethyst.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/infinite_amethyst",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.one_more_day.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/one_more_day",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.otherside.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/otherside",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.floating_dream.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/floating_dream",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.comforting_memories.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/comforting_memories",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.an_ordinary_day.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/an_ordinary_day",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.ballad_of_the_cats.festive.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/xmasn1",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.warmth.festive.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/xmasn2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.the_end.festive.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/end/xmas_the_end",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.earth.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/earth/earth",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.sprouting.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/earth/sprouting",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.the_ender_dragon.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/end/boss",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "song.magnetic_circuit.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/calm4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.custom.1-25.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom6",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom7",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom8",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom9",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom10",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom12",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom14",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom15",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom16",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom17",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom18",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom19",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom20",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom21",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom22",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom23",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom24",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom25",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.custom.1-50.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom6",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom7",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom8",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom9",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom10",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom12",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom14",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom15",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom16",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom17",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom18",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom19",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom20",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom21",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom22",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom23",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom24",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom25",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom26",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom27",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom28",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom29",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom30",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom31",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom32",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom33",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom34",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom35",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom36",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom37",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom38",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom39",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom40",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom41",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom42",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom43",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom44",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom45",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom46",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom47",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom48",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom49",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom50",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.custom.1-75.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom6",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom7",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom8",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom9",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom10",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom12",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom14",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom15",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom16",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom17",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom18",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom19",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom20",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom21",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom22",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom23",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom24",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom25",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom26",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom27",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom28",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom29",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom30",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom31",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom32",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom33",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom34",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom35",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom36",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom37",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom38",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom39",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom40",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom41",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom42",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom43",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom44",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom45",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom46",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom47",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom48",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom49",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom50",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom51",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom52",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom53",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom54",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom55",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom56",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom57",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom58",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom59",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom60",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom61",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom62",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom63",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom64",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom65",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom66",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom67",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom68",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom69",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom70",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom71",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom72",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom73",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom74",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom75",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.custom.1-100.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "custom_songs/custom1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom6",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom7",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom8",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom9",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom10",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom12",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom14",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom15",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom16",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom17",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom18",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom19",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom20",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom21",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom22",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom23",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom24",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom25",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom26",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom27",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom28",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom29",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom30",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom31",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom32",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom33",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom34",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom35",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom36",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom37",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom38",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom39",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom40",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom41",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom42",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom43",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom44",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom45",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom46",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom47",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom48",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom49",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom50",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom51",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom52",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom53",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom54",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom55",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom56",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom57",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom58",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom59",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom60",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom61",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom62",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom63",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom64",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom65",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom66",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom67",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom68",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom69",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom70",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom71",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom72",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom73",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom74",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom75",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom76",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom77",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom78",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom79",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom80",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom81",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom82",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom83",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom84",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom85",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom86",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom87",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom88",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom89",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom90",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom91",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom92",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom93",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom94",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom95",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom96",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom97",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom98",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom99",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "custom_songs/custom100",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.alpha.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nuance1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/death",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative7",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/calm1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nuance2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nuance3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/calm2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nuance4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/calm3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/cat",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/dog",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/droopy1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/droopy2",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.alpha_native.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nuance1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/calm1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nuance2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/piano2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/calm2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/calm3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/cat",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/hal4",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.beta.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/nether5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/end/credits",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/snow1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/snow2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative6",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/end/end",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/chirp",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/wait",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mellohi",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/stal",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/strad",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/ward",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mall",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/blocks",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/far",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu5",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.beta_native.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/end/credits",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/nether4",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative6",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/menu/menu3",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/creative/creative5",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/end/end",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/chirp",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/wait",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mellohi",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/stal",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/strad",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/ward",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mall",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/blocks",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/far",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.update_aquatic.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/water/axolotl",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/water/dragon_fish",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/water/shuniji",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.nether_update.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/nether/chrysopoeia",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/rubedo",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/so_below",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/pigstep_master",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.caves_and_cliffs.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/stand_tall",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/left_to_bloom",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/ancestry",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/wending",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/infinite_amethyst",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/one_more_day",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/otherside",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/floating_dream",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/comforting_memories",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/an_ordinary_day",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.caves_and_cliffs_native.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/stand_tall",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/left_to_bloom",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/wending",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/infinite_amethyst",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/one_more_day",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/otherside",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/floating_dream",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/comforting_memories",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/an_ordinary_day",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.music_discs.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/cat",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/dog",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/chirp",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/wait",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mellohi",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/stal",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/strad",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/ward",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mall",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/blocks",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/far",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/pigstep_master",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/otherside",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.music_discs_native.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/records/cat",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/13",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/chirp",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/wait",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mellohi",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/stal",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/strad",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/11",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/ward",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/mall",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/blocks",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/far",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/pigstep_master",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/records/otherside",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.festive.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/game/snow1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/snow2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/xmasn1",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/nether/xmasn2",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/game/end/xmas_the_end",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    },
+    "album.minecraft_earth.ui": {
+      "category": "ui",
+      "sounds": [
+        {
+          "name": "sounds/music/earth/earth",
+          "stream": true,
+          "volume": 0.5
+        },
+        {
+          "name": "sounds/music/earth/sprouting",
+          "stream": true,
+          "volume": 0.5
+        }
+      ]
+    }
+  }
+}

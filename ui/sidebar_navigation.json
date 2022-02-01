@@ -1,0 +1,540 @@
+//This JSON was modified by Creep (@KillerArt_). Please do not use this document without permission.
+//This file doesn't replace any default sidebar overlay code, so the vanilla sidebars are still perfectly functional.
+{
+  "one_layer_icon": {
+    "type": "panel",
+    "controls": [
+      {
+        "icon": {
+          "type": "image",
+          "texture": "$icon_texture",
+          "layer": 7,
+          "size": [ "100% - 2px", "100% - 2px" ]
+        }
+      },
+      {
+        "icon_holder": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "color": [ 0.1, 0.1, 0.1 ]
+        }
+      }
+    ]
+  },
+  "two_layer_icon": {
+    "type": "panel",
+    "controls": [
+      {
+        "icon_layer_1": {
+          "type": "image",
+          "texture": "$icon_layer_1_texture",
+          "layer": 7,
+          "size": [ "100% - 2px", "100% - 2px" ]
+        }
+      },
+      {
+        "icon_layer_2": {
+          "type": "image",
+          "texture": "$icon_layer_2_texture",
+          "layer": 8,
+          "size": [ "100% - 2px", "100% - 2px" ]
+        }
+      },
+      {
+        "icon_holder": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "color": [ 0.1, 0.1, 0.1 ]
+        }
+      }
+    ]
+  },
+  "hamburger_icon": {
+    "type": "panel",
+    "size": [ 14, 14 ],
+    "controls": [
+      {
+        "hamburger_image": {
+          "type": "image",
+          "size": [ 12, 12 ],
+          "texture": "textures/ui/sidebar_icons/menu_threebars"
+        }
+      }
+    ]
+  },
+  "sidebar_toggle_panel": {
+    "type": "panel",
+    "$icon_control|default": "sidebar_navigation.one_layer_icon",
+    "$background_control|default": "$sidebar_bg_color",
+    "$force_background_color|default": "$background_color",
+    "$button_text|default": " ",
+    "controls": [
+      {
+        "bg": {
+          "type": "image",
+          "size": [ "100%", "100%" ],
+          "color": "$background_color",
+          "texture": "textures/ui/white_background",
+          "fill": true,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "$verbose_group_name",
+              "source_property_name": "(not #toggle_state)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "force-enable_bg_sidebar": {
+          "type": "image",
+          "size": [ "100%", "100%" ],
+          "color": "$force_background_color",
+          "texture": "textures/ui/white_background",
+          "fill": true,
+          "ignored": "$no_force_enabling",
+          "$no_force_enabling|default": "$is_verbose",
+          "layer": 5,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "$verbose_group_name",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "force-enable_bg_verbose": {
+          "type": "image",
+          "size": [ "100%", "100%" ],
+          "color": "$force_background_color",
+          "texture": "textures/ui/white_background",
+          "fill": true,
+          "ignored": "$no_force_enabling",
+          "$no_force_enabling|default": "$is_sidebar",
+          "layer": 5,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "$sidebar_group_name",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "panel",
+          "size": [ 14, 14 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 8, 0 ],
+          "layer": 9,
+          "controls": [
+            {
+              "icon_control@$icon_control": {
+                "size": [ 14, 14 ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "label": {
+          "type": "label",
+          "text": "$button_text",
+          "color": "$sidebar_text_color",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 30, 0 ],
+          "layer": 10,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "(#toggle_state)",
+              "source_control_name": "expand_toggle",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "sidebar_toggle_default@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$sidebar_bg_color",
+    "$force_background_color": "$sidebar_option_selected_color"
+  },
+  "sidebar_toggle_hover@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$sidebar_default_hover_color"
+  },
+  "sidebar_toggle_locked@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$dark_border_locked_color"
+  },
+  "sidebar_toggle_locked_hover@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$dark_border_locked_color"
+  },
+  "sidebar_toggle_pressed@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$sidebar_option_selected_color",
+    "$force_background_color": "$sidebar_option_selected_color"
+  },
+  "sidebar_toggle_pressed_hover@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$sidebar_default_hover_color"
+  },
+  "sidebar_toggle_pressed_locked@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$dark_border_locked_color"
+  },
+  "sidebar_toggle_pressed_locked_hover@sidebar_navigation.sidebar_toggle_panel": {
+    "$background_color": "$dark_border_locked_color"
+  },
+  "hamburger_sidebar_toggle@common.toggle": {
+    "size": "$toggle_size",
+    "$focus_id": "hamburger_toggle",
+    "$toggle_size|default": [ 30, 20 ],
+    "$toggle_name|default": "hamburger_toggle",
+    "$toggle_binding_condition": "visible",
+    "$radio_toggle_group": true,
+    "$unchecked_control": "sidebar_navigation.sidebar_toggle_default",
+    "$unchecked_hover_control": "sidebar_navigation.sidebar_toggle_hover",
+    "$unchecked_locked_control": "sidebar_navigation.sidebar_toggle_locked",
+    "$unchecked_locked_hover_control": "sidebar_navigation.sidebar_toggle_locked_hover",
+    "$checked_control": "sidebar_navigation.sidebar_toggle_pressed",
+    "$checked_hover_control": "sidebar_navigation.sidebar_toggle_pressed_hover",
+    "$checked_locked_control": "sidebar_navigation.sidebar_toggle_pressed_locked",
+    "$checked_locked_hover_control": "sidebar_navigation.sidebar_toggle_pressed_locked_hover",
+    "$is_sidebar|default": "",
+    "$is_verbose|default": "",
+    "$sidebar_group_name|default": "",
+    "$verbose_group_name|default": "",
+    "$no_force_enabling|default": ""
+  },
+  "combined_sidebar_toggle": {
+    "type": "panel",
+    "size": "$toggle_size",
+    "$toggle_size|default": [ 30, 20 ],
+    "$toggle_name|default": "sidebar_toggle",
+    "$toggle_binding_condition": "visible",
+    "$radio_toggle_group": true,
+    "$unchecked_control": "sidebar_navigation.sidebar_toggle_default",
+    "$unchecked_hover_control": "sidebar_navigation.sidebar_toggle_hover",
+    "$unchecked_locked_control": "sidebar_navigation.sidebar_toggle_locked",
+    "$unchecked_locked_hover_control": "sidebar_navigation.sidebar_toggle_locked_hover",
+    "$checked_control": "sidebar_navigation.sidebar_toggle_pressed",
+    "$checked_hover_control": "sidebar_navigation.sidebar_toggle_pressed_hover",
+    "$checked_locked_control": "sidebar_navigation.sidebar_toggle_pressed_locked",
+    "$checked_locked_hover_control": "sidebar_navigation.sidebar_toggle_pressed_locked_hover",
+    "$is_sidebar|default": "",
+    "$is_verbose|default": "",
+    "$sidebar_group_name|default": "",
+    "$verbose_group_name|default": "",
+    "$no_force_enabling|default": "",
+    "controls": [
+      {
+        "$sidebar_group_name@common.toggle": {
+          "ignored": "($is_verbose)"
+        }
+      },
+      {
+        "$verbose_group_name@common.toggle": {
+          "ignored": "($is_sidebar)",
+          "$toggle_group_forced_index": "$verbose_group_forced_index"
+        }
+      }
+    ]
+  },
+  "sidebar_toggles_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 257,
+    "$is_sidebar": true,
+    "$sidebar_group_name|default": "",
+    "controls": [
+      {
+        "expand_toggle_panel": {
+          "type": "panel",
+          "size": "$toggle_size",
+          "controls": [
+            {
+              "tooltip@sidebar_navigation.gamepad_helper_icon_start_toggle": {
+                "offset": [ 2, -1 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left"
+              }
+            },
+            {
+              "expand_toggle@sidebar_navigation.hamburger_sidebar_toggle": {
+                "$toggle_name": "three_bars",
+                "$toggle_group_forced_index": 1,
+                "$icon_control": "sidebar_navigation.hamburger_icon",
+                "$no_force_enabling": true,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.controller_start",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "global",
+                    "input_mode_condition": "gamepad_and_not_gaze"
+                  },
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "pressed"
+                  },
+                  {
+                    "from_button_id": "button.menu_ok",
+                    "to_button_id": "button.menu_ok",
+                    "mapping_type": "focused"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sidebar_content@$sidebar_content": {
+          "$toggle_view_binding_name": "$sidebar_group_name"
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "(not #toggle_state)",
+        "source_control_name": "expand_toggle",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "verbose_toggles_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 257,
+    "$is_verbose": true,
+    "$toggle_size": [ 115, 23 ],
+    "controls": [
+      {
+        "narrow_toggle_panel": {
+          "type": "panel",
+          "size": "$toggle_size",
+          "controls": [
+            {
+              "tooltip@sidebar_navigation.gamepad_helper_icon_start_toggle": {
+                "offset": [ 2, -1 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left"
+              }
+            },
+            {
+              "narrow_toggle@sidebar_navigation.hamburger_sidebar_toggle": {
+                "$toggle_name": "three_bars",
+                "$toggle_group_forced_index": 0,
+                "$icon_control": "sidebar_navigation.hamburger_icon",
+                "$no_force_enabling": true,
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.controller_start",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "global",
+                    "input_mode_condition": "gamepad_and_not_gaze"
+                  },
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "pressed"
+                  },
+                  {
+                    "from_button_id": "button.menu_select",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "global"
+                  },
+                  {
+                    "from_button_id": "button.menu_ok",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "focused"
+                  },
+                  {
+                    "from_button_id": "button.menu_ok",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "global"
+                  },
+                  {
+                    "from_button_id": "button.menu_cancel",
+                    "to_button_id": "button.menu_select",
+                    "mapping_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sidebar_content@$verbose_content": {
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "(#toggle_state)",
+        "source_control_name": "expand_toggle",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "sidebar_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "layer": 256,
+    "controls": [
+      {
+        "sidebar_toggles": {
+          "type": "panel",
+          "size": [ 30, "100%" ],
+          "$toggle_size": [ 30, 23 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "controls": [
+            {
+              "bg": {
+                "type": "image",
+                "color": "$sidebar_bg_color",
+                "texture": "textures/ui/white_background",
+                "fill": true
+              }
+            },
+            {
+              "divider": {
+                "type": "image",
+                "size": [ 2, "100%" ],
+                "texture": "textures/ui/White",
+                "color": [ 0.1, 0.1, 0.1 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ "100%", 0 ]
+              }
+            },
+            {
+              "scrolling_panel@common.scrolling_panel": {
+                "$scrolling_content": "sidebar_navigation.sidebar_toggles_stack_panel",
+                "$show_background": false,
+                "$scroll_size": [ 0, 0 ],
+                "$touch": false,
+                "$view_port_size": [ "100%", "100%" ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "(not #toggle_state)",
+              "source_control_name": "expand_toggle",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "verbose_toggles": {
+          "type": "input_panel",
+          "modal": true,
+          "size": [ 115, "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 12,
+          "controls": [
+            {
+              "bg": {
+                "type": "image",
+                "color": "$sidebar_bg_color",
+                "texture": "textures/ui/white_background",
+                "fill": true
+              }
+            },
+            {
+              "divider": {
+                "type": "image",
+                "size": [ 2, "100%" ],
+                "texture": "textures/ui/White",
+                "color": [ 0.1, 0.1, 0.1 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ "100%", 0 ]
+              }
+            },
+            {
+              "scrolling_panel@common.scrolling_panel": {
+                "$scrolling_content": "sidebar_navigation.verbose_toggles_stack_panel",
+                "$show_background": false,
+                "$scroll_size": [ 0, 0 ],
+                "$touch": false,
+                "$view_port_size": [ "100%", "100%" ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "(#toggle_state)",
+              "source_control_name": "expand_toggle",
+              "target_property_name": "#visible"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_up",
+              "to_button_id": "button.menu_up",
+              "mapping_type": "global",
+              "scope": "view"
+            },
+            {
+              "from_button_id": "button.menu_down",
+              "to_button_id": "button.menu_down",
+              "mapping_type": "global",
+              "scope": "view"
+            },
+            {
+              "from_button_id": "button.menu_left",
+              "to_button_id": "button.menu_left",
+              "mapping_type": "global",
+              "scope": "view"
+            },
+            {
+              "from_button_id": "button.menu_right",
+              "to_button_id": "button.menu_right",
+              "mapping_type": "global",
+              "scope": "view"
+            }
+          ]
+        }
+      },
+      {
+        "verbose_overlay": {
+          "type": "image",
+          "texture": "textures/ui/dark_bg",
+          "fill": true,
+          "alpha": 0.8,
+          "size": "$dark_overlay_size",
+          "offset": "$dark_overlay_offset",
+          "$dark_overlay_size|default": [ "100%", "100%" ],
+          "$dark_overlay_offset|default": [ 0, 0 ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "(#toggle_state)",
+              "source_control_name": "expand_toggle",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

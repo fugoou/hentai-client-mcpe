@@ -1,0 +1,123 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "profile_card",
+
+  "main_panel": {
+    "type": "input_panel",
+    "controls": [
+      {
+        "dialog@common_dialogs.main_panel_no_buttons": {
+          "$text_name": "options.profile",
+          "$child_control": "profile_card.dialog_content_with_skin",
+          "size": "$dialog_size",
+          "max_size": "$dialog_max_size",
+          "$show_divider": "(not $hide_skin)",
+          "$divider_offset": [ "65% - 4px", "22px" ]
+        }
+      }
+    ],
+    "variables": [
+      {
+        "requires": "(not $hide_skin)",
+        "$dialog_size": [ 300, 235 ],
+        "$dialog_max_size": [ 300, "100% - 4px" ]
+      },
+      {
+        "requires": "$hide_skin",
+        "$dialog_size": [ 230, 235 ],
+        "$dialog_max_size": [ 230, "100% - 4px" ]
+      }
+    ]
+  },
+
+  "dialog_content_with_skin": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "profile_panel": {
+          "type": "panel",
+          "size": [ "fill", "100%" ],
+          "controls": [
+            {
+              "dialog_content@profile_card.dialog_content": {}
+            }
+          ]
+        }
+      },
+      {
+        "divider_padding": {
+          "type": "panel",
+          "size": [ 6, "100%" ],
+          "ignored": "$hide_skin"
+        }
+      },
+      {
+        "skin_pane": {
+          "type": "input_panel",
+          "size": [ "35% + 1px", "100%" ],
+          "ignored": "$hide_skin",
+          "gesture_tracking_button": "button.turn_doll",
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.turn_doll",
+              "mapping_type": "pressed",
+              "button_up_right_of_first_refusal": true
+            }
+          ],
+          "controls": [
+            {
+              "paper_doll_panel": {
+                "type": "panel",
+                "size": [ "100%", "100% - 10px" ],
+                "offset": [ 0, -35 ],
+                "controls": [
+                  {
+                    "paper_doll": {
+                      "type": "custom",
+                      "renderer": "paper_doll_renderer",
+                      "size": [ "100%", "100%" ],
+                      "camera_tilt_degrees": -10,
+                      "starting_rotation": 30,
+                      "layer": 2,
+                      "anchor_from": "bottom_middle",
+                      "anchor_to": "bottom_middle",
+                      "rotation": "gesture_x",
+                      "use_uuid": true,
+                      "use_selected_skin": false,
+                      "animation_reset_name": "screen_animation_reset",
+                      "anims": [
+                        "@common.screen_exit_size_animation_push",
+                        "@common.screen_exit_size_animation_pop",
+                        "@common.screen_entrance_size_animation_push",
+                        "@common.screen_entrance_size_animation_pop"
+                      ],
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "skin_pane",
+                          "source_property_name": "#gesture_mouse_delta_x",
+                          "target_property_name": "#gesture_mouse_delta_x"
+                        },
+                        {
+                          "binding_name": "#player_uuid"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

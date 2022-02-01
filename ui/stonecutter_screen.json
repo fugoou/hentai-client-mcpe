@@ -1,0 +1,20 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*********************************************************/
+
+{
+  "namespace": "stonecutter",
+
+  "screen_stack_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", "100%cm" ],
+    "controls": [
+      { "right_panel@stonecutter.right_panel": {} },
+      { "center_fold@stonecutter.center_fold": {} },
+      { "stone_book_panel@stonecutter.stone_book_panel": {} },
+      { "toolbar_anchor@stonecutter.toolbar_anchor": {} }
+    ]
+  }
+}

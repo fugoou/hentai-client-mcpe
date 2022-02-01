@@ -1,0 +1,33 @@
+//This JSON was modified by AgentMindStorm (@agentms_). Please do not use this document without permission.
+{
+  "selector_stack_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "music_player_button@music_player_section.music_player_button": {
+              "ignored": "(not $is_pregame or not $include_controls_and_settings_sections)",
+              "$toggle_group_forced_index": 61
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "selector_stack_panel/spacer_0": {
+    "ignored": "$include_controls_and_settings_sections"
+  },
+  "section_content_panels/general_and_controls_sections": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          { "music_player_section@music_player_section.music_player_section": { "visible": false } }
+        ]
+      }
+    ]
+  }
+}

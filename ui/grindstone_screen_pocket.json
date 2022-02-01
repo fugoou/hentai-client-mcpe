@@ -1,0 +1,38 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+{
+  "namespace": "grindstone_pocket",
+
+  "half_screen": {
+    "type": "input_panel",
+    "size": [ "50%", "100%-31px" ],
+    "offset": [ 0, 27 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right"
+  },
+  "inventory_half_screen@grindstone_pocket.half_screen": {
+    "size": [ "50%", "100%-35px" ],
+    "offset": [ -4, 31 ],
+
+    "controls": [
+      { "inventory_content@grindstone_pocket.inventory_content": {} }
+    ]
+  },
+  "grindstone_half_screen@grindstone_pocket.half_screen": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ "50%", "100%-31px" ],
+    "offset": [ 4, 28 ],
+    "controls": [
+      {
+        "grindstone_contents_panel@grindstone_pocket.grindstone_contents_panel": {
+          "layer": 2,
+          "offset": [ 0, -10 ]
+        }
+      }
+    ]
+  }
+}

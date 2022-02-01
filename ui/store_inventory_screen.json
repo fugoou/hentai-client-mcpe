@@ -1,0 +1,81 @@
+{
+  "namespace": "store_inventory",
+
+  "main_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "inventory_right_panel@store_inventory.content_area": {}
+      },
+      {
+        "divider_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100% + 1px" ],
+          "controls": [
+            {
+              "main_divider": {
+                "type": "image",
+                "size": [ 3, "100%" ],
+                "offset": [ 0, -1 ],
+                "tiled": "y",
+                "texture": "textures/ui/HowToPlayDivider",
+                "layer": 10
+              }
+            }
+          ]
+        }
+      },
+      {
+        "inventory_left_panel": {
+          "type": "panel",
+          "size": [ "30%", "100%" ],
+          "controls": [
+            {
+              "inventory_left_image": {
+                "type": "image",
+                "size": [ "100%", "100%" ],
+                "texture": "textures/ui/verticalgradient",
+                "tiled": "x",
+                "$fill_alpha|default": 0.6,
+                "alpha": "$fill_alpha",
+                "variables": [
+                  {
+                    "requires": "$is_holographic",
+                    "$fill_alpha": 1.0
+                  }
+                ],
+                "layer": 1
+              }
+            },
+            {
+              "bottom_left_particles": {
+                "type": "image",
+                "size": [ "100%", "133.33%x" ],
+                "texture": "textures/ui/particles2",
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "layer": 2
+              }
+            },
+            {
+              "left_scrolling_panel@common.scrolling_panel": {
+                "$scrolling_content_anchor_from": "top_middle",
+                "$scrolling_content_anchor_to": "top_middle",
+                "$scrolling_content": "store_inventory.inventory_left_panel",
+                "$show_background": false,
+                "$scroll_size": [ "5px", "100% - 8px" ],
+                "$scroll_bar_left_padding_size": [ 4, 0 ],
+                "layer": 3
+              }
+            }
+          ]
+        }
+      }      
+    ]
+  }
+
+
+}

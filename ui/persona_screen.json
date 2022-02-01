@@ -1,0 +1,132 @@
+// RTL Modified by TLGaming2308
+
+{
+  "namespace": "persona",
+
+  ///////////////////////////////////////////////////////////////////////////////////////
+  //// overall screen objects
+  "persona_screen_main_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "persona_screen_main_content": {
+          "type": "panel",
+          "size": [ "100%", "100%" ],
+          "controls": [
+            {
+              "preview_panel": {
+                "type": "input_panel",
+                "anchor_to": "top_middle",
+                "anchor_from": "top_middle",
+                "size": [ "100%", "100%" ],
+                "always_listen_to_input": true,
+                "controls": [
+                  {
+                    "preview@skin_viewer_panel": {
+                      "anchor_to": "top_middle",
+                      "anchor_from": "top_middle",
+                      "size": [ "80%", "80%" ],
+                      "$gesture_input_panel_control": "preview",
+                      "$skin_preview": "#preview_skin_full"
+                    }
+                  },
+                  {
+                    "arrow_panel": {
+                      "type": "panel",
+                      "anchor_to": "bottom_middle",
+                      "anchor_from": "bottom_middle",
+                      "size": [ 37, 7 ],
+                      "offset": [ 0, -10 ],
+                      "controls": [
+                        {
+                          "rotate_arrows@skin_picker.skin_rotation_arrows": {
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#preview_appearance_on",
+                    "binding_name_override": "#visible",
+                    "binding_condition": "always"
+                  }
+                ],
+                "button_mappings": [
+                  {
+                    "from_button_id": "button.menu_secondary_select",
+                    "to_button_id": "button.try_exiting",
+                    "mapping_type": "pressed"
+                  }
+                ]
+              }
+            },
+            {
+              "stack_panel": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ "100%", "100%" ],
+                "controls": [
+                  { "left_main_panel_padding@horizontal_left_padding": {} },
+                  {
+                    "content_stack2@persona.right_side_stack": {
+                      "focus_container": true,
+                      "use_last_focus": false,
+                      "focus_wrap_enabled": false,
+                      "focus_nagivation_mode_left": "custom",
+                      "focus_nagivation_mode_right": "stop",
+                      "focus_nagivation_mode_down": "stop",
+                      "focus_nagivation_mode_up": "custom",
+                      "focus_container_custom_up": [
+                        {
+                          "other_focus_container_name": "top_bar"
+                        }
+                      ],
+                      "focus_container_custom_left": [
+                        {
+                          "other_focus_container_name": "persona_left_panels"
+                        }
+                      ]
+                    }
+                  },
+                  { "middle_main_panel_padding@horizontal_left_padding": {} },
+                  { "content_stack@persona.persona_left_panel": {} },
+                  { "right_main_panel_padding@horizontal_left_padding": {} }
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "(not #preview_appearance_on)",
+                    "binding_name_override": "#visible",
+                    "binding_condition": "always"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "(not #page_loading_visible)",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "progress_loading@common_store.progress_loading": {
+          "layer": 100, // Make this on top
+          "bindings": [
+            {
+              "binding_name": "#page_loading_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      { "classic_skin_custom_popup@persona.custom_skin_popup_dialog_panel": {} }
+    ]
+  }
+}

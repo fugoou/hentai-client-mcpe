@@ -1,0 +1,21 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "loom",
+
+  "screen_stack_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", "100%cm" ],
+    "controls": [
+      { "right_panel@loom.right_panel": {} },
+      { "center_fold@loom.center_fold": {} },
+      { "pattern_book_panel@loom.pattern_book_panel": {} },
+      { "toolbar_anchor@loom.toolbar_anchor": {} }
+    ]
+  }
+}

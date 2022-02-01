@@ -1,0 +1,33 @@
+{
+  "namespace": "furnace_pocket",
+
+  "inventory_and_furnace_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "inventory_half_screen": {
+          "type": "panel",
+          "size": [ "50%", "100%" ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+
+          "controls": [
+            { "inventory_content@furnace_pocket.inventory_content": {} }
+          ]
+        }
+      },
+      {
+        "furnace_half_screen": {
+          "type": "panel",
+          "size": [ "50%", "100%" ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+
+          "controls": [
+            { "furnace_content@furnace_pocket.furnace_content": {} }
+          ]
+        }
+      }
+    ]
+  }
+}

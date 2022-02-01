@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Contact Dev\nInstagram : @xchillds.xyz\nYoutube Channel : XyNCKunZ\nSorry if there are errors, because everyone has their own advantages and disadvantages, if you have any suggestions, please contact the Instagram developer !!!",
+    "name": "Hentai Client",
+    "uuid": "9aeffb48-7514-11ec-9f5c-731448ecfd87",
+    "version": [
+      0,
+      0,
+      1
+    ],
+    "min_engine_version": [
+      1,
+      13,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "Client By ©TheNickDev",
+      "type": "resources",
+      "uuid": "35c306e7-7859-4714-be97-28682e423008",
+      "version": [
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

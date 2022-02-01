@@ -1,0 +1,538 @@
+/*File made by @CrisXolt.
+//(c) Don't use any code design without permission!*/
+{
+  "namespace": "CrisXolt_stack_panel_content",
+
+  "effect_icon": {
+    "type": "image",
+    "layer": 10,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "size": [ 18, 18 ]
+  },
+
+  /* Panel 00 */
+
+  "panel_00": {
+    "type": "panel",
+    "size": [ "100%", 27 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 27 ] } },
+      /* Normal Potion */
+      { "water_bottle@CrisXolt_brewing_items.water_bottle": { "offset": [ 1, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_water_bottle@CrisXolt_brewing_splash_items.splash_water_bottle": { "offset": [ 1, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_water_bottle@CrisXolt_brewing_lingering_items.lingering_water_bottle": { "offset": [ 1, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 01 */
+
+  "panel_01": {
+    "type": "panel",
+    "size": [ "100%", 27 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 27 ] } },
+      /* Normal Potion */
+      { "horizontal_line_type3@CrisXolt_Brewing_Guide.horizontal_line_type3": { "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "gunpowder@CrisXolt_brewing_items.gunpowder": { "offset": [ 10, 0 ], "$background_images": "common.empty_panel", "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "splash_water_bottle@CrisXolt_brewing_splash_items.splash_water_bottle": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "dragons_breath@CrisXolt_brewing_items.dragons_breath": { "offset": [ 64, 0 ], "$background_images": "common.empty_panel", "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "lingering_water_bottle@CrisXolt_brewing_lingering_items.lingering_water_bottle": { "offset": [ 91, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "horizontal_line_type6@CrisXolt_Brewing_Guide.horizontal_line_type6": { "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "dragons_breath@CrisXolt_brewing_items.dragons_breath": { "offset": [ 10, 0 ], "$background_images": "common.empty_panel", "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "lingering_water_bottle@CrisXolt_brewing_lingering_items.lingering_water_bottle": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 02 */
+
+  "panel_02": {
+    "type": "panel",
+    "size": [ "100%", 27 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 27 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 10, 0 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "thick_potion@CrisXolt_brewing_items.thick_potion": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_thick_potion@CrisXolt_brewing_splash_items.thick_potion": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_thick_potion@CrisXolt_brewing_lingering_items.thick_potion": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 03 */
+
+  "panel_03": {
+    "type": "panel",
+    "size": [ "100%", 27 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 27 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 10, 0 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "mundane_potion@CrisXolt_brewing_items.mundane_potion": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_mundane_potion@CrisXolt_brewing_splash_items.mundane_potion": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_mundane_potion@CrisXolt_brewing_lingering_items.mundane_potion": { "offset": [ 37, 0 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 04 */
+
+  "panel_04": {
+    "type": "panel",
+    "size": [ "100%", 54 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/weakness_effect" } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 54 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type2": { "offset": [ 0, 27 ] } },
+      { "fermented_spider_eye@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_weakness@CrisXolt_brewing_items.potion_of_weakness": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_weakness_extended@CrisXolt_brewing_items.potion_of_weakness_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_weakness@CrisXolt_brewing_splash_items.potion_of_weakness": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_weakness_extended@CrisXolt_brewing_splash_items.potion_of_weakness_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_weakness@CrisXolt_brewing_lingering_items.potion_of_weakness": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_weakness_extended@CrisXolt_brewing_lingering_items.potion_of_weakness_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 05 */
+
+  "panel_05": {
+    "type": "panel",
+    "size": [ "100%", 45 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 16 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 9 ] } },
+      { "line1@CrisXolt_Brewing_Guide.line1": { "offset": [ 1, 27 ] } },
+      { "nether_wart@CrisXolt_brewing_items.nether_wart": { "offset": [ 10, 9 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "awkward_potion@CrisXolt_brewing_items.awkward_potion": { "offset": [ 37, 9 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_awkward_potion@CrisXolt_brewing_splash_items.awkward_potion": { "offset": [ 37, 9 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_awkward_potion@CrisXolt_brewing_lingering_items.awkward_potion": { "offset": [ 37, 9 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 06 */
+
+  "panel_06": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/speed_effect" } },
+      { "vertical_line_0@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 36 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 55, 18 ] } },
+      { "line3@CrisXolt_Brewing_Guide.line3": { "offset": [ 10, 54 ] } },
+      { "sugar@CrisXolt_brewing_items.sugar": { "offset": [ 10, 36 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 49 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 22 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 18 ], "offset": [ 99, 54 ] } },
+      /* Normal Potion */
+      { "potion_of_swiftness@CrisXolt_brewing_items.potion_of_swiftness": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_swiftness_extended@CrisXolt_brewing_items.potion_of_swiftness_extended": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_swiftness_enhanced@CrisXolt_brewing_items.potion_of_swiftness_enhanced": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_swiftness@CrisXolt_brewing_splash_items.potion_of_swiftness": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_swiftness_extended@CrisXolt_brewing_splash_items.potion_of_swiftness_extended": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_swiftness_enhanced@CrisXolt_brewing_splash_items.potion_of_swiftness_enhanced": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_swiftness@CrisXolt_brewing_lingering_items.potion_of_swiftness": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_swiftness_extended@CrisXolt_brewing_lingering_items.potion_of_swiftness_extended": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_swiftness_enhanced@CrisXolt_brewing_lingering_items.potion_of_swiftness_enhanced": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 07 */
+
+  "panel_07": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/slowness_effect" } },
+      { "vertical_line_0@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 28, 18 ] } },
+      { "arrow_down@CrisXolt_Brewing_Guide.arrow_down": { "offset": [ 10, 18 ] } },
+      { "arrow_up@CrisXolt_Brewing_Guide.arrow_up": { "offset": [ 10, 54 ] } },
+      { "arrow_left@CrisXolt_Brewing_Guide.arrow_left": { "offset": [ 82, 22 ] } },
+      { "plus_line_0@CrisXolt_Brewing_Guide.plus_line": { "offset": [ 91, 0 ] } },
+      { "fermented_spider_eye_0@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 10, 9 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 36, 22 ], "$background_images": "common.empty_panel" } },
+      { "fermented_spider_eye_1@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 91, 22 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 36, 49 ], "$background_images": "common.empty_panel" } },
+      { "fermented_spider_eye_2@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 10, 63 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ], "offset": [ 99, 0 ] } },
+      { "plus_line_1@CrisXolt_Brewing_Guide.plus_line": { "offset": [ 91, 54 ] } },
+      /* Normal Potion */
+      { "potion_of_slowness@CrisXolt_brewing_items.potion_of_slowness": { "offset": [ 10, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_slowness_extended@CrisXolt_brewing_items.potion_of_slowness_extended": { "offset": [ 64, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_slowness_enhanced@CrisXolt_brewing_items.potion_of_slowness_enhanced": { "offset": [ 64, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_slowness@CrisXolt_brewing_splash_items.potion_of_slowness": { "offset": [ 10, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_slowness_extended@CrisXolt_brewing_splash_items.potion_of_slowness_extended": { "offset": [ 64, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_slowness_enhanced@CrisXolt_brewing_splash_items.potion_of_slowness_enhanced": { "offset": [ 64, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_slowness@CrisXolt_brewing_lingering_items.potion_of_slowness": { "offset": [ 10, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_slowness_extended@CrisXolt_brewing_lingering_items.potion_of_slowness_extended": { "offset": [ 64, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_slowness_enhanced@CrisXolt_brewing_lingering_items.potion_of_slowness_enhanced": { "offset": [ 64, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 08 */
+
+  "panel_08": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/jump_boost_effect" } },
+      { "vertical_line_0@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 36 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 55, 18 ] } },
+      { "line4@CrisXolt_Brewing_Guide.line4": { "offset": [ 10, 0 ] } },
+      { "rabbits_foot@CrisXolt_brewing_items.rabbits_foot": { "offset": [ 10, 36 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 22 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 49 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 22 ], "offset": [ 99, 0 ] } },
+      /* Normal Potion */
+      { "potion_of_leaping@CrisXolt_brewing_items.potion_of_leaping": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_leaping_extended@CrisXolt_brewing_items.potion_of_leaping_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_leaping_enhanced@CrisXolt_brewing_items.potion_of_leaping_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_leaping@CrisXolt_brewing_splash_items.potion_of_leaping": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_leaping_extended@CrisXolt_brewing_splash_items.potion_of_leaping_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_leaping_enhanced@CrisXolt_brewing_splash_items.potion_of_leaping_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_leaping@CrisXolt_brewing_lingering_items.potion_of_leaping": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_leaping_extended@CrisXolt_brewing_lingering_items.potion_of_leaping_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_leaping_enhanced@CrisXolt_brewing_lingering_items.potion_of_leaping_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 09 */
+
+  "panel_09": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/strength_effect" } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 36 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 55, 18 ] } },
+      { "blaze_powder@CrisXolt_brewing_items.blaze_powder": { "offset": [ 10, 36 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 22 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 49 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_strenght@CrisXolt_brewing_items.potion_of_strenght": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_strenght_extended@CrisXolt_brewing_items.potion_of_strenght_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_strenght_enhanced@CrisXolt_brewing_items.potion_of_strenght_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_strenght@CrisXolt_brewing_splash_items.potion_of_strenght": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_strenght_extended@CrisXolt_brewing_splash_items.potion_of_strenght_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_strenght_enhanced@CrisXolt_brewing_splash_items.potion_of_strenght_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_strenght@CrisXolt_brewing_lingering_items.potion_of_strenght": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_strenght_extended@CrisXolt_brewing_lingering_items.potion_of_strenght_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_strenght_enhanced@CrisXolt_brewing_lingering_items.potion_of_strenght_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 10 */
+
+  "panel_10": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { } },
+      { "heart@CrisXolt_Brewing_Guide.heart": { } },
+      { "plus@CrisXolt_Brewing_Guide.plus": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type2": { "offset": [ 0, 27 ] } },
+      { "line3@CrisXolt_Brewing_Guide.line3": { "offset": [ 10, 45 ] } },
+      { "glistering_melon_slice@CrisXolt_brewing_items.glistering_melon_slice": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 27 ], "offset": [ 99, 45 ] } },
+      { "plus_line@CrisXolt_Brewing_Guide.plus_line": { "offset": [ 91, 63 ] } },
+      /* Normal Potion */
+      { "potion_of_healing@CrisXolt_brewing_items.potion_of_healing": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_healing_enhanced@CrisXolt_brewing_items.potion_of_healing_enhanced": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_healing@CrisXolt_brewing_splash_items.potion_of_healing": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_healing_enhanced@CrisXolt_brewing_splash_items.potion_of_healing_enhanced": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_healing@CrisXolt_brewing_lingering_items.potion_of_healing": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_healing_enhanced@CrisXolt_brewing_lingering_items.potion_of_healing_enhanced": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 11 */
+
+  "panel_11": {
+    "type": "panel",
+    "size": [ "100%", 63 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "heart_bg@CrisXolt_Brewing_Guide.heart_bg": { } },
+      { "heart@CrisXolt_Brewing_Guide.heart": { "texture": "textures/ui/heart_half" } },
+      { "minus@CrisXolt_Brewing_Guide.minus": { } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type4@CrisXolt_Brewing_Guide.horizontal_line_type4": { "offset": [ 0, 27 ] } },
+      { "arrow_down@CrisXolt_Brewing_Guide.arrow_down": { "offset": [ 10, 9 ] } },
+      { "arrow_up@CrisXolt_Brewing_Guide.arrow_up": { "offset": [ 10, 45 ] } },
+      { "arrow_left@CrisXolt_Brewing_Guide.arrow_left": { "offset": [ 82, 27 ] } },
+      { "fermented_spider_eye_0@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 10, 0 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 37, 27 ], "$background_images": "common.empty_panel" } },
+      { "fermented_spider_eye_1@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 91, 27 ], "$background_images": "common.empty_panel" } },
+      { "fermented_spider_eye_2@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 10, 54 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 63 ], "offset": [ 99, 0 ] } },
+      { "plus_line@CrisXolt_Brewing_Guide.plus_line": { "offset": [ 91, 54 ] } },
+      /* Normal Potion */
+      { "potion_of_harming@CrisXolt_brewing_items.potion_of_harming": { "offset": [ 10, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_harming_enhanced@CrisXolt_brewing_items.potion_of_harming_enhanced": { "offset": [ 64, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_harming@CrisXolt_brewing_splash_items.potion_of_harming": { "offset": [ 10, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_harming_enhanced@CrisXolt_brewing_splash_items.potion_of_harming_enhanced": { "offset": [ 64, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_harming@CrisXolt_brewing_lingering_items.potion_of_harming": { "offset": [ 10, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_harming_enhanced@CrisXolt_brewing_lingering_items.potion_of_harming_enhanced": { "offset": [ 64, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 12 */
+
+  "panel_12": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/poison_effect" } },
+      { "vertical_line_0@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 36 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 55, 18 ] } },
+      { "line4@CrisXolt_Brewing_Guide.line4": { "offset": [ 10, 0 ] } },
+      { "spider_eye@CrisXolt_brewing_items.spider_eye": { "offset": [ 10, 36 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 49 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 22 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 22 ], "offset": [ 99, 0 ] } },
+      /* Normal Potion */
+      { "potion_of_poison@CrisXolt_brewing_items.potion_of_poison": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_poison_extended@CrisXolt_brewing_items.potion_of_poison_extended": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_poison_enhanced@CrisXolt_brewing_items.potion_of_poison_enhanced": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_poison@CrisXolt_brewing_splash_items.potion_of_poison": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_poison_extended@CrisXolt_brewing_splash_items.potion_of_poison_extended": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_poison_enhanced@CrisXolt_brewing_splash_items.potion_of_poison_enhanced": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_poison@CrisXolt_brewing_lingering_items.potion_of_poison": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_poison_extended@CrisXolt_brewing_lingering_items.potion_of_poison_extended": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_poison_enhanced@CrisXolt_brewing_lingering_items.potion_of_poison_enhanced": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 13 */
+
+  "panel_13": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/regeneration_effect" } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 36 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 55, 18 ] } },
+      { "ghast_tear@CrisXolt_brewing_items.ghast_tear": { "offset": [ 10, 36 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 22 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 49 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_regeneration@CrisXolt_brewing_items.potion_of_regeneration": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_regeneration_extended@CrisXolt_brewing_items.potion_of_regeneration_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_regeneration_enhanced@CrisXolt_brewing_items.potion_of_regeneration_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_regeneration@CrisXolt_brewing_splash_items.potion_of_regeneration": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_regeneration_extended@CrisXolt_brewing_splash_items.potion_of_regeneration_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_regeneration_enhanced@CrisXolt_brewing_splash_items.potion_of_regeneration_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_regeneration@CrisXolt_brewing_lingering_items.potion_of_regeneration": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_regeneration_extended@CrisXolt_brewing_lingering_items.potion_of_regeneration_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_regeneration_enhanced@CrisXolt_brewing_lingering_items.potion_of_regeneration_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 14 */
+
+  "panel_14": {
+    "type": "panel",
+    "size": [ "100%", 54 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/fire_resistance_effect" } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 54 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type2": { "offset": [ 0, 27 ] } },
+      { "magma_cream@CrisXolt_brewing_items.magma_cream": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_fire_resistence@CrisXolt_brewing_items.potion_of_fire_resistence": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_fire_resistence_extended@CrisXolt_brewing_items.potion_of_fire_resistence_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_fire_resistence@CrisXolt_brewing_splash_items.potion_of_fire_resistence": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_fire_resistence_extended@CrisXolt_brewing_splash_items.potion_of_fire_resistence_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_fire_resistence@CrisXolt_brewing_lingering_items.potion_of_fire_resistence": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_fire_resistence_extended@CrisXolt_brewing_lingering_items.potion_of_fire_resistence_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 15 */
+
+  "panel_15": {
+    "type": "panel",
+    "size": [ "100%", 54 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/water_breathing_effect" } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 54 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type2": { "offset": [ 0, 27 ] } },
+      { "pufferfish@CrisXolt_brewing_items.pufferfish": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_water_breathing@CrisXolt_brewing_items.potion_of_water_breathing": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_water_breathing_extended@CrisXolt_brewing_items.potion_of_water_breathing_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_water_breathing@CrisXolt_brewing_splash_items.potion_of_water_breathing": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_water_breathing_extended@CrisXolt_brewing_splash_items.potion_of_water_breathing_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_water_breathing@CrisXolt_brewing_lingering_items.potion_of_water_breathing": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_water_breathing_extended@CrisXolt_brewing_lingering_items.potion_of_water_breathing_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 16 */
+
+  "panel_16": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/night_vision_effect" } },
+      { "vertical_line_0@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type2": { "offset": [ 0, 27 ] } },
+      { "line3@CrisXolt_Brewing_Guide.line3": { "offset": [ 10, 45 ] } },
+      { "golden_carrot@CrisXolt_brewing_items.golden_carrot": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 36 ], "offset": [ 99, 45 ] } },
+      { "plus_line@CrisXolt_Brewing_Guide.plus_line": { "offset": [ 91, 54 ] } },
+      /* Normal Potion */
+      { "potion_of_night_vision@CrisXolt_brewing_items.potion_of_night_vision": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_night_vision_extended@CrisXolt_brewing_items.potion_of_night_vision_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_night_vision@CrisXolt_brewing_splash_items.potion_of_night_vision": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_night_vision_extended@CrisXolt_brewing_splash_items.potion_of_night_vision_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_night_vision@CrisXolt_brewing_lingering_items.potion_of_night_vision": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_night_vision_extended@CrisXolt_brewing_lingering_items.potion_of_night_vision_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 17 */
+
+  "panel_17": {
+    "type": "panel",
+    "size": [ "100%", 54 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/invisibility_effect" } },
+      { "vertical_line_0@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 54 ] } },
+      { "horizontal_line_type5@CrisXolt_Brewing_Guide.horizontal_line_type5": { "offset": [ 0, 27 ] } },
+      { "arrow_down@CrisXolt_Brewing_Guide.arrow_down": { "offset": [ 91, 9 ] } },
+      { "fermented_spider_eye_0@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      { "fermented_spider_eye_1@CrisXolt_brewing_items.fermented_spider_eye": { "offset": [ 91, 0 ], "$background_images": "common.empty_panel" } },
+      { "vertical_line_1@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 27 ], "offset": [ 18, 9 ] } },
+      /* Normal Potion */
+      { "potion_of_invisibility@CrisXolt_brewing_items.potion_of_invisibility": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_invisibility_extended@CrisXolt_brewing_items.potion_of_invisibility_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_invisibility@CrisXolt_brewing_splash_items.potion_of_invisibility": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_invisibility_extended@CrisXolt_brewing_splash_items.potion_of_invisibility_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_invisibility@CrisXolt_brewing_lingering_items.potion_of_invisibility": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_invisibility_extended@CrisXolt_brewing_lingering_items.potion_of_invisibility_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 18 */
+
+  "panel_18": {
+    "type": "panel",
+    "size": [ "100%", 72 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_2": { } },
+      { "effect_icon_0@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/slowness_effect", "offset": [ -9, 0 ] } },
+      { "effect_icon_1@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/resistance_effect", "offset": [ 9, 0 ] } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 72 ] } },
+      { "horizontal_line_type1@CrisXolt_Brewing_Guide.horizontal_line_type1": { "offset": [ 0, 36 ] } },
+      { "line2@CrisXolt_Brewing_Guide.line2": { "offset": [ 55, 18 ] } },
+      { "turtle_shell@CrisXolt_brewing_items.turtle_shell": { "offset": [ 10, 36 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 22 ], "$background_images": "common.empty_panel" } },
+      { "glowstone_dust@CrisXolt_brewing_items.glowstone_dust": { "offset": [ 64, 49 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_the_turtle_master@CrisXolt_brewing_items.potion_of_the_turtle_master": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_the_turtle_master_extended@CrisXolt_brewing_items.potion_of_the_turtle_master_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_the_turtle_master_enhanced@CrisXolt_brewing_items.potion_of_the_turtle_master_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_the_turtle_master@CrisXolt_brewing_splash_items.potion_of_the_turtle_master": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_the_turtle_master_extended@CrisXolt_brewing_splash_items.potion_of_the_turtle_master_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_the_turtle_master_enhanced@CrisXolt_brewing_splash_items.potion_of_the_turtle_master_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_the_turtle_master@CrisXolt_brewing_lingering_items.potion_of_the_turtle_master": { "offset": [ 37, 36 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_the_turtle_master_extended@CrisXolt_brewing_lingering_items.potion_of_the_turtle_master_extended": { "offset": [ 91, 22 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_the_turtle_master_enhanced@CrisXolt_brewing_lingering_items.potion_of_the_turtle_master_enhanced": { "offset": [ 91, 49 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  /* Panel 19 */
+
+  "panel_19": {
+    "type": "panel",
+    "size": [ "100%", 54 ],
+    "controls": [
+      { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } },
+      { "effect_icon@CrisXolt_stack_panel_content.effect_icon": { "texture": "textures/ui/slow_falling_effect" } },
+      { "vertical_line@CrisXolt_Brewing_Guide.vertical_line": { "size": [ 2, 34 ] } },
+      { "horizontal_line_type2@CrisXolt_Brewing_Guide.horizontal_line_type2": { "offset": [ 0, 27 ] } },
+      { "phantom_membrane@CrisXolt_brewing_items.phantom_membrane": { "offset": [ 10, 27 ], "$background_images": "common.empty_panel" } },
+      { "redstone_dust@CrisXolt_brewing_items.redstone_dust": { "offset": [ 64, 27 ], "$background_images": "common.empty_panel" } },
+      /* Normal Potion */
+      { "potion_of_slow_falling@CrisXolt_brewing_items.potion_of_slow_falling": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      { "potion_of_slow_falling_extended@CrisXolt_brewing_items.potion_of_slow_falling_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "normal_tab_toggle" } },
+      /* Splash Potion */
+      { "splash_potion_of_slow_falling@CrisXolt_brewing_splash_items.potion_of_slow_falling": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      { "splash_potion_of_slow_falling_extended@CrisXolt_brewing_splash_items.potion_of_slow_falling_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "splash_tab_toggle" } },
+      /* Lingering Potion */
+      { "lingering_potion_of_slow_falling@CrisXolt_brewing_lingering_items.potion_of_slow_falling": { "offset": [ 37, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } },
+      { "lingering_potion_of_slow_falling_extended@CrisXolt_brewing_lingering_items.potion_of_slow_falling_extended": { "offset": [ 91, 27 ], "bindings": "$item_bindings", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  }
+}

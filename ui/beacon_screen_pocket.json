@@ -1,0 +1,30 @@
+// RTL Modified by TLGaming2308
+
+{
+  "namespace": "beacon_pocket",
+
+  "half_screen": {
+    "type": "panel",
+    "size": [ "50%-4px", "100%" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right"
+  },
+  "half_screen_inventory@beacon_pocket.half_screen": {
+    "size": [ "45%-4px", "100%" ],
+    "max_size": [ "100%-204px", "100%" ],
+    "controls": [
+      { "inventory_content@beacon_pocket.inventory_content": {} }
+    ]
+  },
+  "half_screen_beacon@beacon_pocket.half_screen": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 0],
+    "size": [ "55%-4px", "100%" ],
+    "min_size": [ 196, "100%" ],
+    "controls": [
+      { "beacon_buttons_panel@beacon_buttons_panel": {} },
+      { "beacon_payment_panel@beacon_payment_panel": {} }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+/*File made by @CrisXolt.
+//(c) Don't use any code design without permission!*/
+{
+  "brewing_stand_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%c", 166 ],
+    "orientation": "horizontal",
+    "controls": [
+      { "brewing_guide_panel@CrisXolt_Brewing_Guide.brewing_guide_panel": { } },
+      { "center_fold@CrisXolt_Brewing_Guide_textures.center_fold": { } },
+      { "brewing_stand_panel@brewing_stand_old_dx.brewing_stand_panel": { } }
+    ]
+  },
+
+  "main_screen_content": {
+    "type": "panel",
+    "$slot_selected_texture": "",
+    "$item_lock_cell_size": [ "100%-2px", "100%-2px" ],
+    "$item_lock_cell_texture": "textures/uidx/highlight/cell_image_lock",
+    "controls": [
+      {
+        "item_number_scroll_panel@crafting.scroll_panel": {
+          "ignored": true,
+          "size": [ 70, "100%" ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "$scrolling_content": "item_aux_test.scroll_grid_panel"
+        }
+      },
+      { "inventory_selected_icon_button@common_dx.inventory_selected_icon_button": {} },
+      { "inventory_take_progress_icon_button@common.inventory_take_progress_icon_button": {} },
+      { "brewing_stand_stack_panel@brewing_stand_old_dx.brewing_stand_stack_panel": { } }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "namespace": "trade2",
+  "tier_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c + 1px" ],
+    "orientation": "vertical",
+    "controls": [
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ 0, 2 ]
+        }
+      },
+      {
+        "tier_label_holder": {
+          "type": "panel",
+          "size": [ "100%", "100%cm" ],
+          "controls": [
+            {
+              "tier_label@trade2.tier_label": {
+                "size": [ "100%", "default" ],
+                "offset": [ 2, 0 ],
+                "layer": 2
+              }
+            },
+            {
+              "tier_label_locked@trade2.tier_label_locked": {
+                "size": [ "100%", "default" ],
+                "offset": [ 2, 0 ],
+                "layer": 2
+              }
+            }
+          ],
+          "bindings": []
+        }
+      },
+      { "trade_toggle_stack_panel@trade2.trade_toggle_stack_panel": {} }
+    ],
+    "bindings": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "namespace": "filter_menu",
+
+  "filter_menu_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ "40%", "100%" ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "layer": 2,
+    "$filter_button_panel_size|default": [ "100%", 30 ],
+    "$filter_button_size|default": [ "100% - 16px", "100%" ],
+    "controls": [
+      {
+        // added to align with search bar
+        "top_padding": {
+          "type": "panel",
+          "size": [ "100%", 4 ]
+        }
+      },
+      {
+        "filter_menu_content_scroll@common.scrolling_panel": {
+          "size": [ "100%", "fill" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "$scrolling_pane_offset": [ 0, 0 ],
+          "$scroll_size": [ 5, "100% - 4px" ],
+          "$scroll_bar_left_padding_size": [ 0, 0 ],
+          "$bar_visible": false,
+          "$show_background": false,
+          "$scrolling_content": "filter_menu.filter_menu_content"
+        }
+      },
+      {
+        "bottom_padding": {
+          "type": "panel",
+          "size": [ "100%", 4 ]
+        }
+      }
+    ]
+  }
+}

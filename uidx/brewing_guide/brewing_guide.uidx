@@ -1,0 +1,729 @@
+/*File made by @CrisXolt.
+//(c) Don't use any code design without permission!*/
+{
+  "namespace": "CrisXolt_Brewing_Guide",
+
+  /*//// Textures Buttons ////*/
+
+  "normal_unchecked": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_light",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_default_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "normal_unchecked_hover": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lighthover",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_hover_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "normal_checked": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lightpressednohover",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_default_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "normal_checked_hover": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lightpressed",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_hover_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "splash_unchecked": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_light",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_default_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "splash_unchecked_hover": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lighthover",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_hover_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "splash_checked": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lightpressednohover",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_default_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "splash_checked_hover": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lightpressed",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_hover_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "lingering_unchecked": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_light",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_default_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "lingering_unchecked_hover": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lighthover",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_hover_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "lingering_checked": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lightpressednohover",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_default_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "lingering_checked_hover": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "button": {
+          "type": "image",
+          "layer": 4,
+          "texture": "textures/ui/button_borderless_lightpressed",
+          "size": [ "100%-2px", "100%-2px" ]
+        }
+      },
+      { 
+        "border": {
+          "type": "image",
+          "layer": 4,
+          "color": "$light_border_hover_color",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  /*//// Textures ////*/
+  
+  "vertical_line": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 5, 0 ],
+    "texture": "textures/brewing_guide_ui/vertical_line"
+  },
+  
+  "plus_line": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 18, 18 ],
+    "texture": "textures/brewing_guide_ui/plus_line"
+  },
+
+  "line1": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 54, 18 ],
+    "texture": "textures/brewing_guide_ui/line1"
+  },
+
+  "line2": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 36, 54 ],
+    "texture": "textures/brewing_guide_ui/line2"
+  },
+
+  "line3": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 45, 36 ],
+    "texture": "textures/brewing_guide_ui/line3"
+  },
+
+  "line4": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 45, 36 ],
+    "texture": "textures/brewing_guide_ui/line4"
+  },
+
+  "arrow_up": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 18, 18 ],
+    "texture": "textures/brewing_guide_ui/arrow_up"
+  },
+
+  "arrow_down": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 18, 18 ],
+    "texture": "textures/brewing_guide_ui/arrow_down"
+  },
+
+  "arrow_left": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 18, 18 ],
+    "texture": "textures/brewing_guide_ui/arrow_left"
+  },
+
+  "arrow_right": {
+    "type": "image",
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 18, 18 ],
+    "texture": "textures/brewing_guide_ui/arrow_right"
+  },
+
+  "horizontal_line_type1": {
+    "type": "image",
+    "layer": 5,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 110, 18 ],
+    "texture": "textures/brewing_guide_ui/horizontal_line_type1"
+  },
+
+  "horizontal_line_type2": {
+    "type": "image",
+    "layer": 5,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 110, 18 ],
+    "texture": "textures/brewing_guide_ui/horizontal_line_type2"
+  },
+
+  "horizontal_line_type3": {
+    "type": "image",
+    "layer": 5,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 110, 18 ],
+    "texture": "textures/brewing_guide_ui/horizontal_line_type3"
+  },
+
+  "horizontal_line_type4": {
+    "type": "image",
+    "layer": 5,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 110, 18 ],
+    "texture": "textures/brewing_guide_ui/horizontal_line_type4"
+  },
+
+  "horizontal_line_type5": {
+    "type": "image",
+    "layer": 5,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 110, 18 ],
+    "texture": "textures/brewing_guide_ui/horizontal_line_type5"
+  },
+
+  "horizontal_line_type6": {
+    "type": "image",
+    "layer": 5,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 110, 18 ],
+    "texture": "textures/brewing_guide_ui/horizontal_line_type6"
+  },
+
+  "heart_bg": {
+    "type": "image",
+    "layer": 11,
+    "size": [ 9, 9 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 51, 4 ],
+    "texture": "textures/ui/heart_background"
+  },
+
+  "heart": {
+    "type": "image",
+    "layer": 14,
+    "size": [ 9, 9 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 51, 4 ],
+    "texture": "textures/ui/heart"
+  },
+
+  "harm_heart": {
+    "type": "image",
+    "layer": 14,
+    "size": [ 9, 9 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 51, 4 ],
+    "texture": "textures/ui/heart_flash"
+  },
+
+  "half_harm_heart": {
+    "type": "image",
+    "layer": 14,
+    "size": [ 9, 9 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 51, 4 ],
+    "texture": "textures/ui/heart_flash_half"
+  },
+
+  "plus": {
+    "type": "image",
+    "layer": 14,
+    "size": [ 7, 7 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 48, 8 ],
+    "texture": "textures/ui/recipe_book_expand_icon"
+  },
+
+  "minus": {
+    "type": "image",
+    "layer": 14,
+    "size": [ 7, 7 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 48, 8 ],
+    "texture": "textures/ui/recipe_book_collapse_icon"
+  },
+
+  /*//// Tabs ////*/
+
+  "top_tab@common_toggles_brewing.toggle_panel": {
+    "size": [ 26, 25 ],
+    "$toggle_name": "navigation_tab",
+    "$toggle_group_default_selected": 0,
+    "$toggle_binding_type": "global"
+  },
+
+  "normal_tab@CrisXolt_Brewing_Guide.top_tab": {
+    "$unchecked_control": "CrisXolt_Brewing_Guide_textures.normal_tab_back",
+    "$unchecked_hover_control": "CrisXolt_Brewing_Guide_textures.normal_tab_back_hover",
+    "$checked_control": "CrisXolt_Brewing_Guide_textures.normal_tab_front",
+    "$checked_hover_control": "CrisXolt_Brewing_Guide_textures.normal_tab_front_hover",
+    "$tab_view_binding_name": "normal_tab_toggle",
+    "$toggle_default_state": true,
+    "$toggle_group_forced_index": 0
+  },
+  
+  "splash_tab@CrisXolt_Brewing_Guide.top_tab": {
+    "$unchecked_control": "CrisXolt_Brewing_Guide_textures.splash_tab_back",
+    "$unchecked_hover_control": "CrisXolt_Brewing_Guide_textures.splash_tab_back_hover",
+    "$checked_control": "CrisXolt_Brewing_Guide_textures.splash_tab_front",
+    "$checked_hover_control": "CrisXolt_Brewing_Guide_textures.splash_tab_front_hover",
+    "$tab_view_binding_name": "splash_tab_toggle",
+    "$toggle_group_forced_index": 1
+  },
+
+  "lingering_tab@CrisXolt_Brewing_Guide.top_tab": {
+    "$unchecked_control": "CrisXolt_Brewing_Guide_textures.lingering_tab_back",
+    "$unchecked_hover_control": "CrisXolt_Brewing_Guide_textures.lingering_tab_back_hover",
+    "$checked_control": "CrisXolt_Brewing_Guide_textures.lingering_tab_front",
+    "$checked_hover_control": "CrisXolt_Brewing_Guide_textures.lingering_tab_front_hover",
+    "$tab_view_binding_name": "lingering_tab_toggle",
+    "$toggle_group_forced_index": 2
+  },
+
+  "tab_toggles_navigation_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "offset": [ 0, -25 ],
+    "size": [ 142, 25 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      { "normal_tab@CrisXolt_Brewing_Guide.normal_tab": { } },
+      { "splash_tab@CrisXolt_Brewing_Guide.splash_tab": { } },
+      { "lingering_tab@CrisXolt_Brewing_Guide.lingering_tab": { } },
+      { "fill_panel": { "type": "panel", "size": [ "fill", 1 ] } }
+    ]
+  },
+
+  /*//// Tabs Icons ////*/
+
+  "tab_icon_pocket": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      { 
+        "renderer": {
+          "type": "custom",
+          "renderer": "inventory_item_renderer",
+          "layer": 16,
+          "size": [ 16, 16 ],
+          "$number_aux_index": 65536,
+          "property_bag": {
+            "#item_id_aux": "($object_item_id * $number_aux_index)"
+          }
+        }
+      }
+    ]
+  },
+
+  "tab_icon": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      { 
+        "renderer": {
+          "type": "custom",
+          "renderer": "inventory_item_renderer",
+          "layer": 16,
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 16, 16 ],
+          "offset": [ 5, 7 ],
+          "$number_aux_index": 65536,
+          "property_bag": {
+            "#item_id_aux": "($object_item_id * $number_aux_index)"
+          }
+        }
+      }
+    ]
+  },
+
+  "tab_icon_navigation_panel@CrisXolt_Brewing_Guide.tab_toggles_navigation_panel": {
+    "controls": [
+      { "construction_tab@CrisXolt_Brewing_Guide.tab_icon": { "$object_item_id": 426 } },
+      { "equipment_tab@CrisXolt_Brewing_Guide.tab_icon": { "$object_item_id": 561 } },
+      { "items_tab@CrisXolt_Brewing_Guide.tab_icon": { "$object_item_id": 562 } },
+      { "fill_panel_3": { "type": "panel", "size": [ "fill", 1 ] } }
+    ]
+  },
+
+  /*//// Scroll Stack Panel ////*/
+
+  "scroll_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "$color_line_1": [ 0.24, 0.24, 0.24 ],
+    "$color_line_2": [ 0.16, 0.16, 0.16 ],
+    "$item_bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$tab_binding_name",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "panel_top": {
+          "type": "panel",
+          "size": [ "100%", 1 ],
+          "controls": [
+            { "image_base@CrisXolt_Brewing_Guide_textures.line_color_1": { } }
+          ]
+        }
+      },
+      { "panel_00@CrisXolt_stack_panel_content.panel_00": { } },
+      { "panel_01@CrisXolt_stack_panel_content.panel_01": { } },
+      { "panel_02@CrisXolt_stack_panel_content.panel_02": { } },
+      { "panel_03@CrisXolt_stack_panel_content.panel_03": { } },
+      { "panel_04@CrisXolt_stack_panel_content.panel_04": { } },
+      { "panel_05@CrisXolt_stack_panel_content.panel_05": { } },
+      { "panel_06@CrisXolt_stack_panel_content.panel_06": { } },
+      { "panel_07@CrisXolt_stack_panel_content.panel_07": { } },
+      { "panel_08@CrisXolt_stack_panel_content.panel_08": { } },
+      { "panel_09@CrisXolt_stack_panel_content.panel_09": { } },
+      { "panel_10@CrisXolt_stack_panel_content.panel_10": { } },
+      { "panel_11@CrisXolt_stack_panel_content.panel_11": { } },
+      { "panel_12@CrisXolt_stack_panel_content.panel_12": { } },
+      { "panel_13@CrisXolt_stack_panel_content.panel_13": { } },
+      { "panel_14@CrisXolt_stack_panel_content.panel_14": { } },
+      { "panel_15@CrisXolt_stack_panel_content.panel_15": { } },
+      { "panel_16@CrisXolt_stack_panel_content.panel_16": { } },
+      { "panel_17@CrisXolt_stack_panel_content.panel_17": { } },
+      { "panel_18@CrisXolt_stack_panel_content.panel_18": { } },
+      { "panel_19@CrisXolt_stack_panel_content.panel_19": { } }
+    ]
+  },
+
+  /*//// Main Panel ////*/
+
+  "scroll_box_active": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "layer": 3,
+          "texture": "textures/ui/button_borderless_light",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 10, "100%" ]
+        }
+      }
+    ]
+  },
+
+  "title_label_type@CrisXolt_Brewing_Guide_textures.title_label_base": {
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$tab_binding_name",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "title_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 5 ],
+    "size": [ "100%c", 10 ],
+    "controls": [
+      //{ "guide_label@CrisXolt_Brewing_Guide.title_label_base": { "text": "accessibility.worldTemplates.help" } },
+      //{ "guide_label@CrisXolt_Brewing_Guide.title_label_base": { "text": ": " } },
+      { "guide_label@CrisXolt_Brewing_Guide.title_label_type": { "text": "itemGroup.name.potion", "$tab_binding_name": "normal_tab_toggle" } },
+      { "guide_label@CrisXolt_Brewing_Guide.title_label_type": { "text": "itemGroup.name.splashPotion", "$tab_binding_name": "splash_tab_toggle" } },
+      { "guide_label@CrisXolt_Brewing_Guide.title_label_type": { "text": "itemGroup.name.lingeringPotion", "$tab_binding_name": "lingering_tab_toggle" } }
+    ]
+  },
+
+  "brewing_guide_panel@common.root_panel": {
+    "size": [ 142, 166 ],
+    "layer": 1,
+    "controls": [
+      { "tab_toggles_navigation_panel@CrisXolt_Brewing_Guide.tab_toggles_navigation_panel": { "layer": 1 } },
+      { "tab_icon_navigation_panel@CrisXolt_Brewing_Guide.tab_icon_navigation_panel": { "layer": 2 } },
+      { "guide_bg@CrisXolt_Brewing_Guide_textures.guide_bg": { } },
+      { "title_panel@CrisXolt_Brewing_Guide.title_panel": { } },
+      {
+        "scrolling_panel@common_scroll_brewing.scrolling_panel": {
+          "$scroll_box_image_control": "CrisXolt_Brewing_Guide_textures.scroll_box_active",
+          "$scroll_track_image_control": "common.empty_panel",
+
+          "$scroll_bar_left_padding_size": [ 0, 0 ],
+          "$scroll_bar_right_padding_size": [ 0, 0 ],
+
+          "size": [ 127, 140 ],
+          "offset": [ 8, 18 ],
+          "$scroll_size": [ 11, 140 ],
+          "$scroll_view_port_size": [ 111, 140 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "$scrolling_pane_size": [ "100%", "100%" ],
+          "$scrolling_pane_offset": [ 0, 0 ],
+          "$scrolling_content": "CrisXolt_Brewing_Guide.scroll_stack_panel"
+        }
+      }
+    ]
+  }
+}

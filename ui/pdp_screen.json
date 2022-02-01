@@ -1,0 +1,99 @@
+// RTL Modified by TLGaming2308
+
+{
+  "namespace": "pdp",
+
+  "summary_content_whole_stack_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%", "100%cm" ],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "controls": [
+      {
+        "right_side@pdp.summary_content_right_side": {
+          "size": [ "30%", "100%c" ]
+        }
+      },
+      {
+        "divider_panel@common.vertical_divider": {
+          "$size": [ "100%c", 0 ],
+          "inherit_max_sibling_height": true
+        }
+      },
+      {
+        "left_side@pdp.summary_content_left_side": {
+          "size": [ "70% - 6px", "100%cm" ]
+        }
+      }
+    ]
+  },
+
+  "ratings_box": {
+    "type": "panel",
+    "size": [ "100%", "100%cm" ],
+    "controls": [
+      {
+        "divider": {
+          "type": "image",
+          "size": [ 1, 85 ],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "offset": [ 0, -6 ],
+          "texture": "textures/ui/divider3",
+          "tiled": "y",
+          "alpha": 0.6
+        }
+      },
+      {
+        "ratings_full_panel": {
+          "type": "panel",
+          "size": [ "100% - 4px", "100%c" ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "controls": [
+            {
+              "ratings_chart_and_button": {
+                "type": "stack_panel",
+                "orientation": "vertical",
+                "size": [ "100%", "100%c" ],
+                "controls": [
+                  { "chart@pdp.ratings_chart_panel": {} },
+                  { "pad_1@pdp.vertical_padding_2px": {} }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ratings_info_panel": {
+    "type": "panel",
+    "size": [ "100% - 2px", "100%cm" ],
+    "controls": [
+      {
+        "ratings@pdp.ratings_box": {
+          "size": [ "34%", "100%cm" ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle"
+        }
+      },
+      {
+        "ratings_right": {
+          "type": "panel",
+          "size": [ "66%", "100%c" ],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "controls": [
+            {
+              "ratings_interact_panel@pdp.ratings_interact_panel": {}
+            }
+          ]
+        }
+      }
+    ]
+  }
+
+}

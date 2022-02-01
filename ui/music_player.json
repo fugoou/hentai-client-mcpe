@@ -1,0 +1,4241 @@
+//This JSON was modified by AgentMindStorm (@agentms_) and Creep (@KillerArt_). Please do not use this document without permission.
+//Since this file is quite complicated and others might want to understand it better to implement it in their own projects, I'll be leaving notes throughout the code to explain what's what.
+{
+  "namespace": "music_player",
+//These objects are used to create the scrolling panel in the emote screen.
+  "music_player_dialog@common_dialogs.main_panel_no_buttons": { //This is the background container for the music player. Without it, the list would fill the screen and be more difficult to read.
+    "size": [ "65%", "95%" ],
+    "$text_name": "tab.music_player.name",
+    "$panel_indent_size":  [ "100% - 23px", "100% - 31px" ],
+    "$child_control": "music_player.music_player_layered_panel"
+  },
+  "music_player_scrolling_panel@common.scrolling_panel": {
+    "$touch": false, //Overriding the game's default global "$touch" variable with "false" allows the scroll bar to appear even on mobile devices.
+    "$scrolling_pane_offset": [ 2, 0 ], //This offset moves the scroll bar ever-so-slightly more to the right to cover up the padding that comes with the dialog template.
+    "$scroll_size": [ 15, "100%" ], //This variable widens the selectable area of the scroll bar.
+    "$scroll_bar_left_padding_size": [ 0, 0 ], //These two padding reductions remove the empty space between the scroll bar and the buttons. This helps cut down on potential frustration by increasing the chance of selecting the scroll box instead of the empty space around it.
+    "$scroll_bar_right_padding_size": [ 0, 0 ],
+    "$scroll_box_mouse_image_control": "music_player.music_player_scrollbar_box_image", //The music player uses a wider scroll bar than normal in both mouse and touch modes. It's easier for touch players to grab consistently this way.
+    "$scrolling_content|default": "music_player.sidebar_music_player_stack_panel", //This variable is where the entire music player object below is made scrollable.
+    "$show_background": false, //A solid background works well in the settings screen, but the nature of the smaller, more accessible in-game music player causes it to work better semitransparent.
+    "variables": [
+      {
+        "requires": "(not $enable_sidebar)", //This replaces the sidebar scrolling content with a single list if the player disables the sidebar. Controlled by the Customizer.
+        "$scrolling_content": "music_player.plain_music_player_stack_panel" 
+      }
+    ]
+  },
+  "music_player_scrollbar_box_image@common.scrollbar_box_image": {
+    "size": [ 15, "100%" ] //This widens the visual scroll bar.
+  },
+//This object layers the invisible background, scrolling content, and sidebar so they can all be inserted into the dialog at once.
+  "music_player_layered_panel@customizer.custom_properties": { //This line hooks into the Customizer file to retrieve all the variables set by users. Variables in this section will be marked if they are set in the Customizer file.
+    "type": "panel",
+    "controls": [
+      {
+        "sidebar_safe_area": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%" ],
+          "orientation": "horizontal",
+          "controls": [
+            {
+              "sidebar_padding": { //This makes space for the sidebar in the dialog screen.
+                "type": "panel",
+                "size": [ 28.25, 0 ],
+                "ignored": "(not $enable_sidebar)" //The padding is unnecessary if the sidebar is absent.
+              }
+            },
+            {
+              "music_player_scrolling_panel@music_player.music_player_scrolling_panel": {
+                "size": [ "fill", "100%" ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sidebar_panel@sidebar_navigation.sidebar_panel": {
+          "offset": [ -3.5, 0 ], //This offset property pushes the sidebar into the safe zone of the dialog.
+          "ignored": "(not $enable_sidebar)",
+          "$sidebar_content": "music_player.sidebar_toggles_stack_panel",
+          "$verbose_content": "music_player.sidebar_toggles_stack_panel", //Verbose toggles could use a separate toggle list, but that isn't necessary for the music player.
+          "$dark_overlay_size": [ "100% + 7px", "100%" ], //The extra seven pixels in the overlay covers the safe zone of the dialog.
+          "$dark_overlay_offset": [ 3.5, 0 ] //This offest ensures the dark overlay anchored to the center of the dialog, even though the sidebar is not.
+        }
+      },
+      {
+        "music_player_invisible_background@music_player.music_player_invisible_background": {}
+      }
+    ]
+  },
+  "music_player_invisible_background": { //This element is used as the "$screen_bg_content" in the emote screen. It absorbs selections made outside the buttons to stop misclicks from closing the screen.
+    "type": "input_panel",
+    "layer": 0,
+    "size": [ "100%", "100%" ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.null_select", //This button ID is unused, so selecting the invisible background does nothing.
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_secondary_select",
+        "to_button_id": "button.null_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.null_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.controller_select",
+        "to_button_id": "button.null_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.controller_secondary_select",
+        "to_button_id": "button.null_select",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+//This object is the master object for the sidebar. It combines each album toggle into a single object.
+//The "sidebar_toggles_stack_panel" and "sidebar_music_player_stack_panel" elements were created by Creep (@KillerArt_).
+  "sidebar_toggles_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "emote_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/emote_shadow",
+          "$toggle_group_forced_index": 0,
+          "$verbose_group_forced_index": 201,
+          "$sidebar_group_name": "emote_sidebar_toggle",
+          "$verbose_group_name": "emote_verbose_toggle",
+          "$button_text": "tab.music_player.emote.section"
+        }
+      },
+      {
+        "custom_songs_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "ignored": "(not $enable_custom_songs)", //Controlled by the Customizer.
+          "$icon_texture": "textures/ui/quaver_shadow",
+          "$toggle_group_forced_index": 1,
+          "$verbose_group_forced_index": 202,
+          "$sidebar_group_name": "custom_sidebar_toggle",
+          "$verbose_group_name": "custom_verbose_toggle",
+          "$button_text": "tab.music_player.custom.section",
+          "variables": [
+            {
+              "requires": "(not ($custom_section_title_sidebar = ''))", //This type of variable is looking for whether or not the player has entered a custom title in the Customizer. If no custom title has been entered, a translatable identifier is used instead.
+              "$button_text": "$custom_section_title_sidebar" //Controlled by the Customizer.
+            }
+          ]
+        }
+      },
+      {
+        "albums_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/folder_shadow",
+          "$toggle_group_forced_index": 2,
+          "$verbose_group_forced_index": 203,
+          "$sidebar_group_name": "albums_sidebar_toggle",
+          "$verbose_group_name": "albums_verbose_toggle",
+          "$button_text": "tab.music_player.album.section"
+        }
+      },
+      {
+        "volume_alpha_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/cover_alpha",
+          "$toggle_group_forced_index": 3,
+          "$verbose_group_forced_index": 204,
+          "$sidebar_group_name": "volume_alpha_sidebar_toggle",
+          "$verbose_group_name": "volume_alpha_verbose_toggle",
+          "$button_text": "tab.music_player.volume_alpha.section"
+        }
+      },
+      {
+        "volume_beta_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/cover_beta",
+          "$toggle_group_forced_index": 4,
+          "$verbose_group_forced_index": 205,
+          "$sidebar_group_name": "volume_beta_sidebar_toggle",
+          "$verbose_group_name": "volume_beta_verbose_toggle",
+          "$button_text": "tab.music_player.volume_beta.section"
+        }
+      },
+      {
+        "update_aquatic_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/cover_shuniji",
+          "$toggle_group_forced_index": 5,
+          "$verbose_group_forced_index": 206,
+          "$sidebar_group_name": "update_aquatic_sidebar_toggle",
+          "$verbose_group_name": "update_aquatic_verbose_toggle",
+          "$button_text": "tab.music_player.update_aquatic.section"
+        }
+      },
+      {
+        "nether_update_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/cover_nether_update",
+          "$toggle_group_forced_index": 6,
+          "$verbose_group_forced_index": 207,
+          "$sidebar_group_name": "nether_update_sidebar_toggle",
+          "$verbose_group_name": "nether_update_verbose_toggle",
+          "$button_text": "tab.music_player.nether_update.section"
+        }
+      },
+      {
+        "caves_and_cliffs_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/cover_caves_and_cliffs",
+          "$toggle_group_forced_index": 7,
+          "$verbose_group_forced_index": 208,
+          "$sidebar_group_name": "caves_and_cliffs_sidebar_toggle",
+          "$verbose_group_name": "caves_and_cliffs_verbose_toggle",
+          "$button_text": "tab.music_player.caves_and_cliffs.section"
+        }
+      },
+      {
+        "music_discs_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_control": "sidebar_navigation.two_layer_icon",
+          "$icon_layer_1_texture": "textures/blocks/jukebox_side",
+          "$icon_layer_2_texture": "textures/ui/music_disc_shadow",
+          "$toggle_group_forced_index": 8,
+          "$verbose_group_forced_index": 209,
+          "$sidebar_group_name": "music_discs_sidebar_toggle",
+          "$verbose_group_name": "music_discs_verbose_toggle",
+          "$button_text": "tab.music_player.music_discs.section"
+        }
+      },
+      {
+        "festive_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "ignored": "(not $is_music_plus)", //Controlled by the Customizer.
+          "$icon_texture": "textures/ui/cover_festive",
+          "$toggle_group_forced_index": 9,
+          "$verbose_group_forced_index": 210,
+          "$sidebar_group_name": "festive_sidebar_toggle",
+          "$verbose_group_name": "festive_verbose_toggle",
+          "$button_text": "tab.music_player.festive.section"
+        }
+      },
+      {
+        "minecraft_earth_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "ignored": "(not $is_music_plus)", //Controlled by the Customizer.
+          "$icon_texture": "textures/ui/cover_minecraft_earth",
+          "$toggle_group_forced_index": 10,
+          "$verbose_group_forced_index": 211,
+          "$sidebar_group_name": "minecraft_earth_sidebar_toggle",
+          "$verbose_group_name": "minecraft_earth_verbose_toggle",
+          "$button_text": "tab.music_player.minecraft_earth.section"
+        }
+      },
+      {
+        "other_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/ellipses_shadow",
+          "$toggle_group_forced_index": 11,
+          "$verbose_group_forced_index": 212,
+          "$sidebar_group_name": "other_sidebar_toggle",
+          "$verbose_group_name": "other_verbose_toggle",
+          "$button_text": "tab.music_player.other.section"
+        }
+      },
+      {
+        "information_sidebar_toggle_group@sidebar_navigation.combined_sidebar_toggle": {
+          "$icon_texture": "textures/ui/question_mark_shadow",
+          "$show_icon_holder": false,
+          "$toggle_group_forced_index": 12,
+          "$verbose_group_forced_index": 213,
+          "$sidebar_group_name": "information_sidebar_toggle",
+          "$verbose_group_name": "information_verbose_toggle",
+          "$button_text": "tab.music_player.information.section"
+        }
+      }
+    ]
+  },
+//This object is the master section object for the music player used in the emote screen. It combines each section of the music player and the emote buttons into a single object.
+  "sidebar_music_player_stack_panel": { //This line does not hook into the Customizer because these properties are inherited at the level of the layer panel.
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "music_player_button_toggle",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "spacer_1": {
+          "type": "panel",
+          "size": [ 0, 5 ]
+        }
+      },
+      {
+        "emote_section_01@music_player.music_player_emote_section": {
+          "ignored": "$is_pregame", //The emotes section is only visible while in a world.
+          "bindings": [ //The emote section requires the emote toggle to be pressed in order to be visible.
+            {
+              "binding_type": "view",
+              "source_control_name": "emote_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "emote_section_02@music_player.music_player_emote_section": { //Every section has a duplicate in the sidebar music player because the expanded and narrow toggles have to link to different elements.
+          "ignored": "$is_pregame",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "emote_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "information_section_01": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "music_player_information@music_player.music_player_information_section": {}
+            },
+            {
+              "small_padding@how_to_play_common.small_padding": {}
+            }
+          ],
+          "bindings": [ //The information section normally requires the information toggle to be pressed in order to be visible.
+            {
+              "binding_type": "view",
+              "source_control_name": "information_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "information_section_02": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "music_player_information@music_player.music_player_information_section": {}
+            },
+            {
+              "small_padding@how_to_play_common.small_padding": {}
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "information_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "custom_section_01@music_player.music_player_custom_section": {
+          "ignored": "(not $enable_custom_songs)", //Controlled by the Customizer.
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "custom_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "custom_section_02@music_player.music_player_custom_section": {
+          "ignored": "(not $enable_custom_songs)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "custom_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "album_section_01@music_player.music_player_album_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "albums_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "album_section_02@music_player.music_player_album_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "albums_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "volume_alpha_section_01@music_player.music_player_volume_alpha_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "volume_alpha_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "volume_alpha_section_02@music_player.music_player_volume_alpha_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "volume_alpha_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "volume_beta_section_01@music_player.music_player_volume_beta_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "volume_beta_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "volume_beta_section_02@music_player.music_player_volume_beta_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "volume_beta_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "update_aquatic_section_01@music_player.music_player_update_aquatic_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "update_aquatic_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "update_aquatic_section_02@music_player.music_player_update_aquatic_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "update_aquatic_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "nether_update_section_01@music_player.music_player_nether_update_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "nether_update_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "nether_update_section_02@music_player.music_player_nether_update_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "nether_update_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "caves_and_cliffs_section_01@music_player.music_player_caves_and_cliffs_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "caves_and_cliffs_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "caves_and_cliffs_section_02@music_player.music_player_caves_and_cliffs_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "caves_and_cliffs_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "music_discs_section_01@music_player.music_player_music_discs_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "music_discs_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "music_discs_section_02@music_player.music_player_music_discs_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "music_discs_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "festive_section_01@music_player.music_player_festive_section": {
+          "ignored": "(not $is_music_plus)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "festive_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "festive_section_02@music_player.music_player_festive_section": {
+          "ignored": "(not $is_music_plus)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "festive_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft_earth_section_01@music_player.music_player_minecraft_earth_section": {
+          "ignored": "(not $is_music_plus)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "minecraft_earth_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "minecraft_earth_section_02@music_player.music_player_minecraft_earth_section": {
+          "ignored": "(not $is_music_plus)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "minecraft_earth_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "other_section_01@music_player.music_player_other_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "other_sidebar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "other_section_02@music_player.music_player_other_section": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "other_verbose_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "spacer_2": {
+          "type": "panel",
+          "size": [ 0, 5 ]
+        }
+      }
+    ]
+  },
+  "plain_music_player_stack_panel@customizer.custom_properties": { //If players choose to disable the sidebar, this object is used as the scrolling content instead.
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$album_image_offset": [ "-50% + 16px", 0 ], //These offset variables put the album cover or emote image on the left and the type image on the right, so the screen is visually balanced better.
+    "$emote_image_offset": [ "-50% + 16px", 0 ],
+    "$type_image_offset": [ "50% - 16px", 0 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "music_player_button_toggle",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "spacer_1": {
+          "type": "panel",
+          "size": [ 0, 5 ]
+        }
+      },
+      {
+        "emote_section_toggle@settings_common.option_toggle": {
+          "ignored": "($is_pregame or $always_show_emote_section)",
+          "$main_header_text_color": "$toggle_text_color", //Controlled by the Customizer.
+          "$option_binding_name": "emote_section_toggle",
+          "$option_label": "tab.music_player.show_emote_section",
+          "$control_name": "music_player.emote_section_toggle"
+        }
+      },
+      {
+        "emote_section@music_player.music_player_emote_section": {
+          "ignored": "$is_pregame", //The emotes section is only visible while in a world.
+          "bindings": [ //The emote section requires the emote toggle to be pressed in order to be visible.
+            {
+              "binding_type": "view",
+              "source_control_name": "music_player.emote_section_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible",
+              "ignored": "$always_show_emote_section"
+            }
+          ]
+        }
+      },
+      {
+        "information_section_toggle@settings_common.option_toggle": {
+          "ignored": "$always_show_information_section", //Controlled by the Customizer.
+          "$main_header_text_color": "$toggle_text_color", //Controlled by the Customizer.
+          "$option_binding_name": "information_section_toggle",
+          "$option_label": "tab.music_player.show_information_section",
+          "$control_name": "music_player.information_section_toggle"
+        }
+      },
+      {
+        "information_section": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "music_player_information@music_player.music_player_information_section": {}
+            },
+            { "small_padding@how_to_play_common.small_padding": {
+                "ignored": "(not $always_show_custom_section)" //Controlled by the Customizer.
+              }
+            },
+            { "padding@how_to_play_common.padding": {
+                "ignored": "$always_show_custom_section"
+              }
+            }
+          ],
+          "bindings": [ //The information section normally requires the information toggle to be pressed in order to be visible.
+            {
+              "binding_type": "view",
+              "source_control_name": "music_player.information_section_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible",
+              "ignored": "$always_show_information_section" //If "$always_show_information_section" is true, the bindings are ignored.
+            }
+          ]
+        }
+      },
+      {
+        "custom_section_toggle@settings_common.option_toggle": {
+          "ignored": "($always_show_custom_section or not $enable_custom_songs)", //Controlled by the Customizer.
+          "$main_header_text_color": "$toggle_text_color",
+          "$option_binding_name": "custom_section_toggle",
+          "$option_label": "tab.music_player.show_custom_section",
+          "$control_name": "music_player.custom_section_toggle"
+        }
+      },
+      {
+        "custom_section@music_player.music_player_custom_section": {
+          "ignored": "(not $enable_custom_songs)", //Controlled by the Customizer.
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "music_player.custom_section_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible",
+              "ignored": "$always_show_custom_section"
+            }
+          ]
+        }
+      },
+      {
+        "album_section@music_player.music_player_album_section": {}
+      },
+      {
+        "volume_alpha_section@music_player.music_player_volume_alpha_section": {}
+      },
+      {
+        "volume_beta_section@music_player.music_player_volume_beta_section": {}
+      },
+      {
+        "update_aquatic_section@music_player.music_player_update_aquatic_section": {}
+      },
+      {
+        "nether_update_section@music_player.music_player_nether_update_section": {}
+      },
+      {
+        "caves_and_cliffs_section@music_player.music_player_caves_and_cliffs_section": {}
+      },
+      {
+        "festive_remixes_section@music_player.music_player_festive_remixes_section": {
+          "ignored": "(not $is_music_plus)"
+        }
+      },
+      {
+        "minecraft_earth_section@music_player.music_player_minecraft_earth_section": {
+          "ignored": "(not $is_music_plus)"
+        }
+      },
+      {
+        "other_section@music_player.music_player_other_section": {}
+      },
+      {
+        "spacer_2": {
+          "type": "panel",
+          "size": [ 0, 5 ]
+        }
+      }
+    ]
+  },
+//These objects are the individual section objects.
+  "music_player_emote_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "emote_title@music_player.music_player_title": {
+          "$text": "tab.music_player.emote.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "emote_1@music_player.music_player_emote_button_panel_base": {
+          "$emote_slot_index": 0, //The emote screen's existing elements save much of the work here by requiring just the number of the emote slot to generate the rest of the information.
+          "$section_top": true
+        }
+      },
+      {
+        "emote_2@music_player.music_player_emote_button_panel_base": {
+          "$emote_slot_index": 1
+        }
+      },
+      {
+        "emote_3@music_player.music_player_emote_button_panel_base": {
+          "$emote_slot_index": 2
+        }
+      },
+      {
+        "emote_4@music_player.music_player_emote_button_panel_base": {
+          "$emote_slot_index": 3
+        }
+      },
+      {
+        "emote_5@music_player.music_player_emote_button_panel_base": {
+          "$emote_slot_index": 4
+        }
+      },
+      {
+        "emote_6@music_player.music_player_emote_button_panel_base": {
+          "$emote_slot_index": 5,
+          "variables": [
+            {
+              "requires": "$store_disabled", //The change emote button doesn't inherit the same properties as the other music player buttons, so this property has to be set manually.
+              "$section_bottom": true
+            }
+          ]
+        }
+      },
+      {
+        "change_emote@settings_common.action_button": { //This button intentionally doesn't match the style of the rest of the music player. It helps communicate its unique function by constrasting naturally against everything else.
+          "ignored": "$store_disabled",
+          "$button_text": "emotes.change_emotes",
+          "$pressed_button_name": "button.dressing_room",
+          "$default_text_color": "$light_button_default_text_color", //Unlike the other buttons, the text on this button won't change with the Customizer. Its solid background could make some colors difficult to read.
+          "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+          "variables": [
+            {
+              "requires": "$enable_sidebar", //The change emote button doesn't inherit the same properties as the other music player buttons, so this property has to be set manually.
+              "$focus_override_down": "FOCUS_OVERRIDE_STOP"
+            }
+          ]
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      }
+    ]
+  },
+  "music_player_information_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "information_title@music_player.music_player_title": {
+          "$text": "tab.music_player.information.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "information@how_to_play_common.paragraph": {
+          "$text": "tab.music_player.information"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "stop_song@how_to_play_common.paragraph": {
+          "$text": "tab.music_player.information.stop_song"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "custom_music_1@how_to_play_common.paragraph": {
+          "$text": "tab.music_player.information.custom_music.1"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "custom_music_2@how_to_play_common.paragraph": {
+          "$text": "tab.music_player.information.custom_music.2"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "custom_music_3@how_to_play_common.paragraph": {
+          "$text": "tab.music_player.information.custom_music.3"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "multiple_songs@how_to_play_common.paragraph": {
+          "$text|default": "tab.music_player.information.no_automatic_music",
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$text": "tab.music_player.information.mute_music" //This is an alternate version of the No Automatic Music text that applies even for players not using Music+.
+            }
+          ]
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "marketplace@how_to_play_common.paragraph": {
+          "$text": "tab.music_player.information.marketplace"
+        }
+      }
+    ]
+  },
+  "music_player_custom_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "custom_title@music_player.music_player_title": {
+          "$text|default": "tab.music_player.custom.section",
+          "variables": [
+            {
+              "requires": "(not ($custom_section_title = ''))", //This type of variable is looking for whether or not the player has entered a custom title in the Customizer. If no custom title has been entered, a translatable identifier is used instead.
+              "$text": "$custom_section_title" //Controlled by the Customizer.
+            }
+          ]
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "custom_album@music_player.music_player_button_custom_base": {
+          "$title": "$custom_album_title",
+          "$identifier": "tab.music_player.album.custom",
+          "$artist": "$custom_album_artist",
+          "$cover": "custom_covers/cover0", //The album cover can be changed by adding the file "cover0" to the "custom_covers" folder of the Custom Music Container.
+          "$sound_event|default": "album.custom.1-100.ui", //Since the custom album has a high chance of not playing a song, the randomness is limited to the maximum amount of songs visible. The variables below control which of the four custom album sound events are chosen. If an abnormal selection is chosen (such as only songs 1-25 and 51-75 visible), the sound event will default to selecting from 1-100.
+          "$quaver_location": [ 60, 0 ], //Unlike all other quavers, this quaver is only used in the default quaver state. In other quaver states, the uncolored quaver is unused.
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {} //Albums use the shuffle icon instead of the speaker icon to show that a random song will be chosen.
+            }
+          ],
+          "variables": [
+            {
+              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and $show_custom_songs_51_to_75 and (not $show_custom_songs_76_to_100))",
+              "$sound_event": "album.custom.1-75.ui"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+              "$sound_event": "album.custom.1-50.ui"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and (not $show_custom_songs_26_to_50) and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+              "$sound_event": "album.custom.1-25.ui"
+            }
+          ],
+          "$section_top": true
+        }
+      },
+      {
+        "custom_1_to_25_stack_panel": { //Custom songs are split into four groups of 25 so their visibilities can be controlled with one variable per group.
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "ignored": "(not $show_custom_songs_1_to_25)", //Controlled by the Customizer.
+          "controls": [
+            {
+              "custom1@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_1_title", //All custom songs have both "$title" and "$identifier" variables. The title is the custom title set by the user in the Customizer. The identifier is the translatable identifier used if the title is left blank.
+                "$identifier": "tab.music_player.song.custom1",
+                "$duration": "$custom_song_1_duration", //Though the duration and artist texts (controlled by the Customizer) appear on the same line, they are controlled separately.
+                "$duration_in_seconds": "$custom_song_1_duration_in_seconds", //The duration in seconds (controlled by the Customizer) controls the speed of the duration bar. It works independently of the duration text.
+                "$artist": "$custom_song_1_artist",
+                "$cover": "custom_covers/cover1",
+                "$sound_event": "song.custom1.ui", //The sound event always uses the "ui" variant of the sound. This is for easy organization and to avoid issues with sound categories.
+                "$quaver_location": [ 0, 0 ] //Each custom song has its own quaver location. Since all quaver textures are in the same file, the "$quaver_location" variable can pick which quaver to use for each song.
+              }
+            },
+            {
+              "custom2@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_2_title",
+                "$identifier": "tab.music_player.song.custom2",
+                "$duration": "$custom_song_2_duration",
+                "$duration_in_seconds": "$custom_song_2_duration_in_seconds",
+                "$artist": "$custom_song_2_artist",
+                "$cover": "custom_covers/cover2",
+                "$sound_event": "song.custom2.ui",
+                "$quaver_location": [ 5, 0 ]
+              }
+            },
+            {
+              "custom3@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_3_title",
+                "$identifier": "tab.music_player.song.custom3",
+                "$duration": "$custom_song_3_duration",
+                "$duration_in_seconds": "$custom_song_3_duration_in_seconds",
+                "$artist": "$custom_song_3_artist",
+                "$cover": "custom_covers/cover3",
+                "$sound_event": "song.custom3.ui",
+                "$quaver_location": [ 10, 0 ]
+              }
+            },
+            {
+              "custom4@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_4_title",
+                "$identifier": "tab.music_player.song.custom4",
+                "$duration": "$custom_song_4_duration",
+                "$duration_in_seconds": "$custom_song_4_duration_in_seconds",
+                "$artist": "$custom_song_4_artist",
+                "$cover": "custom_covers/cover4",
+                "$sound_event": "song.custom4.ui",
+                "$quaver_location": [ 15, 0 ]
+              }
+            },
+            {
+              "custom5@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_5_title",
+                "$identifier": "tab.music_player.song.custom5",
+                "$duration": "$custom_song_5_duration",
+                "$duration_in_seconds": "$custom_song_5_duration_in_seconds",
+                "$artist": "$custom_song_5_artist",
+                "$cover": "custom_covers/cover5",
+                "$sound_event": "song.custom5.ui",
+                "$quaver_location": [ 20, 0 ]
+              }
+            },
+            {
+              "custom6@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_6_title",
+                "$identifier": "tab.music_player.song.custom6",
+                "$duration": "$custom_song_6_duration",
+                "$duration_in_seconds": "$custom_song_6_duration_in_seconds",
+                "$artist": "$custom_song_6_artist",
+                "$cover": "custom_covers/cover6",
+                "$sound_event": "song.custom6.ui",
+                "$quaver_location": [ 25, 0 ]
+              }
+            },
+            {
+              "custom7@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_7_title",
+                "$identifier": "tab.music_player.song.custom7",
+                "$duration": "$custom_song_7_duration",
+                "$duration_in_seconds": "$custom_song_7_duration_in_seconds",
+                "$artist": "$custom_song_7_artist",
+                "$cover": "custom_covers/cover7",
+                "$sound_event": "song.custom7.ui",
+                "$quaver_location": [ 30, 0 ]
+              }
+            },
+            {
+              "custom8@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_8_title",
+                "$identifier": "tab.music_player.song.custom8",
+                "$duration": "$custom_song_8_duration",
+                "$duration_in_seconds": "$custom_song_8_duration_in_seconds",
+                "$artist": "$custom_song_8_artist",
+                "$cover": "custom_covers/cover8",
+                "$sound_event": "song.custom8.ui",
+                "$quaver_location": [ 35, 0 ]
+              }
+            },
+            {
+              "custom9@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_9_title",
+                "$identifier": "tab.music_player.song.custom9",
+                "$duration": "$custom_song_9_duration",
+                "$duration_in_seconds": "$custom_song_9_duration_in_seconds",
+                "$artist": "$custom_song_9_artist",
+                "$cover": "custom_covers/cover9",
+                "$sound_event": "song.custom9.ui",
+                "$quaver_location": [ 40, 0 ]
+              }
+            },
+            {
+              "custom10@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_10_title",
+                "$identifier": "tab.music_player.song.custom10",
+                "$duration": "$custom_song_10_duration",
+                "$duration_in_seconds": "$custom_song_10_duration_in_seconds",
+                "$artist": "$custom_song_10_artist",
+                "$cover": "custom_covers/cover10",
+                "$sound_event": "song.custom10.ui",
+                "$quaver_location": [ 45, 0 ]
+              }
+            },
+            {
+              "custom11@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_11_title",
+                "$identifier": "tab.music_player.song.custom11",
+                "$duration": "$custom_song_11_duration",
+                "$duration_in_seconds": "$custom_song_11_duration_in_seconds",
+                "$artist": "$custom_song_11_artist",
+                "$cover": "custom_covers/cover11",
+                "$sound_event": "song.custom11.ui",
+                "$quaver_location": [ 50, 0 ]
+              }
+            },
+            {
+              "custom12@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_12_title",
+                "$identifier": "tab.music_player.song.custom12",
+                "$duration": "$custom_song_12_duration",
+                "$duration_in_seconds": "$custom_song_12_duration_in_seconds",
+                "$artist": "$custom_song_12_artist",
+                "$cover": "custom_covers/cover12",
+                "$sound_event": "song.custom12.ui",
+                "$quaver_location": [ 55, 0 ]
+              }
+            },
+            {
+              "custom13@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_13_title",
+                "$identifier": "tab.music_player.song.custom13",
+                "$duration": "$custom_song_13_duration",
+                "$duration_in_seconds": "$custom_song_13_duration_in_seconds",
+                "$artist": "$custom_song_13_artist",
+                "$cover": "custom_covers/cover13",
+                "$sound_event": "song.custom13.ui",
+                "$quaver_location": [ 0, 8 ]
+              }
+            },
+            {
+              "custom14@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_14_title",
+                "$identifier": "tab.music_player.song.custom14",
+                "$duration": "$custom_song_14_duration",
+                "$duration_in_seconds": "$custom_song_14_duration_in_seconds",
+                "$artist": "$custom_song_14_artist",
+                "$cover": "custom_covers/cover14",
+                "$sound_event": "song.custom14.ui",
+                "$quaver_location": [ 5, 8 ]
+              }
+            },
+            {
+              "custom15@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_15_title",
+                "$identifier": "tab.music_player.song.custom15",
+                "$duration": "$custom_song_15_duration",
+                "$duration_in_seconds": "$custom_song_15_duration_in_seconds",
+                "$artist": "$custom_song_15_artist",
+                "$cover": "custom_covers/cover15",
+                "$sound_event": "song.custom15.ui",
+                "$quaver_location": [ 10, 8 ]
+              }
+            },
+            {
+              "custom16@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_16_title",
+                "$identifier": "tab.music_player.song.custom16",
+                "$duration": "$custom_song_16_duration",
+                "$duration_in_seconds": "$custom_song_16_duration_in_seconds",
+                "$artist": "$custom_song_16_artist",
+                "$cover": "custom_covers/cover16",
+                "$sound_event": "song.custom16.ui",
+                "$quaver_location": [ 15, 8 ]
+              }
+            },
+            {
+              "custom17@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_17_title",
+                "$identifier": "tab.music_player.song.custom17",
+                "$duration": "$custom_song_17_duration",
+                "$duration_in_seconds": "$custom_song_17_duration_in_seconds",
+                "$artist": "$custom_song_17_artist",
+                "$cover": "custom_covers/cover17",
+                "$sound_event": "song.custom17.ui",
+                "$quaver_location": [ 20, 8 ]
+              }
+            },
+            {
+              "custom18@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_18_title",
+                "$identifier": "tab.music_player.song.custom18",
+                "$duration": "$custom_song_18_duration",
+                "$duration_in_seconds": "$custom_song_18_duration_in_seconds",
+                "$artist": "$custom_song_18_artist",
+                "$cover": "custom_covers/cover18",
+                "$sound_event": "song.custom18.ui",
+                "$quaver_location": [ 25, 8 ]
+              }
+            },
+            {
+              "custom19@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_19_title",
+                "$identifier": "tab.music_player.song.custom19",
+                "$duration": "$custom_song_19_duration",
+                "$duration_in_seconds": "$custom_song_19_duration_in_seconds",
+                "$artist": "$custom_song_19_artist",
+                "$cover": "custom_covers/cover19",
+                "$sound_event": "song.custom19.ui",
+                "$quaver_location": [ 30, 8 ]
+              }
+            },
+            {
+              "custom20@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_20_title",
+                "$identifier": "tab.music_player.song.custom20",
+                "$duration": "$custom_song_20_duration",
+                "$duration_in_seconds": "$custom_song_20_duration_in_seconds",
+                "$artist": "$custom_song_20_artist",
+                "$cover": "custom_covers/cover20",
+                "$sound_event": "song.custom20.ui",
+                "$quaver_location": [ 35, 8 ]
+              }
+            },
+            {
+              "custom21@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_21_title",
+                "$identifier": "tab.music_player.song.custom21",
+                "$duration": "$custom_song_21_duration",
+                "$duration_in_seconds": "$custom_song_21_duration_in_seconds",
+                "$artist": "$custom_song_21_artist",
+                "$cover": "custom_covers/cover21",
+                "$sound_event": "song.custom21.ui",
+                "$quaver_location": [ 40, 8 ]
+              }
+            },
+            {
+              "custom22@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_22_title",
+                "$identifier": "tab.music_player.song.custom22",
+                "$duration": "$custom_song_22_duration",
+                "$duration_in_seconds": "$custom_song_22_duration_in_seconds",
+                "$artist": "$custom_song_22_artist",
+                "$cover": "custom_covers/cover22",
+                "$sound_event": "song.custom22.ui",
+                "$quaver_location": [ 45, 8 ]
+              }
+            },
+            {
+              "custom23@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_23_title",
+                "$identifier": "tab.music_player.song.custom23",
+                "$duration": "$custom_song_23_duration",
+                "$duration_in_seconds": "$custom_song_23_duration_in_seconds",
+                "$artist": "$custom_song_23_artist",
+                "$cover": "custom_covers/cover23",
+                "$sound_event": "song.custom23.ui",
+                "$quaver_location": [ 50, 8 ]
+              }
+            },
+            {
+              "custom24@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_24_title",
+                "$identifier": "tab.music_player.song.custom24",
+                "$duration": "$custom_song_24_duration",
+                "$duration_in_seconds": "$custom_song_24_duration_in_seconds",
+                "$artist": "$custom_song_24_artist",
+                "$cover": "custom_covers/cover24",
+                "$sound_event": "song.custom24.ui",
+                "$quaver_location": [ 55, 8 ]
+              }
+            },
+            {
+              "custom25@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_25_title",
+                "$identifier": "tab.music_player.song.custom25",
+                "$duration": "$custom_song_25_duration",
+                "$duration_in_seconds": "$custom_song_25_duration_in_seconds",
+                "$artist": "$custom_song_25_artist",
+                "$cover": "custom_covers/cover25",
+                "$sound_event": "song.custom25.ui",
+                "$quaver_location": [ 60, 8 ],
+                "variables": [
+                  {
+                    "requires": "((not $show_custom_songs_26_to_50) and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))", //Unless players have enabled more custom songs through the Customizer, this will be considered the end of the section.
+                    "$section_bottom": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "custom_26_to_50_stack_panel": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "ignored": "(not $show_custom_songs_26_to_50)",
+          "$quaver_variant": "upside_down", //Quaver variants are controlled by checking for specific values of the "$quaver_variant" variable. Custom songs 26-50 use the upside-down quavers, so their quaver variant is "upside_down".
+          "controls": [
+            {
+              "custom26@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_26_title",
+                "$identifier": "tab.music_player.song.custom26",
+                "$duration": "$custom_song_26_duration",
+                "$duration_in_seconds": "$custom_song_26_duration_in_seconds",
+                "$artist": "$custom_song_26_artist",
+                "$cover": "custom_covers/cover26",
+                "$sound_event": "song.custom26.ui",
+                "$quaver_location": [ 0, 0 ]
+              }
+            },
+            {
+              "custom27@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_27_title",
+                "$identifier": "tab.music_player.song.custom27",
+                "$duration": "$custom_song_27_duration",
+                "$duration_in_seconds": "$custom_song_27_duration_in_seconds",
+                "$artist": "$custom_song_27_artist",
+                "$cover": "custom_covers/cover27",
+                "$sound_event": "song.custom27.ui",
+                "$quaver_location": [ 5, 0 ]
+              }
+            },
+            {
+              "custom28@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_28_title",
+                "$identifier": "tab.music_player.song.custom28",
+                "$duration": "$custom_song_28_duration",
+                "$duration_in_seconds": "$custom_song_28_duration_in_seconds",
+                "$artist": "$custom_song_28_artist",
+                "$cover": "custom_covers/cover28",
+                "$sound_event": "song.custom28.ui",
+                "$quaver_location": [ 10, 0 ]
+              }
+            },
+            {
+              "custom29@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_29_title",
+                "$identifier": "tab.music_player.song.custom29",
+                "$duration": "$custom_song_29_duration",
+                "$duration_in_seconds": "$custom_song_29_duration_in_seconds",
+                "$artist": "$custom_song_29_artist",
+                "$cover": "custom_covers/cover29",
+                "$sound_event": "song.custom29.ui",
+                "$quaver_location": [ 15, 0 ]
+              }
+            },
+            {
+              "custom30@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_30_title",
+                "$identifier": "tab.music_player.song.custom30",
+                "$duration": "$custom_song_30_duration",
+                "$duration_in_seconds": "$custom_song_30_duration_in_seconds",
+                "$artist": "$custom_song_30_artist",
+                "$cover": "custom_covers/cover30",
+                "$sound_event": "song.custom30.ui",
+                "$quaver_location": [ 20, 0 ]
+              }
+            },
+            {
+              "custom31@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_31_title",
+                "$identifier": "tab.music_player.song.custom31",
+                "$duration": "$custom_song_31_duration",
+                "$duration_in_seconds": "$custom_song_31_duration_in_seconds",
+                "$artist": "$custom_song_31_artist",
+                "$cover": "custom_covers/cover31",
+                "$sound_event": "song.custom31.ui",
+                "$quaver_location": [ 25, 0 ]
+              }
+            },
+            {
+              "custom32@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_32_title",
+                "$identifier": "tab.music_player.song.custom32",
+                "$duration": "$custom_song_32_duration",
+                "$duration_in_seconds": "$custom_song_32_duration_in_seconds",
+                "$artist": "$custom_song_32_artist",
+                "$cover": "custom_covers/cover32",
+                "$sound_event": "song.custom32.ui",
+                "$quaver_location": [ 30, 0 ]
+              }
+            },
+            {
+              "custom33@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_33_title",
+                "$identifier": "tab.music_player.song.custom33",
+                "$duration": "$custom_song_33_duration",
+                "$duration_in_seconds": "$custom_song_33_duration_in_seconds",
+                "$artist": "$custom_song_33_artist",
+                "$cover": "custom_covers/cover33",
+                "$sound_event": "song.custom33.ui",
+                "$quaver_location": [ 35, 0 ]
+              }
+            },
+            {
+              "custom34@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_34_title",
+                "$identifier": "tab.music_player.song.custom34",
+                "$duration": "$custom_song_34_duration",
+                "$duration_in_seconds": "$custom_song_34_duration_in_seconds",
+                "$artist": "$custom_song_34_artist",
+                "$cover": "custom_covers/cover34",
+                "$sound_event": "song.custom34.ui",
+                "$quaver_location": [ 40, 0 ]
+              }
+            },
+            {
+              "custom35@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_35_title",
+                "$identifier": "tab.music_player.song.custom35",
+                "$duration": "$custom_song_35_duration",
+                "$duration_in_seconds": "$custom_song_35_duration_in_seconds",
+                "$artist": "$custom_song_35_artist",
+                "$cover": "custom_covers/cover35",
+                "$sound_event": "song.custom35.ui",
+                "$quaver_location": [ 45, 0 ]
+              }
+            },
+            {
+              "custom36@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_36_title",
+                "$identifier": "tab.music_player.song.custom36",
+                "$duration": "$custom_song_36_duration",
+                "$duration_in_seconds": "$custom_song_36_duration_in_seconds",
+                "$artist": "$custom_song_36_artist",
+                "$cover": "custom_covers/cover36",
+                "$sound_event": "song.custom36.ui",
+                "$quaver_location": [ 50, 0 ]
+              }
+            },
+            {
+              "custom37@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_37_title",
+                "$identifier": "tab.music_player.song.custom37",
+                "$duration": "$custom_song_37_duration",
+                "$duration_in_seconds": "$custom_song_37_duration_in_seconds",
+                "$artist": "$custom_song_37_artist",
+                "$cover": "custom_covers/cover37",
+                "$sound_event": "song.custom37.ui",
+                "$quaver_location": [ 55, 0 ]
+              }
+            },
+            {
+              "custom38@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_38_title",
+                "$identifier": "tab.music_player.song.custom38",
+                "$duration": "$custom_song_38_duration",
+                "$duration_in_seconds": "$custom_song_38_duration_in_seconds",
+                "$artist": "$custom_song_38_artist",
+                "$cover": "custom_covers/cover38",
+                "$sound_event": "song.custom38.ui",
+                "$quaver_location": [ 0, 8 ]
+              }
+            },
+            {
+              "custom39@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_39_title",
+                "$identifier": "tab.music_player.song.custom39",
+                "$duration": "$custom_song_39_duration",
+                "$duration_in_seconds": "$custom_song_39_duration_in_seconds",
+                "$artist": "$custom_song_39_artist",
+                "$cover": "custom_covers/cover39",
+                "$sound_event": "song.custom39.ui",
+                "$quaver_location": [ 5, 8 ]
+              }
+            },
+            {
+              "custom40@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_40_title",
+                "$identifier": "tab.music_player.song.custom40",
+                "$duration": "$custom_song_40_duration",
+                "$duration_in_seconds": "$custom_song_40_duration_in_seconds",
+                "$artist": "$custom_song_40_artist",
+                "$cover": "custom_covers/cover40",
+                "$sound_event": "song.custom40.ui",
+                "$quaver_location": [ 10, 8 ]
+              }
+            },
+            {
+              "custom41@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_41_title",
+                "$identifier": "tab.music_player.song.custom41",
+                "$duration": "$custom_song_41_duration",
+                "$duration_in_seconds": "$custom_song_41_duration_in_seconds",
+                "$artist": "$custom_song_41_artist",
+                "$cover": "custom_covers/cover41",
+                "$sound_event": "song.custom41.ui",
+                "$quaver_location": [ 15, 8 ]
+              }
+            },
+            {
+              "custom42@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_42_title",
+                "$identifier": "tab.music_player.song.custom42",
+                "$duration": "$custom_song_42_duration",
+                "$duration_in_seconds": "$custom_song_42_duration_in_seconds",
+                "$artist": "$custom_song_42_artist",
+                "$cover": "custom_covers/cover42",
+                "$sound_event": "song.custom42.ui",
+                "$quaver_location": [ 20, 8 ]
+              }
+            },
+            {
+              "custom43@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_43_title",
+                "$identifier": "tab.music_player.song.custom43",
+                "$duration": "$custom_song_43_duration",
+                "$duration_in_seconds": "$custom_song_43_duration_in_seconds",
+                "$artist": "$custom_song_43_artist",
+                "$cover": "custom_covers/cover43",
+                "$sound_event": "song.custom43.ui",
+                "$quaver_location": [ 25, 8 ]
+              }
+            },
+            {
+              "custom44@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_44_title",
+                "$identifier": "tab.music_player.song.custom44",
+                "$duration": "$custom_song_44_duration",
+                "$duration_in_seconds": "$custom_song_44_duration_in_seconds",
+                "$artist": "$custom_song_44_artist",
+                "$cover": "custom_covers/cover44",
+                "$sound_event": "song.custom44.ui",
+                "$quaver_location": [ 30, 8 ]
+              }
+            },
+            {
+              "custom45@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_45_title",
+                "$identifier": "tab.music_player.song.custom45",
+                "$duration": "$custom_song_45_duration",
+                "$duration_in_seconds": "$custom_song_45_duration_in_seconds",
+                "$artist": "$custom_song_45_artist",
+                "$cover": "custom_covers/cover45",
+                "$sound_event": "song.custom45.ui",
+                "$quaver_location": [ 35, 8 ]
+              }
+            },
+            {
+              "custom46@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_46_title",
+                "$identifier": "tab.music_player.song.custom46",
+                "$duration": "$custom_song_46_duration",
+                "$duration_in_seconds": "$custom_song_46_duration_in_seconds",
+                "$artist": "$custom_song_46_artist",
+                "$cover": "custom_covers/cover46",
+                "$sound_event": "song.custom46.ui",
+                "$quaver_location": [ 40, 8 ]
+              }
+            },
+            {
+              "custom47@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_47_title",
+                "$identifier": "tab.music_player.song.custom47",
+                "$duration": "$custom_song_47_duration",
+                "$duration_in_seconds": "$custom_song_47_duration_in_seconds",
+                "$artist": "$custom_song_47_artist",
+                "$cover": "custom_covers/cover47",
+                "$sound_event": "song.custom47.ui",
+                "$quaver_location": [ 45, 8 ]
+              }
+            },
+            {
+              "custom48@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_48_title",
+                "$identifier": "tab.music_player.song.custom48",
+                "$duration": "$custom_song_48_duration",
+                "$duration_in_seconds": "$custom_song_48_duration_in_seconds",
+                "$artist": "$custom_song_48_artist",
+                "$cover": "custom_covers/cover48",
+                "$sound_event": "song.custom48.ui",
+                "$quaver_location": [ 50, 8 ]
+              }
+            },
+            {
+              "custom49@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_49_title",
+                "$identifier": "tab.music_player.song.custom49",
+                "$duration": "$custom_song_49_duration",
+                "$duration_in_seconds": "$custom_song_49_duration_in_seconds",
+                "$artist": "$custom_song_49_artist",
+                "$cover": "custom_covers/cover49",
+                "$sound_event": "song.custom49.ui",
+                "$quaver_location": [ 55, 8 ]
+              }
+            },
+            {
+              "custom50@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_50_title",
+                "$identifier": "tab.music_player.song.custom50",
+                "$duration": "$custom_song_50_duration",
+                "$duration_in_seconds": "$custom_song_50_duration_in_seconds",
+                "$artist": "$custom_song_50_artist",
+                "$cover": "custom_covers/cover50",
+                "$sound_event": "song.custom50.ui",
+                "$quaver_location": [ 60, 8 ],
+                "variables": [
+                  {
+                    "requires": "((not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+                    "$section_bottom": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "custom_51_to_75_stack_panel": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "ignored": "(not $show_custom_songs_51_to_75)",
+          "$quaver_variant": "inverted",
+          "controls": [
+            {
+              "custom51@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_51_title",
+                "$identifier": "tab.music_player.song.custom51",
+                "$duration": "$custom_song_51_duration",
+                "$duration_in_seconds": "$custom_song_51_duration_in_seconds",
+                "$artist": "$custom_song_51_artist",
+                "$cover": "custom_covers/cover51",
+                "$sound_event": "song.custom51.ui",
+                "$quaver_location": [ 0, 0 ]
+              }
+            },
+            {
+              "custom52@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_52_title",
+                "$identifier": "tab.music_player.song.custom52",
+                "$duration": "$custom_song_52_duration",
+                "$duration_in_seconds": "$custom_song_52_duration_in_seconds",
+                "$artist": "$custom_song_52_artist",
+                "$cover": "custom_covers/cover52",
+                "$sound_event": "song.custom52.ui",
+                "$quaver_location": [ 5, 0 ]
+              }
+            },
+            {
+              "custom53@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_53_title",
+                "$identifier": "tab.music_player.song.custom53",
+                "$duration": "$custom_song_53_duration",
+                "$duration_in_seconds": "$custom_song_53_duration_in_seconds",
+                "$artist": "$custom_song_53_artist",
+                "$cover": "custom_covers/cover53",
+                "$sound_event": "song.custom53.ui",
+                "$quaver_location": [ 10, 0 ]
+              }
+            },
+            {
+              "custom54@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_54_title",
+                "$identifier": "tab.music_player.song.custom54",
+                "$duration": "$custom_song_54_duration",
+                "$duration_in_seconds": "$custom_song_54_duration_in_seconds",
+                "$artist": "$custom_song_54_artist",
+                "$cover": "custom_covers/cover54",
+                "$sound_event": "song.custom54.ui",
+                "$quaver_location": [ 15, 0 ]
+              }
+            },
+            {
+              "custom55@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_55_title",
+                "$identifier": "tab.music_player.song.custom55",
+                "$duration": "$custom_song_55_duration",
+                "$duration_in_seconds": "$custom_song_55_duration_in_seconds",
+                "$artist": "$custom_song_55_artist",
+                "$cover": "custom_covers/cover55",
+                "$sound_event": "song.custom55.ui",
+                "$quaver_location": [ 20, 0 ]
+              }
+            },
+            {
+              "custom56@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_56_title",
+                "$identifier": "tab.music_player.song.custom56",
+                "$duration": "$custom_song_56_duration",
+                "$duration_in_seconds": "$custom_song_56_duration_in_seconds",
+                "$artist": "$custom_song_56_artist",
+                "$cover": "custom_covers/cover56",
+                "$sound_event": "song.custom56.ui",
+                "$quaver_location": [ 25, 0 ]
+              }
+            },
+            {
+              "custom57@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_57_title",
+                "$identifier": "tab.music_player.song.custom57",
+                "$duration": "$custom_song_57_duration",
+                "$duration_in_seconds": "$custom_song_57_duration_in_seconds",
+                "$artist": "$custom_song_57_artist",
+                "$cover": "custom_covers/cover57",
+                "$sound_event": "song.custom57.ui",
+                "$quaver_location": [ 30, 0 ]
+              }
+            },
+            {
+              "custom58@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_58_title",
+                "$identifier": "tab.music_player.song.custom58",
+                "$duration": "$custom_song_58_duration",
+                "$duration_in_seconds": "$custom_song_58_duration_in_seconds",
+                "$artist": "$custom_song_58_artist",
+                "$cover": "custom_covers/cover58",
+                "$sound_event": "song.custom58.ui",
+                "$quaver_location": [ 35, 0 ]
+              }
+            },
+            {
+              "custom59@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_59_title",
+                "$identifier": "tab.music_player.song.custom59",
+                "$duration": "$custom_song_59_duration",
+                "$duration_in_seconds": "$custom_song_59_duration_in_seconds",
+                "$artist": "$custom_song_59_artist",
+                "$cover": "custom_covers/cover59",
+                "$sound_event": "song.custom59.ui",
+                "$quaver_location": [ 40, 0 ]
+              }
+            },
+            {
+              "custom60@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_60_title",
+                "$identifier": "tab.music_player.song.custom60",
+                "$duration": "$custom_song_60_duration",
+                "$duration_in_seconds": "$custom_song_60_duration_in_seconds",
+                "$artist": "$custom_song_60_artist",
+                "$cover": "custom_covers/cover60",
+                "$sound_event": "song.custom60.ui",
+                "$quaver_location": [ 45, 0 ]
+              }
+            },
+            {
+              "custom61@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_61_title",
+                "$identifier": "tab.music_player.song.custom61",
+                "$duration": "$custom_song_61_duration",
+                "$duration_in_seconds": "$custom_song_61_duration_in_seconds",
+                "$artist": "$custom_song_61_artist",
+                "$cover": "custom_covers/cover61",
+                "$sound_event": "song.custom61.ui",
+                "$quaver_location": [ 50, 0 ]
+              }
+            },
+            {
+              "custom62@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_62_title",
+                "$identifier": "tab.music_player.song.custom62",
+                "$duration": "$custom_song_62_duration",
+                "$duration_in_seconds": "$custom_song_62_duration_in_seconds",
+                "$artist": "$custom_song_62_artist",
+                "$cover": "custom_covers/cover62",
+                "$sound_event": "song.custom62.ui",
+                "$quaver_location": [ 55, 0 ]
+              }
+            },
+            {
+              "custom63@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_63_title",
+                "$identifier": "tab.music_player.song.custom63",
+                "$duration": "$custom_song_63_duration",
+                "$duration_in_seconds": "$custom_song_63_duration_in_seconds",
+                "$artist": "$custom_song_63_artist",
+                "$cover": "custom_covers/cover63",
+                "$sound_event": "song.custom63.ui",
+                "$quaver_location": [ 0, 8 ]
+              }
+            },
+            {
+              "custom64@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_64_title",
+                "$identifier": "tab.music_player.song.custom64",
+                "$duration": "$custom_song_64_duration",
+                "$duration_in_seconds": "$custom_song_64_duration_in_seconds",
+                "$artist": "$custom_song_64_artist",
+                "$cover": "custom_covers/cover64",
+                "$sound_event": "song.custom64.ui",
+                "$quaver_location": [ 5, 8 ]
+              }
+            },
+            {
+              "custom65@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_65_title",
+                "$identifier": "tab.music_player.song.custom65",
+                "$duration": "$custom_song_65_duration",
+                "$duration_in_seconds": "$custom_song_65_duration_in_seconds",
+                "$artist": "$custom_song_65_artist",
+                "$cover": "custom_covers/cover65",
+                "$sound_event": "song.custom65.ui",
+                "$quaver_location": [ 10, 8 ]
+              }
+            },
+            {
+              "custom66@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_66_title",
+                "$identifier": "tab.music_player.song.custom66",
+                "$duration": "$custom_song_66_duration",
+                "$duration_in_seconds": "$custom_song_66_duration_in_seconds",
+                "$artist": "$custom_song_66_artist",
+                "$cover": "custom_covers/cover66",
+                "$sound_event": "song.custom66.ui",
+                "$quaver_location": [ 15, 8 ]
+              }
+            },
+            {
+              "custom67@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_67_title",
+                "$identifier": "tab.music_player.song.custom67",
+                "$duration": "$custom_song_67_duration",
+                "$duration_in_seconds": "$custom_song_67_duration_in_seconds",
+                "$artist": "$custom_song_67_artist",
+                "$cover": "custom_covers/cover67",
+                "$sound_event": "song.custom67.ui",
+                "$quaver_location": [ 20, 8 ]
+              }
+            },
+            {
+              "custom68@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_68_title",
+                "$identifier": "tab.music_player.song.custom68",
+                "$duration": "$custom_song_68_duration",
+                "$duration_in_seconds": "$custom_song_68_duration_in_seconds",
+                "$artist": "$custom_song_68_artist",
+                "$cover": "custom_covers/cover68",
+                "$sound_event": "song.custom68.ui",
+                "$quaver_location": [ 25, 8 ]
+              }
+            },
+            {
+              "custom69@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_69_title",
+                "$identifier": "tab.music_player.song.custom69",
+                "$duration": "$custom_song_69_duration",
+                "$duration_in_seconds": "$custom_song_69_duration_in_seconds",
+                "$artist": "$custom_song_69_artist",
+                "$cover": "custom_covers/cover69",
+                "$sound_event": "song.custom69.ui",
+                "$quaver_location": [ 30, 8 ]
+              }
+            },
+            {
+              "custom70@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_70_title",
+                "$identifier": "tab.music_player.song.custom70",
+                "$duration_in_seconds": "$custom_song_70_duration_in_seconds",
+                "$duration": "$custom_song_70_duration",
+                "$artist": "$custom_song_70_artist",
+                "$cover": "custom_covers/cover70",
+                "$sound_event": "song.custom70.ui",
+                "$quaver_location": [ 35, 8 ]
+              }
+            },
+            {
+              "custom71@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_71_title",
+                "$identifier": "tab.music_player.song.custom71",
+                "$duration": "$custom_song_71_duration",
+                "$duration_in_seconds": "$custom_song_71_duration_in_seconds",
+                "$artist": "$custom_song_71_artist",
+                "$cover": "custom_covers/cover71",
+                "$sound_event": "song.custom71.ui",
+                "$quaver_location": [ 40, 8 ]
+              }
+            },
+            {
+              "custom72@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_72_title",
+                "$identifier": "tab.music_player.song.custom72",
+                "$duration": "$custom_song_72_duration",
+                "$duration_in_seconds": "$custom_song_72_duration_in_seconds",
+                "$artist": "$custom_song_72_artist",
+                "$cover": "custom_covers/cover72",
+                "$sound_event": "song.custom72.ui",
+                "$quaver_location": [ 45, 8 ]
+              }
+            },
+            {
+              "custom73@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_73_title",
+                "$identifier": "tab.music_player.song.custom73",
+                "$duration": "$custom_song_73_duration",
+                "$duration_in_seconds": "$custom_song_73_duration_in_seconds",
+                "$artist": "$custom_song_73_artist",
+                "$cover": "custom_covers/cover73",
+                "$sound_event": "song.custom73.ui",
+                "$quaver_location": [ 50, 8 ]
+              }
+            },
+            {
+              "custom74@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_74_title",
+                "$identifier": "tab.music_player.song.custom74",
+                "$duration": "$custom_song_74_duration",
+                "$duration_in_seconds": "$custom_song_74_duration_in_seconds",
+                "$artist": "$custom_song_74_artist",
+                "$cover": "custom_covers/cover74",
+                "$sound_event": "song.custom74.ui",
+                "$quaver_location": [ 55, 8 ]
+              }
+            },
+            {
+              "custom75@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_75_title",
+                "$identifier": "tab.music_player.song.custom75",
+                "$duration": "$custom_song_75_duration",
+                "$duration_in_seconds": "$custom_song_75_duration_in_seconds",
+                "$artist": "$custom_song_75_artist",
+                "$cover": "custom_covers/cover75",
+                "$sound_event": "song.custom75.ui",
+                "$quaver_location": [ 60, 8 ],
+                "variables": [
+                  {
+                    "requires": "(not $show_custom_songs_76_to_100)",
+                    "$section_bottom": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "custom_76_to_100_stack_panel": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "ignored": "(not $show_custom_songs_76_to_100)",
+          "$quaver_variant": "inverted_upside_down",
+          "controls": [
+            {
+              "custom76@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_76_title",
+                "$identifier": "tab.music_player.song.custom76",
+                "$duration": "$custom_song_76_duration",
+                "$duration_in_seconds": "$custom_song_76_duration_in_seconds",
+                "$artist": "$custom_song_76_artist",
+                "$cover": "custom_covers/cover76",
+                "$sound_event": "song.custom76.ui",
+                "$quaver_location": [ 0, 0 ]
+              }
+            },
+            {
+              "custom77@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_77_title",
+                "$identifier": "tab.music_player.song.custom77",
+                "$duration": "$custom_song_77_duration",
+                "$duration_in_seconds": "$custom_song_77_duration_in_seconds",
+                "$artist": "$custom_song_77_artist",
+                "$cover": "custom_covers/cover77",
+                "$sound_event": "song.custom77.ui",
+                "$quaver_location": [ 5, 0 ]
+              }
+            },
+            {
+              "custom78@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_78_title",
+                "$identifier": "tab.music_player.song.custom78",
+                "$duration": "$custom_song_78_duration",
+                "$duration_in_seconds": "$custom_song_78_duration_in_seconds",
+                "$artist": "$custom_song_78_artist",
+                "$cover": "custom_covers/cover78",
+                "$sound_event": "song.custom78.ui",
+                "$quaver_location": [ 10, 0 ]
+              }
+            },
+            {
+              "custom79@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_79_title",
+                "$identifier": "tab.music_player.song.custom79",
+                "$duration": "$custom_song_79_duration",
+                "$duration_in_seconds": "$custom_song_79_duration_in_seconds",
+                "$artist": "$custom_song_79_artist",
+                "$cover": "custom_covers/cover79",
+                "$sound_event": "song.custom79.ui",
+                "$quaver_location": [ 15, 0 ]
+              }
+            },
+            {
+              "custom80@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_80_title",
+                "$identifier": "tab.music_player.song.custom80",
+                "$duration": "$custom_song_80_duration",
+                "$duration_in_seconds": "$custom_song_80_duration_in_seconds",
+                "$artist": "$custom_song_80_artist",
+                "$cover": "custom_covers/cover80",
+                "$sound_event": "song.custom80.ui",
+                "$quaver_location": [ 20, 0 ]
+              }
+            },
+            {
+              "custom81@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_81_title",
+                "$identifier": "tab.music_player.song.custom81",
+                "$duration": "$custom_song_81_duration",
+                "$duration_in_seconds": "$custom_song_81_duration_in_seconds",
+                "$artist": "$custom_song_81_artist",
+                "$cover": "custom_covers/cover81",
+                "$sound_event": "song.custom81.ui",
+                "$quaver_location": [ 25, 0 ]
+              }
+            },
+            {
+              "custom82@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_82_title",
+                "$identifier": "tab.music_player.song.custom82",
+                "$duration": "$custom_song_82_duration",
+                "$duration_in_seconds": "$custom_song_82_duration_in_seconds",
+                "$artist": "$custom_song_82_artist",
+                "$cover": "custom_covers/cover82",
+                "$sound_event": "song.custom82.ui",
+                "$quaver_location": [ 30, 0 ]
+              }
+            },
+            {
+              "custom83@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_83_title",
+                "$identifier": "tab.music_player.song.custom83",
+                "$duration": "$custom_song_83_duration",
+                "$duration_in_seconds": "$custom_song_83_duration_in_seconds",
+                "$artist": "$custom_song_83_artist",
+                "$cover": "custom_covers/cover83",
+                "$sound_event": "song.custom83.ui",
+                "$quaver_location": [ 35, 0 ]
+              }
+            },
+            {
+              "custom84@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_84_title",
+                "$identifier": "tab.music_player.song.custom84",
+                "$duration": "$custom_song_84_duration",
+                "$duration_in_seconds": "$custom_song_84_duration_in_seconds",
+                "$artist": "$custom_song_84_artist",
+                "$cover": "custom_covers/cover84",
+                "$sound_event": "song.custom84.ui",
+                "$quaver_location": [ 40, 0 ]
+              }
+            },
+            {
+              "custom85@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_85_title",
+                "$identifier": "tab.music_player.song.custom85",
+                "$duration": "$custom_song_85_duration",
+                "$duration_in_seconds": "$custom_song_85_duration_in_seconds",
+                "$artist": "$custom_song_85_artist",
+                "$cover": "custom_covers/cover85",
+                "$sound_event": "song.custom85.ui",
+                "$quaver_location": [ 45, 0 ]
+              }
+            },
+            {
+              "custom86@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_86_title",
+                "$identifier": "tab.music_player.song.custom86",
+                "$duration": "$custom_song_86_duration",
+                "$duration_in_seconds": "$custom_song_86_duration_in_seconds",
+                "$artist": "$custom_song_86_artist",
+                "$cover": "custom_covers/cover86",
+                "$sound_event": "song.custom86.ui",
+                "$quaver_location": [ 50, 0 ]
+              }
+            },
+            {
+              "custom87@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_87_title",
+                "$identifier": "tab.music_player.song.custom87",
+                "$duration": "$custom_song_87_duration",
+                "$duration_in_seconds": "$custom_song_87_duration_in_seconds",
+                "$artist": "$custom_song_87_artist",
+                "$cover": "custom_covers/cover87",
+                "$sound_event": "song.custom87.ui",
+                "$quaver_location": [ 55, 0 ]
+              }
+            },
+            {
+              "custom88@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_88_title",
+                "$identifier": "tab.music_player.song.custom88",
+                "$duration": "$custom_song_88_duration",
+                "$duration_in_seconds": "$custom_song_88_duration_in_seconds",
+                "$artist": "$custom_song_88_artist",
+                "$cover": "custom_covers/cover88",
+                "$sound_event": "song.custom88.ui",
+                "$quaver_location": [ 0, 8 ]
+              }
+            },
+            {
+              "custom89@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_89_title",
+                "$identifier": "tab.music_player.song.custom89",
+                "$duration": "$custom_song_89_duration",
+                "$duration_in_seconds": "$custom_song_89_duration_in_seconds",
+                "$artist": "$custom_song_89_artist",
+                "$cover": "custom_covers/cover89",
+                "$sound_event": "song.custom89.ui",
+                "$quaver_location": [ 5, 8 ]
+              }
+            },
+            {
+              "custom90@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_90_title",
+                "$identifier": "tab.music_player.song.custom90",
+                "$duration": "$custom_song_90_duration",
+                "$duration_in_seconds": "$custom_song_90_duration_in_seconds",
+                "$artist": "$custom_song_90_artist",
+                "$cover": "custom_covers/cover90",
+                "$sound_event": "song.custom90.ui",
+                "$quaver_location": [ 10, 8 ]
+              }
+            },
+            {
+              "custom91@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_91_title",
+                "$identifier": "tab.music_player.song.custom91",
+                "$duration": "$custom_song_91_duration",
+                "$duration_in_seconds": "$custom_song_91_duration_in_seconds",
+                "$artist": "$custom_song_91_artist",
+                "$cover": "custom_covers/cover91",
+                "$sound_event": "song.custom91.ui",
+                "$quaver_location": [ 15, 8 ]
+              }
+            },
+            {
+              "custom92@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_92_title",
+                "$identifier": "tab.music_player.song.custom92",
+                "$duration": "$custom_song_92_duration",
+                "$duration_in_seconds": "$custom_song_92_duration_in_seconds",
+                "$artist": "$custom_song_92_artist",
+                "$cover": "custom_covers/cover92",
+                "$sound_event": "song.custom92.ui",
+                "$quaver_location": [ 20, 8 ]
+              }
+            },
+            {
+              "custom93@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_93_title",
+                "$identifier": "tab.music_player.song.custom93",
+                "$duration": "$custom_song_93_duration",
+                "$duration_in_seconds": "$custom_song_93_duration_in_seconds",
+                "$artist": "$custom_song_93_artist",
+                "$cover": "custom_covers/cover93",
+                "$sound_event": "song.custom93.ui",
+                "$quaver_location": [ 25, 8 ]
+              }
+            },
+            {
+              "custom94@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_94_title",
+                "$identifier": "tab.music_player.song.custom94",
+                "$duration": "$custom_song_94_duration",
+                "$duration_in_seconds": "$custom_song_94_duration_in_seconds",
+                "$artist": "$custom_song_94_artist",
+                "$cover": "custom_covers/cover94",
+                "$sound_event": "song.custom94.ui",
+                "$quaver_location": [ 30, 8 ]
+              }
+            },
+            {
+              "custom95@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_95_title",
+                "$identifier": "tab.music_player.song.custom95",
+                "$duration": "$custom_song_95_duration",
+                "$duration_in_seconds": "$custom_song_95_duration_in_seconds",
+                "$artist": "$custom_song_95_artist",
+                "$cover": "custom_covers/cover95",
+                "$sound_event": "song.custom95.ui",
+                "$quaver_location": [ 35, 8 ]
+              }
+            },
+            {
+              "custom96@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_96_title",
+                "$identifier": "tab.music_player.song.custom96",
+                "$duration": "$custom_song_96_duration",
+                "$duration_in_seconds": "$custom_song_96_duration_in_seconds",
+                "$artist": "$custom_song_96_artist",
+                "$cover": "custom_covers/cover96",
+                "$sound_event": "song.custom96.ui",
+                "$quaver_location": [ 40, 8 ]
+              }
+            },
+            {
+              "custom97@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_97_title",
+                "$identifier": "tab.music_player.song.custom97",
+                "$duration": "$custom_song_97_duration",
+                "$duration_in_seconds": "$custom_song_97_duration_in_seconds",
+                "$artist": "$custom_song_97_artist",
+                "$cover": "custom_covers/cover97",
+                "$sound_event": "song.custom97.ui",
+                "$quaver_location": [ 45, 8 ]
+              }
+            },
+            {
+              "custom98@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_98_title",
+                "$identifier": "tab.music_player.song.custom98",
+                "$duration": "$custom_song_98_duration",
+                "$duration_in_seconds": "$custom_song_98_duration_in_seconds",
+                "$artist": "$custom_song_98_artist",
+                "$cover": "custom_covers/cover98",
+                "$sound_event": "song.custom98.ui",
+                "$quaver_location": [ 50, 8 ]
+              }
+            },
+            {
+              "custom99@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_99_title",
+                "$identifier": "tab.music_player.song.custom99",
+                "$duration": "$custom_song_99_duration",
+                "$duration_in_seconds": "$custom_song_99_duration_in_seconds",
+                "$artist": "$custom_song_99_artist",
+                "$cover": "custom_covers/cover99",
+                "$sound_event": "song.custom99.ui",
+                "$quaver_location": [ 55, 8 ]
+              }
+            },
+            {
+              "custom100@music_player.music_player_button_custom_base": {
+                "$title": "$custom_song_100_title",
+                "$identifier": "tab.music_player.song.custom100",
+                "$duration": "$custom_song_100_duration",
+                "$duration_in_seconds": "$custom_song_100_duration_in_seconds",
+                "$artist": "$custom_song_100_artist",
+                "$cover": "custom_covers/cover100",
+                "$sound_event": "song.custom100.ui",
+                "$quaver_location": [ 60, 8 ],
+                "$section_bottom": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "music_player_album_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "album_title@music_player.music_player_title": {
+          "$text": "tab.music_player.album.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "volume_alpha@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.album.volume_alpha", //Non-custom songs only have "$identifier" variables. Since the player is not able to give them custom titles, the "$title" variable is unnecessary.
+          "$sound_event|default": "album.alpha.ui",
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ],
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$sound_event": "album.alpha_native.ui" //If the active pack is not Music+, a random song from an alternate version of this album is selected. This album only includes songs that are in Minecraft by default. This is done to avoid the chance of a nonexistent sound file being called by the music player.
+            }
+          ],
+          "$section_top": true
+        }
+      },
+      {
+        "volume_beta@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.album.volume_beta",
+          "$sound_event|default": "album.beta.ui",
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ],
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$sound_event": "album.beta_native.ui"
+            }
+          ]
+        }
+      },
+      {
+        "update_aquatic@music_player.music_player_button_update_aquatic_base": {
+          "$identifier": "tab.music_player.album.update_aquatic",
+          "$sound_event": "album.update_aquatic.ui",
+          "$album_image_panel_controls": [ //The three Update Aquatic music tracks have unique covers. I chose to represent the album with the cover of Dragon Fish because the image is vaguely cube-shaped, which matches the covers of Volumes Alpha and Beta.
+            {
+              "dragon_fish@music_player.dragon_fish_cover": {}
+            }
+          ],
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ] //Some albums don't have a native variant. In the case of the Update Aquatic and Nether Update albums, there are no songs which aren't included in Minecraft by default, so a native album is unnecessary.
+        }
+      },
+      {
+        "nether_update@music_player.music_player_button_nether_update_base": {
+          "$identifier": "tab.music_player.album.nether_update",
+          "$sound_event": "album.nether_update.ui",
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ]
+        }
+      },
+      {
+        "caves_and_cliffs@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.album.caves_and_cliffs",
+          "$sound_event": "album.caves_and_cliffs.ui",
+          "$artist": "tab.music_player.artist.lena_raine_and_kumi_tanioka",
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ],
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$sound_event": "album.caves_and_cliffs_native.ui"
+            }
+          ]
+        }
+      },
+      {
+        "music_discs@music_player.music_player_song_button_panel_base": {
+          "$identifier": "tab.music_player.album.music_discs",
+          "$sound_event|default": "album.music_discs.ui",
+          "$artist": "tab.music_player.artist.c418_and_lena_raine",
+          "$album_image_panel_controls": [
+            {
+              "music_discs@music_player.music_discs_cover": {}
+            }
+          ],
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ],
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$sound_event": "album.music_discs_native.ui",
+              "$section_bottom": true //If Music+ songs aren't included, the album section ends here.
+            }
+          ]
+        }
+      },
+      {
+        "festive@music_player.music_player_button_festive_base": { //This album is called "Festive" instead of "Festive Remixes" because it also includes Flake and Kyoto from Volume Beta.
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.album.festive",
+          "$sound_event": "album.festive.ui",
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ] //This album doesn't have a native variant because none of its songs are included in Minecraft by default.
+        }
+      },
+      {
+        "minecraft_earth@music_player.music_player_button_minecraft_earth_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.album.minecraft_earth",
+          "$sound_event": "album.minecraft_earth.ui",
+          "$type_image_panel_controls": [
+            {
+              "shuffle@music_player.shuffle_image": {}
+            }
+          ],
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_volume_alpha_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "volume_alpha_title@music_player.music_player_title": {
+          "$text": "tab.music_player.volume_alpha.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "key@music_player.music_player_button_volume_alpha_base": { //Some songs don't have an "$artist" variable but still show the correct artist in-game. When an album is composed by only one person, the artist is set at the same level as the album cover.
+          "$identifier": "tab.music_player.song.key",
+          "$duration": "tab.music_player.duration.key", //Durations didn't strictly need to be translatable, but it's simplest to have all on-screen text located in the language files instead of the JSON code.
+          "$duration_in_seconds": 65, //On the other hand, the actual duration of the song file will never change, and this value is never displayed on screen, so it can be safely set here.
+          "$sound_event": "song.key.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "door@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)", //Some songs have an "if not $is_music_plus then ignore" property. This property is on all non-native songs so that they will be hidden when not using Music+, as the files they rely on to play would be missing.
+          "$identifier": "tab.music_player.song.door",
+          "$duration": "tab.music_player.duration.door",
+          "$duration_in_seconds": 111,
+          "$sound_event": "song.door.ui"
+        }
+      },
+      {
+        "subwoofer_lullaby@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.subwoofer_lullaby",
+          "$duration": "tab.music_player.duration.subwoofer_lullaby",
+          "$duration_in_seconds": 208,
+          "$sound_event": "song.subwoofer_lullaby.ui"
+        }
+      },
+      {
+        "death@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.death",
+          "$duration": "tab.music_player.duration.death",
+          "$duration_in_seconds": 41,
+          "$sound_event": "song.death.ui"
+        }
+      },
+      {
+        "living_mice@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.living_mice",
+          "$duration": "tab.music_player.duration.living_mice",
+          "$duration_in_seconds": 177,
+          "$sound_event": "song.living_mice.ui"
+        }
+      },
+      {
+        "moog_city@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.moog_city",
+          "$duration": "tab.music_player.duration.moog_city",
+          "$duration_in_seconds": 160,
+          "$sound_event": "song.moog_city.ui"
+        }
+      },
+      {
+        "haggstrom@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.haggstrom",
+          "$duration": "tab.music_player.duration.haggstrom",
+          "$duration_in_seconds": 204,
+          "$sound_event": "song.haggstrom.ui"
+        }
+      },
+      {
+        "minecraft@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.minecraft",
+          "$duration": "tab.music_player.duration.minecraft",
+          "$duration_in_seconds": 254,
+          "$sound_event": "song.minecraft.ui"
+        }
+      },
+      {
+        "oxygene@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.oxygene",
+          "$duration": "tab.music_player.duration.oxygene",
+          "$duration_in_seconds": 65,
+          "$sound_event": "song.oxygene.ui"
+        }
+      },
+      {
+        "equinoxe@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.equinoxe",
+          "$duration": "tab.music_player.duration.equinoxe",
+          "$duration_in_seconds": 114,
+          "$sound_event": "song.equinoxe.ui"
+        }
+      },
+      {
+        "mice_on_venus@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.mice_on_venus",
+          "$duration": "tab.music_player.duration.mice_on_venus",
+          "$duration_in_seconds": 281,
+          "$sound_event": "song.mice_on_venus.ui"
+        }
+      },
+      {
+        "dry_hands@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.dry_hands",
+          "$duration": "tab.music_player.duration.dry_hands",
+          "$duration_in_seconds": 68,
+          "$sound_event": "song.dry_hands.ui"
+        }
+      },
+      {
+        "wet_hands@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.wet_hands",
+          "$duration": "tab.music_player.duration.wet_hands",
+          "$duration_in_seconds": 90,
+          "$sound_event": "song.wet_hands.ui"
+        }
+      },
+      {
+        "clark@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.clark",
+          "$duration": "tab.music_player.duration.clark",
+          "$duration_in_seconds": 191,
+          "$sound_event": "song.clark.ui"
+        }
+      },
+      {
+        "chris@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.chris",
+          "$duration": "tab.music_player.duration.chris",
+          "$duration_in_seconds": 87,
+          "$sound_event": "song.chris.ui"
+        }
+      },
+      {
+        "thirteen@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.thirteen",
+          "$duration": "tab.music_player.duration.thirteen",
+          "$duration_in_seconds": 176,
+          "$sound_event": "song.thirteen.ui"
+        }
+      },
+      {
+        "excuse@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.excuse",
+          "$duration": "tab.music_player.duration.excuse",
+          "$duration_in_seconds": 124,
+          "$sound_event": "song.excuse.ui"
+        }
+      },
+      {
+        "sweden@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.sweden",
+          "$duration": "tab.music_player.duration.sweden",
+          "$duration_in_seconds": 215,
+          "$sound_event": "song.sweden.ui"
+        }
+      },
+      {
+        "cat@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "$is_music_plus",
+          "$identifier": "tab.music_player.song.cat",
+          "$duration": "tab.music_player.duration.cat",
+          "$duration_in_seconds": 186,
+          "$sound_event": "song.cat.ui"
+        }
+      },
+      {
+        "cat_and_dog@music_player.music_player_button_volume_alpha_base": { //With Music+ enabled, Cat plays Dog immediately afterward, so the duration includes the full length of both songs.
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.cat",
+          "$duration": "tab.music_player.duration.cat_and_dog",
+          "$duration_in_seconds": 334,
+          "$sound_event": "song.cat.ui"
+        }
+      },
+      {
+        "dog@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.dog",
+          "$duration": "tab.music_player.duration.dog",
+          "$duration_in_seconds": 145,
+          "$sound_event": "song.dog.ui"
+        }
+      },
+      {
+        "danny@music_player.music_player_button_volume_alpha_base": {
+          "$identifier": "tab.music_player.song.danny",
+          "$duration": "tab.music_player.duration.danny",
+          "$duration_in_seconds": 254,
+          "$sound_event": "song.danny.ui",
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$section_bottom": true
+            }
+          ]
+        }
+      },
+      {
+        "beginning@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.beginning",
+          "$duration": "tab.music_player.duration.beginning",
+          "$duration_in_seconds": 102,
+          "$sound_event": "song.beginning.ui"
+        }
+      },
+      {
+        "droopy_likes_ricochet@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.droopy_likes_ricochet",
+          "$duration": "tab.music_player.duration.droopy_likes_ricochet",
+          "$duration_in_seconds": 96,
+          "$sound_event": "song.droopy_likes_ricochet.ui"
+        }
+      },
+      {
+        "droopy_likes_your_face@music_player.music_player_button_volume_alpha_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.droopy_likes_your_face",
+          "$duration": "tab.music_player.duration.droopy_likes_your_face",
+          "$duration_in_seconds": 116,
+          "$sound_event": "song.droopy_likes_your_face.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_volume_beta_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "volume_beta_title@music_player.music_player_title": {
+          "$text": "tab.music_player.volume_beta.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "ki@music_player.music_player_button_volume_beta_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.ki",
+          "$duration": "tab.music_player.duration.ki",
+          "$duration_in_seconds": 92,
+          "$sound_event": "song.ki.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "alpha@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.alpha",
+          "$duration": "tab.music_player.duration.alpha",
+          "$duration_in_seconds": 603,
+          "$sound_event": "song.alpha.ui",
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$section_top": true
+            }
+          ]
+        }
+      },
+      {
+        "dead_voxel@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.dead_voxel",
+          "$duration": "tab.music_player.duration.dead_voxel",
+          "$duration_in_seconds": 296,
+          "$sound_event": "song.dead_voxel.ui"
+        }
+      },
+      {
+        "blind_spots@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.blind_spots",
+          "$duration": "tab.music_player.duration.blind_spots",
+          "$duration_in_seconds": 332,
+          "$sound_event": "song.blind_spots.ui"
+        }
+      },
+      {
+        "flake@music_player.music_player_button_volume_beta_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.flake",
+          "$duration": "tab.music_player.duration.flake",
+          "$duration_in_seconds": 170,
+          "$sound_event": "song.flake.ui"
+        }
+      },
+      {
+        "moog_city_2@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.moog_city_2",
+          "$duration": "tab.music_player.duration.moog_city_2",
+          "$duration_in_seconds": 180,
+          "$sound_event": "song.moog_city_2.ui"
+        }
+      },
+      {
+        "concrete_halls@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.concrete_halls",
+          "$duration": "tab.music_player.duration.concrete_halls",
+          "$duration_in_seconds": 254,
+          "$sound_event": "song.concrete_halls.ui"
+        }
+      },
+      {
+        "biome_fest@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.biome_fest",
+          "$duration": "tab.music_player.duration.biome_fest",
+          "$duration_in_seconds": 378,
+          "$sound_event": "song.biome_fest.ui"
+        }
+      },
+      {
+        "mutation@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.mutation",
+          "$duration": "tab.music_player.duration.mutation",
+          "$duration_in_seconds": 185,
+          "$sound_event": "song.mutation.ui"
+        }
+      },
+      {
+        "haunt_muskie@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.haunt_muskie",
+          "$duration": "tab.music_player.duration.haunt_muskie",
+          "$duration_in_seconds": 361,
+          "$sound_event": "song.haunt_muskie.ui"
+        }
+      },
+      {
+        "warmth@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.warmth",
+          "$duration": "tab.music_player.duration.warmth",
+          "$duration_in_seconds": 239,
+          "$sound_event": "song.warmth.ui"
+        }
+      },
+      {
+        "floating_trees@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.floating_trees",
+          "$duration": "tab.music_player.duration.floating_trees",
+          "$duration_in_seconds": 244,
+          "$sound_event": "song.floating_trees.ui"
+        }
+      },
+      {
+        "aria_math@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.aria_math",
+          "$duration": "tab.music_player.duration.aria_math",
+          "$duration_in_seconds": 310,
+          "$sound_event": "song.aria_math.ui"
+        }
+      },
+      {
+        "kyoto@music_player.music_player_button_volume_beta_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.kyoto",
+          "$duration": "tab.music_player.duration.kyoto",
+          "$duration_in_seconds": 249,
+          "$sound_event": "song.kyoto.ui"
+        }
+      },
+      {
+        "ballad_of_the_cats@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.ballad_of_the_cats",
+          "$duration": "tab.music_player.duration.ballad_of_the_cats",
+          "$duration_in_seconds": 275,
+          "$sound_event": "song.ballad_of_the_cats.ui"
+        }
+      },
+      {
+        "taswell@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.taswell",
+          "$duration": "tab.music_player.duration.taswell",
+          "$duration_in_seconds": 515,
+          "$sound_event": "song.taswell.ui"
+        }
+      },
+      {
+        "beginning_2@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.beginning_2",
+          "$duration": "tab.music_player.duration.beginning_2",
+          "$duration_in_seconds": 176,
+          "$sound_event": "song.beginning_2.ui"
+        }
+      },
+      {
+        "dreiton@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.dreiton",
+          "$duration": "tab.music_player.duration.dreiton",
+          "$duration_in_seconds": 497,
+          "$sound_event": "song.dreiton.ui"
+        }
+      },
+      {
+        "the_end@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.the_end",
+          "$duration": "tab.music_player.duration.the_end",
+          "$duration_in_seconds": 904,
+          "$sound_event": "song.the_end.ui"
+        }
+      },
+      {
+        "chirp@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.chirp",
+          "$duration": "tab.music_player.duration.chirp",
+          "$duration_in_seconds": 187,
+          "$sound_event": "song.chirp.ui"
+        }
+      },
+      {
+        "wait@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.wait",
+          "$duration": "tab.music_player.duration.wait",
+          "$duration_in_seconds": 234,
+          "$sound_event": "song.wait.ui"
+        }
+      },
+      {
+        "mellohi@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.mellohi",
+          "$duration": "tab.music_player.duration.mellohi",
+          "$duration_in_seconds": 98,
+          "$sound_event": "song.mellohi.ui"
+        }
+      },
+      {
+        "stal@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.stal",
+          "$duration": "tab.music_player.duration.stal",
+          "$duration_in_seconds": 152,
+          "$sound_event": "song.stal.ui"
+        }
+      },
+      {
+        "strad@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.strad",
+          "$duration": "tab.music_player.duration.strad",
+          "$duration_in_seconds": 188,
+          "$sound_event": "song.strad.ui"
+        }
+      },
+      {
+        "eleven@music_player.music_player_button_volume_beta_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.eleven",
+          "$duration": "tab.music_player.duration.eleven",
+          "$duration_in_seconds": 71,
+          "$sound_event": "song.eleven.ui"
+        }
+      },
+      {
+        "broken_eleven@music_player.music_player_button_volume_beta_base": {
+          "ignored": "$is_music_plus",
+          "$identifier": "tab.music_player.song.broken_eleven",
+          "$duration": "tab.music_player.duration.broken_eleven",
+          "$duration_in_seconds": 71,
+          "$sound_event": "song.eleven.ui"
+        }
+      },
+      {
+        "ward@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.ward",
+          "$duration": "tab.music_player.duration.ward",
+          "$duration_in_seconds": 250,
+          "$sound_event": "song.ward.ui"
+        }
+      },
+      {
+        "mall@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.mall",
+          "$duration": "tab.music_player.duration.mall",
+          "$duration_in_seconds": 198,
+          "$sound_event": "song.mall.ui"
+        }
+      },
+      {
+        "blocks@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.blocks",
+          "$duration": "tab.music_player.duration.blocks",
+          "$duration_in_seconds": 343,
+          "$sound_event": "song.blocks.ui"
+        }
+      },
+      {
+        "far@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.far",
+          "$duration": "tab.music_player.duration.far",
+          "$duration_in_seconds": 192,
+          "$sound_event": "song.far.ui",
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$section_bottom": true
+            }
+          ]
+        }
+      },
+      {
+        "intro@music_player.music_player_button_volume_beta_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.intro",
+          "$duration": "tab.music_player.duration.intro",
+          "$duration_in_seconds": 276,
+          "$sound_event": "song.intro.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_update_aquatic_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "update_aquatic_title@music_player.music_player_title": {
+          "$text": "tab.music_player.update_aquatic.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "axolotl@music_player.music_player_button_update_aquatic_base": {
+          "$identifier": "tab.music_player.song.axolotl",
+          "$duration": "tab.music_player.duration.axolotl",
+          "$duration_in_seconds": 303,
+          "$sound_event": "song.axolotl.ui",
+          "$album_image_panel_controls": [
+            {
+              "axolotl@music_player.axolotl_cover": {}
+            }
+          ],
+          "$section_top": true
+        }
+      },
+      {
+        "dragon_fish@music_player.music_player_button_update_aquatic_base": {
+          "$identifier": "tab.music_player.song.dragon_fish",
+          "$duration": "tab.music_player.duration.dragon_fish",
+          "$duration_in_seconds": 372,
+          "$sound_event": "song.dragon_fish.ui",
+          "$album_image_panel_controls": [
+            {
+              "dragon_fish@music_player.dragon_fish_cover": {}
+            }
+          ]
+        }
+      },
+      {
+        "shuniji@music_player.music_player_button_update_aquatic_base": {
+          "$identifier": "tab.music_player.song.shuniji",
+          "$duration": "tab.music_player.duration.shuniji",
+          "$duration_in_seconds": 244,
+          "$sound_event": "song.shuniji.ui",
+          "$album_image_panel_controls": [
+            {
+              "shuniji@music_player.shuniji_cover": {}
+            }
+          ],
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_nether_update_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "nether_update_title@music_player.music_player_title": {
+          "$text": "tab.music_player.nether_update.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "chrysopoeia@music_player.music_player_button_nether_update_base": {
+          "$identifier": "tab.music_player.song.chrysopoeia",
+          "$duration": "tab.music_player.duration.chrysopoeia",
+          "$duration_in_seconds": 303,
+          "$sound_event": "song.chrysopoeia.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "rubedo@music_player.music_player_button_nether_update_base": {
+          "$identifier": "tab.music_player.song.rubedo",
+          "$duration": "tab.music_player.duration.rubedo",
+          "$duration_in_seconds": 312,
+          "$sound_event": "song.rubedo.ui"
+        }
+      },
+      {
+        "so_below@music_player.music_player_button_nether_update_base": {
+          "$identifier": "tab.music_player.song.so_below",
+          "$duration": "tab.music_player.duration.so_below",
+          "$duration_in_seconds": 318,
+          "$sound_event": "song.so_below.ui"
+        }
+      },
+      {
+        "pigstep@music_player.music_player_button_nether_update_base": {
+          "$identifier": "tab.music_player.song.pigstep",
+          "$duration": "tab.music_player.duration.pigstep",
+          "$duration_in_seconds": 148,
+          "$sound_event": "song.pigstep.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_caves_and_cliffs_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "caves_and_cliffs_title@music_player.music_player_title": {
+          "$text": "tab.music_player.caves_and_cliffs.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "stand_tall@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.stand_tall",
+          "$duration": "tab.music_player.duration.stand_tall",
+          "$duration_in_seconds": 308,
+          "$sound_event": "song.stand_tall.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "left_to_bloom@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.left_to_bloom",
+          "$duration": "tab.music_player.duration.left_to_bloom",
+          "$duration_in_seconds": 342,
+          "$sound_event": "song.left_to_bloom.ui"
+        }
+      },
+      {
+        "ancestry@music_player.music_player_button_caves_and_cliffs_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.ancestry",
+          "$duration": "tab.music_player.duration.ancestry",
+          "$duration_in_seconds": 343,
+          "$sound_event": "song.ancestry.ui"
+        }
+      },
+      {
+        "wending@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.wending",
+          "$duration": "tab.music_player.duration.wending",
+          "$duration_in_seconds": 314,
+          "$sound_event": "song.wending.ui"
+        }
+      },
+      {
+        "infinite_amethyst@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.infinite_amethyst",
+          "$duration": "tab.music_player.duration.infinite_amethyst",
+          "$duration_in_seconds": 271,
+          "$sound_event": "song.infinite_amethyst.ui"
+        }
+      },
+      {
+        "one_more_day@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.one_more_day",
+          "$duration": "tab.music_player.duration.one_more_day",
+          "$duration_in_seconds": 278,
+          "$sound_event": "song.one_more_day.ui"
+        }
+      },
+      {
+        "otherside@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.otherside",
+          "$duration": "tab.music_player.duration.otherside",
+          "$duration_in_seconds": 195,
+          "$sound_event": "song.otherside.ui"
+        }
+      },
+      {
+        "floating_dream@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.floating_dream",
+          "$duration": "tab.music_player.duration.floating_dream",
+          "$duration_in_seconds": 205,
+          "$artist": "tab.music_player.artist.kumi_tanioka",
+          "$sound_event": "song.floating_dream.ui"
+        }
+      },
+      {
+        "comforting_memories@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.comforting_memories",
+          "$duration": "tab.music_player.duration.comforting_memories",
+          "$duration_in_seconds": 275,
+          "$artist": "tab.music_player.artist.kumi_tanioka",
+          "$sound_event": "song.comforting_memories.ui"
+        }
+      },
+      {
+        "an_ordinary_day@music_player.music_player_button_caves_and_cliffs_base": {
+          "$identifier": "tab.music_player.song.an_ordinary_day",
+          "$duration": "tab.music_player.duration.an_ordinary_day",
+          "$duration_in_seconds": 331,
+          "$artist": "tab.music_player.artist.kumi_tanioka",
+          "$sound_event": "song.an_ordinary_day.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_music_discs_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "music_discs_title@music_player.music_player_title": {
+          "$text": "tab.music_player.music_discs.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "cat@music_player.music_player_button_music_discs_base": {
+          "ignored": "$is_music_plus",
+          "$identifier": "tab.music_player.song.cat",
+          "$duration": "tab.music_player.duration.cat",
+          "$duration_in_seconds": 186,
+          "$sound_event": "song.cat.ui",
+          "$music_disc_texture": "textures/items/record_cat",
+          "$section_top": true
+        }
+      },
+      {
+        "cat_and_dog@music_player.music_player_button_music_discs_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.cat",
+          "$duration": "tab.music_player.duration.cat_and_dog",
+          "$duration_in_seconds": 334,
+          "$sound_event": "song.cat.ui",
+          "$music_disc_texture": "textures/items/record_cat",
+          "$section_top": true //The Cat and the Cat and Dog song buttons will never appear at the same time, so both can be set as the section top without conflicting.
+        }
+      },
+      {
+        "dog@music_player.music_player_button_music_discs_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.dog",
+          "$duration": "tab.music_player.duration.dog",
+          "$duration_in_seconds": 145,
+          "$sound_event": "song.dog.ui",
+          "$music_disc_texture": "textures/items/record_dog"
+        }
+      },
+      {
+        "chirp@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.chirp",
+          "$duration": "tab.music_player.duration.chirp",
+          "$duration_in_seconds": 187,
+          "$sound_event": "song.chirp.ui",
+          "$music_disc_texture": "textures/items/record_chirp"
+        }
+      },
+      {
+        "wait@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.wait",
+          "$duration": "tab.music_player.duration.wait",
+          "$duration_in_seconds": 234,
+          "$sound_event": "song.wait.ui",
+          "$music_disc_texture": "textures/items/record_wait"
+        }
+      },
+      {
+        "mellohi@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.mellohi",
+          "$duration": "tab.music_player.duration.mellohi",
+          "$duration_in_seconds": 98,
+          "$sound_event": "song.mellohi.ui",
+          "$music_disc_texture": "textures/items/record_mellohi"
+        }
+      },
+      {
+        "stal@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.stal",
+          "$duration": "tab.music_player.duration.stal",
+          "$duration_in_seconds": 152,
+          "$sound_event": "song.stal.ui",
+          "$music_disc_texture": "textures/items/record_stal"
+        }
+      },
+      {
+        "strad@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.strad",
+          "$duration": "tab.music_player.duration.strad",
+          "$duration_in_seconds": 188,
+          "$sound_event": "song.strad.ui",
+          "$music_disc_texture": "textures/items/record_strad"
+        }
+      },
+      {
+        "eleven@music_player.music_player_button_music_discs_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.eleven",
+          "$duration": "tab.music_player.duration.eleven",
+          "$duration_in_seconds": 71,
+          "$sound_event": "song.eleven.ui",
+          "$music_disc_texture": "textures/items/record_11"
+        }
+      },
+      {
+        "broken_eleven@music_player.music_player_button_music_discs_base": {
+          "ignored": "$is_music_plus",
+          "$identifier": "tab.music_player.song.broken_eleven",
+          "$duration": "tab.music_player.duration.broken_eleven",
+          "$duration_in_seconds": 71,
+          "$sound_event": "song.eleven.ui",
+          "$music_disc_texture": "textures/items/record_11"
+        }
+      },
+      {
+        "ward@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.ward",
+          "$duration": "tab.music_player.duration.ward",
+          "$duration_in_seconds": 250,
+          "$sound_event": "song.ward.ui",
+          "$music_disc_texture": "textures/items/record_ward"
+        }
+      },
+      {
+        "mall@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.mall",
+          "$duration": "tab.music_player.duration.mall",
+          "$duration_in_seconds": 198,
+          "$sound_event": "song.mall.ui",
+          "$music_disc_texture": "textures/items/record_mall"
+        }
+      },
+      {
+        "blocks@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.blocks",
+          "$duration": "tab.music_player.duration.blocks",
+          "$duration_in_seconds": 343,
+          "$sound_event": "song.blocks.ui",
+          "$music_disc_texture": "textures/items/record_blocks"
+        }
+      },
+      {
+        "far@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.far",
+          "$duration": "tab.music_player.duration.far",
+          "$duration_in_seconds": 192,
+          "$sound_event": "song.far.ui",
+          "$music_disc_texture": "textures/items/record_far"
+        }
+      },
+      {
+        "pigstep@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.pigstep",
+          "$duration": "tab.music_player.duration.pigstep",
+          "$duration_in_seconds": 148,
+          "$artist": "tab.music_player.artist.lena_raine",
+          "$sound_event": "song.pigstep.ui",
+          "$music_disc_texture": "textures/items/record_pigstep"
+        }
+      },
+      {
+        "otherside@music_player.music_player_button_music_discs_base": {
+          "$identifier": "tab.music_player.song.otherside",
+          "$duration": "tab.music_player.duration.otherside",
+          "$duration_in_seconds": 195,
+          "$artist": "tab.music_player.artist.lena_raine",
+          "$sound_event": "song.otherside.ui",
+          "$music_disc_texture": "textures/items/record_otherside",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_festive_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "festive_title@music_player.music_player_title": {
+          "$text": "tab.music_player.festive.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "flake@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.flake",
+          "$duration": "tab.music_player.duration.flake",
+          "$duration_in_seconds": 170,
+          "$sound_event": "song.flake.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "kyoto@music_player.music_player_button_volume_beta_base": {
+          "$identifier": "tab.music_player.song.kyoto",
+          "$duration": "tab.music_player.duration.kyoto",
+          "$duration_in_seconds": 249,
+          "$sound_event": "song.kyoto.ui"
+        }
+      },
+      {
+        "ballad_of_the_cats_festive@music_player.music_player_button_festive_base": {
+          "$identifier": "tab.music_player.song.ballad_of_the_cats.festive",
+          "$duration": "tab.music_player.duration.ballad_of_the_cats.festive",
+          "$duration_in_seconds": 279,
+          "$sound_event": "song.ballad_of_the_cats.festive.ui"
+        }
+      },
+      {
+        "warmth_festive@music_player.music_player_button_festive_base": {
+          "$identifier": "tab.music_player.song.warmth.festive",
+          "$duration": "tab.music_player.duration.warmth.festive",
+          "$duration_in_seconds": 239,
+          "$sound_event": "song.warmth.festive.ui"
+        }
+      },
+      {
+        "the_end_festive@music_player.music_player_button_festive_base": {
+          "$identifier": "tab.music_player.song.the_end.festive",
+          "$duration": "tab.music_player.duration.the_end.festive",
+          "$duration_in_seconds": 904,
+          "$sound_event": "song.the_end.festive.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_festive_remixes_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "festive_remixes_title@music_player.music_player_title": {
+          "$text": "tab.music_player.festive_remixes.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "ballad_of_the_cats_festive@music_player.music_player_button_festive_base": {
+          "$identifier": "tab.music_player.song.ballad_of_the_cats.festive",
+          "$duration": "tab.music_player.duration.ballad_of_the_cats.festive",
+          "$duration_in_seconds": 279,
+          "$sound_event": "song.ballad_of_the_cats.festive.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "warmth_festive@music_player.music_player_button_festive_base": {
+          "$identifier": "tab.music_player.song.warmth.festive",
+          "$duration": "tab.music_player.duration.warmth.festive",
+          "$duration_in_seconds": 239,
+          "$sound_event": "song.warmth.festive.ui"
+        }
+      },
+      {
+        "the_end_festive@music_player.music_player_button_festive_base": {
+          "$identifier": "tab.music_player.song.the_end.festive",
+          "$duration": "tab.music_player.duration.the_end.festive",
+          "$duration_in_seconds": 904,
+          "$sound_event": "song.the_end.festive.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_minecraft_earth_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "minecraft_earth_title@music_player.music_player_title": {
+          "$text": "tab.music_player.minecraft_earth.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "earth@music_player.music_player_button_minecraft_earth_base": {
+          "$identifier": "tab.music_player.song.earth",
+          "$duration": "tab.music_player.duration.earth",
+          "$duration_in_seconds": 347,
+          "$sound_event": "song.earth.ui",
+          "$section_top": true
+        }
+      },
+      {
+        "sprouting@music_player.music_player_button_minecraft_earth_base": {
+          "$identifier": "tab.music_player.song.sprouting",
+          "$duration": "tab.music_player.duration.sprouting",
+          "$duration_in_seconds": 147,
+          "$sound_event": "song.sprouting.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+  "music_player_other_section": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "other_title@music_player.music_player_title": {
+          "$text": "tab.music_player.other.section"
+        }
+      },
+      {
+        "small_padding@how_to_play_common.small_padding": {}
+      },
+      {
+        "the_ender_dragon@music_player.music_player_button_other_base": {
+          "$identifier": "tab.music_player.song.the_ender_dragon",
+          "$duration": "tab.music_player.duration.the_ender_dragon",
+          "$duration_in_seconds": 344,
+          "$artist": "tab.music_player.artist.c418",
+          "$sound_event": "song.the_ender_dragon.ui",
+          "$section_top": true,
+          "variables": [
+            {
+              "requires": "(not $is_music_plus)",
+              "$section_bottom": true
+            }
+          ]
+        }
+      },
+      {
+        "magnetic_circuit@music_player.music_player_button_other_base": {
+          "ignored": "(not $is_music_plus)",
+          "$identifier": "tab.music_player.song.magnetic_circuit",
+          "$duration": "tab.music_player.duration.magnetic_circuit",
+          "$duration_in_seconds": 193,
+          "$artist": "tab.music_player.artist.markus_persson",
+          "$sound_event": "song.magnetic_circuit.ui",
+          "$section_bottom": true
+        }
+      }
+    ]
+  },
+//This object is the base of every song button in the music player. Its properties will be inherited by the objects in the above music player sections.
+  "music_player_title@how_to_play_common.header": {
+    "$body_text_color": "$section_title_text_color"
+  },
+  "music_player_song_button_panel_base": { //This object contains the basic button components that will be inherited by all player buttons used in the screen.
+    "type": "panel",
+    "size": [ "100%", 30 ],
+    "$title|default": "", //As some buttons in the music player don't use these variables, setting default values prevents content errors that would otherwise appear.
+    "$duration|default": "",
+    "$duration_in_seconds|default": 0,
+    "$album_image_offset|default": [ "50% - 16px", 0 ],
+    "$type_image_offset|default": [ "-50% + 16px", 0 ],
+    "controls": [
+      {
+        "album_image_panel": {
+          "type": "panel",
+          "offset": "$album_image_offset",
+          "layer": 7,
+          "controls": "$album_image_panel_controls" //This is made to be a variable so that it can be set to different values higher up depending on the player button type.
+        }
+      },
+      {
+        "type_image_panel": {
+          "type": "panel",
+          "offset": "$type_image_offset",
+          "layer": 7,
+          "controls": "$type_image_panel_controls",
+          "$type_image_panel_controls|default": [ //The speaker image is set as the default control here. This is because it is used for almost every situation. The shuffle image is very scarcely used in comparison.
+            {
+              "speaker@music_player.speaker_image": {}
+            }
+          ]
+        }
+      },
+      {
+        "duration_bar_panel@music_player.duration_bar_properties": { //The duration bar properties set further down in this file are retrieved here.
+          "type": "panel",
+          "size": "@music_player.anim_duration_bar_show", //The duration bar panel size is set to an animation so that it can appear when pressed.
+          "layer": 13,
+          "anchor_to": "center",
+          "anchor_from": "center",
+          "offset": [ 0, 5 ],
+          "clips_children": true, //The "clips_children" property forces all child controls to exist only within their parent panel. This is how the bar appears and disappears; its size is set to [ 182, 5 ] for the duration of the song, then back to [ 0, 0 ].
+          "controls": [
+            {
+              "duration_bar_empty@$duration_bar_empty": { //The inherited properties for the duration bars are set to variables so that they can change depending on the user's settings. These variables are set by the "duration_bar_properties" object.
+                "layer": 8,
+                "controls": [
+                  {
+                    "duration_bar_scroller": {
+                      "type": "panel",
+                      "size": "@music_player.anim_duration_bar_fill", //The duration bar scroller size is set to an animation so that it can slowly expand and reveal the filled bar when pressed.
+                      "layer": 12,
+                      "anchor_to": "left_middle", //By anchoring the left middle of the duration bar to the left middle of the duration bar panel, the scrolling overlay will expand to the right as its size is changed during by animation.
+                      "anchor_from": "left_middle",
+                      "clips_children": true, //The "clips_children" property is used again by the scroller to limit the full duration bar to exist only within its boundaries.
+                      "controls": [
+                        {
+                          "duration_bar_full@$duration_bar_full": {
+                            "layer": 10
+                          }
+                        },
+                        {
+                          "duration_bar_overlay_full@$duration_bar_overlay_full": {
+                            "layer": 11
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "duration_bar_overlay_empty@$duration_bar_overlay_empty": {
+                "layer": 9
+              }
+            }
+          ]
+        }
+      },
+      {
+        "music_player_button@settings_common.action_button": {
+          "$border_visible": false, //Removing the button border is a necessity so that it can be recolored and hidden depending on the button state.
+          "$button_text": "",
+          "$default_button_texture|default": "textures/ui/empty", //This property and the three below are what give the player buttons their unique look.
+          "$hover_button_texture|default": "textures/ui/focus_border_white",
+          "$pressed_button_texture|default": "textures/ui/focus_border_green",
+          "$locked_button_texture|default": "textures/ui/focus_border_red",
+          "$focus_override_right": "FOCUS_OVERRIDE_STOP", //Since there are no buttons to the right of the player buttons, controller are blocked from being able to scroll to the right.
+          "sound_name": "$sound_event", //This "$sound_event" variable is here so that each song can be given its own sound event.
+          "sound_pitch": 1.0,
+          "sound_volume": 1.0,
+          "layer": 14,
+          "$section_top|default": false,
+          "$section_bottom|default": false,
+          "variables": [
+            {
+              "requires": "((not $is_pregame) and $enable_sidebar and $section_top)", //If the sidebar is enabled, scrolling up at the top of a section will move the focus to the sidebar expand button.
+              "$focus_override_up": "hamburger_toggle"
+            },
+            {
+              "requires": "((not $is_pregame) and $enable_sidebar and $section_bottom)", //If the sidebar is enabled, the last button in each section will not allow the player to scroll down.
+              "$focus_override_down": "FOCUS_OVERRIDE_STOP"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "$sound_event", //Each music player button has its own duration bar. Each duration bar needs to appear separately, and only when its own button is pressed. Since every button has a unique "$sound_event" variable, it functions secondarily as the button's name.
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_secondary_select", //All these button mappings are required to support every input method.
+              "to_button_id": "$sound_event",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "$sound_event",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.controller_select",
+              "to_button_id": "$sound_event",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.controller_secondary_select",
+              "to_button_id": "$sound_event",
+              "mapping_type": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "top_text": {
+          "type": "label",
+          "text": "$top_text",
+          "$top_text|default": "$identifier", //The "$top_text" variable is never defined, except by other variables. This is because its purpose is to select between two possible texts: the hard-coded translatable identifier and the user-defined custom title.
+          "color": "$song_button_top_text_color",
+          "size": [ "default", 10 ],
+          "max_size": [ "80%", "100%" ], //This variable is set so that the text will not overlap the album or speaker panels.
+          "offset": "$top_text_offset", //The offset is defined by a variable because the top text will be centered on the button if an artist and duration are not given, and raised if they are.
+          "layer": 28,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "shadow": true, //This shadow helps differentiate the song titles from the artist text just a little more.
+          "$top_text_offset|default": [ 0, -5 ],
+          "variables": [
+            {
+              "requires": "(($artist = '') and ($duration = ''))", //This determinant requires that neither the artist nor duration are defined.
+              "$top_text_offset": "@music_player.anim_top_text_shift" //The top text offset is set to an animation when the determinant is fulfilled. This animation keeps the text centered normally, but shifts the text upward for the duration of the song when pressed, ensuring that the text doesn't overlap the duration bar.
+            },
+            {
+              "requires": "(not ($title = ''))", //This determinant checks whether the user has defined a custom title for the song. If they have, the "$top_text" variable will be set to "$title" instead of "$identifier".
+              "$top_text": "$title"
+            }
+          ]
+        }
+      },
+      {
+        "bottom_text": {
+          "type": "panel",
+          "size": "$bottom_text_size", //The bottom text size is set to a variable because it needs to be able to disappear and reappear, but also stay visible if the song doesn't have a "duration_in_seconds" set.
+          "layer": 27,
+          "offset": "$bottom_text_offset", //The bottom text offset is set to a variable for the rare case when it takes the place of the top text. This is an impossible scenario outside of editing this file intentionally, but it is accounted for for the sake of full preparedness.
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "clips_children": true, //The "clips_children" property is used here to allow the bottom text to be hidden when the duration bar appears.
+          "$bottom_text_size|default": "@music_player.anim_bottom_text_hide", //This animation will hide the bottom text when the button is pressed.
+          "$bottom_text_offset|default": [ 0, "50%" ],
+          "controls": [
+            {
+              "bottom_text_stack_panel": {
+                "type": "stack_panel", //Since the duration and artist are separate values that appear on the same line, they have to be arranged by a stack panel.
+                "max_size": [ "80%", "100%" ],
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "duration": {
+                      "type": "label",
+                      "text": "$duration",
+                      "color": "$song_button_bottom_text_color",
+                      "size": [ "default", 10 ],
+                      "layer": 26,
+                      "ignored": "($duration = '')" //This determinant will hide the duration if it hasn't been set.
+                    }
+                  },
+                  {
+                    "spacer": {
+                      "type": "label",
+                      "text": " • ", //The spacer is not translatable because it doesn't need to be. It isn't used as text so much as an image that separates two texts.
+                      "color": "$song_button_bottom_text_color",
+                      "size": [ "default", 10 ],
+                      "layer": 25,
+                      "ignored": "(($artist = '') or ($duration = ''))" //This determinant requires that both an artist and duration must be set for the spacer to appear.
+                    }
+                  },
+                  {
+                    "artist": {
+                      "type": "label",
+                      "text": "$artist",
+                      "color": "$song_button_bottom_text_color",
+                      "size": [ "default", 10 ],
+                      "layer": 26,
+                      "ignored": "($artist = '')"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "variables": [
+            {
+              "requires": "(($title = '') and ($identifier = '') and (not $duration_in_seconds = 0))", //This scenario is not possible outside of editing this file intentionally.
+              "$bottom_text_size": [ "80%", "100%" ],
+              "$bottom_text_offset": "@music_player.anim_bottom_text_shift", //The bottom text offset is set to an animation when the determinant is fulfilled. This animation keeps the text centered normally, but shifts the text upward for the duration of the song when pressed, ensuring that the text doesn't overlap the duration bar.
+              "$song_button_bottom_text_color": "$song_button_top_text_color"
+            }
+          ]
+        }
+      }
+    ]
+  },
+//This object is the base of the emote buttons. As emotes require their own property bags, bindings, and button mappings, it's easier to give them their own base.
+  "music_player_emote_button_panel_base": {
+    "type": "panel",
+    "size": [ "100%", 30 ],
+    "$emote_image_offset|default": [ "50% - 16px", 0 ],
+    "$type_image_offset|default": [ "-50% + 16px", 0 ],
+    "controls": [
+      {
+        "emote_image_panel": {
+          "type": "panel",
+          "offset": "$emote_image_offset",
+          "layer": 7,
+          "$property_bag": { //The property bag allows the object and all child objects to use specific bindings required by emotes.
+            "#index": "$emote_slot_index"
+          },
+          "controls": [ //Controls are not variables for emotes because emote buttons always use the same images.
+            {
+              "emote_render@persona.emote_image": {}
+            }
+          ]
+        }
+      },
+      {
+        "type_image_panel": {
+          "type": "panel",
+          "offset": "$type_image_offset",
+          "layer": 7,
+          "controls": [
+            {
+              "emote_image@music_player.emote_image": {}
+            }
+          ]
+        }
+      },
+      {
+        "music_player_button@settings_common.action_button": {
+          "$border_visible": false,
+          "$button_text": "",
+          "$default_button_texture|default": "textures/ui/empty",
+          "$hover_button_texture|default": "textures/ui/focus_border_white",
+          "$pressed_button_texture|default": "textures/ui/focus_border_green",
+          "$locked_button_texture|default": "textures/ui/focus_border_red",
+          "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+          "layer": 14,
+          "property_bag": { //This property bag allows the buttons to imitate the six slots of the emote wheel. By setting the "$emote_slot_index" for each button, they are assigned matching emotes.
+            "#hover_slice": "$emote_slot_index"
+          },
+          "$section_top|default": false,
+          "$section_bottom|default": false,
+          "variables": [
+            {
+              "requires": "((not $is_pregame) and $enable_sidebar and $section_top)",
+              "$focus_override_up": "hamburger_toggle"
+            },
+            {
+              "requires": "((not $is_pregame) and $enable_sidebar and $section_bottom)",
+              "$focus_override_down": "FOCUS_OVERRIDE_STOP"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select", //These button mappings tell the game that an emote has been selected. Since the above property bag assigns each button an emote, the game plays the emote corresponding to the "$emote_slot_index" of the button and closes the menu.
+              "to_button_id": "button.emote_selected",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_secondary_select",
+              "to_button_id": "button.emote_selected",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.emote_selected",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.controller_select",
+              "to_button_id": "button.emote_selected",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.controller_secondary_select",
+              "to_button_id": "button.emote_selected",
+              "mapping_type": "pressed"
+            }
+          ]
+        }
+      },
+      {
+        "no_emote_text": { //If the player has an empty emote slot, this text is applied.
+          "type": "label",
+          "text": "dr.none_button_text", //It would be best if this text said "Emote 1", "Emote 2", etc. instead of simply "None", but as far as I can tell, that's only possible in the character creator screen.
+          "color": "$song_button_top_text_color", //Though the emotes aren't technically song buttons, they are intended to look similar, and are affected equally by the Customizer.
+          "size": [ "default", 10 ],
+          "max_size": [ "80%", "100%" ],
+          "layer": 28,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "shadow": true,
+          "property_bag": {
+            "#index": "$emote_slot_index"
+          },
+          "bindings": [
+            {
+              "binding_name": "(not #emote_is_valid)", //This binding is only possible because of "#index" in the property bag, which allows the game to determine whether or not the button has an emote assigned to it.
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "emote_text": {
+          "type": "label",
+          "text": "#text",
+          "color": "$song_button_top_text_color",
+          "size": [ "default", 10 ],
+          "max_size": [ "80%", "100%" ],
+          "layer": 28,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "shadow": true,
+          "property_bag": {
+            "#index": "$emote_slot_index"
+          },
+          "bindings": [
+            {
+              "binding_name": "#emote_name_touch", //Only the touch emote name binding allows the buttons to have different names at the same time. That's what we want, as unlike in the default emote screen, the music player adaptation shows all emotes at once.
+              "binding_name_override": "#text",
+              "binding_condition": "always"
+            },
+            {
+              "binding_name": "#emote_is_valid", //Theoretically, this binding should never be necessary. Having it anyway ensures this element will never appear at the same time as the "no_emote_text" element.
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+//These are the album bases, which set the artist and album cover of the song to save time later.
+  "music_player_button_custom_base@music_player_song_button_panel_base": {
+    "$album_image_panel_controls": [
+      {
+        "custom@music_player.custom_cover": {}
+      }
+    ]
+  },
+  "music_player_button_volume_alpha_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.c418", //Since every song in Volume Alpha was created by C418, the Volume Alpha buttons start with the artist already set.
+    "$album_image_panel_controls": [ //This sets the album cover is to one corresponding to the button type.
+      {
+        "alpha@music_player.volume_alpha_cover": {}
+      }
+    ]
+  },
+  "music_player_button_volume_beta_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.c418",
+    "$album_image_panel_controls": [
+      {
+        "beta@music_player.volume_beta_cover": {}
+      }
+    ]
+  },
+  "music_player_button_update_aquatic_base@music_player_song_button_panel_base": { //Every Update Aquatic song has a different cover, so it doesn't make sense to set a default one here.
+    "$artist": "tab.music_player.artist.c418"
+  },
+  "music_player_button_nether_update_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.lena_raine",
+    "$album_image_panel_controls": [
+      {
+        "nether_update@music_player.nether_update_cover": {}
+      }
+    ]
+  },
+  "music_player_button_caves_and_cliffs_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.lena_raine",
+    "$album_image_panel_controls": [
+      {
+        "caves_and_cliffs@music_player.caves_and_cliffs_cover": {}
+      }
+    ]
+  },
+  "music_player_button_music_discs_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.c418",
+    "$album_image_panel_controls": [
+      {
+        "music_discs@music_player.specific_music_disc_cover": {}
+      }
+    ]
+  },
+  "music_player_button_festive_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.c418",
+    "$album_image_panel_controls": [
+      {
+        "festive@music_player.festive_cover": {}
+      }
+    ]
+  },
+  "music_player_button_minecraft_earth_base@music_player_song_button_panel_base": {
+    "$artist": "tab.music_player.artist.shauny_jang",
+    "$album_image_panel_controls": [
+      {
+        "minecraft_earth@music_player.minecraft_earth_cover": {}
+      }
+    ]
+  },
+  "music_player_button_other_base@music_player_song_button_panel_base": {
+    "$album_image_panel_controls": [
+      {
+        "other@music_player.other_cover": {}
+      }
+    ]
+  },
+//These objects are the animations that control object visibility.
+  "anim_bottom_text_hide": {
+    "anim_type": "size",
+    "easing": "linear",
+    "duration": 0, //Hide and show animations are performed instantly. These animations are not meant to be the focus.
+    "from": [ "80%", "100%" ],
+    "to": [ 0, 0 ],
+    "play_event": "$sound_event", //The "$sound_event" variables double as unique button names, so the animations only trigger on the button that was pressed.
+    "next": "@music_player.anim_bottom_text_wait"
+  },
+  "anim_bottom_text_wait": {
+    "anim_type": "wait", //This animation's purpose is to wait for the song to be over, then move on to the next animation.
+    "duration": "$duration_in_seconds",
+    "next": "@music_player.anim_bottom_text_show"
+  },
+  "anim_bottom_text_show": {
+    "anim_type": "size",
+    "duration": 0,
+    "from": [ 0, 0 ],
+    "to": [ "80%", "100%" ]
+  },
+  "anim_bottom_text_shift": { //This animation chain will only be used if you remove a song identifier from this file.
+    "anim_type": "offset",
+    "easing": "linear",
+    "duration": 0,
+    "from": [ 0, "35%" ],
+    "to": [ 0, "17.5%" ],
+    "play_event": "$sound_event",
+    "next": "@music_player.anim_bottom_text_stay"
+  },
+  "anim_bottom_text_stay": { //This animation is functionally the same as the "anim_bottom_text_wait" animation, but it had to be separate because it's part of a different animation chain.
+    "anim_type": "wait",
+    "duration": "$duration_in_seconds",
+    "next": "@music_player.anim_bottom_text_return"
+  },
+  "anim_bottom_text_return": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [ 0, "17.5%" ],
+    "to": [ 0, "35%" ]
+  },
+  "anim_duration_bar_show": {
+    "anim_type": "size",
+    "easing": "linear",
+    "duration": 0,
+    "from": [ 0, 0 ],
+    "to": [ 182, 5 ],
+    "play_event": "$sound_event",
+    "next": "@music_player.anim_duration_bar_wait"
+  },
+  "anim_duration_bar_wait": {
+    "anim_type": "wait",
+    "duration": "$duration_in_seconds",
+    "next": "@music_player.anim_duration_bar_hide"
+  },
+  "anim_duration_bar_hide": {
+    "anim_type": "size",
+    "duration": 0,
+    "from": [ 182, 5 ],
+    "to": [ 0, 0 ]
+  },
+  "anim_duration_bar_fill": { //This fill animation is the only animation with movement that takes a nonzero amount of time to complete. That's due to the duration bar's filling motion being the focus of the animations.
+    "anim_type": "size",
+    "easing": "linear",
+    "duration": "$duration_in_seconds",
+    "from": [ 0, 5 ],
+    "to": [ 182, 5 ],
+    "play_event": "$sound_event",
+    "next": "@music_player.anim_duration_bar_reset"
+  },
+  "anim_duration_bar_reset": { //This reset animation is technically unnecessary, but it would be necessary if the duration bar could appear on the same button multiple times.
+    "anim_type": "size",
+    "easing": "linear",
+    "duration": 0,
+    "from": [ 182, 5 ],
+    "to": [ 0, 5 ]
+  },
+  "anim_top_text_shift": {
+    "anim_type": "offset",
+    "easing": "linear",
+    "duration": 0,
+    "from": [ 0, 0 ],
+    "to": [ 0, -5 ],
+    "play_event": "$sound_event",
+    "next": "@music_player.anim_top_text_wait"
+  },
+  "anim_top_text_wait": {
+    "anim_type": "wait",
+    "duration": "$duration_in_seconds",
+    "next": "@music_player.anim_top_text_return"
+  },
+  "anim_top_text_return": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [ 0, -5 ],
+    "to": [ 0, 0 ]
+  },
+//This object looks at the properties set by users in the Customizer and assigns the associated bar color and notch count.
+  "duration_bar_properties": {
+    "$duration_bar_empty|default": "hud.white_bar_empty", //This property and the three below set the default duration bar visuals, which are used when the user sets invalid duration bar appearance settings in the Customizer.
+    "$duration_bar_full|default": "hud.white_bar_full",
+    "$duration_bar_overlay_empty|default": "hud.progress_empty",
+    "$duration_bar_overlay_full|default": "hud.progress_full",
+    "variables": [
+      {
+        "requires": "(($duration_bar_color = 'pink') or ($duration_bar_color = 'Pink') or ($duration_bar_color = 'magenta') or ($duration_bar_color = 'Magenta'))", //This determinant checks if the user has chosen this color in the Customizer. Bar settings are accepted uppercase or lowercase, so both versions are checked. This bar responds to the colors pink and magenta, as Java Edition refers to the bar as "pink", but the color matches default magenta blocks more closely.
+        "$duration_bar_empty": "hud.pink_bar_empty",
+        "$duration_bar_full": "hud.pink_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'blue') or ($duration_bar_color = 'Blue'))",
+        "$duration_bar_empty": "hud.blue_bar_empty",
+        "$duration_bar_full": "hud.blue_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'red') or ($duration_bar_color = 'Red'))",
+        "$duration_bar_empty": "hud.red_bar_empty",
+        "$duration_bar_full": "hud.red_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'green') or ($duration_bar_color = 'Green'))",
+        "$duration_bar_empty": "hud.green_bar_empty",
+        "$duration_bar_full": "hud.green_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'yellow') or ($duration_bar_color = 'Yellow'))",
+        "$duration_bar_empty": "hud.yellow_bar_empty",
+        "$duration_bar_full": "hud.yellow_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'purple') or ($duration_bar_color = 'Purple'))",
+        "$duration_bar_empty": "hud.purple_bar_empty",
+        "$duration_bar_full": "hud.purple_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'white') or ($duration_bar_color = 'White'))",
+        "$duration_bar_empty": "hud.white_bar_empty",
+        "$duration_bar_full": "hud.white_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'gold') or ($duration_bar_color = 'Gold'))",
+        "$duration_bar_empty": "hud.gold_bar_empty",
+        "$duration_bar_full": "hud.gold_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'orange') or ($duration_bar_color = 'Orange'))",
+        "$duration_bar_empty": "hud.orange_bar_empty",
+        "$duration_bar_full": "hud.orange_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'brown') or ($duration_bar_color = 'Brown'))",
+        "$duration_bar_empty": "hud.brown_bar_empty",
+        "$duration_bar_full": "hud.brown_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'dark_gray') or ($duration_bar_color = 'Dark_gray') or ($duration_bar_color = 'Dark_Gray') or ($duration_bar_color = 'dark gray') or ($duration_bar_color = 'Dark gray') or ($duration_bar_color = 'Dark Gray') or ($duration_bar_color = 'dark_grey') or ($duration_bar_color = 'Dark_grey') or ($duration_bar_color = 'Dark_Grey') or ($duration_bar_color = 'dark grey') or ($duration_bar_color = 'Dark grey') or ($duration_bar_color = 'Dark Grey'))",
+        "$duration_bar_empty": "hud.dark_gray_bar_empty",
+        "$duration_bar_full": "hud.dark_gray_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'light_gray') or ($duration_bar_color = 'Light_gray') or ($duration_bar_color = 'Light_Gray') or ($duration_bar_color = 'light gray') or ($duration_bar_color = 'Light gray') or ($duration_bar_color = 'Light Gray') or ($duration_bar_color = 'light_grey') or ($duration_bar_color = 'Light_grey') or ($duration_bar_color = 'Light_Grey') or ($duration_bar_color = 'light grey') or ($duration_bar_color = 'Light grey') or ($duration_bar_color = 'Light Grey'))",
+        "$duration_bar_empty": "hud.light_gray_bar_empty",
+        "$duration_bar_full": "hud.light_gray_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'cyan') or ($duration_bar_color = 'Cyan'))",
+        "$duration_bar_empty": "hud.cyan_bar_empty",
+        "$duration_bar_full": "hud.cyan_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_color = 'dark_green') or ($duration_bar_color = 'Dark_green') or ($duration_bar_color = 'Dark_Green') or ($duration_bar_color = 'dark green') or ($duration_bar_color = 'Dark green') or ($duration_bar_color = 'Dark Green'))",
+        "$duration_bar_empty": "hud.dark_green_bar_empty",
+        "$duration_bar_full": "hud.dark_green_bar_full"
+      },
+      {
+        "requires": "(($duration_bar_notch_count = 0) or ($duration_bar_notch_count = 'zero') or ($duration_bar_notch_count = 'Zero') or ($duration_bar_notch_count = 'none') or ($duration_bar_notch_count = 'None'))", //This determinant checks whether the user has chosen this number of notches in the Customizer. Alternatively, notch counts can be spelled out, so all input variations are checked.
+        "$duration_bar_overlay_empty": "hud.progress_empty",
+        "$duration_bar_overlay_full": "hud.progress_full"
+      },
+      {
+        "requires": "(($duration_bar_notch_count = 6) or ($duration_bar_notch_count = 'six') or ($duration_bar_notch_count = 'Six'))",
+        "$duration_bar_overlay_empty": "hud.notched_6_empty",
+        "$duration_bar_overlay_full": "hud.notched_6_full"
+      },
+      {
+        "requires": "(($duration_bar_notch_count = 10) or ($duration_bar_notch_count = 'ten') or ($duration_bar_notch_count = 'Ten'))",
+        "$duration_bar_overlay_empty": "hud.notched_10_empty",
+        "$duration_bar_overlay_full": "hud.notched_10_full"
+      },
+      {
+        "requires": "(($duration_bar_notch_count = 12) or ($duration_bar_notch_count = 'twelve') or ($duration_bar_notch_count = 'Twelve'))",
+        "$duration_bar_overlay_empty": "hud.notched_12_empty",
+        "$duration_bar_overlay_full": "hud.notched_12_full"
+      },
+      {
+        "requires": "(($duration_bar_notch_count = 20) or ($duration_bar_notch_count = 'twenty') or ($duration_bar_notch_count = 'Twenty') or ($duration_bar_notch_count = 'max') or ($duration_bar_notch_count = 'Max') or ($duration_bar_notch_count = 'maximum') or ($duration_bar_notch_count = 'Maximum'))",
+        "$duration_bar_overlay_empty": "hud.notched_20_empty",
+        "$duration_bar_overlay_full": "hud.notched_20_full"
+      }
+    ]
+  },
+//These objects are toggles that will be used in the music player settings screen.
+  "custom_section_toggle@settings_common.option_toggle_control": {
+    "$toggle_name": "custom_section",
+    "$toggle_state_binding_name": "#custom_section"
+  },
+  "emote_section_toggle@settings_common.option_toggle_control": {
+    "$toggle_name": "emote_section",
+    "$toggle_state_binding_name": "#emote_section"
+  },
+  "information_section_toggle@settings_common.option_toggle_control": {
+    "$toggle_name": "information_section",
+    "$toggle_state_binding_name": "#information_section"
+  },
+//These objects control the album covers.
+  "cover_border": { //This border surrounds the album cover.
+    "type": "image",
+    "size": [ 18, 18 ],
+    "layer": 8,
+    "color": "$border_color",
+    "$border_color|default": [ 1, 1, 1 ],
+    "texture": "textures/ui/focus_border_white"
+  },
+  "cover_base": { //This is the base of the album cover. The properties set here will be inherited by each cover type.
+    "type": "image",
+    "size": [ 16, 16 ],
+    "layer": 7,
+    "texture": "$album_cover_texture",
+    "$album_cover_texture|default": "textures/ui/cover_background_gray",
+    "controls": [ //The controls only contain the border by default.
+      {
+        "border@music_player.cover_border": {}
+      }
+    ]
+  },
+  "custom_cover@music_player.cover_base": {
+    "controls": [
+      {
+        "border@music_player.cover_border": {
+          "layer": 11
+        }
+      },
+      {
+        "quaver": {
+          "type": "image",
+          "anchor_to": "center",
+          "anchor_from": "center",
+          "size": [ 8.3, 13.28 ], //These values were calculated by taking the size of an individual quaver texture and multiplying by 5/3.
+          "uv_size": [ 5, 8 ],
+          "uv": "$quaver_location", //The uv is set to a variable, which allows different songs to use different quavers.
+          "layer": 9,
+          "texture": "$quaver_texture",
+          "$quaver_texture|default": "textures/ui/quaver",
+          "$quaver_variant|default": "default",
+          "variables": [
+            {
+              "requires": "($quaver_variant = 'upside_down')", //These are the determinants that select the quaver type. They look for a specific value of the "$quaver_variant" variable, which is set for each group of 25 custom songs.
+              "$quaver_texture": "textures/ui/quaver_upside_down"
+            },
+            {
+              "requires": "($quaver_variant = 'inverted')",
+              "$quaver_texture": "textures/ui/quaver_inverted"
+            },
+            {
+              "requires": "($quaver_variant = 'inverted_upside_down')",
+              "$quaver_texture": "textures/ui/quaver_inverted_upside_down"
+            }
+          ]
+        }
+      },
+      {
+        "custom_cover": { //This cover control is separate from the "$album_cover_texture" variable. It uses the custom cover textures added by the user. The textures are empty by default, which makes this image transparent.
+          "type": "image",
+          "anchor_to": "center",
+          "anchor_from": "center",
+          "size": [ 16, 16 ],
+          "layer": 10,
+          "texture": "$cover"
+        }
+      }
+    ]
+  },
+  "volume_alpha_cover@music_player.cover_base": { //Most cover types only set the "$album_cover_texture" variable.
+    "$album_cover_texture": "textures/ui/cover_alpha"
+  },
+  "volume_beta_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_beta"
+  },
+  "axolotl_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_axolotl"
+  },
+  "dragon_fish_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_dragon_fish"
+  },
+  "shuniji_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_shuniji"
+  },
+  "nether_update_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_nether_update"
+  },
+  "caves_and_cliffs_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_caves_and_cliffs"
+  },
+  "music_discs_cover@music_player.cover_base": {
+    "$album_cover_texture|default": "textures/blocks/jukebox_side", //By accessing the "jukebox_side" texture directly from the "blocks" folder, the music discs cover can change depending on the current resource pack.
+    "controls": [
+      {
+        "border@music_player.cover_border": {}
+      },
+      {
+        "music_disc@music_player.music_disc_image": {
+          "$music_disc_texture|default": "textures/ui/music_disc_shadow",
+          "layer": 9
+        }
+      }
+    ]
+  },
+  "specific_music_disc_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/blocks/jukebox_side",
+    "controls": [
+      {
+        "border@music_player.cover_border": {}
+      },
+      {
+        "music_disc@music_player.music_disc_image": {
+          "layer": 9,
+          "size": [ 15, 15 ],
+          "offset": [ 0.5, 0 ]
+        }
+      }
+    ]
+  },
+  "festive_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_festive"
+  },
+  "minecraft_earth_cover@music_player.cover_base": {
+    "$album_cover_texture": "textures/ui/cover_minecraft_earth"
+  },
+  "other_cover@music_player.cover_base": {
+    "controls": [
+      {
+        "border@music_player.cover_border": {}
+      },
+      {
+        "question_mark@music_player.ellipses_image": {
+          "layer": 9
+        }
+      }
+    ]
+  },
+//These objects are new images created for the music player.
+  "ellipses_image": {
+    "type": "image",
+    "size": [ 18, 18 ],
+    "texture": "textures/ui/ellipses_shadow"
+  },
+  "emote_image": {
+    "type": "image",
+    "size": [ 18, 18 ],
+    "texture": "textures/ui/emote"
+  },
+  "music_disc_image": {
+    "type": "image",
+    "size": [ 18, 18 ],
+    "texture": "$music_disc_texture",
+    "$music_disc_texture|default": "textures/items/record_cat"
+  },
+  "shuffle_image": {
+    "type": "image",
+    "size": [ 18, 18 ],
+    "texture": "textures/ui/shuffle"
+  },
+  "speaker_image": {
+    "type": "image",
+    "size": [ 18, 18 ],
+    "texture": "textures/ui/speaker"
+  },
+  "question_mark_image": {
+    "type": "image",
+    "size": [ 18, 18 ],
+    "texture": "textures/ui/question_mark_shadow"
+  }
+}

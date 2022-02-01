@@ -1,0 +1,116 @@
+{
+  "tab_toggle_state_template": {
+    "type": "image",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$toggle_control_template|default": "common.empty_panel",
+    "controls": [
+      {
+        "toggle_control@$toggle_control_template": {
+          "layer": 1
+        }
+      }
+    ]
+  },
+  "tab_toggle_on@common_tabs.tab_toggle_state_template": {
+    "texture": "$checked_default_image",
+    "$toggle_control_template": "$toggle_on_control"
+  },
+  "tab_toggle_off@common_tabs.tab_toggle_state_template": {
+    "texture": "$unchecked_default_image",
+    "$toggle_control_template": "$toggle_off_control"
+  },
+  "tab_toggle_on_hover@common_tabs.tab_toggle_state_template": {
+    "texture": "$checked_hover_image",
+    "$toggle_control_template": "$toggle_on_hover_control"
+  },
+  "tab_toggle_off_hover@common_tabs.tab_toggle_state_template": {
+    "texture": "$unchecked_hover_image",
+    "$toggle_control_template": "$toggle_off_hover_control"
+  },
+  "tab_toggle_on_locked@common_tabs.tab_toggle_state_template": {
+    "texture": "$checked_locked_image",
+    "$toggle_control_template": "$toggle_on_control"
+  },
+  "tab_toggle_off_locked@common_tabs.tab_toggle_state_template": {
+    "texture": "$unchecked_locked_image",
+    "$toggle_control_template": "$toggle_off_control"
+  },
+  "tab_toggle_on_locked_hover@common_tabs.tab_toggle_state_template": {
+    "texture": "$checked_locked_hover_image",
+    "$toggle_control_template": "$toggle_on_control"
+  },
+  "tab_toggle_off_locked_hover@common_tabs.tab_toggle_state_template": {
+    "texture": "$unchecked_locked_hover_image",
+    "$toggle_control_template": "$toggle_off_control"
+  },
+  "tab_toggle_with_custom_control_template@common.toggle": {
+    "$toggle_on_control|default": "common.empty_panel",
+    "$toggle_off_control|default": "common.empty_panel",
+    "$toggle_on_hover_control|default": "common.empty_panel",
+    "$toggle_off_hover_control|default": "common.empty_panel",
+    "$unchecked_control": "common_tabs.tab_toggle_off",
+    "$checked_control": "common_tabs.tab_toggle_on",
+    "$unchecked_hover_control": "common_tabs.tab_toggle_off_hover",
+    "$checked_hover_control": "common_tabs.tab_toggle_on_hover",
+    "$unchecked_locked_control": "common_tabs.tab_toggle_off_locked",
+    "$unchecked_locked_hover_control": "common_tabs.tab_toggle_off_locked_hover",
+    "$checked_locked_control": "common_tabs.tab_toggle_on_locked",
+    "$checked_locked_hover_control": "common_tabs.tab_toggle_on_locked_hover"
+  },
+  "left_tab_toggle_with_custom_control@common_tabs.tab_toggle_with_custom_control_template": {
+    "$is_bottom_most_tab|default": false,
+    "$is_top_most_tab|default": false,
+    "variables": [
+      {
+        "requires": "($is_bottom_most_tab and not $is_top_most_tab)",
+        "$unchecked_default_image": "textures/ui/TabLeftBackBottomMost",
+        "$unchecked_hover_image": "textures/ui/TabLeftBackBottomMostHover",
+        "$unchecked_locked_image": "textures/ui/TabLeftBackBottomMost",
+        "$unchecked_locked_hover_image": "textures/ui/TabLeftBackBottomMost",
+        "$checked_default_image": "textures/ui/TabLeftFrontBottomMost",
+        "$checked_hover_image": "textures/ui/TabLeftFrontBottomMostHover",
+        "$checked_locked_image": "textures/ui/TabLeftFrontBottomMost",
+        "$checked_locked_hover_image": "textures/ui/TabLeftFrontBottomMost"
+      },
+      {
+        "requires": "($is_top_most_tab and not $is_bottom_most_tab)",
+        "$unchecked_default_image": "textures/ui/TabLeftBackTopMost",
+        "$unchecked_hover_image": "textures/ui/TabLeftBackTopMostHover",
+        "$unchecked_locked_image": "textures/ui/TabLeftBackTopMost",
+        "$unchecked_locked_hover_image": "textures/ui/TabLeftBackTopMost",
+        "$checked_default_image": "textures/ui/TabLeftFrontTopMost",
+        "$checked_hover_image": "textures/ui/TabLeftFrontTopMostHover",
+        "$checked_locked_image": "textures/ui/TabLeftFrontTopMost",
+        "$checked_locked_hover_image": "textures/ui/TabLeftFrontTopMost"
+      }
+    ],
+    "$unchecked_default_image|default": "textures/ui/TabLeftBack",
+    "$unchecked_hover_image|default": "textures/ui/TabLeftBackHover",
+    "$unchecked_locked_image|default": "textures/ui/TabLeftBack",
+    "$unchecked_locked_hover_image|default": "textures/ui/TabLeftBack",
+    "$checked_default_image|default": "textures/ui/TabLeftFront",
+    "$checked_hover_image|default": "textures/ui/TabLeftFrontHover",
+    "$checked_locked_image|default": "textures/ui/TabLeftFront",
+    "$checked_locked_hover_image|default": "textures/ui/TabLeftFront"
+  },
+  "pocket_tab_help_button": {
+    "ignored": "$hide_help_ingame_button"
+  },
+  "pocket_tab_close_and_help_button": {
+    "size": [
+      "100%",
+      "100%c + 7px"
+    ]
+  },
+  "pocket_tab_close_and_help_button/help_button": {
+    "ignored": "$hide_help_ingame_button"
+  },
+  "tab_close_and_help_button/help_button": {
+    "visible": "(not $education_edition_china and not $hide_help_ingame_button)"
+  }
+}

@@ -1,0 +1,176 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "cartography_pocket",
+
+  "left_tab_cartography@common_tabs.pocket_tab_left": {
+    "$tab_view_binding_name": "cartography_tab_toggle",
+
+    "$tab_content": "cartography_pocket.cartography_item_renderer",
+
+    "$toggle_binding_type": "global",
+    "$toggle_state_binding_name": "#is_right_tab_cartography"
+  },
+
+  "right_tab_inventory@common_tabs.pocket_tab_right": {
+    "$tab_view_binding_name": "inventory_tab_toggle",
+
+    "$tab_content": "cartography_pocket.chest_item_renderer",
+
+    "$toggle_binding_type": "global",
+    "$toggle_state_binding_name": "#is_left_tab_inventory"
+  },
+
+  "right_panel": {
+    "type": "stack_panel",
+    "size": [ "fill", "100%" ],
+    "orientation": "horizontal",
+
+    "controls": [
+      {
+        "content@common.root_panel": {
+          "size": [ "fill", "100%" ],
+          "controls": [
+            {
+              "bg@common.common_panel": {
+                "size": [ "100%", "100%" ],
+                "$show_close_button": false
+              }
+            },
+            {
+              "inventory_panel@cartography_pocket.inventory_panel": {
+                "layer": 2,
+                "bindings": [
+                  {
+                    "binding_type": "global",
+                    "binding_name": "#is_left_tab_inventory",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "navigation_tabs_holder": {
+          "type": "panel",
+          "size": [ "100%c - 4px", "100%" ],
+          "controls": [
+            { "right_navigation_tabs@cartography_pocket.right_navigation_tabs": {} }
+          ]
+        }
+      }
+    ]
+  },
+
+  "left_panel": {
+    "type": "stack_panel",
+    "size": [ "fill", "100%" ],
+    "orientation": "horizontal",
+
+    "controls": [
+      {
+        "gamepad_helpers_and_tabs_holder": {
+          "type": "panel",
+          "size": [ "100%c", "100%" ],
+          "controls": [
+            {
+              "tabs_left_gamepad_helpers@common.tabs_left_gamepad_helpers": {
+                "size": [ 14, 0 ],
+                "inherit_max_sibling_height": true,
+                "anchor_from": "bottom_left",
+                "anchor_to": "bottom_left"
+              }
+            },
+            {
+              "navigation_tabs_holder": {
+                "type": "panel",
+                "size": [ "100%c - 4px", "100%" ],
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "controls": [
+                  { "left_navigation_tabs@cartography_pocket.left_navigation_tabs": {} }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "content@common.root_panel": {
+          "size": [ "fill", "100%" ],
+          "controls": [
+            {
+              "bg@common.common_panel": {
+                "size": [ "100%", "100%" ],
+                "$show_close_button": false
+              }
+            },
+            {
+              "cartography_content_stack_panel@cartography_pocket.cartography_content_stack_panel": {
+                "layer": 2
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "right_navigation_tabs": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ 35, "100%" ],
+    "offset": [ -4, 0 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      { "pocket_tab_close_button@common_tabs.pocket_tab_close_button": {} },
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ 0, 1 ]
+        }
+      },
+      { "pocket_tab_help_button@common_tabs.pocket_tab_help_button": {} },
+      {
+        "fill": {
+          "type": "panel",
+          "size": [ "100%", "fill" ]
+        }
+      },
+      {
+        "inv@cartography_pocket.right_tab_inventory": {
+          "$is_bottom_most_tab": true
+        }
+      }
+    ]
+  },
+
+  "left_navigation_tabs": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ 35, "100%" ],
+    "offset": [ 4, 0 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ 0, "fill" ]
+        }
+      },
+      {
+        "cart@cartography_pocket.left_tab_cartography": {
+          "$is_bottom_most_tab": true
+        }
+      }
+    ]
+  }
+}

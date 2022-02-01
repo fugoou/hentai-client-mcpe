@@ -1,0 +1,230 @@
+// RTL Modified by TLGaming2308
+
+{
+  "namespace": "common",
+
+  "screen_header_title_panel": {
+    "type": "panel",
+    "size": [ "fill", 17 ],
+    "$screen_header_title_visible|default": true,
+    "controls": [
+      {
+        "store_header_title": {
+          "type": "label",
+          "size": [ "100%", 17 ],
+          "offset": [ 0, 3.5 ],
+          "ignored": "(not $screen_header_title_visible)",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "text_alignment": "right",
+          "color": "$title_text_color",
+          "$screen_header_title|default": "#screen_header_title",
+          "$screen_header_title_binding_type|default": "none",
+          "text": "$screen_header_title",
+          "bindings": [
+            {
+              "binding_type": "$screen_header_title_binding_type",
+              "binding_name": "$screen_header_title",
+              "binding_name_override": "$screen_header_title"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "back_title_button": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "$button_text_binding_type|default": "none",
+    "$back_button_has_title|default": false,
+    "controls": [
+      {
+        "panel2": {
+          "type": "panel",
+          "size": [ "100%c", "100%" ],
+          "ignored": "(not $back_button_has_title)",
+          "controls": [
+            {
+              "label": {
+                "type": "label",
+                "layer": 2,
+                "text": "$button_text",
+                "color": "$title_text_color",
+                "text_alignment": "center",
+                "bindings": [
+                  {
+                    "binding_type": "$button_text_binding_type",
+                    "binding_name": "$button_text",
+                    "binding_name_override": "$button_text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "padding1": {
+          "type": "panel",
+          "size": [ 3, "100%" ],
+          "ignored": "(not $back_button_has_title)"
+        }
+      },
+      {
+        "panel1": {
+          "type": "panel",
+          "offset": [ 2, 0 ],
+          "size": [ 16, "100%" ],
+          "controls": [
+            {
+              "button@common.back_button": {
+                "$button_text": "",
+                "$button_content": "common.back_title_button_content",
+                "$button_tts_header": "accessibility.button.back"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "back_button_content": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", 16 ],
+    "offset": [ 0, 2 ],
+    "controls": [
+      {
+        "label_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100%c" ],
+          "controls": [
+            {
+              "label@common_buttons.new_ui_binding_button_label": {
+                "offset": [ 0, -2 ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "padding1": {
+          "type": "panel",
+          "size": [ 4, "100%" ]
+        }
+      },
+      {
+        "chevron_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100%c" ],
+          "controls": [
+            {
+              "left_chevron@common.chevron_image": {
+                "texture": "textures/ui/chevron_right",
+                "offset": [ 0, -1 ],
+                "color": "$text_color"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "back_title_button_content": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", 16 ],
+    "offset": [ 0, 2 ],
+    "controls": [
+      {
+        "padding1": {
+          "type": "panel",
+          "size": [ 4, "100%" ]
+        }
+      },
+      {
+        "chevron_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100%c" ],
+          "controls": [
+            {
+              "left_chevron@common.chevron_image": {
+                "texture": "textures/ui/chevron_right",
+                "offset": [ 0, -1 ],
+                "color": "$text_color"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "padding2": {
+          "type": "panel",
+          "size": [ 4, "100%" ]
+        }
+      }
+    ]
+  },
+
+  "back_content_panel": {
+    "type": "panel",
+    "size": [ "100%c", "100%" ],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "controls": [
+      {
+        "back_button@common.back_title_button": {
+          "offset": [ 0, -1 ],
+          "layer": 200 //This should always be on top, let's ensure that
+        }
+      }
+    ]
+  },
+
+  "fullscreen_header": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%" ],
+    "$child_control|default": "common.empty_panel",
+    "controls": [
+      {
+        "top_bar@common.top_bar": {
+          "size": [ "100%", 23 ],
+          "controls": [
+            {
+              "title_stack_panel": {
+                "type": "stack_panel",
+                "size": [ "100%", 19 ],
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "padding1": {
+                      "type": "panel",
+                      "size": [ "fill", "100%" ]
+                    }
+                  },
+                  { "back_button_content_panel@common.back_content_panel": {} },
+                  {
+                    "padding2": {
+                      "type": "panel",
+                      "size": [ 2, "100%" ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "child_control@$child_control": {
+          "size": [ "100%", "fill" ],
+          "layer": 2
+        }
+      }
+    ]
+  }
+  
+}

@@ -1,0 +1,139 @@
+//This JSON was modified by AgentMindStorm (@agentms_). Please do not use this document without permission.
+//This file only contains the code used to create the settings tab used in the main menu. The rest of the code is in "music_player.json".
+{
+  "namespace": "music_player_section",
+//This object is the button that will show the music player tab in the settings screen.
+  "music_player_button@settings_common.section_toggle_base": { 
+    "$toggle_view_binding_name": "music_player_button_toggle",
+    "$glyph_texture": "textures/ui/music_player_icon_outline",
+    "$glyph_color_texture": "textures/ui/music_player_icon_color",
+    "$glyph_size": [ 17, 17 ],
+    "$button_text": "tab.music_player.name",
+    "$toggle_property_bag": {
+      "#panel_title": "tab.music_player.title"
+    }
+  },
+//This object is the master section object for the settings menu. It combines each section of the music player into a single object.
+  "music_player_section@customizer.custom_properties": { //This line hooks into the Customizer file to retrieve all the variables set by users. Variables in this section will be marked if they are set in the Customizer file.
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$album_image_offset": [ "-50% + 16px", 0 ],
+    "$emote_image_offset": [ "-50% + 16px", 0 ],
+    "$type_image_offset": [ "50% - 16px", 0 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "music_player_button_toggle",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "spacer_1": {
+          "type": "panel",
+          "size": [ 0, 5 ]
+        }
+      },
+      {
+        "information_section_toggle@settings_common.option_toggle": {
+          "ignored": "$always_show_information_section", //Controlled by the Customizer.
+          "$main_header_text_color": "$toggle_text_color", //Controlled by the Customizer.
+          "$option_binding_name": "information_section_toggle",
+          "$option_label": "tab.music_player.show_information_section",
+          "$control_name": "music_player.information_section_toggle"
+        }
+      },
+      {
+        "information_section": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "music_player_information@music_player.music_player_information_section": {}
+            },
+            { "small_padding@how_to_play_common.small_padding": {
+                "ignored": "(not $always_show_custom_section)" //Controlled by the Customizer.
+              }
+            },
+            { "padding@how_to_play_common.padding": {
+                "ignored": "$always_show_custom_section"
+              }
+            }
+          ],
+          "bindings": [ //The information section normally requires the information toggle to be pressed in order to be visible.
+            {
+              "binding_type": "view",
+              "source_control_name": "music_player.information_section_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible",
+              "ignored": "$always_show_information_section" //If "$always_show_information_section" is true, the bindings are ignored.
+            }
+          ]
+        }
+      },
+      {
+        "custom_section_toggle@settings_common.option_toggle": {
+          "ignored": "($always_show_custom_section or not $enable_custom_songs)", //Controlled by the Customizer.
+          "$main_header_text_color": "$toggle_text_color",
+          "$option_binding_name": "custom_section_toggle",
+          "$option_label": "tab.music_player.show_custom_section",
+          "$control_name": "music_player.custom_section_toggle"
+        }
+      },
+      {
+        "custom_section@music_player.music_player_custom_section": {
+          "ignored": "(not $enable_custom_songs)", //Controlled by the Customizer.
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "music_player.custom_section_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible",
+              "ignored": "$always_show_custom_section"
+            }
+          ]
+        }
+      },
+      {
+        "album_section@music_player.music_player_album_section": {}
+      },
+      {
+        "volume_alpha_section@music_player.music_player_volume_alpha_section": {}
+      },
+      {
+        "volume_beta_section@music_player.music_player_volume_beta_section": {}
+      },
+      {
+        "update_aquatic_section@music_player.music_player_update_aquatic_section": {}
+      },
+      {
+        "nether_update_section@music_player.music_player_nether_update_section": {}
+      },
+      {
+        "caves_and_cliffs_section@music_player.music_player_caves_and_cliffs_section": {}
+      },
+      {
+        "festive_remixes_section@music_player.music_player_festive_remixes_section": {
+          "ignored": "(not $is_music_plus)"
+        }
+      },
+      {
+        "minecraft_earth_section@music_player.music_player_minecraft_earth_section": {
+          "ignored": "(not $is_music_plus)"
+        }
+      },
+      {
+        "other_section@music_player.music_player_other_section": {}
+      },
+      {
+        "spacer_2": {
+          "type": "panel",
+          "size": [ 0, 5 ]
+        }
+      }
+    ]
+  }
+}

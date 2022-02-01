@@ -1,0 +1,492 @@
+/*File made by @CrisXolt.
+//(c) Don't use any code design without permission!*/
+{
+  "namespace": "CrisXolt_Brewing_Guide_common",
+
+  "potion_hover_text": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 4, 3 ],
+    "size": [ "100%cm", "100%c" ],
+    "$has_mixed_effects|default": false,
+    "$has_time_effects|default": true,
+    "$has_applied_text|default": false,
+    "$has_applied_precentage_text|default": false,
+    "$has_enhanced_effects|default": false,
+    "$has_extra_detail_panel|default": false,
+    "$extra_detail_panel_control|default": "common.empty_panel",
+    "controls": [
+      {
+        "potion_name": {
+          "type": "stack_panel",
+          "size": [ "100%cm", 11 ],
+          "controls": [
+            {
+              "type_name_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                "offset": [ 0, 0 ],
+                "size": [ "default", "default" ],
+                "text": "$hover_panel_text"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "effect_panel_1": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%c", 11 ],
+          "$second_hover_panel_color|default": "$9_color_format",
+          "controls": [
+            {
+              "default_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "controls": [
+                  { 
+                    "default_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$second_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "$second_hover_panel_text"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "separator": {
+                "type": "panel",
+                "size": [ 4, 10 ],
+                "ignored": "(not $has_enhanced_effects)"
+              }
+            },
+            {
+              "potency_value_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_enhanced_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$second_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "$potency_text_value|default": "",
+                      "text": "$potency_text_value"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "left": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_time_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$second_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": " ("
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "time_value_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_time_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$second_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "$second_hover_panel_text_value"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "right": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_time_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$second_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": ")"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "effect_panel_2": {
+          "type": "stack_panel",
+          "ignored": "(not $has_mixed_effects)",
+          "orientation": "horizontal",
+          "size": [ "100%c", 11 ],
+          "$third_hover_panel_color|default": "$9_color_format",
+          "controls": [
+            {
+              "default_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "controls": [
+                  { 
+                    "default_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$third_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "$third_hover_panel_text"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "separator": {
+                "type": "panel",
+                "size": [ 4, 10 ],
+                "ignored": "(not $has_enhanced_effects)"
+              }
+            },
+            {
+              "potency_value_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_enhanced_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$third_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "$second_potency_text_value|default": "",
+                      "text": "$second_potency_text_value"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "left": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_time_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$third_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": " ("
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "time_value_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_time_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "color": "$third_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "$third_hover_panel_text_value"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "right": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_time_effects)",
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$third_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": ")"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "panel_0": {
+          "type": "panel",
+          "ignored": "(not $has_applied_text)",
+          "size": [ 1, 9 ]
+        }
+      },
+      {
+        "applied_panel": {
+          "type": "panel",
+          "size": [ "100%cm", 11 ],
+          "ignored": "(not $has_applied_text)",
+          "controls": [
+            { 
+              "default_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [ 0, 0 ],
+                "color": "$5_color_format",
+                "size": [ "default", 10 ],
+                "text": "potion.effects.whenDrank"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "applied_value_panel": {
+          "type": "stack_panel",
+          "ignored": "(not $has_applied_text)",
+          "$fourth_hover_panel_color|default": "$9_color_format",
+          "orientation": "horizontal",
+          "size": [ "100%c", 11 ],
+          "controls": [
+            {
+              "value_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "controls": [
+                  { 
+                    "default_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$fourth_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "$fourth_hover_panel_text"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "value_precentage_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "ignored": "(not $has_applied_precentage_text)",
+                "controls": [
+                  { 
+                    "default_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0 ,0 ],
+                      "color": "$fourth_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "vdx.brewingGuideUI.percentage"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type_panel": {
+                "type": "panel",
+                "size": [ "100%cm", 10 ],
+                "controls": [
+                  { 
+                    "default_value_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "color": "$fourth_hover_panel_color",
+                      "size": [ "default", 10 ],
+                      "text": "$fourth_hover_panel_text_value"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "panel_1": {
+          "type": "panel",
+          "ignored": "(not $has_extra_detail_panel)",
+          "size": [ 1, 9 ]
+        }
+      },
+      {
+        "extra_detail_panel@$extra_detail_panel_control": {
+          "ignored": "(not $has_extra_detail_panel)"
+        }
+      }
+    ]
+  },
+
+  "bottle_base_hover_text": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 4, 3 ],
+    "size": [ "100%cm", "100%c" ],
+    "controls": [
+      {
+        "potion_name": {
+          "type": "panel",
+          "size": [ "100%c", 10 ],
+          "controls": [
+            {
+              "type_name_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                "offset": [ 0, 0 ],
+                "size": [ "default", 10 ],
+                "text": "$hover_panel_text"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "no_effects_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%c", 10 ],
+          "controls": [
+            {
+              "type_name_text@CrisXolt_Brewing_Guide_common.hover_text_label": {
+                "offset": [ 0, 0 ],
+                "size": [ "default", "default" ],
+                "color": [ 0.66, 0.66, 0.66 ],
+                "text": "potion.empty"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "hover_text_label": {
+    "type": "label",
+    "offset": [ 4, 3 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 2,
+    "color": "$hover_panel_text_color",
+    "$hover_panel_text_color|default": [ 1.0, 1.0, 1.0 ],
+    "text": "$hover_panel_text",
+    "shadow": false,
+    "size": "$hover_text_size",
+    "$hover_text_size|default": [ "default", "default" ],
+    "$hover_panel_text|default": ""
+  },
+
+  "hover_text_image": {
+    "type": "image",
+    "allow_clipping": false,
+    "$hover_text_alpha|default": 1.0,
+    "alpha": "$hover_text_alpha",
+    "texture": "textures/ui/purpleBorder",
+    "size": [ "100%c+8px", "100%c+8px" ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [ 22, 0 ],
+    "layer": 150,
+    "$hover_text_label_control|default": "CrisXolt_Brewing_Guide_common.hover_text_label",
+    "controls": [
+      { "text@$hover_text_label_control": { } }
+    ]
+  },
+
+  "item_panel": {
+    "type": "panel",
+    "size": [ 18, 18 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$background_images": "CrisXolt_Brewing_Guide_textures.main_cell_image",
+    "$icon_item_data": 0,
+    "controls": [
+      { "bg_image@$background_images": { } },
+      {
+        "icon": {
+          "type": "custom",
+          "renderer": "inventory_item_renderer",
+          "layer": 10,
+          "size": [ 16, 16 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 1, 1 ],
+          "$number_aux_index": 65536,
+          "property_bag": {
+            "#item_id_aux": "(($icon_item_id * $number_aux_index) + $icon_item_data)"
+          }
+        }
+      },
+      {
+        "button@common.button": {
+          "size": [ 18, 18 ],
+          "$pressed_button_name": "unset",
+          "controls": [
+            {
+              "hover@common.empty_panel": {
+                "size": [ 18, 18 ],
+                "controls": [
+                  { "hover_text_image@CrisXolt_Brewing_Guide_common.hover_text_image": { } },
+                  {
+                    "white_border@common.white_border_slot": {
+                      "layer": 8,
+                      "alpha": 0.5,
+                      "size": [ 18, 18 ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

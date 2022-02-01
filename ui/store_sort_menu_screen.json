@@ -1,0 +1,32 @@
+{
+  "namespace": "sort_menu",
+
+  //main sort menu content panel, it's half of the current screen size on the X axis
+  "sort_menu_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ "40%", "100%" ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "visible": false,
+    "layer": 2,
+    "controls": [
+      {
+        // added to align with search bar
+        "top_padding": {
+          "type": "panel",
+          "size": [ "100%", 4 ]
+        }
+      },
+      {
+        "sort_menu_show@sort_menu.sort_menu_show": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#sort_menu_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  }
+}

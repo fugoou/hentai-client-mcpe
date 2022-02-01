@@ -1,0 +1,13 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.render": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": ["variable.render = 1.0;", 0, 0]
+				}
+			}
+		}
+	}
+}

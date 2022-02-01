@@ -1,0 +1,18 @@
+{
+  "ui_defs": [
+    "ui/.tyel_assets/.tyel_common.json",
+    "uidx/brewing_guide/brewing_guide.uidx",
+    "uidx/brewing_guide/brewing_items.uidx",
+    "uidx/brewing_guide/brewing_lingering_items.uidx",
+    "uidx/brewing_guide/brewing_splash_items.uidx",
+    "uidx/brewing_guide/potion_item_common.uidx",
+    "uidx/brewing_guide/stack_panel_content.uidx",
+    "uidx/brewing_guide/textures.uidx",
+    "uidx/brewing_guide/ui_template_scroll.uidx",
+    "uidx/brewing_guide/ui_template_toggles.uidx",
+    "@xchillds.xyz.json",
+   "Customizer.txt",
+    "ui/music_player.json",
+    "ui/settings_sections/music_player_section.json"
+  ]
+}

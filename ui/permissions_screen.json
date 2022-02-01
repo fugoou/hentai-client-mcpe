@@ -1,0 +1,109 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+	"namespace": "permissions",
+	
+	"permissions_screen_content": {
+		"type": "stack_panel",
+		"size": [ "100%", "100%" ],
+		"orientation": "vertical",
+		"anchor_to": "top_middle",
+		"anchor_from": "top_middle",
+		"controls": [
+			{ "top_bar_panel@permissions.top_bar_panel": {} },
+			{ "content_panel@permissions.content_panel": {} }
+		]
+	},
+
+	"top_bar_panel": {
+		"type": "panel",
+		"size": [ "100%", 23 ],
+
+		"controls": [
+			{ "top_bar@permissions.top_bar": {} },
+			{
+				"back_button@permissions.back_button": {
+					"anchor_to": "right_middle",
+					"anchor_from": "right_middle",
+					"bindings": [
+						{
+							"binding_name": "(not #is_using_gamepad)",
+							"binding_name_override": "#visible"
+						}
+					]
+				}
+			},
+			{
+				"gamepad_helper_b@common.gamepad_helper_b": {
+					"size": [ "100%c", 16 ],
+					"offset": [ 1, -6 ],
+					"anchor_to": "right_middle",
+					"anchor_from": "right_middle",
+
+					"$icon_description_bind_type": "global",
+					"$icon_description_bind": "#b_button_text",
+					"$gamepad_helper_visible_binding_name": "#is_using_gamepad"
+				}
+			},
+			{ "title_label@permissions.title_label": {} }
+		]
+	},
+
+	"player_and_permissions_panel": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": [ "100%", "fill" ],
+		"controls": [
+			{ "content_area@permissions.content_area": {} },
+			{ "selector_area@permissions.selector_area": {} }
+		]
+	},
+	
+	"back_button_content": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": [ "100%c", 16 ],
+		"controls": [
+			{
+				"label_panel": {
+					"type": "panel",
+					"size": [ "100%c", "100%c" ],
+					"controls": [
+						{
+							"label@common_buttons.new_ui_binding_button_label": {
+								"offset": [ 0, 0 ]
+							}
+						}
+					]
+				}
+			},
+			{
+				"back_button_padding": {
+					"type": "panel",
+					"size": [ 4, "100%" ]
+				}
+			},
+			{
+				"chevron_panel": {
+					"type": "panel",
+					"size": [ "100%c", "100%c" ],
+					"controls": [
+						{
+							"left_chevron@common.chevron_image": {
+								"texture": "textures/ui/chevron_right",
+								"offset": [ 0, 1 ],
+								"color": "$text_color"
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+
+	
+}

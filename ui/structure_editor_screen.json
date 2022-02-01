@@ -1,0 +1,63 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "structure_editor",
+
+  "divider_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "left_side@structure_editor.left_divider_content": {
+          "size": [ "160px", "100% - 31px" ],
+          "offset": [ -8, 23 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right"
+
+        }
+      },
+      {
+        "right_side@structure_editor.right_divider_content": {
+          "size": [ "100% - 170px", "100% - 31px" ],
+          "offset": [ "-170px", 23 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right"
+
+        }
+      }
+    ]
+  },
+
+  "structure_editor_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "background_panel@common.fullscreen_header": {
+          "$dialog_background": "common.dialog_background_hollow_3",
+          "layer": 3
+        }
+      },
+      {
+        "title@structure_editor.common_text_label": {
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [ -40, 6 ],
+          "layer": 4,
+          "text": "structure_block.title",
+          "color": "$title_text_color"
+        }
+      },
+      {
+        "content@structure_editor.divider_content": {
+          "layer": 4,
+          "anchor_from": "top_left",
+          "anchor_to": "top_left"
+        }
+      }
+    ]
+  }
+
+}

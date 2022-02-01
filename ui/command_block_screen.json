@@ -1,0 +1,181 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                     *
++*   (c) Microsoft. All rights reserved.                 *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "command_block",
+
+  "divider_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "right_side@command_block.left_divider_content": {
+          "size": [ "40% - 8px", "100% - 31px" ],
+          "offset": [ "60%", 23 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left"
+
+        }
+      },
+      {
+        "left_side@command_block.right_divider_content": {
+          "size": [ "60% - 13px", "100% - 31px" ],
+          "offset": [ 8, 23 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left"
+
+        }
+      }
+    ]
+  },
+
+  "command_block_screen_content": {
+    "type": "panel",
+    "size": "$extra_large_screen_size",
+    "max_size": "$extra_large_max_screen_size",
+    "controls": [
+      {
+        "background_divider@common.common_panel": {
+          "$dialog_background": "common.dialog_background_hollow_3",
+          "$fill_alpha": 1.0,
+          "$show_divider": true,
+          "$divider_offset": [ "-40%", "22px" ],
+          "$divider_visible_binding_name": "#divider_visible",
+          "$divider_visible_binding_type": "global",
+          "controls": [
+            {
+              "bg_image@$dialog_background": {
+                "layer": 1
+              }
+            },
+            {
+              "dialog_divider@common.dialog_divider": {
+                "visible": "$show_divider",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": "$divider_offset",
+                "size": [ "5px", "100% - 29px" ],
+                "bindings": [
+                  {
+                    "binding_name": "$divider_visible_binding_name",
+                    "binding_name_override": "#visible",
+                    "binding_type": "$divider_visible_binding_type"
+                  }
+                ]
+              }
+            },
+            {
+              "close_button_holder": {
+                "type": "panel",
+                "controls": [
+                  {
+                    "close@common.close_button": {
+                      "layer": 2,
+                      "bindings": [
+                        {
+                          "binding_name": "#close_button_visible_binding_name",
+                          "binding_name_override": "#visible",
+                          "binding_type": "global"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "minimze@common.close_button": {
+                      "button_mappings": [
+                        {
+                          "from_button_id": "button.menu_select",
+                          "to_button_id": "command_block.input_minimize",
+                          "mapping_type": "pressed"
+                        },
+                        {
+                          "from_button_id": "button.menu_ok",
+                          "to_button_id": "command_block.input_minimize",
+                          "mapping_type": "focused"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "default@close_button_panel": {
+                            "$close_button_texture": "textures/ui/minimize"
+                          }
+                        },
+                        {
+                          "hover@close_button_panel": {
+                            "$close_button_texture": "textures/ui/minimizeHover"
+                          }
+                        },
+                        {
+                          "pressed@close_button_panel": {
+                            "$close_button_texture": "textures/ui/minimizePress"
+                          }
+                        }
+                      ],
+                      "bindings": [
+                        {
+                          "binding_name": "#minimize_button_visible_binding_name",
+                          "binding_name_override": "#visible",
+                          "binding_type": "global"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": {
+          "type": "label",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 8 ],
+          "layer": 4,
+          "text": "commandBlock.genericName",
+          "color": "$title_text_color"
+        }
+      },
+      {
+        "content@command_block.divider_content": {
+          "layer": 4,
+          "anchor_from": "top_left",
+          "anchor_to": "top_left"
+        }
+      },
+      {
+        //this controls name is important as its referenced directly in the controller for focus
+        "maximized_command_block_text@command_block.command_block_text_edit_box": {
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 17,
+          "size": [ "100% - 16px", "100% - 31px" ],
+          "offset": [ 0, "23px" ],
+          "max_length": 32500,
+          "$text_box_name": "command_block.command_text",
+          "$text_edit_box_content_binding_name": "#command_text_edit",
+          "$place_holder_text": "Enter your command input here",
+          "$cancel_button_id": "command_block.input_minimize",
+          "bindings": [
+            {
+              "binding_name": "#maximized_input_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "right_divider_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "right_scrolling_panel@command_block.right_scrolling_panel": { }
+      }
+    ]
+  }
+}

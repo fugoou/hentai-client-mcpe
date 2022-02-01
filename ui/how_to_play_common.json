@@ -1,0 +1,236 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "how_to_play_common",
+
+  "topic_category": {
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ "100%", "16px" ],
+    "controls": [
+      {
+        "category_text": {
+          "type": "label",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "size": [ "default", "default" ],
+          "max_size": [ "100%", "100% - 4px" ],
+          "offset": [ "0px", "-3px" ],
+          "text": "('howtoplay.category.' + $category)",
+          "color": "$main_header_text_color"
+        }
+      }
+    ]
+  },
+
+  "toggle_button_control": {
+    "type": "panel",
+    "layer": 2,
+    "controls": [
+      {
+        "tab_button_text": {
+          "type": "label",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "size": [ "100% - 10px", "default" ],
+          "max_size": [ "100% - 14px", "100% - 4px" ],
+          "offset": [ 10, 0 ],
+          "text": "('howtoplay.' + $section_topic)",
+          "layer": 3,
+          "color": "$text_color",
+          "alpha": "$content_alpha"
+        }
+      }
+    ]
+  },
+
+  "section_toggle_button": {
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ "100%", "30px" ],
+    "controls": [
+      {
+        "section_toggle_button@common_toggles.light_ui_toggle": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ "100%", "30px" ],
+
+          "$button_type_panel": "how_to_play_common.toggle_button_control",
+          "$checked_control": "common_toggles.toggle_unchecked",
+          "$radio_toggle_group": true,
+          "$toggle_name": "navigation_tab",
+          "$toggle_group_default_selected": "$default_selector_toggle_index",
+
+          "$toggle_tab_focus_binding_type": "global",
+          "$toggle_tab_focus_binding_name": "#navigation_tab_focus_precedence",
+          "$toggle_on_hover_binding_type": "global",
+          "$toggle_on_hover_binding_name": "#toggle_on_hover",
+
+          "$toggle_view_binding_name": "($section_topic + '_button_toggle')",
+          "$toggle_property_bag": {
+            "#panel_title": "('howtoplay.' + $section_topic)"
+          }
+        }
+      }
+    ]
+  },
+
+  "how_to_play_header": {
+    "type": "panel",
+    "controls": [
+      {
+        "top_bar@how_to_play_common.top_bar": {
+          "size": [ "100%", "100%" ],
+          "layer": 2,
+          "controls": [
+            { "gamepad_bumper_helpers@how_to_play_common.gamepad_bumper_helpers": {} },
+            {
+              "how_to_play_title@common.screen_header_title_panel": {
+                "size": [ "70% - 22px", "100%" ], // Gamepad helpers have max size of 30% and the back button is 20px
+                "offset": [ -18, -1 ], 
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle",
+                "$screen_header_title": "#section_title",
+                "$screen_header_title_binding_type": "global",
+                "layer": 2
+              }
+            },
+            {
+              "back_button@common.back_title_button": {
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle",
+                "offset": [ -2, -1 ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "dialog_content": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "controls": [
+      { "selector_area@how_to_play_common.selector_area": {} },
+      { "content_area@how_to_play_common.content_area_wrapper": {} },
+      { "section_divider@how_to_play_common.section_divider": {} }
+    ]
+  },
+
+  "selector_area": {
+    "type": "panel",
+    "offset": [ "-2px", "21px" ],
+    "size": [ "30% + 2px", "100% - 19px" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 3,
+    "focus_container": true,
+    "use_last_focus": true,
+    "$focus_nagivation_mode_override_down|default": "contained",
+    "$focus_nagivation_mode_override_up|default": "contained",
+    "$focus_nagivation_mode_override_left|default": "",
+    "$focus_nagivation_mode_override_right|default": "",
+    "focus_nagivation_mode_down": "$focus_nagivation_mode_override_down",
+    "focus_nagivation_mode_up": "$focus_nagivation_mode_override_up",
+    "focus_nagivation_mode_left": "$focus_nagivation_mode_override_left",
+    "focus_nagivation_mode_right": "$focus_nagivation_mode_override_right",
+    "controls": [
+      {
+        "scrolling_panel@common.scrolling_panel": {
+          "$scrolling_content": "how_to_play_common.scrollable_selector_area_content",
+          "$show_background": false,
+          "$scroll_size": [ "5px", "100% - 4px" ],
+          "$scroll_bar_left_padding_size": [ 0, 0 ]
+        }
+      }
+    ]
+  },
+
+  "section_divider": {
+    "type": "image",
+    "offset": [ "-30%+1px", "20px" ],
+    "size": [ "4px", "100% - 18px" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 3,
+    "texture": "textures/ui/HowToPlayDivider"
+  },
+
+  "content_area_wrapper": {
+    "type": "panel",
+    "offset": [ "2px", "21px" ],
+    "size": [ "70% - 2px", "100% - 19px" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 1,
+    "controls": [
+      { "content_area@how_to_play_common.content_area": {} }
+    ]
+  },
+
+  "content_area": {
+    "type": "panel",
+    "size": [ "100% - 6px", "100%" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "control": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "controls": [
+            {
+              "scrolling_panel@common.scrolling_panel": {
+                "size": [ "100%", "fill" ],
+                "$scrolling_content": "$section_content_panels",
+                "$show_background": false,
+                "$scroll_size": [ "5px", "100% - 4px" ],
+                "$scroll_bar_left_padding_size": [ 5, 0 ],
+                "$scroll_bar_right_padding_size": [ 5, 0 ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "gamepad_bumper_helpers": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [ "-4px", "-2px" ],
+    "max_size": [ "30%", "26px" ],
+    "layer": 6,
+    "controls": [
+      {
+        "gamepad_helper_left_bumper@common.gamepad_helper_left_bumper": {
+          "$gamepad_description": "how_to_play_common.gamepad_bumper_helper_description"
+        }
+      },
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ "4px", "100%" ]
+        }
+      },
+      {
+        "gamepad_helper_right_bumper@common.gamepad_helper_right_bumper": {
+          "$gamepad_description": "how_to_play_common.gamepad_bumper_helper_description"
+        }
+      }
+    ]
+  }
+
+}

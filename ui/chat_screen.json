@@ -1,0 +1,93 @@
+/********************************************************
++*   (c) Mojang. All rights reserved                       *
++*   (c) Microsoft. All rights reserved.                   *
++*   RTL Modified by TLGaming2308                       *
++*********************************************************/
+
+{
+  "namespace": "chat",
+
+  // Chat Bottom Panel //
+
+  "chat_bottom_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "size": [ "100%", 27 ],
+    "min_size": [ "100%", 27 ],
+    "controls": [
+      { "keyboard_button@chat.keyboard_button": {} },
+      { "host_main_button@host_options.host_main_button": { "ignored": "$is_pregame" } },
+      { "chat_settings@chat.chat_settings_button": {} },
+      { "text_box@chat.text_edit_box": {} },
+      { "send_button@chat.send_button": { "offset": [ -20, 0 ] } }
+    ]
+  },
+
+  // Title Bar //
+
+  "back_content_panel": {
+    "type": "panel",
+    "size": [ "100%c", "100%" ],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "controls": [
+      {
+        "back_button@common.back_button": {
+          "offset": [ 0, -1 ],
+          "$button_text_binding_type": "global",
+          "$button_text": "#back_button_text"
+        }
+      },
+      {
+        "gamepad_back_helper": {
+          "type": "input_panel",
+          "size": [ "100%c", 26 ],
+          "offset": [ -4, -1 ],
+          "$gamepad_helper_icon_description_text_color": "$light_glyph_default_color",
+          "$gamepad_helper_icon_description_shadow": false,
+
+          "tts_name": "accessibility.button.tts.title",
+          "tts_control_header": "#back_button_accessibility_text",
+
+          "controls": [
+            {
+              "gamepad_helper_button@common.gamepad_helper_b": {
+                "$icon_description_bind": "#back_button_text"
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#is_using_gamepad",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "chat_header@common_store.store_top_bar": {
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "$back_button_text": "controller.buttonTip.back",
+    "controls": [
+      {
+        "title_panel": {
+          "type": "panel",
+          "size": [ "100%", 19 ],
+          "controls": [
+            {
+              "back_button_content_panel@chat.back_content_panel": {
+                "offset": [ 2, 0 ]
+              }
+            },
+            { "title@chat.title_text": {} }
+          ]
+        }
+      }
+    ]
+  }
+}

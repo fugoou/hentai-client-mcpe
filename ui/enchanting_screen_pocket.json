@@ -1,0 +1,142 @@
+// RTL Modified by TLGaming2308
+
+{
+  "namespace": "enchanting_pocket",
+
+  // Enchant Selection Panel //
+
+  "enchant_selection_panel": {
+    "type": "panel",
+    "size": [ "100%-34px", 60 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "grid": {
+          "type": "grid",
+          "collection_name": "#enchant_buttons",
+          "size": [ "100%", "100%" ],
+          "layer": 4,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "grid_dimensions": [ 1, 3 ],
+          "controls": [
+            {
+              "button1@enchanting_pocket.enchant_button_panel": {
+                "grid_position": [ 0, 0 ],
+                "$texture_selectable": "textures/ui/dust_selectable_1",
+                "$texture_unselectable": "textures/ui/dust_unselectable_1"
+              }
+            },
+            {
+              "button2@enchanting_pocket.enchant_button_panel": {
+                "grid_position": [ 0, 1 ],
+                "$texture_selectable": "textures/ui/dust_selectable_2",
+                "$texture_unselectable": "textures/ui/dust_unselectable_2"
+              }
+            },
+            {
+              "button3@enchanting_pocket.enchant_button_panel": {
+                "grid_position": [ 0, 2 ],
+                "$texture_selectable": "textures/ui/dust_selectable_3",
+                "$texture_unselectable": "textures/ui/dust_unselectable_3"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // Enchanting Book Panel //
+
+  "enchanting_book_panel": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "offset": [ 0, 0 ],
+    "controls": [
+      {
+        "enchanting_book": {
+          "type": "custom",
+          "renderer": "enchanting_book_renderer",
+          "animation_reset_name": "screen_animation_reset",
+          "layer": -1,
+          "offset": [ 0, 0 ],
+          "anims": [
+            "@common.screen_exit_size_animation_push",
+            "@common.screen_exit_size_animation_pop",
+            "@common.screen_entrance_size_animation_push",
+            "@common.screen_entrance_size_animation_pop"
+          ],
+          "bindings": [
+            {
+              "binding_name": "#open",
+              "binding_type": "global"
+            }
+          ]
+        }
+      },
+      {
+        "player_level_label@enchanting_pocket.generic_label": {
+          "offset": [ 0, -9 ],
+          "font_type": "rune",
+          // This doesn't need loc because it is being converted to the rune font.
+          "text": "Level",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "bindings": [
+            {
+              "binding_name": "#player_level_color",
+              "binding_name_override": "#color"
+            }
+          ]
+        }
+      },
+      {
+        "level_label@enchanting_pocket.generic_label": {
+          "text": "#text",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "bindings": [
+            {
+              "binding_name": "#player_level_info",
+              "binding_name_override": "#text"
+            },
+            {
+              "binding_name": "#player_level_color",
+              "binding_name_override": "#color"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // Half Screens //
+
+  "half_screen": {
+    "type": "input_panel"
+  },
+
+  "inventory_half_screen@enchanting_pocket.half_screen": {
+    "offset": [ -8, 31 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [ "45%-4px", "100%-35px" ],
+    "controls": [
+      { "inventory_content@enchanting_pocket.inventory_content": {} }
+    ]
+  },
+
+  "enchanting_half_screen@enchanting_pocket.half_screen": {
+    "offset": [ 12, 31 ],
+    "size": [ "55%-8px", "100%-35px" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      { "enchanting_contents_panel@enchanting_pocket.enchanting_contents_panel": { "layer": 1 } }
+    ]
+  }
+}

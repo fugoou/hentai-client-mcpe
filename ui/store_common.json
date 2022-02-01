@@ -1,0 +1,171 @@
+{
+  "namespace": "common_store",
+  
+  "status_with_coins": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", "100%" ],
+    "$padding_size": [ 2, "100%" ],
+    "controls": [
+      {
+        "coin_balance_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100%" ],
+          "controls": [
+            {
+              "coin_balance_panel@common_store.purchase_coins_panel": {
+                "offset": [ 0, -1 ],
+                "layer": 1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "padding0": {
+          "type": "panel",
+          "size": "$padding_size",
+          "ignored": "$ignore_3rd_party_servers"
+        }
+      },
+      {
+        "inventory_panel": {
+          "type": "panel",
+          "size": [ "100%c", "100%" ],
+          "layer": 2,
+          "controls": [
+            {
+              "inventory_button@common_store.inventory_panel": {
+                "offset": [ 0, -1 ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "store_header_with_coins": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%" ],
+    "$store_header_size|default": [ "100%", 23 ],
+    "$is_inventory_screen|default": false,
+    "$ignore_home_button|default": false,
+    "$ignore_inventory_button|default": false,
+    "$ignore_search|default": false,
+    "controls": [
+      {
+        "top_bar@common_store.store_top_bar": {
+          "size": "$store_header_size",
+          "focus_container": true,
+          "use_last_focus": false,
+          "focus_wrap_enabled": false,
+          "focus_nagivation_mode_up": "stop",
+          "focus_nagivation_mode_right": "stop",
+          "controls": [
+            {
+              "title_stack_panel": {
+                "type": "stack_panel",
+                "size": [ "100%", 19 ],
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "padding1": {
+                      "type": "panel",
+                      "size": [ 4, "100%" ]
+                    }
+                  },
+                  {
+                    "status_and_coins@common_store.status_with_coins": {
+                      "$top_status_and_coins_visible_binding_type|default": "none",
+                      "$top_status_and_coins_visible_binding|default": "",
+                      "bindings": [
+                        {
+                          "binding_type": "$top_status_and_coins_visible_binding_type",
+                          "binding_name": "$top_status_and_coins_visible_binding",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "padding2": {
+                      "type": "panel",
+                      "size": [ 5, "100%" ]
+                    }
+                  },
+                  { "search_header_stack@common_store.search_header_stack": {} },
+                  {
+                    "padding3": {
+                      "type": "panel",
+                      "size": [ 2, "100%" ]
+                    }
+                  },
+                  { "home_button@common_store.home_button_panel": {} },
+                  {
+                    "padding4": {
+                      "type": "panel",
+                      "size": [ 2, "100%" ]
+                    }
+                  },
+                  {
+                    "header_title_panel@common.screen_header_title_panel": {
+                      "layer": 1,
+                      "$screen_header_title_binding_type": "global"
+                    }
+                  },
+                  { "back_button_content_panel@common_store.back_content_panel": {} },
+                  {
+                    "padding5": {
+                      "type": "panel",
+                      "size": [ 2, "100%" ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "child_control@$child_control": {
+          "size": [ "100%", "fill" ],
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  //Panel that includes search text bar, and filter and sort buttons
+  "search_panel_filter": {
+    "type": "stack_panel",
+    "size": [ "100%", 30 ],
+    "orientation": "horizontal",
+    "controls": [
+      {
+        "sort_button@common_buttons.light_content_button": {
+          "$pressed_button_name": "button.sort",
+          "size": [ 32, "100%" ],
+          "$focus_override_up": "inventory_button",
+          "$button_content": "common_store.sort_button_content_panel"
+        }
+      },
+      {
+        "filter_button@common_buttons.light_content_button": {
+          "$pressed_button_name": "button.filter",
+          "size": [ 32, "100%" ],
+          "$focus_id": "filter_button",
+          "$filter_logo_anchor": "center",
+          "$filter_count_scale": 0.88,
+          "$focus_override_up": "inventory_button",
+          "$button_content": "common_store.filter_logo_content_panel"
+        }
+      },
+      {
+        "search_text_box@common_store.search_text_box_panel": {
+          "size": [ "fill", "100%" ]
+        }
+      }
+    ]
+  }
+}

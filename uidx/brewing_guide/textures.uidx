@@ -1,0 +1,334 @@
+/*File made by @CrisXolt.
+//(c) Don't use any code design without permission!*/
+{
+  "namespace": "CrisXolt_Brewing_Guide_textures",
+
+  "title_label_base": {
+    "type": "label",
+    "offset": [ 8, 5 ],
+    "layer": 8,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ "default", 10 ],
+    "color": "$title_text_color"
+  },
+
+  "line_color_1": {
+    "type": "panel",
+    "size": [ 110, "100%" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "image_base": {
+          "type": "image",
+          "layer": 3,
+          "size": [ "100%", "100%" ],
+          "color": [ 0.24, 0.24, 0.24 ],
+          "texture": "textures/ui/White"
+        }
+      }
+    ]
+  },
+
+  "line_color_2": {
+    "type": "panel",
+    "size": [ 110, "100%" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "image_base": {
+          "type": "image",
+          "layer": 3,
+          "size": [ "100%", "100%" ],
+          "color": [ 0.16, 0.16, 0.16 ],
+          "texture": "textures/ui/White"
+        }
+      }
+    ]
+  },
+
+  "main_cell_image": {
+    "type": "panel",
+    "size": [ 18, 18 ],
+    "controls": [
+      {
+        "texture@common.cell_image": {
+          "texture": "textures/ui/recipe_book_dark_button_pressed",
+          "layer": 8,
+          "controls": [
+            {
+              "shadow@common.cell_image": {
+                "texture": "textures/ui/recipe_book_dark_button_pressed",
+                "color": [ 0.0, 0.0, 0.0 ],
+                "alpha": 0.5,
+                "offset": [ 1, 1 ],
+                "layer": -1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "guide_bg": {
+    "type": "panel",
+    "size": [ 142, 166 ],
+    "controls": [
+      { "dialog_bg@common.dialog_background_opaque": { "size": [ "100%",  "100%" ], "layer": 1 } },
+      { 
+        "scroll_bg@common.cell_image": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 112, 142 ],
+          "offset": [ 7, 17 ],
+          "layer": 2
+        }
+      },
+      {
+        "scroll_track@common.cell_image": {
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "size": [ 12, 142 ],
+          "offset": [ -7, 17 ],
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  "center_fold": {
+    "type": "panel",
+    "size": [ 4, "100%" ],
+    "controls": [
+      { 
+        "center_fold_texture": {
+          "type": "image",
+          "layer": 0,
+          "texture": "textures/ui/recipe_back_panel",
+          "size": [ 18, "100%-6px" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ -7, 3 ]
+        }
+      }
+    ]
+  },
+
+  "scroll_box_active": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "layer": 3,
+          "texture": "textures/ui/button_borderless_light",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 10, "100%" ]
+        }
+      }
+    ]
+  },
+
+  "normal_tab_front": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopFrontLeftMost",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 26, 30 ]
+        }
+      }
+    ]
+  },
+
+  "normal_tab_front_hover": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopFrontLeftMostHover",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 26, 30 ]
+        }
+      }
+    ]
+  },
+
+  "normal_tab_back": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopBackLeftMost",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 2 ],
+          "size": [ 26, 27 ]
+        }
+      }
+    ]
+  },
+
+  "normal_tab_back_hover": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopBackLeftMostHover",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 2 ],
+          "size": [ 26, 27 ]
+        }
+      }
+    ]
+  },
+
+  "splash_tab_front": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopFront",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 26, 30 ]
+        }
+      }
+    ]
+  },
+
+  "splash_tab_front_hover": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopFrontHover",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 26, 30 ]
+        }
+      }
+    ]
+  },
+
+  "splash_tab_back": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopBack",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 2 ],
+          "size": [ 26, 27 ]
+        }
+      }
+    ]
+  },
+
+  "splash_tab_back_hover": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopBackHover",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 2 ],
+          "size": [ 26, 27 ]
+        }
+      }
+    ]
+  },
+
+  "lingering_tab_front": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopFront",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 26, 30 ]
+        }
+      }
+    ]
+  },
+
+  "lingering_tab_front_hover": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopFrontHover",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [ 26, 30 ]
+        }
+      }
+    ]
+  },
+
+  "lingering_tab_back": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopBack",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 2 ],
+          "size": [ 26, 27 ]
+        }
+      }
+    ]
+  },
+
+  "lingering_tab_back_hover": {
+    "type": "panel",
+    "size": [ 26, 25 ],
+    "controls": [
+      {
+        "texture": {
+          "type": "image",
+          "texture": "textures/ui/TabTopBackHover",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 2 ],
+          "size": [ 26, 27 ]
+        }
+      }
+    ]
+  }
+}
