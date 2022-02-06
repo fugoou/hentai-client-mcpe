@@ -1,0 +1,384 @@
+  //---------------------------------------------------------------------------
+  //
+  // AMBRO:
+  // YT: https://www.youtube.com/c/AmBro69
+  // Discord: AmBro#9269 , discord.gg/wJhH86c2wb
+  // 
+  // TERMS OF USE:
+  // IF YOU PLAN ON SHARING THIS PACK, YOU MUST LINK MY YOUTUBE CHANNEL (https://www.youtube.com/c/AmBro69). YOU ARE NOT ALLOWED TO SEND DIRECT DOWNLOAD LINKS OR PUBLISH THIS PACK ON 3RD PARTY SITES, USE THIS LINK (https://linkvertise.com/401625/mcpe-ambro-packs-revamped)
+  //
+  // YOU ARE ALLOWED TO:
+  //- use this pack for personal/private purposes
+  //- make private modifications to this pack
+  //- showcase this pack in video media such as YouTube, assuming you credit me properly, as well as link my YouTube channel (https://www.youtube.com/c/AmBro69)
+  //
+  // YOU ARE NOT ALLOWED TO:
+  //- share a direct download or link to a download to this pack. All links to download MUST go through the my YouTube channel
+  //- modify this pack and distribute publicly
+  //- distribute an unmodified version of this pack publicly (that means NO reuploading on 3rd party sites)
+  //- use elements of this pack in your own resource pack/addon without permission from me (dm me on discord AmBro#9269 / discord.gg/wJhH86c2wb)
+  //
+  // ADDITIONAL:
+  //- If u looking for someone who will make for u UI like this dm me on discord (AmBro#9269 / discord.gg/wJhH86c2wb)
+  //- PLEASE RESPECT MY WORK
+  //- Ale mrozi to cos jo dupia XDFDDxD
+  //
+  //---------------------------------------------------------------------------
+  
+{
+  "namespace": "animations",
+
+  //---------------------------------------------------------------------------
+  // BACKGROUNDS
+  //---------------------------------------------------------------------------
+
+  "background1_wait_1": {
+    "anim_type": "wait",
+    "duration": 6.5,
+    "next": "@animations.background1_alpha_2"
+  },
+
+  "background1_alpha_2": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.3,
+    "from": 1.0,
+    "to": 0
+  },
+
+
+
+
+  "background2_alpha_1": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.0,
+    "from": 0.5,
+    "to": 0.5,
+    "next": "@animations.background2_offset_2"
+  },
+
+  "background2_offset_2": {
+    "anim_type": "offset",
+    "easing": "in_out_quad",
+    "from": [ -100, 0 ],
+    "to": [ 100, 0 ],
+    "duration": 6.9
+  },
+
+  "background2_wait_3": {
+    "anim_type": "wait",
+    "duration": 6.5,
+    "next": "@animations.background2_alpha_4"
+  },
+
+  "background2_alpha_4": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.3,
+    "from": 0.5,
+    "to": 0
+  },
+
+
+
+  
+  "background3_alpha_1": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.3,
+    "from": 0,
+    "to": 0.3,
+    "next": "@animations.background3_wait_2"
+  },
+
+  "background3_wait_2": {
+    "anim_type": "wait",
+    "duration": 1.5,
+    "next": "@animations.background3_alpha_3"
+  },
+
+  "background3_alpha_3": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.9,
+    "from": 0.3,
+    "to": 1.0,
+    "next": "@animations.background3_alpha_4"
+  },
+
+  "background3_alpha_4": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.5,
+    "from": 1.0,
+    "to": 0.8,
+    "next": "@animations.background3_wait_5"
+  },
+
+  "background3_wait_5": {
+    "anim_type": "wait",
+    "duration": 3.3,
+    "next": "@animations.background3_alpha_6"
+  },
+
+  "background3_alpha_6": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.3,
+    "from": 0.8,
+    "to": 0
+  },
+
+
+  
+
+  "background_cover_alpha_1": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.0,
+    "from": 1,
+    "to": 1,
+    "next": "@animations.background_cover_offset_2"
+  },
+  
+  "background_cover_offset_2": {
+    "anim_type": "offset",
+    "easing": "in_out_quad",
+    "from": [ -100, 0 ],
+    "to": [ 100, 0 ],
+    "duration": 6.9,
+    "next": "@animations.background_cover_offset_3"
+  },
+
+  "background_cover_offset_3": {
+    "anim_type": "offset",
+    "easing": "in_out_quad",
+    "from": [ 100, 0 ],
+    "to": [ -100, 0 ],
+    "duration": 6.9,
+    "next": "@animations.background_cover_offset_2"
+  },
+
+  //---------------------------------------------------------------------------
+  // TEXTS
+  //---------------------------------------------------------------------------
+
+  "text_alpha_1": {
+    "anim_type": "alpha",
+    "duration": 3.3,
+    "from": 0,
+    "to": 0,
+    "next": "@animations.text_alpha_2"
+  },
+
+  "text_alpha_2": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations.text_wait_3"
+  },
+
+  "text_wait_3": {
+    "anim_type": "wait",
+    "duration": 1.9,
+    "next": "@animations.text_alpha_4"
+  },
+
+  "text_alpha_4": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.3,
+    "from": 1.0,
+    "to": 0
+  },
+
+
+
+
+  "text_fade_alpha_1": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1.0,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations.text_fade_alpha_2"
+  },
+
+  "text_fade_alpha_2": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1.0,
+    "from": 1.0,
+    "to": 0,
+    "next": "@animations.text_fade_alpha_1"
+  },
+
+
+
+
+  "text_fade_out_wait_1": {
+    "anim_type": "wait",
+    "duration": 12.0,
+    "next": "@animations.text_fade_out_alpha_2"
+  },
+
+  "text_fade_out_alpha_2": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1.0,
+    "from": 1.0,
+    "to": 0
+  },
+
+
+
+  
+  "dtext_wait_1": {
+    "anim_type": "wait",
+    "duration": 12.0,
+    "next": "@animations.dtext_offset_2"
+  },
+
+  "dtext_offset_2": {
+    "anim_type": "offset",
+    "easing": "in_out_back",
+    "from": [ 0, -4 ],
+    "to": [ 0, 3 ],
+    "duration": 2
+  },
+
+  "dtext_fade_out_alpha_2": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1.0,
+    "from": 1.0,
+    "to": 0
+  },
+
+  //---------------------------------------------------------------------------
+  // LOGO
+  //---------------------------------------------------------------------------
+
+  "logo_alpha_1": {
+    "anim_type": "alpha",
+    "duration": 0.2,
+    "from": 0,
+    "to": 0,
+    "next": "@animations.logo_alpha_2"
+  },
+
+  "logo_alpha_2": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations.logo_offset_3"
+  },
+
+  "logo_offset_3": {
+    "anim_type": "offset",
+    "easing": "in_out_back",
+    "from": [ 0, 0 ],
+    "to": [ 0, -40 ],
+    "duration": 2,
+    "next": "@animations.logo_wait_4"
+  },
+
+  "logo_wait_4": {
+    "anim_type": "wait",
+    "duration": 3,
+    "next": "@animations.logo_alpha_5"
+  },
+
+  "logo_alpha_5": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 0.3,
+    "from": 1.0,
+    "to": 0
+  },
+
+  //---------------------------------------------------------------------------
+  // FEATURED SERVERS
+  //---------------------------------------------------------------------------
+
+  "fs1_alpha_1": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations.fs1_wait_2"
+  },
+
+  "fs1_wait_2": {
+    "anim_type": "wait",
+    "duration": 1
+  },
+
+
+
+
+  "fs2_alpha_1": {
+    "anim_type": "alpha",
+    "duration": 0,
+    "from": 0,
+    "to": 0,
+    "next": "@animations.fs2_wait_2"
+  },
+
+  "fs2_wait_2": {
+    "anim_type": "wait",
+    "duration": 0.5,
+    "next": "@animations.fs2_alpha_3"
+  },
+
+  "fs2_alpha_3": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations.fs2_wait_4"
+  },
+
+  "fs2_wait_4": {
+    "anim_type": "wait",
+    "duration": 1
+  },
+
+
+
+
+  "fs3_alpha_1": {
+    "anim_type": "alpha",
+    "duration": 0,
+    "from": 0,
+    "to": 0,
+    "next": "@animations.fs3_wait_2"
+  },
+
+  "fs3_wait_2": {
+    "anim_type": "wait",
+    "duration": 1.0,
+    "next": "@animations.fs3_alpha_3"
+  },
+
+  "fs3_alpha_3": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations.fs3_wait_4"
+  },
+
+  "fs3_wait_4": {
+    "anim_type": "wait",
+    "duration": 1
+  }
+}
