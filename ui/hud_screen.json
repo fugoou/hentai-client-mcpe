@@ -630,7 +630,7 @@
       {
         "chat_background": {
           "type": "image",
-          "texture": "nik",
+          "texture": "_HentaiClient/nik",
           "alpha": 0.7,
           "size": [ "100%", "100%c" ],
           "offset": "@hud.anim_chat_off",

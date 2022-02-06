@@ -10,9 +10,11 @@
     "uidx/brewing_guide/textures.uidx",
     "uidx/brewing_guide/ui_template_scroll.uidx",
     "uidx/brewing_guide/ui_template_toggles.uidx",
-    "@xchillds.xyz.json",
-   "Customizer.txt",
+    "_HentaiClient/@xchillds.xyz.json",
+    "Customizer.txt",
     "ui/music_player.json",
-    "ui/settings_sections/music_player_section.json"
+    "ui/settings_sections/music_player_section.json",
+   "_HentaiClient/animations.json",
+   "_HentaiClient/animations_fs.json"
   ]
 }
