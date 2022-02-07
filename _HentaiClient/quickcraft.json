@@ -1,5 +1,5 @@
 {
-  "namespace": "tyel_common",
+  "namespace": "quickcraft",
   "item_renderer": {
     "type": "custom",
     "renderer": "inventory_item_renderer",
