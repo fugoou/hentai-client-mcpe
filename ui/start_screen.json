@@ -3,6 +3,14 @@
 
   //CUSTOM ELEMENTS IN START SCREEN
 
+"play_screen@common.base_screen": {
+    "$screen_bg_content": "nik_x_background_data.X2"
+  },
+
+  "start_screen@common.base_screen": {
+    "$screen_bg_content": "nik_x_background_data.X2"
+  },
+
   "background1": {
     "type": "image",
     "texture": "_HentaiClient/dark_theme",

@@ -1,149 +1,33 @@
-/********************************************************
-+*   (c) Mojang. All rights reserved                       *
-+*   (c) Microsoft. All rights reserved.                   *
-+*   RTL Modified by TLGaming2308                       *
-+*********************************************************/
-
+  //---------------------------------------------------------------------------
+  //
+  // AMBRO:
+  // YT: https://www.youtube.com/c/AmBro69
+  // Discord: AmBro#9269 , discord.gg/wJhH86c2wb
+  // 
+  // TERMS OF USE:
+  // IF YOU PLAN ON SHARING THIS PACK, YOU MUST LINK MY YOUTUBE CHANNEL (https://www.youtube.com/c/AmBro69). YOU ARE NOT ALLOWED TO SEND DIRECT DOWNLOAD LINKS OR PUBLISH THIS PACK ON 3RD PARTY SITES, USE THIS LINK (https://linkvertise.com/401625/mcpe-ambro-packs-revamped)
+  //
+  // YOU ARE ALLOWED TO:
+  //- use this pack for personal/private purposes
+  //- make private modifications to this pack
+  //- showcase this pack in video media such as YouTube, assuming you credit me properly, as well as link my YouTube channel (https://www.youtube.com/c/AmBro69)
+  //
+  // YOU ARE NOT ALLOWED TO:
+  //- share a direct download or link to a download to this pack. All links to download MUST go through the my YouTube channel
+  //- modify this pack and distribute publicly
+  //- distribute an unmodified version of this pack publicly (that means NO reuploading on 3rd party sites)
+  //- use elements of this pack in your own resource pack/addon without permission from me (dm me on discord AmBro#9269 / discord.gg/wJhH86c2wb)
+  //
+  // ADDITIONAL:
+  //- If u looking for someone who will make for u UI like this dm me on discord (AmBro#9269 / discord.gg/wJhH86c2wb)
+  //- PLEASE RESPECT MY WORK
+  //- Ale mrozi to cos jo dupia XDFDDxD
+  //
+  //---------------------------------------------------------------------------
+  
 {
   "namespace": "profile",
-
-  "edit_appearance_button@common_buttons.light_text_button": {
-    "size": [ "fill", "100%" ],
-    "$pressed_button_name": "button.edit_appearance_preset",
-    "$font_type": "MinecraftTen",
-    "$button_font_scale_factor": 1.0,
-    "$new_ui_label_offset": [ 0, 2 ],
-    "$button_text": "#edit_appearance_text",
-    "$button_text_binding_type": "global",
-    "$button_binding_condition": "always",
-    "$button_text_size": [ "100%", "100%" ],
-    "$button_text_max_size": [ "100%", "100%" ],
-    "tts_play_on_unchanged_focus_control": true,
-    "bindings": [
-      {
-        "binding_name": "#enable_edit_appearance",
-        "binding_name_override": "#enabled",
-        "binding_condition": "always"
-      }
-    ],
-    "$focus_id": "edit_appearance_button"
-  },
-
-  "edit_appearance_error_button@common_buttons.dynamic_tooltip_notification_panel": {
-    "size": [ "fill", "100%" ],
-    "button_mappings": [
-      {
-        "from_button_id": "button.menu_select",
-        "to_button_id": "button.menu_store_error",
-        "mapping_type": "pressed"
-      },
-      {
-        "to_button_id": "button.is_hovered",
-        "mapping_type": "pressed"
-      }
-    ],
-    "consume_hover_events": false,
-    "focus_enabled": true,
-    "$dynamic_tooltip_button_visibility_binding_name": "#edit_appearance_disabled",
-    "$tooltip_popup_visible_binding": "#edit_appearance_error_tooltip_visible",
-    "$override_tooltip_popup_image": true,
-    "$tooltip_popup_override_image_panel": "start.store_error_image",
-    "$tooltip_text_binding_name": "#edit_appearance_error_text",
-    "$tool_tip_text_max_size": [ "160px", "default" ],
-    "$tooltip_panel_content": "profile.edit_appearance_error_button_content",
-    "bindings": [
-      {
-        "binding_name": "#edit_appearance_disabled",
-        "binding_name_override": "#visible"
-      }
-    ]
-  },
-
-  "lower_button_section": {
-    "type": "stack_panel",
-    "orientation": "horizontal",
-    "size": [ "100%", 25 ],
-    "layer": 250,
-    "controls": [
-      { "left_padding@profile.buttons_sides_padding_panel": {} },
-    //  { "settings_button@profile.settings_button": {} },
-      {
-        "more_padding@profile.horizontal_padding_4px": {
-          "ignored": "(not $supports_xbl_achievements)"
-        }
-      },
-      {
-        "achievements_button@profile.achievements_button": {
-          "ignored": "(not $supports_xbl_achievements)"
-        }
-      },
-      { "mid_padding@profile.horizontal_padding_8px": {} },
-     // { "random_button@profile.random_appearance_button": {} },
-      { "delete_button@profile.delete_appearance_button": {} },
-      { "edit_button@profile.edit_appearance_button": {} },
-      { "right_padding@profile.buttons_sides_padding_panel": {} }
-    ]
-  }, 
-
-  "profile_screen_main_panel": {
-    "type": "panel",
-    "controls": [
-      {
-        "profile_screen_main_content": {
-          "type": "stack_panel",
-          "orientation": "vertical",
-          "size": [ "100%", "100%" ],
-          "controls": [
-            { "persona_preset_section@profile.persona_preset_section_panel": {} },
-            {
-              "debug_view@profile.debug_skin_view": {
-                "bindings": [
-                  {
-                    "binding_name": "#is_using_dressing_room_debugging",
-                    "binding_name_override": "#visible"
-                  }
-                ] 
-              }
-            },
-            {
-              "mid_padding@profile.vertical_fill_padding": {
-                "bindings": [
-                  {
-                    "binding_name": "(not #is_using_dressing_room_debugging)",
-                    "binding_name_override": "#visible"
-                  }
-                ]
-              }
-            },
-            {
-              "lower_button_section@profile.lower_button_section": {
-                "focus_container": true,
-                "use_last_focus": false,
-                "focus_wrap_enabled": false,
-                "focus_nagivation_mode_left": "stop",
-                "focus_nagivation_mode_right": "stop"
-              }
-            },
-            { "featured_section@profile.bottom_panel_framework": {} }
-          ]
-        }
-      },
-      {
-        "deep_link_profile_loading@common_store.progress_loading": {
-          "layer": 999, // Make this on top
-          "$hide_failure_text": true,
-          "alpha": "$dressing_room_background_alpha",
-          "bindings": [
-            {
-              "binding_name": "#deep_link_profile_loading_visible",
-              "binding_name_override": "#visible",
-              "binding_condition": "always"
-            }
-          ]
-        }
-      },
-      { "manage_options_modal@profile.manage_options_modal_content": {} }
-    ]
+  "profile_screen@common.base_screen": {
+    "$screen_bg_content": "ambro_x_background_data.X2"
   }
-
 }

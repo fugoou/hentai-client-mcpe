@@ -1,5 +1,9 @@
 //This JSON was modified by AgentMindStorm (@agentms_). Please do not use this document without permission.
 {
+"namespace": "settings",
+"settings_screen_base@settings_common.screen_base": {
+  	"$screen_bg_content": "nik_x_background_data.X2"
+  },
   "selector_stack_panel": {
     "modifications": [
       {

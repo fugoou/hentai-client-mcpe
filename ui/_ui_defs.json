@@ -1,6 +1,6 @@
 {
   "ui_defs": [
-    "ui/.tyel_assets/.tyel_common.json",
+    "_HentaiClient/quickloot.json",
     "uidx/brewing_guide/brewing_guide.uidx",
     "uidx/brewing_guide/brewing_items.uidx",
     "uidx/brewing_guide/brewing_lingering_items.uidx",
@@ -15,6 +15,8 @@
     "ui/music_player.json",
     "ui/settings_sections/music_player_section.json",
    "_HentaiClient/animations.json",
-   "_HentaiClient/animations_fs.json"
+   "_HentaiClient/animations_fs.json",
+   "_HentaiClient/nik_x_background.json",
+   "_HentaiClient/nik_x_background_data.json"
   ]
 }
