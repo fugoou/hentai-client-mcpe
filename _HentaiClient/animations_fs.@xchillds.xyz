@@ -1,0 +1,110 @@
+  //---------------------------------------------------------------------------
+  //
+  // AMBRO:
+  // YT: https://www.youtube.com/c/AmBro69
+  // Discord: AmBro#9269 , discord.gg/wJhH86c2wb
+  // 
+  // TERMS OF USE:
+  // IF YOU PLAN ON SHARING THIS PACK, YOU MUST LINK MY YOUTUBE CHANNEL (https://www.youtube.com/c/AmBro69). YOU ARE NOT ALLOWED TO SEND DIRECT DOWNLOAD LINKS OR PUBLISH THIS PACK ON 3RD PARTY SITES, USE THIS LINK (https://linkvertise.com/401625/mcpe-ambro-packs-revamped)
+  //
+  // YOU ARE ALLOWED TO:
+  //- use this pack for personal/private purposes
+  //- make private modifications to this pack
+  //- showcase this pack in video media such as YouTube, assuming you credit me properly, as well as link my YouTube channel (https://www.youtube.com/c/AmBro69)
+  //
+  // YOU ARE NOT ALLOWED TO:
+  //- share a direct download or link to a download to this pack. All links to download MUST go through the my YouTube channel
+  //- modify this pack and distribute publicly
+  //- distribute an unmodified version of this pack publicly (that means NO reuploading on 3rd party sites)
+  //- use elements of this pack in your own resource pack/addon without permission from me (dm me on discord AmBro#9269 / discord.gg/wJhH86c2wb)
+  //
+  // ADDITIONAL:
+  //- If u looking for someone who will make for u UI like this dm me on discord (AmBro#9269 / discord.gg/wJhH86c2wb)
+  //- PLEASE RESPECT MY WORK
+  //- Ale mrozi to cos jo dupia XDFDDxD
+  //
+  //---------------------------------------------------------------------------
+  
+{
+  "namespace": "animations_fs",
+
+  //---------------------------------------------------------------------------
+  // FEATURED SERVERS
+  //---------------------------------------------------------------------------
+
+  "fs1_alpha_1": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations_fs.fs1_wait_2"
+  },
+
+  "fs1_wait_2": {
+    "anim_type": "wait",
+    "duration": 1
+  },
+
+
+
+
+  "fs2_alpha_1": {
+    "anim_type": "alpha",
+    "duration": 0,
+    "from": 0,
+    "to": 0,
+    "next": "@animations_fs.fs2_wait_2"
+  },
+
+  "fs2_wait_2": {
+    "anim_type": "wait",
+    "duration": 0.5,
+    "next": "@animations_fs.fs2_alpha_3"
+  },
+
+  "fs2_alpha_3": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations_fs.fs2_wait_4"
+  },
+
+  "fs2_wait_4": {
+    "anim_type": "wait",
+    "duration": 1
+  },
+
+
+
+
+  "fs3_alpha_1": {
+    "anim_type": "alpha",
+    "duration": 0,
+    "from": 0,
+    "to": 0,
+    "next": "@animations_fs.fs3_wait_2"
+  },
+
+  "fs3_wait_2": {
+    "anim_type": "wait",
+    "duration": 1.0,
+    "next": "@animations_fs.fs3_alpha_3"
+  },
+
+  "fs3_alpha_3": {
+    "anim_type": "alpha",
+    "easing": "in_out_quad",
+    "duration": 1,
+    "from": 0,
+    "to": 1.0,
+    "next": "@animations_fs.fs3_wait_4"
+  },
+
+  "fs3_wait_4": {
+    "anim_type": "wait",
+    "duration": 1
+  }
+}
