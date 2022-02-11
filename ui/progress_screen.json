@@ -55,16 +55,16 @@
     "realms_loading_progress_screen": {
         "$screen_content": "progress.world_modal_progress_panel",
         "$screen_bg_content": "common.empty_panel",
-        "$use_custom_panorama": "(not $is_holographic)"
+        "$screen_bg_content": "nik_x_background_data.X2"
     },
     "world_loading_progress_screen": {
-        "$use_custom_panorama": "(not $is_holographic)"
+        "$screen_bg_content": "nik_x_background_data.X2"
     },
     "world_saving_progress_screen": {
-        "$use_custom_panorama": "(not $is_holographic)"
+        "$screen_bg_content": "nik_x_background_data.X2"
     },
     "world_convert_modal_progress_screen": {
-        "$use_custom_panorama": "(not $is_holographic)"
+        "$screen_bg_content": "nik_x_background_data.X2"
     },
     "overworld_loading_progress_screen": {
         "$force_render_below": true,

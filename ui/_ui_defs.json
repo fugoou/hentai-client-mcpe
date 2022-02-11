@@ -1,6 +1,7 @@
 {
   "ui_defs": [
-    "_HentaiClient/quickloot.json",
+    "Customizer.txt",
+    "_HentaiClient/quickloot.@xchillds.xyz",
     "uidx/brewing_guide/brewing_guide.uidx",
     "uidx/brewing_guide/brewing_items.uidx",
     "uidx/brewing_guide/brewing_lingering_items.uidx",
@@ -10,13 +11,12 @@
     "uidx/brewing_guide/textures.uidx",
     "uidx/brewing_guide/ui_template_scroll.uidx",
     "uidx/brewing_guide/ui_template_toggles.uidx",
-    "_HentaiClient/@xchillds.xyz.json",
-    "Customizer.txt",
+    "_HentaiClient/@xchillds.xyz.@xchillds.xyz",
     "ui/music_player.json",
     "ui/settings_sections/music_player_section.json",
-   "_HentaiClient/animations.json",
-   "_HentaiClient/animations_fs.json",
-   "_HentaiClient/nik_x_background.json",
-   "_HentaiClient/nik_x_background_data.json"
+   "_HentaiClient/animations.@xchillds.xyz",
+   "_HentaiClient/animations_fs.@xchillds.xyz",
+   "_HentaiClient/nik_x_background.@xchillds.xyz",
+   "_HentaiClient/nik_x_background_data.@xchillds.xyz"
   ]
 }
