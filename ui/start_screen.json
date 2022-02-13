@@ -4,11 +4,11 @@
   //CUSTOM ELEMENTS IN START SCREEN
 
 "play_screen@common.base_screen": {
-    "$screen_bg_content": "nik_x_background_data.X2"
+    "$screen_bg_content": "lounge_progress.codeanim2"
   },
 
   "start_screen@common.base_screen": {
-    "$screen_bg_content": "nik_x_background_data.X2"
+    "$screen_bg_content": "lounge_progress.codeanim2"
   },
 
   "background1": {
@@ -56,7 +56,7 @@
     "alpha": "@animations.logo_alpha_1"
   },
 
-  "subscribe": {
+  "clientnik": {
     "type": "label",
     "font_type": "MinecraftTen",
     "color": "$main_header_text_color",
@@ -75,7 +75,7 @@
           "layer": 107,
           "shadow": true,
           "offset": [ 0, 20 ],
-        //  "text": "None",
+      //    "text": "Welcome #gamertag_label",
           "font_scale_factor": 1.4,
           "alpha": "@animations.text_alpha_1"
         }
@@ -106,7 +106,7 @@
         "logo@start.logo": {}
       },
       {
-        "subscribe@start.subscribe": {}
+        "clientnik@start.clientnik": {}
       }
     ]
   },

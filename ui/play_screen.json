@@ -1,6 +1,6 @@
 {
   "namespace": "play",
   "play_screen@common.base_screen": {
-    "$screen_bg_content": "nik_x_background_data.X2"
+    "$screen_bg_content": "lounge_progress.codeanim2"
   }
 }

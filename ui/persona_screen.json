@@ -6,6 +6,6 @@
     "$header_bar_control": "common_store.store_top_bar",
     "$is_full_screen_layout": false,
     "$ignore_swappers": false,
-     	"$screen_bg_content": "nik_x_background_data.X2"
+     	"$screen_bg_content": "lounge_progress.codeanim2"
   }
 }

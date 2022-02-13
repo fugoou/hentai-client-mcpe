@@ -1,0 +1,7 @@
+{
+  "ugc_viewer_screen": {
+    
+    "$screen_bg_content": "lounge_progress.codeanim2",
+    "$is_full_screen_layout": false
+  }
+}
