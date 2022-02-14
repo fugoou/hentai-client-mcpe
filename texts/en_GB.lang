@@ -315,4 +315,4 @@ tab.music_player.song.warmth.festive=Warmth (Festive Remix)
 tab.music_player.song.the_end.festive=The End (Festive Remix)
 tab.music_player.song.earth=Earth
 tab.music_player.song.sprouting=Sprouting
-map.position=X %s / Y %s / Z %s
+map.position=XYZ : %s / %s / %s
