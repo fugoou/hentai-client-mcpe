@@ -438,6 +438,71 @@
         "binding_name_override": "#propagateAlpha",
         "binding_type": "global"
       }
+    ],
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "armor_hud_renderer@hud.armor_hud_renderer": {}
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "offhand_renderer@hud.offhand_renderer": {}
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "use_item_progress_speed_renderer@hud.use_item_progress_speed_renderer": {}
+        }
+      }
+    ]
+  },
+  "armor_hud_renderer": {
+    //player renderer is moved off screen so it is not visible, but stil needed to render models in the HUD 
+    "renderer": "live_player_renderer",
+    "size": [ 17.5, 17.5 ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "layer": 2,
+    "type": "custom",
+    "offset": [ 6, 500 ]//position on screen in x-y sphere, origin is at bottom left but signs are flipped for some reason
+  },
+  "offhand_renderer": { 
+    "renderer": "live_player_renderer",
+    "size": [ 20, 20 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "layer": 2,
+    "type": "custom",
+    "offset": "$offset",
+    "$offset|default": [ -109, 1000 ],
+    "variables": [
+      {
+        "requires": "($is_ios)",
+        "$offset": [ -109, 1002 ]
+      }
+    ]
+  },
+  "use_item_progress_speed_renderer": { 
+    "renderer": "live_player_renderer",
+    "size": [ 17.5, 17.5 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "layer": 2,
+    "type": "custom",
+    "offset": "$offset",
+    "$offset|default": [ 0, -750 ],
+    "variables": [
+      {
+        "requires": "$pocket_edition",
+        "$offset": [ 0, -730 ]
+      }
     ]
   },
    "hud_content": {
