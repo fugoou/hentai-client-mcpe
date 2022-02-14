@@ -1,0 +1,16 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "ambient_alpha:entity_nocull": {
+      "+defines": [ "ALPHA_TEST" ],
+      "depthFunc": "Always",
+      "depthBias": 1000000000,
+      "slopeScaledDepthBias": 0.1,
+      "depthBiasOGL": 0.5,
+      "slopeScaledDepthBiasOGL": 0.5
+    },
+    "ambient_emissive:ambient_alpha": {
+      "+defines": [ "USE_EMISSIVE" ]
+    }
+  }
+}
