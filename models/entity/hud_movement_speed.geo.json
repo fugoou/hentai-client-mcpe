@@ -1,0 +1,140 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.hud_movement_speed_background",
+				"texture_width": 51,
+				"texture_height": 13,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_movement_speed_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-25.5, 0, 0], "size": [51, 13, 0],  "uv": [0, 0]}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.hud_movement_speed_tens_decimal",
+				"texture_width": 5,
+				"texture_height": 7,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_movement_speed_background",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "movement_speed_tens_decimal",
+					"parent": "hud_movement_speed_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-2.5, 3, 0], "size": [5, 7, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [5, 7]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.hud_movement_speed_ones_decimal",
+				"texture_width": 5,
+				"texture_height": 7,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_movement_speed_background",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "movement_speed_ones_decimal",
+					"parent": "hud_movement_speed_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-8.5, 3, 0], "size": [5, 7, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [5, 7]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.hud_movement_speed_ones",
+				"texture_width": 5,
+				"texture_height": 7,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_movement_speed_background",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "movement_speed_ones",
+					"parent": "hud_movement_speed_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-16.5, 3, 0], "size": [5, 7, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [5, 7]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.hud_movement_speed_tens",
+				"texture_width": 5,
+				"texture_height": 7,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_movement_speed_background",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "movement_speed_tens",
+					"parent": "hud_movement_speed_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-22.5, 3, 0], "size": [5, 7, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [5, 7]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

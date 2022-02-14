@@ -1,0 +1,82 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.hud_use_item_progress_background",
+				"texture_width": 25,
+				"texture_height": 13,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_use_item_progress_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-12.5, 0, 0], "size": [25, 13, 0], "uv": [0, 0]}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.hud_use_item_progress_ones",
+				"texture_width": 5,
+				"texture_height": 7,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_use_item_progress_background",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "use_item_progress_ones",
+					"parent": "hud_use_item_progress_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-3, 3, 0], "size": [5, 7, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [5, 7]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.hud_use_item_progress_tens",
+				"texture_width": 5,
+				"texture_height": 7,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "hud_use_item_progress_background",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "use_item_progress_tens",
+					"parent": "hud_use_item_progress_background",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-9.5, 3, 0], "size": [5, 7, 0], 
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [5, 7]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

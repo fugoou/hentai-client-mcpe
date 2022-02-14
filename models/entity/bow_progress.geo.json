@@ -1,0 +1,40 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bow_progress",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name":"armor_root",
+					"parent":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "bow_root",
+					"parent": "armor_root",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{
+							"origin": [-50.5, 24, 0],
+							"size": [16, 16, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [16, 16]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

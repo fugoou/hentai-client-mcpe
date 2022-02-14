@@ -1,0 +1,145 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.helmet",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "armor_root",
+					"parent":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "helmet",
+					"parent": "armor_root",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{
+							"origin": [-29, 24, 0],
+							"size": [16, 16, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [16, 16]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.chestplate",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "armor_root",
+					"parent":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "chestplate",
+					"parent": "armor_root",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{
+							"origin": [-15, 24, 0],
+							"size": [16, 16, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [16, 16]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.leggings",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "armor_root",
+					"parent":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "leggings",
+					"parent": "armor_root",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{
+							"origin": [-1, 24, 0],
+							"size": [16, 16, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [16, 16]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.boots",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "armor_root",
+					"parent":"health",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "boots",
+					"parent": "armor_root",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{
+							"origin": [13, 24, 0],
+							"size": [16, 16, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [16, 16]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
