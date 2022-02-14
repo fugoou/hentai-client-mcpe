@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.hud_movement_speed_clock": {
+      "initial_state": "variable_update",
+      "states": {
+        "default": {
+          "on_entry": [
+            "variable.life_time = query.life_time;"
+          ],
+          "transitions": [
+            { "variable_update": "(query.life_time - variable.life_time) >= 0.045" }
+          ]
+        },
+        "variable_update": {
+          "on_entry": [
+            "variable.modified_move_speed = query.ground_speed;"
+          ],
+          "transitions": [ { "default": "1.0" } ]
+        }
+      }
+    }
+  }
+}
