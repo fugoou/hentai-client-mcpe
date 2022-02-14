@@ -1,0 +1,79 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.hud_use_item_progress_background": {
+      "geometry": "Geometry.hud_use_item_progress_background",
+      "materials": [ { "*": "Material.default" } ],
+      "textures": [ "texture.use_item_progress" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    },
+    "controller.render.hud_use_item_progress_ones": {
+      "arrays": {
+        "textures": {
+          "array.progress": [
+            "texture.zero",
+            "texture.one",
+            "texture.two",
+            "texture.three",
+            "texture.four",
+            "texture.five",
+            "texture.six",
+            "texture.seven",
+            "texture.eight",
+            "texture.nine"
+          ]
+        }
+      },
+      "geometry": "Geometry.hud_use_item_progress_ones",
+      "materials": [ { "*": "Material.default" } ],
+      "overlay_color":{
+        //due to bedrock's poor inventory system, sometimes you can eat an item and not have the color overlay due to desyncing
+        //https://bugs.mojang.com/browse/MCPE-78355
+        "r": "math.lerp(0, 1, variable.item_use_normalized)",
+        "g": "math.lerp(0, 1, 1 - variable.item_use_normalized)",
+        "b": 0,
+      	"a": 1
+      },
+      //modulo function seems to be invalid inside arrays for 1.16.40 and below, so a temp has to be created outside of the array expression
+      "textures": [ "temp.use_item_progress_ones = math.mod((1 - variable.item_use_normalized) * 100, 10); return array.progress[temp.use_item_progress_ones];" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    },
+    "controller.render.hud_use_item_progress_tens": {
+      "arrays": {
+        "textures": {
+          "array.progress": [
+            "texture.zero",//pad array
+            "texture.one",
+            "texture.two",
+            "texture.three",
+            "texture.four",
+            "texture.five",
+            "texture.six",
+            "texture.seven",
+            "texture.eight",
+            "texture.nine"
+          ]
+        }
+      },
+      "geometry": "Geometry.hud_use_item_progress_tens",
+      "materials": [ { "*": "Material.default" } ],
+      "overlay_color":{
+        "r": "math.lerp(0, 1, variable.item_use_normalized)",
+        "g": "math.lerp(0, 1, 1 - variable.item_use_normalized)",
+        "b": 0,
+        "a": 1
+      },
+      "textures": [ "temp.use_item_progress_tens = math.mod((1 - variable.item_use_normalized) * 10, 10); return array.progress[temp.use_item_progress_tens];" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    }
+  }
+}

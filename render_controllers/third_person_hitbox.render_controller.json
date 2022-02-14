@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.hitbox": {
+      "geometry": "query.is_swimming ? geometry.hitbox_swimming : geometry.hitbox",
+      "materials": [ { "*": "material.hitbox" } ],
+      "textures": [ "texture.hitbox" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.25,
+      "ignore_lighting":true,
+      "part_visibility":[
+      	{ "ray": "!variable.this" }
+      ]
+    }
+  }
+}

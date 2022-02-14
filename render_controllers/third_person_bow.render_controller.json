@@ -1,0 +1,23 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.bow_progress": {
+      "arrays": {
+        "textures": {
+          "array.bow_progress": [
+            "texture.bow_1",
+            "texture.bow_2",
+            "texture.bow_3"
+          ]
+        }
+      },
+      "geometry": "geometry.bow_progress",
+      "materials": [ { "*": "Material.alpha" } ],
+      "textures": [ "temp.progress = math.clamp(math.lerp(0, 10000, 1 - variable.item_use_normalized), 0, 2); return query.is_using_item ? array.bow_progress[temp.progress] : texture.bow_0;" ],
+      "is_hurt_color":{},
+      "on_fire_color":{},
+      "light_color_multiplier": 1.15,
+      "ignore_lighting":true
+    }
+  }
+}

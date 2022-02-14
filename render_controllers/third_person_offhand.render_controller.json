@@ -1,0 +1,15 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.offhand": {
+      //1.16.0-40 call the totem 'totem_of_undying', while 1.16.100+ calls it 'totem'
+      "geometry": "query.get_equipped_item_name(1) == 'shield' ? geometry.offhand_shield : geometry.offhand",
+      "materials": [ { "*": "Material.alpha" } ],
+      "textures": [ "query.get_equipped_item_name(1) == 'arrow' ? texture.arrow : (query.get_equipped_item_name(1) == 'firework_rocket' ? texture.firework_rocket : (query.get_equipped_item_name(1) == 'shield' ? texture.shield : (query.get_equipped_item_name(1) == 'totem' || query.get_equipped_item_name(1) == 'totem_of_undying' ? texture.totem : (query.get_equipped_item_name(1) == 'nautilus_shell' ? texture.nautilus_shell : texture.map))))" ],
+      "is_hurt_color":{},
+      "on_fire_color":{},
+      "light_color_multiplier": 1.15,
+      "ignore_lighting":true
+    }
+  }
+}

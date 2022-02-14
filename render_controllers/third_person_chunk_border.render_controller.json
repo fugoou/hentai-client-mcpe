@@ -1,0 +1,20 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.chunk_border": {
+      "geometry": "geometry.chunk_border",
+      "materials": [ { "*": "material.default" } ],
+      "textures": [ "texture.chunk_border" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      //you can change the chunk border color here
+      "overlay_color": {
+      	"r":1000,
+      	"g":1000,
+      	"b":0,
+      	"a":1000
+      },
+      "ignore_lighting":true
+    }
+  }
+}

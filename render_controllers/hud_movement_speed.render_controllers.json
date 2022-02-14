@@ -1,0 +1,114 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.hud_movement_speed_background": {
+      "geometry": "Geometry.hud_movement_speed_background",
+      "materials": [ { "*": "Material.default" } ],
+      "textures": [ "texture.movement_speed" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    },
+    "controller.render.hud_movement_speed_tens_decimal": {
+      "arrays": {
+        "textures": {
+          "array.speed": [
+            "texture.zero",
+            "texture.one",
+            "texture.two",
+            "texture.three",
+            "texture.four",
+            "texture.five",
+            "texture.six",
+            "texture.seven",
+            "texture.eight",
+            "texture.nine"
+          ]
+        }
+      },
+      "textures": [ "temp.speed_tens_decimal = math.mod(variable.modified_move_speed * 100, 10); return array.speed[temp.speed_tens_decimal];" ],
+      "geometry": "Geometry.hud_movement_speed_tens_decimal",
+      "materials": [ { "*": "Material.default" } ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    },
+    "controller.render.hud_movement_speed_ones_decimal": {
+      "arrays": {
+        "textures": {
+          "array.speed": [
+            "texture.zero",
+            "texture.one",
+            "texture.two",
+            "texture.three",
+            "texture.four",
+            "texture.five",
+            "texture.six",
+            "texture.seven",
+            "texture.eight",
+            "texture.nine"
+          ]
+        }
+      },
+      "textures": [ "temp.speed_ones_decimal = math.mod(variable.modified_move_speed * 10, 10); return array.speed[temp.speed_ones_decimal];" ],
+      "geometry": "Geometry.hud_movement_speed_ones_decimal",
+      "materials": [ { "*": "Material.default" } ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    },
+    "controller.render.hud_movement_speed_ones": {
+      "arrays": {
+        "textures": {
+          "array.speed": [
+            "texture.zero",
+            "texture.one",
+            "texture.two",
+            "texture.three",
+            "texture.four",
+            "texture.five",
+            "texture.six",
+            "texture.seven",
+            "texture.eight",
+            "texture.nine"
+          ]
+        }
+      },
+      "textures": [ "temp.speed_ones = math.mod(variable.modified_move_speed, 10); return array.speed[temp.speed_ones];" ],
+      "geometry": "Geometry.hud_movement_speed_ones",
+      "materials": [ { "*": "Material.default" } ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    },
+    "controller.render.hud_movement_speed_tens": {
+      "arrays": {
+        "textures": {
+          "array.speed": [
+            "texture.zero",
+            "texture.one",
+            "texture.two",
+            "texture.three",
+            "texture.four",
+            "texture.five",
+            "texture.six",
+            "texture.seven",
+            "texture.eight",
+            "texture.nine"
+          ]
+        }
+      },
+      "textures": [ "temp.speed_tens = math.mod(variable.modified_move_speed / 10, 10); return array.speed[temp.speed_tens];" ],
+      "geometry": "Geometry.hud_movement_speed_tens",
+      "materials": [ { "*": "Material.default" } ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.3,
+      "ignore_lighting":true
+    }
+  }
+}

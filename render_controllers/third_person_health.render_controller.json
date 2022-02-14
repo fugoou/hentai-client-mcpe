@@ -1,0 +1,56 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.health_ones": {
+      "arrays": {
+        "textures": {
+          "array.health": [
+            "texture.zero_ones_health",
+            "texture.one_ones_health",
+            "texture.two_ones_health",
+            "texture.three_ones_health",
+            "texture.four_ones_health",
+            "texture.five_ones_health",
+            "texture.six_ones_health",
+            "texture.seven_ones_health",
+            "texture.eight_ones_health",
+            "texture.nine_ones_health"
+          ]
+        }
+      },
+      "geometry": "Geometry.health_ones",
+      "materials": [ { "*": "Material.emissive" } ],
+      //modulo function seems to be invalid inside arrays for 1.16.40 and below, so a temp has to be created outside of the array expression
+      "textures": [ "temp.health_ones = (query.health >= 100 ? 9 : math.mod(query.health, 10)); return array.health[temp.health_ones];" ],//clamp to 99
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.25,
+      "ignore_lighting":true
+    },
+    "controller.render.health_tens": {
+      "arrays": {
+        "textures": {
+          "array.health": [
+            "texture.one_tens_health",//pad array
+            "texture.one_tens_health",
+            "texture.two_tens_health",
+            "texture.three_tens_health",
+            "texture.four_tens_health",
+            "texture.five_tens_health",
+            "texture.six_tens_health",
+            "texture.seven_tens_health",
+            "texture.eight_tens_health",
+            "texture.nine_tens_health"
+          ]
+        }
+      },
+      "geometry": "Geometry.health_tens",
+      "materials": [ { "*": "Material.emissive" } ],
+      "textures": [ "temp.health_tens = (query.health >= 100 ? 9 : math.mod(query.health / 10, 10)); return array.health[temp.health_tens];" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "light_color_multiplier": 1.25,
+      "ignore_lighting":true
+    }
+  }
+}

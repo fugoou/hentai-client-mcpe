@@ -1,0 +1,161 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.hud_helmet": {
+      "arrays": {
+        "textures": {
+          "array.helmets": [
+            "texture.leather_helmet",
+            "texture.chainmail_helmet",
+            "texture.iron_helmet",
+            "texture.diamond_helmet",
+            "texture.gold_helmet",
+            "texture.gold_helmet",//pad array
+            "texture.turtle_helmet",
+            "texture.netherite_helmet"
+          ]
+        }
+      },
+      "geometry": "Geometry.hud_helmet",
+      "materials": [ { "*": "material.default" } ],
+      "textures": [ "array.helmets[query.armor_texture_slot(0)]" ],
+      "is_hurt_color": {
+      	"r":"variable.enchanted_helmet ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_helmet",
+      	"a":"variable.enchanted_helmet ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "on_fire_color": {
+      	"r":"variable.enchanted_helmet ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_helmet",
+      	"a":"variable.enchanted_helmet ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "overlay_color":{
+      	"r":"variable.enchanted_helmet ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_helmet",
+      	"a":"variable.enchanted_helmet ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "light_color_multiplier": "variable.enchanted_helmet ? 0.05 * -math.cos(query.life_time * 500.0) + 1.5 : 1.15",
+      "ignore_lighting":true
+    },
+    "controller.render.hud_chestplate": {
+      "arrays": {
+        "textures": {
+          "array.chestplates": [
+            "texture.leather_chestplate",
+            "texture.chainmail_chestplate",
+            "texture.iron_chestplate",
+            "texture.diamond_chestplate",
+            "texture.gold_chestplate",
+            "texture.elytra",
+            "texture.elytra",//pad array
+            "texture.netherite_chestplate"
+          ]
+        }
+      },
+      "geometry": "Geometry.hud_chestplate",
+      "materials": [ { "*": "material.default" } ],
+      "textures": [ "array.chestplates[query.armor_texture_slot(1)]" ],
+      "is_hurt_color": {
+      	"r":"variable.enchanted_chestplate ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_chestplate",
+      	"a":"variable.enchanted_chestplate ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "on_fire_color": {
+      	"r":"variable.enchanted_chestplate ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_chestplate",
+      	"a":"variable.enchanted_chestplate ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "overlay_color":{
+      	"r":"variable.enchanted_chestplate ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_chestplate",
+      	"a":"variable.enchanted_chestplate ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "light_color_multiplier": "variable.enchanted_chestplate ? 0.05 * -math.cos(query.life_time * 500.0) + 1.5 : 1.15",
+      "ignore_lighting":true
+    },
+    "controller.render.hud_leggings": {
+      "arrays": {
+        "textures": {
+          "array.leggings": [
+            "texture.leather_leggings",
+            "texture.chainmail_leggings",
+            "texture.iron_leggings",
+            "texture.diamond_leggings",
+            "texture.gold_leggings",
+            "texture.gold_leggings",//pad array
+            "texture.gold_leggings",//pad array
+            "texture.netherite_leggings"
+          ]
+        }
+      },
+      "geometry": "Geometry.hud_leggings",
+      "materials": [ { "*": "material.default" } ],
+      "textures": [ "array.leggings[query.armor_texture_slot(2)]" ],
+      "is_hurt_color": {
+      	"r":"variable.enchanted_leggings ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_leggings",
+      	"a":"variable.enchanted_leggings ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "on_fire_color": {
+      	"r":"variable.enchanted_leggings ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_leggings",
+      	"a":"variable.enchanted_leggings ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "overlay_color":{
+      	"r":"variable.enchanted_leggings ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_leggings",
+      	"a":"variable.enchanted_leggings ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "light_color_multiplier": "variable.enchanted_leggings ? 0.05 * -math.cos(query.life_time * 500.0) + 1.5 : 1.15",
+      "ignore_lighting":true
+    },
+    "controller.render.hud_boots": {
+      "arrays": {
+        "textures": {
+          "array.boots": [
+            "texture.leather_boots",
+            "texture.chainmail_boots",
+            "texture.iron_boots",
+            "texture.diamond_boots",
+            "texture.gold_boots",
+            "texture.gold_boots",//pad array
+            "texture.gold_boots",//pad array
+            "texture.netherite_boots"
+          ]
+        }
+      },
+      "geometry": "Geometry.hud_boots",
+      "materials": [ { "*": "material.default" } ],
+      "textures": [ "array.boots[query.armor_texture_slot(3)]" ],
+      "is_hurt_color": {
+      	"r":"variable.enchanted_boots ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_boots",
+      	"a":"variable.enchanted_boots ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "on_fire_color": {
+      	"r":"variable.enchanted_boots ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_boots",
+      	"a":"variable.enchanted_boots ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "overlay_color":{
+      	"r":"variable.enchanted_boots ? 0.4 : 0.0",
+      	"g":0.0,
+      	"b":"variable.enchanted_boots",
+      	"a":"variable.enchanted_boots ? 0.05 * math.cos(query.life_time* 425.0) + 0.25 : 0.0"
+      },
+      "light_color_multiplier": "variable.enchanted_boots ? 0.05 * -math.cos(query.life_time * 500.0) + 1.5 : 1.15",
+      "ignore_lighting":true
+    }
+  }
+}
