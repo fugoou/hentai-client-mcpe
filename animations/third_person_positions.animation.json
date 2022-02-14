@@ -1,0 +1,78 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.health": {
+      "loop": true,
+      "bones": {
+        "health": {
+          //model is not parented to head because rotational queries would inherit head animation.
+          //negating current value also has no effect since current values of head rotation are hardcoded.
+          //positioning is increased vertically for other players so belowname scoreboard displays do not overlap.
+          "rotation": [ "-query.camera_rotation(0)", "-query.body_y_rotation + query.camera_rotation(1) + 180", 0 ],
+          "position": [ 0, "math.lerp(-20, 0, 1 - variable.swim_amount) + (variable.this ? query.has_armor_slot(0) : 10) + 11", 0 ],
+          "scale": "variable.this ? 0.5 : math.clamp(query.distance_from_camera * 0.08, 0.5, 4)"
+        }
+      }
+    },
+    "animation.armor_root": {
+      "loop": true,
+      "bones": {
+      	"armor_root":{
+          "position": [ 0, 11, 0 ],
+          "scale": 0.9
+      	}
+      }
+    },
+    "animation.offhand": {
+      "loop": true,
+      "bones": {
+      	"offhand":{
+          "position": [ 0, 2, 0 ],
+          "scale": 0.8
+      	}
+      }
+    },
+    "animation.offhand_shield": {
+      "loop": true,
+      "bones": {
+      	"offhand":{
+          "position": [ 0, -1, 0 ],
+          "scale": 0.8
+      	}
+      }
+    },
+    "animation.bow_root": {
+      "loop": true,
+      "bones": {
+        "bow_root":{
+          "position": [ 0, 2, 0 ],
+          "scale": 0.8
+        }
+      }
+    },
+    "animation.hitbox": {
+      "loop": true,
+      "bones": {
+      	"hitbox":{
+          "rotation": [ 0, "-query.body_y_rotation", 0 ]
+      	}
+      }
+    },
+    "animation.chunk_border": {
+      "loop": true,
+      "bones": {
+        "chunk_pivot": {
+          "rotation": [ 0, "-query.body_y_rotation", 0 ],
+          "scale": 1.06666666667//16/15
+        },
+        "chunk": {
+          "position": [
+            "math.lerp(0, 1, (8 - math.mod(query.position(0), 16) - (query.position(0) <= 0 ? 16 : 0)) * 16)",
+            "math.lerp(0, 1, (1.6 - math.mod(query.position(1), 16) - (query.position(1) <= 0 ? 16 : 0)) * 16 + (query.vertical_speed * 0.5) + 0.25)",
+            "math.lerp(0, 1, (math.mod(query.position(2), 16) + (query.position(2) <= 0 ? 16 : 0) - 8) * 16)"
+          ]
+        }
+      }
+    }
+  }
+}

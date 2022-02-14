@@ -1,0 +1,49 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.hud_armor_root": {
+      "loop": true,
+      "bones": {
+        "hud_armor_root": {
+          "position": [ 0, "(query.is_swimming ? -17.1275 : 0.0) + 500.0", 0 ]
+        }
+      }
+    },
+    "animation.hud_offhand": {
+      "loop": true,
+      "bones": {
+        "hud_offhand": { 
+          "scale": 0.6
+        }
+      }
+    },
+    "animation.hud_offhand_slot": {
+      "loop": true,
+      "bones": {
+        "hud_offhand_slot": {
+          "position": [ 0, "(query.is_swimming ? -17.1275 : 0.0) + 879.6", 0 ],
+          "scale": 0.87
+        }
+      }
+    },
+    //if you want this module to display to the right of the movement speed module,
+    //change the -40 to 40. I have it set up this way because of servers that use
+    //the hive scoreboard layout, which may otherwise overlap with it.
+    "animation.hud_use_item_progress": {
+      "loop": true,
+      "bones": {
+        "hud_use_item_progress_background": {
+          "position": [ -40, "(query.is_swimming ? -17.1275 : 0.0) - 715.0", 0 ]
+        }
+      }
+    },
+    "animation.hud_movement_speed": {
+      "loop": true,
+      "bones": {
+        "hud_movement_speed_background": {
+          "position": [ 0, "(query.is_swimming ? -17.1275 : 0.0) - 715.0", 0 ]
+        }
+      }
+    }
+  }
+}
