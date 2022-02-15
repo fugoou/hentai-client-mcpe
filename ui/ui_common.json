@@ -230,7 +230,7 @@
     "anim_type": "alpha",
     "easing": "in_quint",
     "destroy_at_end": "selected_item_details",
-    "duration": 0,
+    "duration": 1.5,
     "from": 1.0,
     "to": 0
   },
@@ -239,7 +239,7 @@
     "anim_type": "alpha",
     "easing": "in_quint",
     "destroy_at_end": "details_bubble_control",
-    "duration": 0,
+    "duration": 1.5,
     "from": 1.0,
     "to": 0
   },
@@ -248,7 +248,7 @@
     "anim_type": "alpha",
     "easing": "in_quint",
     "destroy_at_end": "selected_item_details",
-    "duration": 0,
+    "duration": 1.5,
     "from": 0.6,
     "to": 0
   },
@@ -257,7 +257,7 @@
     "anim_type": "alpha",
     "easing": "in_quint",
     "destroy_at_end": "selected_item_details",
-    "duration": 0,
+    "duration": 1.5,
     "from": 1.0,
     "to": 0
   },
