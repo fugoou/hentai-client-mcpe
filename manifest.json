@@ -5,9 +5,9 @@
     "name": "Hentai Client",
     "uuid": "9aeffb48-7514-11ec-9f5c-731448ecfd87",
     "version": [
+      1,
       0,
-      0,
-      1
+      0
     ],
     "min_engine_version": [
       1,
@@ -21,9 +21,9 @@
       "type": "resources",
       "uuid": "35c306e7-7859-4714-be97-28682e423008",
       "version": [
+        1,
         0,
-        0,
-        1
+        0
       ]
     }
   ]
