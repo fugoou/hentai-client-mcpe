@@ -32,7 +32,7 @@ varying vec4 fogColor;
 LAYOUT_BINDING(0) uniform sampler2D TEXTURE_0;
 LAYOUT_BINDING(1) uniform sampler2D TEXTURE_1;
 LAYOUT_BINDING(2) uniform sampler2D TEXTURE_2;
-const vec3 luminanceWeighting = vec3(0.2125, 0.7154, 0.0721);
+
 void main()
 {
 #ifdef BYPASS_PIXEL_SHADER
@@ -78,21 +78,16 @@ vec4 inColor = color;
 	diffuse.rgb *= inColor.rgb;
 #else
 	vec2 uv = inColor.xy;
-	//diffuse.rgb *= mix(vec3(1.0,1.0,1.0), texture2D( TEXTURE_2, uv).rgb*2.0, inColor.b);
+	diffuse.rgb *= mix(vec3(1.0,1.0,1.0), texture2D( TEXTURE_2, uv).rgb*2.0, inColor.b);
 	diffuse.rgb *= inColor.aaa;
 	diffuse.a = 1.0;
 #endif
 
 #ifdef FOG
-	diffuse.rgb = mix( diffuse.rgb, fogColor.rgb, fogColor.a );
+	//diffuse.rgb = mix( diffuse.rgb, fogColor.rgb, fogColor.a );
 #endif
-    
-    vec3 rgb = diffuse.rgb;
-    float luminance = dot(rgb, luminanceWeighting);
-    vec3 greyScaleColor = vec3(luminance);
-     
-    vec3 colorContrast = vec3((rgb - vec3(0.5)) * 1.000000 + vec3(0.5));
-    gl_FragColor = vec4(mix(greyScaleColor, colorContrast, 1.000000), diffuse.a);
-    
+
+	gl_FragColor = diffuse;
+	
 #endif // BYPASS_PIXEL_SHADER
 }

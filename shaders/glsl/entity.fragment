@@ -24,8 +24,7 @@ varying vec4 fogColor;
 #endif
 
 #ifdef USE_OVERLAY
-    // When drawing horses on specific android devices, overlay color ends up being garbage data.
-    // Changing overlay color to high precision appears to fix the issue on devices tested
+
 	varying highp vec4 overlayColor;
 #endif
 
@@ -41,7 +40,6 @@ varying vec4 fogColor;
 #endif
 
 vec4 glintBlend(vec4 dest, vec4 source) {
-	// glBlendFuncSeparate(GL_SRC_COLOR, GL_ONE, GL_ONE, GL_ZERO)
 	return vec4(source.rgb * source.rgb, source.a) + vec4(dest.rgb, 0.0);
 }
 
@@ -68,41 +66,41 @@ void main()
 	color = texture2D( TEXTURE_0, uv );
 #else
 	color = texture2D_AA(TEXTURE_0, uv);
-#endif // !defined(TEXEL_AA) || !defined(TEXEL_AA_FEATURE)
+#endif 
 
 #ifdef MASKED_MULTITEXTURE
 	vec4 tex1 = texture2D( TEXTURE_1, uv );
 
-	// If tex1 has a non-black color and no alpha, use color; otherwise use tex1 
+
 	float maskedTexture = ceil( dot( tex1.rgb, vec3(1.0, 1.0, 1.0) ) * ( 1.0 - tex1.a ) );
 	color = mix(tex1, color, clamp(maskedTexture, 0.0, 1.0));
-#endif // MASKED_MULTITEXTURE
+#endif
 
 #if defined(ALPHA_TEST) && !defined(USE_MULTITEXTURE) && !defined(MULTIPLICATIVE_TINT)
 	if(NEEDS_DISCARD(color))
 		discard;
-#endif // ALPHA_TEST
+#endif 
 
 #ifdef TINTED_ALPHA_TEST
 vec4 testColor = color;
 testColor.a *= alphaTestMultiplier;
 	if(NEEDS_DISCARD(testColor))
 		discard;
-#endif // TINTED_ALPHA_TEST
-#endif // NO_TEXTURE
+#endif 
+#endif 
 
 #ifdef COLOR_BASED
 	color *= vertColor;
 #endif
 
 #ifdef MULTI_COLOR_TINT
-	// Texture is a mask for tinting with two colors
+	
 	vec2 colorMask = color.rg;
 
-	// Apply the base color tint
+	
 	color.rgb = colorMask.rrr * CHANGE_COLOR.rgb;
 
-	// Apply the secondary color mask and tint so long as its grayscale value is not 0
+	
 	color.rgb = mix(color, colorMask.gggg * MULTIPLICATIVE_TINT_CHANGE_COLOR, ceil(colorMask.g)).rgb;
 #else
 
@@ -114,11 +112,10 @@ testColor.a *= alphaTestMultiplier;
 #ifdef ITEM_IN_HAND
 	color.rgb = mix(color.rgb, color.rgb*CHANGE_COLOR.rgb, vertColor.a);
 #if defined(MCPE_PLATFORM_NX) && defined(NO_TEXTURE) && defined(GLINT)
-	// TODO(adfairfi): This needs to be properly fixed soon. We have a User Story for it in VSO: 102633
 	vec3 dummyColor = texture2D(TEXTURE_0, vec2(0.0, 0.0)).rgb;
 	color.rgb += dummyColor * 0.000000001;
 #endif
-#endif // MULTI_COLOR_TINT
+#endif 
 
 #endif
 
@@ -134,7 +131,7 @@ testColor.a *= alphaTestMultiplier;
 
 #ifdef COLOR_SECOND_TEXTURE
 	if (tex2.a > 0.0) {
-		color.rgb = tex2.rgb + (tex2.rgb * CHANGE_COLOR.rgb - tex2.rgb)*tex2.a;//lerp(tex2.rgb, tex2 * changeColor.rgb, tex2.a)
+		color.rgb = tex2.rgb + (tex2.rgb * CHANGE_COLOR.rgb - tex2.rgb)*tex2.a;
 	}
 #else
 	color.rgb = mix(color.rgb, tex2.rgb, tex2.a);
@@ -157,22 +154,22 @@ testColor.a *= alphaTestMultiplier;
 #endif
 
 #ifdef USE_OVERLAY
-	//use either the diffuse or the OVERLAY_COLOR
+	
 	color.rgb = mix(color, overlayColor, overlayColor.a).rgb;
 #endif
 
 #ifdef USE_EMISSIVE
-	//make glowy stuff
+	
 	color *= mix(vec4(1.0), light, color.a );
 #else
-	color *= light;
+	//color *= light;   this makes full bright
 #endif
 
-	//apply fog
+	
 	color.rgb = mix( color.rgb, fogColor.rgb, fogColor.a );
 
 #ifdef GLINT
-	// Applies color mask to glint texture instead and blends with original color
+	
 	vec4 layer1 = texture2D(TEXTURE_1, fract(layer1UV)).rgbr * glintColor;
 	vec4 layer2 = texture2D(TEXTURE_1, fract(layer2UV)).rgbr * glintColor;
 	vec4 glint = (layer1 + layer2) * tileLightColor;
@@ -180,7 +177,7 @@ testColor.a *= alphaTestMultiplier;
 	color = glintBlend(color, glint);
 #endif
 
-	//WARNING do not refactor this
+	
 #ifdef UI_ENTITY
 	color.a *= HUD_OPACITY;
 #endif
