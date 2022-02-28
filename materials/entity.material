@@ -12,7 +12,7 @@
     "ambient_emissive:ambient_alpha": {
       "+defines": [ "USE_EMISSIVE" ]
     },
-    "chest:entity_nocull": {
+   /* "chest:entity_nocull": {
       "+defines": [ "ALPHA_TEST" ],
       "depthFunc": "Always",
       "depthBias": 1000000000,
@@ -22,6 +22,6 @@
     },
     "ambient_emissive:ambient_alpha": {
       "+defines": [ "USE_EMISSIVE" ]
-    }
+    }*/
   }
 }
