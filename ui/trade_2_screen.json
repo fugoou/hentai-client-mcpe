@@ -1,5 +1,16 @@
 {
   "namespace": "trade2",
+   "screen_stack_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", "100%cm" ],
+    "controls": [
+      { "left_panel@trade2.right_panel": {} },
+      { "center_fold@trade2.center_fold": {} },
+      { "right_panel@trade2.left_panel": {} },
+      { "toolbar_anchor@trade2.toolbar_anchor": {} }
+    ]
+  },
   "tier_stack_panel": {
     "type": "stack_panel",
     "size": [ "100%", "100%c + 1px" ],

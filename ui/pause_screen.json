@@ -1,0 +1,17 @@
+// RTL Modified by TLGaming2308
+
+{
+  "namespace": "pause",
+  
+  "pause_screen_main_panels": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%", "100%" ],
+    "$achievements_ignored|default": false,
+    "controls": [
+      { "info_panel@pause.info_panel": {} },
+      { "menu@pause.pause_screen_menu": {} }
+    ]
+  }
+  
+}
