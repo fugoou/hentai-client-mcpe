@@ -4,14 +4,20 @@
     "type": "image",
     "size": [ "100%", "100%" ],
     "uv_size": [ 256, 256],
-    "texture": "menu/components/cheatbreaker"
+    "texture": "menu/components/cbshadow"
   },
  
   "codebg": {
     "type": "image",
     "size": [ "100%", "100%" ],
+    "uv_size": [ 500, 288],
+    "texture": "_HentaiClient/ByKlutzyy.png"
+  },
+   "codeblur": {
+    "type": "image",
+    "size": [ "100%", "100%" ],
     "uv_size": [ 500, 300],
-    "texture": "_HentaiClient/ByKlutzyy"
+    "texture": "menu/components/afternoonblur"
   },
   
   "notice": {
@@ -131,7 +137,12 @@
  "type":"panel",
  "size":["124%","124%"],
  "controls":[
-{"anim@lounge_progress.codebg":{"anchor_from":"center","anchor_to":"center","layer":-20,"uv":"@lounge_progress.1_0","offset":[0,0]}}]},
+{"anim@lounge_progress.codebg":{"anchor_from":"center","anchor_to":"center","layer":0,"uv":"@lounge_progress.1_0","offset":[0,0]}}]},
+"codeanimblur":{
+ "type":"panel",
+ "size":["124%","124%"],
+ "controls":[
+{"anim@lounge_progress.codeblur":{"anchor_from":"center","anchor_to":"center","layer":0,"uv":"@lounge_progress.1_0","offset":[0,0]}}]},
 
  "codeanim":{
  "type":"panel",
@@ -229,9 +240,9 @@
  "controls":[
 
 {"cancel_button@resume1_button.resume1_button":{"size":[170,20],"$button_text":"Cancel","anchor_from":"bottom_middle","anchor_to":"bottom_middle","offset":[0,-30],"$pressed_button_name":"button.menu_exit","layer":10,"bindings":[{"binding_name":"#cancel_visible","binding_name_override":"#visible"}]}},
- {"loading_label":{"type":"label","size":["default",20],"text":"#title_text","font_type":"default","font_scale_factor":1.3,"layer":10,"anchor_from":"bottom_middle","anchor_to":"bottom_middle","offset":[0,-80],"bindings":[{"binding_name":"#title_text"}]}},
+ {"loading_label":{"type":"label","size":["default",20],"text":"#title_text","font_type":"Roboto-Regular","font_scale_factor":1.3,"layer":10,"anchor_from":"bottom_middle","anchor_to":"bottom_middle","offset":[0,-80],"bindings":[{"binding_name":"#title_text"}]}},
 
- {"dark":{"type":"image","texture":"menu/components/dark","layer":-5,"size":[10000,10000]}},
+ {"dark":{"type":"image","texture":"menu/components/dark","layer":1,"size":[10000,10000]}},
  {"loading_panel":{
  "type":"panel",
  "offset":[-15,-10],
