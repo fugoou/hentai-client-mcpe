@@ -192,31 +192,3 @@
     ]
   }
 }
-
-
-/* RTL Modified by TLGaming2308
-
-{
-  "namespace": "brewing_stand_pocket",
-
-  "half_screen": {
-    "type": "input_panel",
-    "size": [ "50%-4px", "100%-35px" ],
-    "anchor_from": "top_right",
-    "anchor_to": "top_right"
-  },
-  "inventory_half_screen@brewing_stand_pocket.half_screen": {
-    "offset": [ -8, 31 ],
-    "controls": [
-      { "inventory_content@brewing_stand_pocket.inventory_content": {} }
-    ]
-  },
-  "brewing_stand_half_screen@brewing_stand_pocket.half_screen": {
-    "offset": [ 8, 31 ],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "controls": [
-      { "brewing_stand_contents_panel@brewing_stand_pocket.brewing_stand_contents_panel": {} }
-    ]
-  }
-}

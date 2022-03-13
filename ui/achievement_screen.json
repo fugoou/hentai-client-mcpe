@@ -1,0 +1,21 @@
+{
+
+
+"namespace":"achievement",
+
+
+
+"achievement_screen@common.base_screen": {
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
+      }
+    ],
+    "$screen_content": "achievement.achievement_screen_content",
+    "$header_safezone_control": "common_store.store_top_bar_filler",
+    "$header_bar_control": "common_store.store_top_bar",
+    "$is_full_screen_layout": true,
+  	"$screen_bg_content": "lounge_progress.codeanim2"
+  }}

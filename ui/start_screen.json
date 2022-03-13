@@ -3,17 +3,13 @@
 
   //CUSTOM ELEMENTS IN START SCREEN
 
-"play_screen@common.base_screen": {
-    "$screen_bg_content": "lounge_progress.codeanim2"
-  },
-
   "start_screen@common.base_screen": {
     "$screen_bg_content": "lounge_progress.codeanim2"
   },
 
   "background1": {
     "type": "image",
-    "texture": "_HentaiClient/dark_theme",
+    "texture": "\u005f\u0048\u0065\u006e\u0074\u0061\u0069\u0043\u006c\u0069\u0065\u006e\u0074/dark_theme",
     "fill": true,
     "layer": 100,
     "alpha": "@animations.background1_wait_1"
@@ -21,7 +17,7 @@
 
   "background2": {
     "type": "image",
-    "texture": "_HentaiClient/background",
+    "texture": "\u005f\u0048\u0065\u006e\u0074\u0061\u0069\u0043\u006c\u0069\u0065\u006e\u0074/background",
     "size": [ 1280, 720 ],
     "layer": 101,
     "alpha": "@animations.background2_wait_3",
@@ -30,7 +26,7 @@
 
   "background3": {
     "type": "image",
-    "texture": "_HentaiClient/glow",
+    "texture": "\u005f\u0048\u0065\u006e\u0074\u0061\u0069\u0043\u006c\u0069\u0065\u006e\u0074/glow",
     "fill": true,
     "layer": 103,
     "alpha": 0.3,
@@ -40,7 +36,7 @@
   "loading_spin": {
     "type": "image",
     "layer": 104,
-    "texture": "_HentaiClient/loading_spin",
+    "texture": "\u005f\u0048\u0065\u006e\u0074\u0061\u0069\u0043\u006c\u0069\u0065\u006e\u0074/loading_spin",
     "offset": [ 0, 145 ],
     "uv_size": [ 7, 7 ],
     "size": [ 14, 14 ],
@@ -50,7 +46,7 @@
 
   "logo": {
     "type": "image",
-    "texture": "_HentaiClient/hentaiclient",
+    "texture": "\u005f\u0048\u0065\u006e\u0074\u0061\u0069\u0043\u006c\u0069\u0065\u006e\u0074/\u0068\u0065\u006e\u0074\u0061\u0069\u0063\u006c\u0069\u0065\u006e\u0074",
     "size": [ 100, 100 ],
     "layer": 105,
     "alpha": "@animations.logo_alpha_1"
@@ -267,7 +263,7 @@
     "type": "label",
     "color": "$main_header_text_color",
     "layer": 150,
-    "text": "YT : XyNCKunZ / IG : @xchillds.xyz",
+    "text": "\u0059\u0054 \u003a \u0058\u0079\u004e\u0043\u004b\u0075\u006e\u005a \u002f \u0049\u0047 \u003a \u0040\u0078\u0063\u0068\u0069\u006c\u006c\u0064\u0073\u002e\u0078\u0079\u007a",
     "size": [ "default", 10 ],
     "max_size": [ "100%", "100%" ],
     "anchor_from": "top_middle",
@@ -283,7 +279,7 @@
     "type": "label",
     "color": "$main_header_text_color",
     "layer": 149,
-    "text": "YT : XyNCKunZ / IG : @xchillds.xyz",
+    "text": "\u0059\u0054 \u003a \u0058\u0079\u004e\u0043\u004b\u0075\u006e\u005a \u002f \u0049\u0047 \u003a \u0040\u0078\u0063\u0068\u0069\u006c\u006c\u0064\u0073\u002e\u0078\u0079\u007a",
     "offset": [ 0, 3 ],
     "size": [ "default", 10 ],
     "max_size": [ "100%", "100%" ],

@@ -1,0 +1,8 @@
+// File made and modified by @tlgm2308 (Twitter).
+// Please respect my works ;-;, and do not steal my code without permissions!
+// Original code by (c) Mojang & (c) Microsoft. All rights reserved.
+{
+  "book_screen": {
+    "$render_bg": true
+  }
+}

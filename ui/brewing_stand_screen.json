@@ -1,6 +1,24 @@
 /*File modified by @CrisXolt.
 //(c) Don't use any code design without permission!*/
 {
+  "brewing_stand_pictogram": {
+    "type": "panel",
+    "size": [ "40%", "80%" ],
+    "controls": [
+      { "brewing_input_slot@brewing_stand.brewing_input_slot": { "layer": 2 } },
+      { "brewing_output_slots@brewing_stand.brewing_output_slots": { "layer": 2 } },
+      { "brewing_fuel_slot@brewing_stand.brewing_fuel_slot": { "layer": 2 } },
+      { "brewing_arrow_empty_image@brewing_stand.brewing_arrow_empty_image": { "layer": 3 } },
+      { "brewing_arrow_full_image@brewing_stand.brewing_arrow_full_image": { "layer": 6 } },
+      { "brewing_fuel_bar_empty_image@brewing_stand.brewing_fuel_bar_empty_image": { "layer": 3 } },
+      { "brewing_fuel_bar_full_image@brewing_stand.brewing_fuel_bar_full_image": { "layer": 6 } },
+      { "bubbles_empty_image@brewing_stand.bubbles_empty_image": { "layer": 3 } },
+      { "bubbles_full_image@brewing_stand.bubbles_full_image": { "layer": 6 } },
+      { "brewing_fuel_pipes@brewing_stand.brewing_fuel_pipes": { "layer": 5 } },
+      { "brewing_pipes@brewing_stand.brewing_pipes": { "layer": 5 } }
+    ]
+  },
+
   "brewing_stand_with_help_stack_panel": {
     "type": "stack_panel",
     "size": [ "100%c", 166 ],
@@ -37,11 +55,7 @@
     "type": "panel",
     "controls": [
       { "container_gamepad_helpers@common.container_gamepad_helpers": {} },
-      {
-        "flying_item_renderer@common.flying_item_renderer": {
-          "layer": 11
-        }
-      },
+      { "flying_item_renderer@common.flying_item_renderer": { "layer": 11 } },
       { "selected_item_details_factory@common.selected_item_details_factory": {} },
       { "item_lock_notification_factory@common.item_lock_notification_factory": {} },
       { "brewing_stand_with_help_stack_panel@brewing_stand.brewing_stand_with_help_stack_panel": {} }
