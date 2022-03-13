@@ -1089,7 +1089,7 @@
       }
     ],
     "$screen_content": "profile_card.profile_card_screen_content",
-    	"$screen_bg_content": "lounge_progress.codeanim2",
+    	"$screen_bg_content": "lounge_progress.codeanim2"
   },
 
   "profile_card_screen_content": {
