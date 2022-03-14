@@ -1,0 +1,43 @@
+//This JSON was modified by AgentMindStorm (@agentms_). Please do not use this document without permission.
+{
+  "emote_image/empty": { //This changes the size of the "no emote" icon to match the music player buttons.
+    "size": [ 22, 22 ]
+  },
+  "emote_image/emote_preview": { //This changes the size of the emote icons to match the music player buttons.
+    "size": [ 26, 26 ]
+  },
+  "emote_image/emote_preview/valid": { //These bindings allow the music player to use the built-in emote icons.
+    "bindings": [
+      {
+        "binding_name": "#emote_image",
+        "binding_name_override": "#texture",
+        "binding_condition": "always"
+      },
+      {
+        "binding_name": "#emote_image_file_system",
+        "binding_name_override": "#texture_file_system",
+        "binding_condition": "always"
+      },
+      {
+        "binding_name": "#image_is_valid",
+        "binding_name_override": "#visible",
+        "binding_condition": "always"
+      }
+    ]
+  },
+  "emote_wheel_screen_deprecated": {
+    "$screen_animations": [
+      "@common.container_screen_exit_animation_push",
+      "@common.container_screen_exit_animation_pop",
+      "@common.container_screen_entrance_animation_push",
+      "@common.container_screen_entrance_animation_pop",
+      "@common.screen_exit_animation_push_fade",
+      "@common.screen_exit_animation_pop_fade",
+      "@common.screen_entrance_animation_push_fade",
+      "@common.screen_entrance_animation_pop_fade"
+    ],
+    "$screen_content": "music_player.music_player_dialog", //This replaces the default emote screen with the music player.
+    "$screen_bg_content": "music_player.music_player_invisible_background", //This absorbs selections made outside the music player dialog to stop misclicks from closing the screen.
+    "gamepad_cursor_deflection_mode": false //This disables the property which causes the selected element to match the position of the controller stick.
+  }
+}

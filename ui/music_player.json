@@ -4,7 +4,7 @@
   "namespace": "music_player",
 //These objects are used to create the scrolling panel in the emote screen.
   "music_player_dialog@common_dialogs.main_panel_no_buttons": { //This is the background container for the music player. Without it, the list would fill the screen and be more difficult to read.
-    "size": [ "65%", "95%" ],
+    "size": [ "65% + 30px", "95%" ],
     "$text_name": "tab.music_player.name",
     "$panel_indent_size":  [ "100% - 23px", "100% - 31px" ],
     "$child_control": "music_player.music_player_layered_panel"
@@ -780,33 +780,33 @@
         "small_padding@how_to_play_common.small_padding": {}
       },
       {
-        "emote_1@music_player.music_player_emote_button_panel_base": {
+        "emote_1@music_player.music_player_emote_button": {
           "$emote_slot_index": 0, //The emote screen's existing elements save much of the work here by requiring just the number of the emote slot to generate the rest of the information.
           "$section_top": true
         }
       },
       {
-        "emote_2@music_player.music_player_emote_button_panel_base": {
+        "emote_2@music_player.music_player_emote_button": {
           "$emote_slot_index": 1
         }
       },
       {
-        "emote_3@music_player.music_player_emote_button_panel_base": {
+        "emote_3@music_player.music_player_emote_button": {
           "$emote_slot_index": 2
         }
       },
       {
-        "emote_4@music_player.music_player_emote_button_panel_base": {
+        "emote_4@music_player.music_player_emote_button": {
           "$emote_slot_index": 3
         }
       },
       {
-        "emote_5@music_player.music_player_emote_button_panel_base": {
+        "emote_5@music_player.music_player_emote_button": {
           "$emote_slot_index": 4
         }
       },
       {
-        "emote_6@music_player.music_player_emote_button_panel_base": {
+        "emote_6@music_player.music_player_emote_button": {
           "$emote_slot_index": 5,
           "variables": [
             {
@@ -930,31 +930,89 @@
       {
         "custom_album@music_player.music_player_button_custom_base": {
           "$title": "$custom_album_title",
-          "$identifier": "tab.music_player.album.custom",
+          "$identifier|default": "tab.music_player.album.custom",
           "$artist": "$custom_album_artist",
           "$cover": "custom_covers/cover0", //The album cover can be changed by adding the file "cover0" to the "custom_covers" folder of the Custom Music Container.
           "$sound_event|default": "album.custom.1-100.ui", //Since the custom album has a high chance of not playing a song, the randomness is limited to the maximum amount of songs visible. The variables below control which of the four custom album sound events are chosen. If an abnormal selection is chosen (such as only songs 1-25 and 51-75 visible), the sound event will default to selecting from 1-100.
           "$quaver_location": [ 60, 0 ], //Unlike all other quavers, this quaver is only used in the default quaver state. In other quaver states, the uncolored quaver is unused.
-          "$type_image_panel_controls": [
+          "variables": [ //Adding different sound events for all 16 custom song configurations would be excessive, so only the four obvious configurations have sound events. The other 12 use 1-100.
             {
-              "shuffle@music_player.shuffle_image": {} //Albums use the shuffle icon instead of the speaker icon to show that a random song will be chosen.
-            }
-          ],
-          "variables": [
-            {
-              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and $show_custom_songs_51_to_75 and (not $show_custom_songs_76_to_100))",
-              "$sound_event": "album.custom.1-75.ui"
-            },
-            {
-              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
-              "$sound_event": "album.custom.1-50.ui"
+              "requires": "((not $show_custom_songs_1_to_25) and (not $show_custom_songs_26_to_50) and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+              "$identifier": "tab.music_player.empty",
+              "$song_count": "0", //The amount of songs visible changes depending on the Customizer, so the amount of songs shown has to adjust to fit.
+              "$sound_event": "silence"
             },
             {
               "requires": "($show_custom_songs_1_to_25 and (not $show_custom_songs_26_to_50) and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+              "$song_count": "25",
               "$sound_event": "album.custom.1-25.ui"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and $show_custom_songs_26_to_50 and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+              "$song_count": "25"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and (not $show_custom_songs_26_to_50) and $show_custom_songs_51_to_75 and (not $show_custom_songs_76_to_100))",
+              "$song_count": "25"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and (not $show_custom_songs_26_to_50) and (not $show_custom_songs_51_to_75) and $show_custom_songs_76_to_100)",
+              "$song_count": "25"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and (not $show_custom_songs_51_to_75) and (not $show_custom_songs_76_to_100))",
+              "$song_count": "50",
+              "$sound_event": "album.custom.1-50.ui"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and $show_custom_songs_26_to_50 and $show_custom_songs_51_to_75 and (not $show_custom_songs_76_to_100))",
+              "$song_count": "50"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and (not $show_custom_songs_26_to_50) and $show_custom_songs_51_to_75 and $show_custom_songs_76_to_100)",
+              "$song_count": "50"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and (not $show_custom_songs_26_to_50) and (not $show_custom_songs_51_to_75) and $show_custom_songs_76_to_100)",
+              "$song_count": "50"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and (not $show_custom_songs_26_to_50) and $show_custom_songs_51_to_75 and (not $show_custom_songs_76_to_100))",
+              "$song_count": "50"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and $show_custom_songs_26_to_50 and (not $show_custom_songs_51_to_75) and $show_custom_songs_76_to_100)",
+              "$song_count": "50"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and $show_custom_songs_51_to_75 and (not $show_custom_songs_76_to_100))",
+              "$song_count": "75",
+              "$sound_event": "album.custom.1-75.ui"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and (not $show_custom_songs_51_to_75) and $show_custom_songs_76_to_100)",
+              "$song_count": "75"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and (not $show_custom_songs_26_to_50) and $show_custom_songs_51_to_75 and $show_custom_songs_76_to_100)",
+              "$song_count": "75"
+            },
+            {
+              "requires": "((not $show_custom_songs_1_to_25) and $show_custom_songs_26_to_50 and $show_custom_songs_51_to_75 and $show_custom_songs_76_to_100)",
+              "$song_count": "75"
+            },
+            {
+              "requires": "($show_custom_songs_1_to_25 and $show_custom_songs_26_to_50 and $show_custom_songs_51_to_75 and $show_custom_songs_76_to_100)",
+              "$font_offset|default": [ 0, 6 ],
+              "$font_scale|default": 1.3,
+              "$song_count": "100",
+              "$sound_event": "album.custom.1-100.ui"
             }
           ],
-          "$section_top": true
+          "$section_top": true,
+          "$shuffle": true,
+          "$font_offset|default": [ 0, 3 ],
+          "$font_scale|default": 1.75
         }
       },
       {
@@ -2220,6 +2278,7 @@
   "music_player_album_section": {
     "type": "stack_panel",
     "size": [ "100%", "100%c" ],
+    "$shuffle": true,
     "controls": [
       {
         "album_title@music_player.music_player_title": {
@@ -2232,15 +2291,12 @@
       {
         "volume_alpha@music_player.music_player_button_volume_alpha_base": {
           "$identifier": "tab.music_player.album.volume_alpha", //Non-custom songs only have "$identifier" variables. Since the player is not able to give them custom titles, the "$title" variable is unnecessary.
+          "$song_count": "24", //This variable determines what text appears in the album count box.
           "$sound_event|default": "album.alpha.ui",
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
-            }
-          ],
           "variables": [
             {
               "requires": "(not $is_music_plus)",
+              "$song_count": "14", //Native albums have less songs, so the song count needs to change to match.
               "$sound_event": "album.alpha_native.ui" //If the active pack is not Music+, a random song from an alternate version of this album is selected. This album only includes songs that are in Minecraft by default. This is done to avoid the chance of a nonexistent sound file being called by the music player.
             }
           ],
@@ -2250,15 +2306,12 @@
       {
         "volume_beta@music_player.music_player_button_volume_beta_base": {
           "$identifier": "tab.music_player.album.volume_beta",
+          "$song_count": "30",
           "$sound_event|default": "album.beta.ui",
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
-            }
-          ],
           "variables": [
             {
               "requires": "(not $is_music_plus)",
+              "$song_count": "26",
               "$sound_event": "album.beta_native.ui"
             }
           ]
@@ -2267,15 +2320,11 @@
       {
         "update_aquatic@music_player.music_player_button_update_aquatic_base": {
           "$identifier": "tab.music_player.album.update_aquatic",
+          "$song_count": "3",
           "$sound_event": "album.update_aquatic.ui",
           "$album_image_panel_controls": [ //The three Update Aquatic music tracks have unique covers. I chose to represent the album with the cover of Dragon Fish because the image is vaguely cube-shaped, which matches the covers of Volumes Alpha and Beta.
             {
               "dragon_fish@music_player.dragon_fish_cover": {}
-            }
-          ],
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
             }
           ] //Some albums don't have a native variant. In the case of the Update Aquatic and Nether Update albums, there are no songs which aren't included in Minecraft by default, so a native album is unnecessary.
         }
@@ -2283,45 +2332,34 @@
       {
         "nether_update@music_player.music_player_button_nether_update_base": {
           "$identifier": "tab.music_player.album.nether_update",
-          "$sound_event": "album.nether_update.ui",
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
-            }
-          ]
+          "$song_count": "4",
+          "$sound_event": "album.nether_update.ui"
         }
       },
       {
         "caves_and_cliffs@music_player.music_player_button_caves_and_cliffs_base": {
           "$identifier": "tab.music_player.album.caves_and_cliffs",
+          "$song_count": "10",
           "$sound_event": "album.caves_and_cliffs.ui",
           "$artist": "tab.music_player.artist.lena_raine_and_kumi_tanioka",
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
-            }
-          ],
           "variables": [
             {
               "requires": "(not $is_music_plus)",
+              "$song_count": "9",
               "$sound_event": "album.caves_and_cliffs_native.ui"
             }
           ]
         }
       },
       {
-        "music_discs@music_player.music_player_song_button_panel_base": {
+        "music_discs@music_player.music_player_row_base": {
           "$identifier": "tab.music_player.album.music_discs",
+          "$song_count": "14",
           "$sound_event|default": "album.music_discs.ui",
           "$artist": "tab.music_player.artist.c418_and_lena_raine",
           "$album_image_panel_controls": [
             {
               "music_discs@music_player.music_discs_cover": {}
-            }
-          ],
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
             }
           ],
           "variables": [
@@ -2337,24 +2375,16 @@
         "festive@music_player.music_player_button_festive_base": { //This album is called "Festive" instead of "Festive Remixes" because it also includes Flake and Kyoto from Volume Beta.
           "ignored": "(not $is_music_plus)",
           "$identifier": "tab.music_player.album.festive",
-          "$sound_event": "album.festive.ui",
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
-            }
-          ] //This album doesn't have a native variant because none of its songs are included in Minecraft by default.
+          "$song_count": "5",
+          "$sound_event": "album.festive.ui" //This album doesn't have a native variant because none of its songs are included in Minecraft by default.
         }
       },
       {
         "minecraft_earth@music_player.music_player_button_minecraft_earth_base": {
           "ignored": "(not $is_music_plus)",
           "$identifier": "tab.music_player.album.minecraft_earth",
+          "$song_count": "2",
           "$sound_event": "album.minecraft_earth.ui",
-          "$type_image_panel_controls": [
-            {
-              "shuffle@music_player.shuffle_image": {}
-            }
-          ],
           "$section_bottom": true
         }
       }
@@ -3420,9 +3450,8 @@
   "music_player_title@how_to_play_common.header": {
     "$body_text_color": "$section_title_text_color"
   },
-  "music_player_song_button_panel_base": { //This object contains the basic button components that will be inherited by all player buttons used in the screen.
+  "music_player_play_button": { //This object contains the basic button components that will be inherited by all player buttons used in the screen.
     "type": "panel",
-    "size": [ "100%", 30 ],
     "$title|default": "", //As some buttons in the music player don't use these variables, setting default values prevents content errors that would otherwise appear.
     "$duration|default": "",
     "$duration_in_seconds|default": 0,
@@ -3443,9 +3472,20 @@
           "offset": "$type_image_offset",
           "layer": 7,
           "controls": "$type_image_panel_controls",
+          "$shuffle|default": false,
           "$type_image_panel_controls|default": [ //The speaker image is set as the default control here. This is because it is used for almost every situation. The shuffle image is very scarcely used in comparison.
             {
               "speaker@music_player.speaker_image": {}
+            }
+          ],
+          "variables": [
+            {
+              "requires": "$shuffle", //If a play button is for an album instead of a single song, the shuffle icon is used instead.
+              "$type_image_panel_controls": [
+                {
+                  "shuffle@music_player.shuffle_image": {}
+                }
+              ]
             }
           ]
         }
@@ -3453,7 +3493,12 @@
       {
         "duration_bar_panel@music_player.duration_bar_properties": { //The duration bar properties set further down in this file are retrieved here.
           "type": "panel",
-          "size": "@music_player.anim_duration_bar_show", //The duration bar panel size is set to an animation so that it can appear when pressed.
+          "anims": "$duration_bar_animations",
+          "$duration_bar_animations": [ //The duration bar panel size is set to an animation so that it can appear when pressed.
+            "@music_player.anim_duration_bar_initialize",
+            "@music_player.anim_duration_bar_show",
+            "@music_player.anim_duration_bar_reset"
+          ],
           "layer": 13,
           "anchor_to": "center",
           "anchor_from": "center",
@@ -3501,11 +3546,11 @@
         "music_player_button@settings_common.action_button": {
           "$border_visible": false, //Removing the button border is a necessity so that it can be recolored and hidden depending on the button state.
           "$button_text": "",
-          "$default_button_texture|default": "textures/ui/empty", //This property and the three below are what give the player buttons their unique look.
+          "$pressed_button_name": "button.play_song",
+          "$default_button_texture|default": "textures/ui/empty", //This property and the three below are what give the play buttons their unique look.
           "$hover_button_texture|default": "textures/ui/focus_border_white",
           "$pressed_button_texture|default": "textures/ui/focus_border_green",
           "$locked_button_texture|default": "textures/ui/focus_border_red",
-          "$focus_override_right": "FOCUS_OVERRIDE_STOP", //Since there are no buttons to the right of the player buttons, controller are blocked from being able to scroll to the right.
           "sound_name": "$sound_event", //This "$sound_event" variable is here so that each song can be given its own sound event.
           "sound_pitch": 1.0,
           "sound_volume": 1.0,
@@ -3525,7 +3570,7 @@
           "button_mappings": [
             {
               "from_button_id": "button.menu_select",
-              "to_button_id": "$sound_event", //Each music player button has its own duration bar. Each duration bar needs to appear separately, and only when its own button is pressed. Since every button has a unique "$sound_event" variable, it functions secondarily as the button's name.
+              "to_button_id": "$sound_event", //Each play button has its own duration bar. Each duration bar needs to appear separately, and only when its own button is pressed. Since every button has a unique "$sound_event" variable, it functions secondarily as the button's name.
               "mapping_type": "pressed"
             },
             {
@@ -3554,21 +3599,26 @@
       {
         "top_text": {
           "type": "label",
+          "anims": "$top_text_animations",
+          "$top_text_animations|default": [
+            "@music_player.anim_top_text_initialize" //The offset is defined by a variable because the top text will be centered on the button if an artist and duration are not given, and raised if they are.
+          ],
           "text": "$top_text",
           "$top_text|default": "$identifier", //The "$top_text" variable is never defined, except by other variables. This is because its purpose is to select between two possible texts: the hard-coded translatable identifier and the user-defined custom title.
           "color": "$song_button_top_text_color",
           "size": [ "default", 10 ],
           "max_size": [ "80%", "100%" ], //This variable is set so that the text will not overlap the album or speaker panels.
-          "offset": "$top_text_offset", //The offset is defined by a variable because the top text will be centered on the button if an artist and duration are not given, and raised if they are.
           "layer": 28,
           "anchor_from": "center",
           "anchor_to": "center",
           "shadow": true, //This shadow helps differentiate the song titles from the artist text just a little more.
-          "$top_text_offset|default": [ 0, -5 ],
           "variables": [
             {
               "requires": "(($artist = '') and ($duration = ''))", //This determinant requires that neither the artist nor duration are defined.
-              "$top_text_offset": "@music_player.anim_top_text_shift" //The top text offset is set to an animation when the determinant is fulfilled. This animation keeps the text centered normally, but shifts the text upward for the duration of the song when pressed, ensuring that the text doesn't overlap the duration bar.
+              "$top_text_animations": [ //The top text animations are set to an animation when the determinant is fulfilled. This animation keeps the text centered normally, but shifts the text upward for the duration of the song when pressed, ensuring that the text doesn't overlap the duration bar.
+                "@music_player.anim_top_text_shift",
+                "@music_player.anim_top_text_reset"
+              ]
             },
             {
               "requires": "(not ($title = ''))", //This determinant checks whether the user has defined a custom title for the song. If they have, the "$top_text" variable will be set to "$title" instead of "$identifier".
@@ -3580,13 +3630,16 @@
       {
         "bottom_text": {
           "type": "panel",
-          "size": "$bottom_text_size", //The bottom text size is set to a variable because it needs to be able to disappear and reappear, but also stay visible if the song doesn't have a "duration_in_seconds" set.
+          "anims": "$bottom_text_animations", //The bottom text animations are set to a variable because they need to be able to disappear and reappear, but also stay visible if the song doesn't have a "duration_in_seconds" set.
+          "$bottom_text_animations|default": [
+            "@music_player.anim_bottom_text_hide", //This animation will hide the bottom text when the play button is pressed.
+            "@music_player.anim_bottom_text_size_reset" //This animation will make the bottom text reappear when the stop button is pressed.
+          ],
           "layer": 27,
-          "offset": "$bottom_text_offset", //The bottom text offset is set to a variable for the rare case when it takes the place of the top text. This is an impossible scenario outside of editing this file intentionally, but it is accounted for for the sake of full preparedness.
+          "offset": "$bottom_text_offset", 
           "anchor_from": "top_middle",
           "anchor_to": "top_middle",
           "clips_children": true, //The "clips_children" property is used here to allow the bottom text to be hidden when the duration bar appears.
-          "$bottom_text_size|default": "@music_player.anim_bottom_text_hide", //This animation will hide the bottom text when the button is pressed.
           "$bottom_text_offset|default": [ 0, "50%" ],
           "controls": [
             {
@@ -3632,8 +3685,12 @@
           "variables": [
             {
               "requires": "(($title = '') and ($identifier = '') and (not $duration_in_seconds = 0))", //This scenario is not possible outside of editing this file intentionally.
-              "$bottom_text_size": [ "80%", "100%" ],
-              "$bottom_text_offset": "@music_player.anim_bottom_text_shift", //The bottom text offset is set to an animation when the determinant is fulfilled. This animation keeps the text centered normally, but shifts the text upward for the duration of the song when pressed, ensuring that the text doesn't overlap the duration bar.
+              "$bottom_text_animations": [ //The bottom text animations are set to a variable for the rare case when bottom text takes the place of top text. This is an impossible scenario outside of editing this file intentionally, but it is accounted for anyway.
+                "@music_player.anim_bottom_text_size_initialize",
+                "@music_player.anim_bottom_text_offset_initialize",
+                "@music_player.anim_bottom_text_shift", //The bottom text offset is set to an animation when the determinant is fulfilled. This animation keeps the text centered normally, but shifts the text upward for the duration of the song when pressed, ensuring that the text doesn't overlap the duration bar.
+                "@music_player.anim_bottom_text_offset_reset"
+              ],
               "$song_button_bottom_text_color": "$song_button_top_text_color"
             }
           ]
@@ -3641,8 +3698,126 @@
       }
     ]
   },
+  "music_player_stop_button@common_buttons.light_glyph_button": {
+    "$button_content": "music_player.stop_image",
+    "$pressed_button_name": "button.stop_song",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP", //Since there are no buttons to the right of the stop buttons, controller are blocked from being able to scroll to the right.
+    "sound_name": "$sound_event", //Playing a sound event again resets it. The stop button is technically another play button, but with a lower "sound_volume" property.
+    "sound_pitch": 1.0,
+    "sound_volume": 0.00000000001, //By setting this volume to a ridiculously low decimal value, the sound is silent when it plays again. Playing the sound event with a true volume of 0.0 will not reset the sound, so this is necessary.
+    "$section_top|default": false,
+    "$section_bottom|default": false,
+    "variables": [
+      {
+        "requires": "((not $is_pregame) and $enable_sidebar and $section_top)",
+        "$focus_override_up": "hamburger_toggle"
+      },
+      {
+        "requires": "((not $is_pregame) and $enable_sidebar and $section_bottom)",
+        "$focus_override_down": "FOCUS_OVERRIDE_STOP"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "($sound_event + '.stop')", //This gives each stop button to an ID different from the play button and every other stop button. Only the duration bar for the song the player stops will be affected.
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_secondary_select",
+        "to_button_id": "($sound_event + '.stop')",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "($sound_event + '.stop')",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.controller_select",
+        "to_button_id": "($sound_event + '.stop')",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.controller_secondary_select",
+        "to_button_id": "($sound_event + '.stop')",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+  "music_player_song_count": {
+    "type": "panel",
+    "size": [ 30, 30 ],
+    "$song_count|default": "1", //The song count is in quotation marks because it's displayed as text. It's not a value to use in code.
+    "clips_children": true, //This property ensures any text or shadows that escape the box can't overlap the play button.
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "size": [ "100% - 4px", "100% - 4px" ], //Shrinking the size of the album count helps the screen feel less overwhelming.
+          "layer": 5,
+          "texture": "textures/ui/cover_background_gray"
+        }
+      },
+      {
+        "border": {
+          "type": "image",
+          "size": [ "100% - 4px", "100% - 4px" ],
+          "layer": 6,
+          "color": "$border_color",
+          "$border_color|default": [ 1, 1, 1 ],
+          "texture": "textures/ui/focus_border_white"
+        }
+      },
+      {
+        "number": {
+          "type": "label",
+          "text": "$song_count",
+          "color": "$border_color", //The color of the number matches the border to keep the song count panel looking cohesive.
+          "$border_color|default": [ 1, 1, 1 ],
+          "font_type": "MinecraftTen", //Large numbers look better in the MinecraftTen font than MinecraftSeven.
+          "text_alignment": "center",
+          "font_scale_factor": "$font_scale", //When 100 custom songs are visible, the scale needs to be adjusted to keep the number inside the box. Because of this, the font scale needs to be a variable.
+          "shadow": true,
+          "size": [ "default", 30 ],
+          "offset": "$font_offset", //The offset also needs to change when 100 custom songs are visible.
+          "max_size": [ 30, "100%" ],
+          "layer": 7,
+          "anchor_from": "center",
+          "anchor_to": "center"
+        }
+      }
+    ]
+  },
+  "music_player_row_base": { //This stack panel puts the play button, stop button, and song count into a single object.
+    "type": "stack_panel",
+    "size": [ "100%", 30 ],
+    "orientation": "horizontal",
+    "$shuffle|default": false,
+    "$font_scale|default": 1.75,
+    "$font_offset|default": [ 0, 3 ],
+    "controls": [
+      {
+        "play_button@music_player.music_player_play_button": {
+          "size": [ "fill", 30 ] //Neither the play nor stop buttons have sizes until this point. Their size needs to be specified because the original objects do not have sizes.
+        }
+      },
+      {
+        "stop_button@music_player.music_player_stop_button": {
+          "ignored": "$shuffle",
+          "size": [ 30, 30 ]
+        }
+      },
+      {
+        "song_count@music_player.music_player_song_count": {
+          "ignored": "(not $shuffle)", //The song count and stop button can never appear at the same time. There's no reason for it; stop buttons only work on individual songs, and song counts aren't needed for those.
+          "size": [ 30, 30 ]
+        }
+      }
+    ]
+  },
 //This object is the base of the emote buttons. As emotes require their own property bags, bindings, and button mappings, it's easier to give them their own base.
-  "music_player_emote_button_panel_base": {
+  "music_player_emote_button": {
     "type": "panel",
     "size": [ "100%", 30 ],
     "$emote_image_offset|default": [ "50% - 16px", 0 ],
@@ -3783,14 +3958,14 @@
     ]
   },
 //These are the album bases, which set the artist and album cover of the song to save time later.
-  "music_player_button_custom_base@music_player_song_button_panel_base": {
+  "music_player_button_custom_base@music_player_row_base": {
     "$album_image_panel_controls": [
       {
         "custom@music_player.custom_cover": {}
       }
     ]
   },
-  "music_player_button_volume_alpha_base@music_player_song_button_panel_base": {
+  "music_player_button_volume_alpha_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.c418", //Since every song in Volume Alpha was created by C418, the Volume Alpha buttons start with the artist already set.
     "$album_image_panel_controls": [ //This sets the album cover is to one corresponding to the button type.
       {
@@ -3798,7 +3973,7 @@
       }
     ]
   },
-  "music_player_button_volume_beta_base@music_player_song_button_panel_base": {
+  "music_player_button_volume_beta_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.c418",
     "$album_image_panel_controls": [
       {
@@ -3806,10 +3981,10 @@
       }
     ]
   },
-  "music_player_button_update_aquatic_base@music_player_song_button_panel_base": { //Every Update Aquatic song has a different cover, so it doesn't make sense to set a default one here.
+  "music_player_button_update_aquatic_base@music_player_row_base": { //Every Update Aquatic song has a different cover, so it doesn't make sense to set a default one here.
     "$artist": "tab.music_player.artist.c418"
   },
-  "music_player_button_nether_update_base@music_player_song_button_panel_base": {
+  "music_player_button_nether_update_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.lena_raine",
     "$album_image_panel_controls": [
       {
@@ -3817,7 +3992,7 @@
       }
     ]
   },
-  "music_player_button_caves_and_cliffs_base@music_player_song_button_panel_base": {
+  "music_player_button_caves_and_cliffs_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.lena_raine",
     "$album_image_panel_controls": [
       {
@@ -3825,7 +4000,7 @@
       }
     ]
   },
-  "music_player_button_music_discs_base@music_player_song_button_panel_base": {
+  "music_player_button_music_discs_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.c418",
     "$album_image_panel_controls": [
       {
@@ -3833,7 +4008,7 @@
       }
     ]
   },
-  "music_player_button_festive_base@music_player_song_button_panel_base": {
+  "music_player_button_festive_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.c418",
     "$album_image_panel_controls": [
       {
@@ -3841,7 +4016,7 @@
       }
     ]
   },
-  "music_player_button_minecraft_earth_base@music_player_song_button_panel_base": {
+  "music_player_button_minecraft_earth_base@music_player_row_base": {
     "$artist": "tab.music_player.artist.shauny_jang",
     "$album_image_panel_controls": [
       {
@@ -3849,7 +4024,7 @@
       }
     ]
   },
-  "music_player_button_other_base@music_player_song_button_panel_base": {
+  "music_player_button_other_base@music_player_row_base": {
     "$album_image_panel_controls": [
       {
         "other@music_player.other_cover": {}
@@ -3857,6 +4032,7 @@
     ]
   },
 //These objects are the animations that control object visibility.
+//Set 1
   "anim_bottom_text_hide": {
     "anim_type": "size",
     "easing": "linear",
@@ -3869,13 +4045,34 @@
   "anim_bottom_text_wait": {
     "anim_type": "wait", //This animation's purpose is to wait for the song to be over, then move on to the next animation.
     "duration": "$duration_in_seconds",
-    "next": "@music_player.anim_bottom_text_show"
+    "next": "@music_player.anim_bottom_text_show",
+    "reset_event": "($sound_event + '.stop')" //This resets the animation when a button named after the sound event appended with ".stop" is pressed. It allows each duration bar to be stopped individually.
   },
   "anim_bottom_text_show": {
     "anim_type": "size",
     "duration": 0,
     "from": [ 0, 0 ],
     "to": [ "80%", "100%" ]
+  },
+  "anim_bottom_text_size_reset": { //This animation is identical to "anim_bottom_text_show", but it has to be separate so it can be activated by the stop button.
+    "anim_type": "size",
+    "duration": 0,
+    "from": [ "80%", "100%" ],
+    "to": [ "80%", "100%" ],
+    "play_event": "($sound_event + '.stop')"
+  },
+//Set 2
+  "anim_bottom_text_size_initialize": {
+    "anim_type": "size",
+    "duration": 0,
+    "from": [ "80%", "100%" ],
+    "to": [ "80%", "100%" ]
+  },
+  "anim_bottom_text_offset_initialize": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [ 0, "35%" ],
+    "to": [ 0, "35%" ]
   },
   "anim_bottom_text_shift": { //This animation chain will only be used if you remove a song identifier from this file.
     "anim_type": "offset",
@@ -3889,7 +4086,8 @@
   "anim_bottom_text_stay": { //This animation is functionally the same as the "anim_bottom_text_wait" animation, but it had to be separate because it's part of a different animation chain.
     "anim_type": "wait",
     "duration": "$duration_in_seconds",
-    "next": "@music_player.anim_bottom_text_return"
+    "next": "@music_player.anim_bottom_text_return",
+    "reset_event": "($sound_event + '.stop')"
   },
   "anim_bottom_text_return": {
     "anim_type": "offset",
@@ -3897,6 +4095,14 @@
     "from": [ 0, "17.5%" ],
     "to": [ 0, "35%" ]
   },
+  "anim_bottom_text_offset_reset": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [ 0, "35%" ],
+    "to": [ 0, "35%" ],
+    "play_event": "($sound_event + '.stop')"
+  },
+//Set 3
   "anim_duration_bar_show": {
     "anim_type": "size",
     "easing": "linear",
@@ -3909,13 +4115,29 @@
   "anim_duration_bar_wait": {
     "anim_type": "wait",
     "duration": "$duration_in_seconds",
-    "next": "@music_player.anim_duration_bar_hide"
+    "next": "@music_player.anim_duration_bar_hide",
+    "reset_event": "($sound_event + '.stop')"
   },
   "anim_duration_bar_hide": {
     "anim_type": "size",
     "duration": 0,
     "from": [ 182, 5 ],
     "to": [ 0, 0 ]
+  },
+  "anim_duration_bar_reset": {
+    "anim_type": "size",
+    "duration": 0,
+    "from": [ 0, 0 ],
+    "to": [ 0, 0 ],
+    "play_event": "($sound_event + '.stop')"
+  },
+//Set 4
+  "anim_duration_bar_initialize": {
+    "anim_type": "size",
+    "easing": "linear",
+    "duration": 0,
+    "from": [ 0, 5 ],
+    "to": [ 0, 5 ]
   },
   "anim_duration_bar_fill": { //This fill animation is the only animation with movement that takes a nonzero amount of time to complete. That's due to the duration bar's filling motion being the focus of the animations.
     "anim_type": "size",
@@ -3924,14 +4146,22 @@
     "from": [ 0, 5 ],
     "to": [ 182, 5 ],
     "play_event": "$sound_event",
-    "next": "@music_player.anim_duration_bar_reset"
+    "reset_event": "($sound_event + '.stop')",
+    "next": "@music_player.anim_duration_bar_progress_reset"
   },
-  "anim_duration_bar_reset": { //This reset animation is technically unnecessary, but it would be necessary if the duration bar could appear on the same button multiple times.
+  "anim_duration_bar_progress_reset": {
     "anim_type": "size",
     "easing": "linear",
     "duration": 0,
-    "from": [ 182, 5 ],
+    "from": [ 0, 5 ],
     "to": [ 0, 5 ]
+  },
+//Set 5
+  "anim_top_text_initialize": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [ 0, -5 ],
+    "to": [ 0, -5 ]
   },
   "anim_top_text_shift": {
     "anim_type": "offset",
@@ -3945,13 +4175,21 @@
   "anim_top_text_wait": {
     "anim_type": "wait",
     "duration": "$duration_in_seconds",
-    "next": "@music_player.anim_top_text_return"
+    "next": "@music_player.anim_top_text_return",
+    "reset_event": "($sound_event + '.stop')"
   },
   "anim_top_text_return": {
     "anim_type": "offset",
     "duration": 0,
     "from": [ 0, -5 ],
     "to": [ 0, 0 ]
+  },
+  "anim_top_text_reset": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [ 0, 0 ],
+    "to": [ 0, 0 ],
+    "play_event": "($sound_event + '.stop')"
   },
 //This object looks at the properties set by users in the Customizer and assigns the associated bar color and notch count.
   "duration_bar_properties": {
@@ -4232,6 +4470,11 @@
     "type": "image",
     "size": [ 18, 18 ],
     "texture": "textures/ui/speaker"
+  },
+  "stop_image": {
+    "type": "image",
+    "size": [ 10, 10 ],
+    "texture": "textures/ui/stop"
   },
   "question_mark_image": {
     "type": "image",

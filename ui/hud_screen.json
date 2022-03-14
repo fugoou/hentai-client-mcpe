@@ -1,4 +1,127 @@
-{"player_position": {
+{"boss_bar_base": {
+    "type": "image",
+    "texture": "textures/gui/bars",
+    "size": [ 182, 5 ],
+    "uv": "$bar_location",
+    "uv_size": [ 182, 5 ],
+    "anchor_to": "left_middle",
+    "anchor_from": "left_middle",
+    "$bar_location|default": [ 0, 0 ]
+  },
+  "pink_bar_empty@hud.boss_bar_base": {
+  },
+  "pink_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 5 ]
+  },
+  "blue_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 10 ]
+  },
+  "blue_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 15 ]
+  },
+  "red_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 20 ]
+  },
+  "red_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 25 ]
+  },
+  "green_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 30 ]
+  },
+  "green_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 35 ]
+  },
+  "yellow_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 40 ]
+  },
+  "yellow_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 45 ]
+  },
+  "purple_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 50 ]
+  },
+  "purple_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 55 ]
+  },
+  "white_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 60 ]
+  },
+  "white_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 65 ]
+  },
+  "gold_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 120 ]
+  },
+  "gold_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 125 ]
+  },
+  "orange_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 130 ]
+  },
+  "orange_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 135 ]
+  },
+  "brown_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 140 ]
+  },
+  "brown_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 145 ]
+  },
+  "dark_gray_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 150 ]
+  },
+  "dark_gray_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 155 ]
+  },
+  "light_gray_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 160 ]
+  },
+  "light_gray_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 165 ]
+  },
+  "cyan_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 170 ]
+  },
+  "cyan_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 175 ]
+  },
+  "dark_green_bar_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 180 ]
+  },
+  "dark_green_bar_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 185 ]
+  },
+  "progress_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 70 ]
+  },
+  "progress_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 75 ]
+  },
+  "notched_6_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 80 ]
+  },
+  "notched_6_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 85 ]
+  },
+  "notched_10_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 90 ]
+  },
+  "notched_10_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 95 ]
+  },
+  "notched_12_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 100 ]
+  },
+  "notched_12_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 105 ]
+  },
+  "notched_20_empty@hud.boss_bar_base": {
+    "$bar_location": [ 0, 110 ]
+  },
+  "notched_20_full@hud.boss_bar_base": {
+    "$bar_location": [ 0, 115 ]
+  },
+"player_position": {
     "type": "image",
     "size": [ "100%c + 6px", "100%c + 2px" ],
     "texture": "_HentaiClient/nik",
