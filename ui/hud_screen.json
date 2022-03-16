@@ -659,7 +659,7 @@
 			"array_name":"controls","operation":"insert_front",
 			"value":[
 				{"item":{
-					"type":"stack_panel","anchor_from":"top_right","anchor_to":"top_right","orientation":"horizontal","size":[32,16],
+					"type":"stack_panel","anchor_from":"bottom_left","anchor_to":"bottom_left","orientation":"horizontal","size":[32,16],
 					"controls":[
 						//https://lukaspah.github.io/item_aux_calculator/item_id_aux.html
 						{"compass@hud.item":{"property_bag":{"#item_id_aux":22609920}}},
