@@ -118,7 +118,8 @@
         "hud_movement_speed_ones_decimal": "geometry.hud_movement_speed_ones_decimal",
         "hud_movement_speed_ones": "geometry.hud_movement_speed_ones",
         "hud_movement_speed_tens": "geometry.hud_movement_speed_tens",
-        "chunk_border": "geometry.chunk_border"
+        "chunk_border": "geometry.chunk_border",
+        "damage_particle": "geometry.damage_particle"
       },
       "scripts": {
         "scale": "0.9375",
@@ -129,6 +130,9 @@
           "variable.hand_bob = 0.0;",
           "variable.this = 0.0;",
           "variable.life_time = 0.0;",
+          "variable.hurt_time = 0.0;",
+          "variable.previous_perspective = 0.0;",
+          "variable.perspective = 0.0;",
           "variable.hud_render1 = 0.0;",
           "variable.hud_render2 = 0.0;",
           "variable.third_person_render = 0.0;",
@@ -162,6 +166,8 @@
         "animate": [
           "root",
           "this",
+          "perspective",//3rd person
+          "hurt_time",
           //when the player flies with an elytra or rides an entity, its root is offset and is not
           //easily correctable with an animation, so for now rendering of custom utility models is
           //disabled when the player is in either of these states.
@@ -170,7 +176,12 @@
           { "third_person_utility": "variable.third_person_render" }
         ]
       },
+      "particle_effects":{
+      	"damage": "ambient:damage_emitter"
+      },
       "animations": {
+      "hurt_time": "controller.animation.hurt_time",
+      	"perspective": "controller.animation.perspective",
       	"this": "controller.animation.this",
       	"hud_utility": "controller.animation.hud_utility",
       	"third_person_utility": "controller.animation.third_person_utility",
@@ -266,7 +277,8 @@
         { "controller.render.hud_movement_speed_ones": "variable.hud_render2" },
         { "controller.render.hud_movement_speed_ones_decimal": "variable.hud_render2" },
         { "controller.render.hud_movement_speed_tens_decimal": "variable.hud_render2" },
-        { "controller.render.hud_movement_speed_background": "variable.hud_render2" }
+        { "controller.render.hud_movement_speed_background": "variable.hud_render2" },
+        "controller.render.player.damage_particle"
       ],
       "enable_attachables": true
     }
