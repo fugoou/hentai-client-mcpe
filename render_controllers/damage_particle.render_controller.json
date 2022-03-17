@@ -1,0 +1,12 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.player.damage_particle": {
+      "geometry": "Geometry.damage_particle",
+      "materials": [ { "*": "Material.default" } ],
+      "is_hurt_color": {
+      	"a": "variable.hurt_time = (!variable.perspective); return 0.0;"
+      }
+    }
+  }
+}
