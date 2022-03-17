@@ -1,0 +1,60 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.perspective": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry":[
+            "variable.previous_perspective = variable.perspective;"
+          ],
+          "transitions": [ { "state1": "1.0" } ]
+        },
+        "state1": {
+          "transitions": [
+            {
+              "state2": "variable.previous_perspective == variable.perspective"
+            },
+            {
+              "default": "1.0"
+            }
+          ]
+        },
+        "state2": {
+          "on_entry": [
+            "variable.perspective = 0.0;"
+          ],
+          "transitions": [ { "default": "variable.perspective > 0.0" } ]
+        }
+      }
+    },
+    "controller.animation.hurt_time": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry":[
+          	"variable.hurt_time = 0.0;"
+          ],
+          "transitions": [ { "temp": "variable.hurt_time" } ]
+        },
+        "temp": {
+          "on_entry":[
+          	"variable.life_time = query.life_time;"
+          ],
+          "particle_effects": [
+            {
+              "effect": "damage",
+              "locator": "damage_particle"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "(query.life_time - variable.life_time) >= 0.5 && query.is_alive"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+//made by ambient#2309 - do not redistribute publicly without permission!
