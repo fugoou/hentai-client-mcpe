@@ -1,8 +1,8 @@
 {
   "format_version": 2,
   "header": {
-    "description": "Contact Dev\nInstagram : @xchillds.xyz\nYoutube Channel : XyNCKunZ\nSorry if there are errors, because everyone has their own advantages and disadvantages, if you have any suggestions, please contact the Instagram developer !!!",
-    "name": "Hentai Client",
+    "description": "My Soscial Media\nInstagram : @xchillds.xyz\nYoutube Channel : XyNCKunZ\nSorry if there are errors, because everyone has their own advantages and disadvantages, if you have any suggestions, please contact the Instagram me !!!",
+    "name": "hentai client !!!",
     "uuid": "9aeffb48-7514-11ec-9f5c-731448ecfd87",
     "version": [
       1,
@@ -17,7 +17,7 @@
   },
   "modules": [
     {
-      "description": "Client By © Nick",
+      "description": "client By © Nick",
       "type": "resources",
       "uuid": "35c306e7-7859-4714-be97-28682e423008",
       "version": [
@@ -25,6 +25,24 @@
         0,
         0
       ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "label",
+      "text": "take note : requires game restart when using subpack !!!\nPlease chat with the creator on instagram @xchillds.xyz if something is broken"
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "subpack_2",
+      "name": "optimization +",
+      "memory_tier": 1
+    },
+    {
+      "folder_name": "subpack_1",
+      "name": "default hentai client",
+      "memory_tier": 1
     }
   ]
 }
