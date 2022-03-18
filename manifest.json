@@ -26,23 +26,5 @@
         0
       ]
     }
-  ],
-  "settings": [
-    {
-      "type": "label",
-      "text": "take note : requires game restart when using subpack !!!\nPlease chat with the creator on instagram @xchillds.xyz if something is broken"
-    }
-  ],
-  "subpacks": [
-    {
-      "folder_name": "subpack_2",
-      "name": "optimization +",
-      "memory_tier": 1
-    },
-    {
-      "folder_name": "subpack_1",
-      "name": "default hentai client",
-      "memory_tier": 1
-    }
   ]
 }
