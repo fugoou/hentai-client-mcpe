@@ -1,6 +1,10 @@
 {
   "namespace": "common_store",
   
+  "store_base_screen": {
+    "$screen_bg_content": "lounge_progress.codeanim2"
+  },
+  
   "status_with_coins": {
     "type": "stack_panel",
     "orientation": "horizontal",
