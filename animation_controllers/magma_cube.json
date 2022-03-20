@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.magma_cube.display": {
+			"states": {
+				"default": {
+					"particle_effects": [{
+						"effect": "magma_cube"
+					}]
+				}
+			}
+		}
+	}
+}

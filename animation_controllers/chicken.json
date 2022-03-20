@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.chicken.display": {
+			"states": {
+				"default": {
+					"particle_effects": [{
+						"effect": "chicken"
+					}]
+				}
+			}
+		}
+	}
+}

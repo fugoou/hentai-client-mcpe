@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.command_block_minecart.display": {
+			"states": {
+				"default": {
+					"particle_effects": [{
+						"effect": "command_block_minecart"
+					}]
+				}
+			}
+		}
+	}
+}

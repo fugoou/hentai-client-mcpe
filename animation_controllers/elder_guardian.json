@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.elder_guardian.display": {
+			"states": {
+				"default": {
+					"particle_effects": [{
+						"effect": "elder_guardian"
+					}]
+				}
+			}
+		}
+	}
+}
