@@ -1,0 +1,35 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:hopper_minecart",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "minecart"
+      },
+      "textures": {
+        "default": "textures/entity/minecart"
+      },
+      "geometry": {
+        "default": "geometry.minecart.v1.8"
+      },
+        "particle_effects": {
+        "hopper_minecart": "padmad:hopper_minecart"
+      },
+       "scripts": {
+        "pre_animation": [
+          "variable.hurt = query.hurt_time - query.frame_alpha;"
+        ],
+        "animate": [
+          "hopper_minecart",
+          "move"
+        ]
+      },
+      "animations": {
+        "hopper_minecart": "controller.animation.hopper_minecart.display",
+        "move": "animation.minecart.move"
+      },
+      "render_controllers": [ "controller.render.minecart" ]
+    }
+  }
+}
