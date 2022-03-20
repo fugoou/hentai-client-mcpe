@@ -1,0 +1,34 @@
+{
+	"format_version":"1.10.0",
+	"particle_effect":{
+		"description":{
+			"identifier":"padmad:villager",
+			"basic_render_parameters":{
+				"material":"toko",
+				"texture":"assets/villager.png"
+			}
+		},
+		"components":{
+			"minecraft:emitter_rate_instant":{"num_particles":1},
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 999999
+			},
+			"minecraft:emitter_shape_point": {
+				"offset": [0, 0, 0]
+			},
+			"minecraft:emitter_local_space":{"position":true,"rotation":true},
+			"minecraft:particle_lifetime_expression":{"max_lifetime":999999},
+			"minecraft:particle_motion_parametric":{"relative_position":[0,2.5,0]},
+			"minecraft:particle_appearance_billboard": {
+				"size": [0.25, 0.25],
+				"facing_camera_mode": "lookat_xyz",
+				"uv": {
+					"texture_width": 8,
+					"texture_height": 8,
+					"uv": [0, 0],
+					"uv_size": [8, 8]
+				}
+			}
+		}
+	}
+}
