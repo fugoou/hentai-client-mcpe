@@ -3,18 +3,19 @@
     "version": "1.0.0",
 
     "block_overlay": {
-      "+states": [
+      "+defines": ["ALPHA_TEST"],
+      "+states":[
         "Blending",
         "DisableDepthWrite",
         "DisableAlphaWrite",
         "StencilWrite",
         "EnableStencilTest"
       ],
-      "depthBias": 100.0,
-      "slopeScaledDepthBias": 15.0,
-      "depthBiasOGL": 100.0,
-      "slopeScaledDepthBiasOGL": 20.0,
-      "depthFunc": "LessEqual",
+      "depthBias": 1000000000.0,
+      "slopeScaledDepthBias": 0.1,
+      "depthBiasOGL": 0.5,
+      "slopeScaledDepthBiasOGL": 0.5,
+      "depthFunc": "Always",
       "vertexShader": "shaders/uv.vertex",
       "vrGeometryShader": "shaders/uv.geometry",
       "fragmentShader": "shaders/texture_cutout.fragment",
@@ -26,7 +27,7 @@
       "variants": [
         {
           "skinning": {
-            "+defines": [ "USE_SKINNING" ],
+            "+defines": [ "USE_SKINNING","ALPHA_TEST"],
             "vertexFields": [
               { "field": "Position" },
               { "field": "BoneId0" },
@@ -73,7 +74,7 @@
       "variants": [
         {
           "skinning": {
-            "+defines": [ "USE_SKINNING" ],
+            "+defines": [ "ALPHA_TEST" ],
             "vertexFields": [
               { "field": "Position" },
               { "field": "BoneId0" },
@@ -82,7 +83,7 @@
             ]
           },
           "skinning_color": {
-            "+defines": [ "USE_SKINNING" ],
+            "+defines": [ "ALPHA_TEST" ],
             "vertexFields": [
               { "field": "Position" },
               { "field": "BoneId0" },
@@ -157,10 +158,13 @@
       ]
     },
     "selection_box": {
-      "+defines": [ "LINE_STRIP" ],
+      "+defines": [ "LINE_STRIP","ALPHA_TEST" ],
       "primitiveMode": "Line",
-
-      "depthFunc": "LessEqual",
+  "depthBias": 1000000000.0,
+      "slopeScaledDepthBias": 0.1,
+      "depthBiasOGL": 0.5,
+      "slopeScaledDepthBiasOGL": 0.5,
+      "depthFunc": "Always",
       "vertexShader": "shaders/selection_box.vertex",
       "vrGeometryShader": "shaders/position.geometry",
       "fragmentShader": "shaders/selection_box.fragment",
@@ -315,6 +319,17 @@
     },
     "plankton:precipitation": {
       "+defines": [ "COMFORT_MODE", "FLIP_OCCLUSION", "NO_VARIETY" ]
+    }, "red_spores:precipitation": {
+      "+defines": [ "COMFORT_MODE", "NO_OCCLUSION", "NO_VARIETY" ]
+    },
+    "blue_spores:precipitation": {
+      "+defines": [ "COMFORT_MODE", "NO_OCCLUSION", "NO_VARIETY" ]
+    },
+    "ash:precipitation": {
+      "+defines": [ "COMFORT_MODE", "NO_OCCLUSION", "NO_VARIETY" ]
+    },
+    "white_ash:precipitation": {
+      "+defines": [ "COMFORT_MODE", "NO_OCCLUSION", "NO_VARIETY" ]
     },
     "lightning": {
       "+states": [
